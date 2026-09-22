@@ -187,7 +187,7 @@
       gap: 0.75rem;
     }
 
-    /* Buttons with Metallic Gold, Pure White and Slate */
+    /* Buttons */
     .btn-primary {
       background: linear-gradient(135deg, #D4AF37 0%, #B89025 100%);
       color: #FFFFFF;
@@ -1232,8 +1232,10 @@
             <span>Equipo</span>
           </button>
           
-          <button class="btn-primary" id="topCtaBtn">
-            <span>Agendar Diagnóstico</span>
+          <!-- BOTÓN AGENDAR LLAMADA EN HEADER -->
+          <button class="btn-primary" id="topBookCallBtn">
+            <i class="fa-regular fa-calendar-check"></i>
+            <span>Agendar Llamada</span>
           </button>
 
           <button class="mobile-menu-btn" id="mobileToggle" aria-label="Abrir Menú">
@@ -1251,8 +1253,8 @@
       <a href="#soluciones" class="mobile-item" style="color: var(--text-slate); text-decoration: none; font-size: 0.95rem; font-weight: 500;">Soluciones</a>
       <a href="#calculadora" class="mobile-item" style="color: var(--text-slate); text-decoration: none; font-size: 0.95rem; font-weight: 500;">Calculadora ROI</a>
       <a href="#comparativa" class="mobile-item" style="color: var(--text-slate); text-decoration: none; font-size: 0.95rem; font-weight: 500;">Ecosistema</a>
-      <button class="btn-primary" id="mobileCtaBtn" style="justify-content: center; width: 100%;">
-        Agendar Diagnóstico
+      <button class="btn-primary" id="mobileBookCallBtn" style="justify-content: center; width: 100%;">
+        <i class="fa-regular fa-calendar-check"></i> Agendar Llamada
       </button>
     </div>
   </div>
@@ -1275,7 +1277,13 @@
         </p>
 
         <div class="hero-actions">
-          <a href="#packs" class="btn-primary">
+          <!-- BOTÓN PRINCIPAL DE AGENDAR TU LLAMADA -->
+          <button class="btn-primary" id="heroBookCallBtn" style="padding: 0.85rem 1.8rem; font-size: 0.95rem;">
+            <i class="fa-regular fa-calendar-check"></i>
+            <span>Agenda tu llamada</span>
+          </button>
+
+          <a href="#packs" class="btn-ghost">
             <span>Ver Packs & Precios</span>
             <i class="fa-solid fa-arrow-down" style="font-size: 0.8rem;"></i>
           </a>
@@ -1286,7 +1294,7 @@
              rel="noopener noreferrer" 
              class="btn-ghost">
             <i class="fa-brands fa-whatsapp" style="color: #25D366;"></i>
-            <span>Hablar por WhatsApp (603 78 28 84)</span>
+            <span>WhatsApp (603 78 28 84)</span>
           </a>
         </div>
 
@@ -1311,7 +1319,7 @@
       </div>
     </section>
 
-    <!-- NEW SECTION: 3 LUXURY PRICING PACKS -->
+    <!-- SECTION: 3 LUXURY PRICING PACKS -->
     <section class="section-wrap" id="packs" style="background: linear-gradient(180deg, #FFFFFF 0%, #FAF9F6 100%);">
       <div class="container">
         <div class="section-header" style="text-align: center; max-width: 780px; margin: 0 auto 3.6rem;">
@@ -1645,8 +1653,8 @@
 
   <!-- Floating Cluster: WhatsApp Direct and Consultation FAB -->
   <div class="floating-support-cluster">
-    <button class="action-fab fab-quote" id="fabOpenLead" title="Solicitar información">
-      <i class="fa-solid fa-paper-plane"></i>
+    <button class="action-fab fab-quote" id="fabOpenLead" title="Agenda tu llamada">
+      <i class="fa-regular fa-calendar-check"></i>
     </button>
     <!-- Direct link to official phone 603782884 -->
     <a href="https://wa.me/34603782884?text=Hola%20ROSER.AI,%20me%20gustar%C3%ADa%20agendar%20un%20diagn%C3%B3stico%20estrat%C3%A9gico%20para%20mi%20negocio" 
@@ -1656,6 +1664,107 @@
        title="WhatsApp Directo (+34 603 78 28 84)">
       <i class="fa-brands fa-whatsapp"></i>
     </a>
+  </div>
+
+  <!-- MODAL: AGENDAR TU LLAMADA (LUNES A VIERNES 9:00 A 19:00 CON AVISO DIRECTO POR CORREO) -->
+  <div class="modal-backdrop" id="callScheduleModal">
+    <div class="modal-sheet">
+      <button class="close-modal-x" id="closeCallModalBtn">&times;</button>
+
+      <div style="margin-bottom: 1.5rem;">
+        <span class="hero-badge" style="margin-bottom: 0.6rem;">
+          <i class="fa-regular fa-calendar-days" style="color: var(--gold-deep);"></i> Lun - Vie | 09:00 a 19:00
+        </span>
+        <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.7rem; color: var(--text-charcoal); line-height: 1.2;">
+          Agenda tu llamada con nosotros
+        </h3>
+        <p style="color: var(--text-slate); font-size: 0.88rem; margin-top: 0.4rem;">
+          Elige el día y la hora que mejor te vengan. Recibiremos tu solicitud y te contactaremos para confirmar la sesión.
+        </p>
+      </div>
+
+      <!-- Silent Form for Booking -->
+      <form id="callScheduleForm">
+        <div class="field-group">
+          <label class="field-label">Nombre o Empresa *</label>
+          <input type="text" id="callClientName" class="field-input" placeholder="Ej. Carlos Martínez — Taller Mecánico" required />
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Teléfono o WhatsApp de contacto *</label>
+          <input type="tel" id="callClientPhone" class="field-input" placeholder="Ej. 603 78 28 84" required />
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 0.85rem;">
+          <!-- Day picker with Weekend blocking -->
+          <div class="field-group">
+            <label class="field-label">Día preferido *</label>
+            <input type="date" id="callDateInput" class="field-input" required />
+            <span id="weekendErrorMsg" style="display: none; color: #DC2626; font-size: 0.74rem; margin-top: 0.3rem;">
+              Solo laborables (Lun - Vie).
+            </span>
+          </div>
+
+          <!-- Time slot dropdown from 09:00 to 19:00 -->
+          <div class="field-group">
+            <label class="field-label">Hora preferida *</label>
+            <select id="callTimeInput" class="field-input" required>
+              <option value="">Selecciona hora</option>
+              <option value="09:00">09:00</option>
+              <option value="09:30">09:30</option>
+              <option value="10:00">10:00</option>
+              <option value="10:30">10:30</option>
+              <option value="11:00">11:00</option>
+              <option value="11:30">11:30</option>
+              <option value="12:00">12:00</option>
+              <option value="12:30">12:30</option>
+              <option value="13:00">13:00</option>
+              <option value="13:30">13:30</option>
+              <option value="16:00">16:00</option>
+              <option value="16:30">16:30</option>
+              <option value="17:00">17:00</option>
+              <option value="17:30">17:30</option>
+              <option value="18:00">18:00</option>
+              <option value="18:30">18:30</option>
+              <option value="19:00">19:00</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">¿Qué te gustaría ver en la sesión? (Opcional)</label>
+          <textarea id="callClientNotes" class="field-input" rows="2" placeholder="Ej. Presupuesto para web, automatización de WhatsApp, etc..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-primary" id="btnSubmitCallBooking" style="width: 100%; justify-content: center; padding: 0.9rem;">
+          <i class="fa-solid fa-calendar-check"></i> Confirmar Cita Automática
+        </button>
+
+        <div style="text-align: center; margin-top: 1rem;">
+          <span style="font-size: 0.8rem; color: var(--slate-gray);">¿Prefieres escribirnos directamente?</span> <br />
+          <a href="https://wa.me/34603782884?text=Hola%20ROSER.AI,%20quiero%20agendar%20una%20llamada%20con%20vosotros" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             style="color: var(--gold-deep); font-size: 0.88rem; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 0.45rem; margin-top: 0.35rem;">
+            <i class="fa-brands fa-whatsapp" style="color: #25D366; font-size: 1.1rem;"></i> Abrir WhatsApp Directo (+34 603 78 28 84)
+          </a>
+        </div>
+      </form>
+
+      <!-- Feedback Confirmation Screen -->
+      <div id="callSuccessBox" style="display: none; text-align: center; padding: 2rem 0;">
+        <div style="font-size: 3.2rem; color: var(--gold-deep); margin-bottom: 0.9rem;">
+          <i class="fa-solid fa-circle-check"></i>
+        </div>
+        <h4 style="font-size: 1.4rem; color: var(--text-charcoal); margin-bottom: 0.4rem;">¡Llamada reservada con éxito!</h4>
+        <p style="color: var(--text-slate); font-size: 0.9rem; margin-bottom: 1.4rem;" id="callSummaryText">
+          Hemos recibido los detalles de tu cita y te hemos enviado la confirmación.
+        </p>
+        <a id="waConfirmLinkBtn" href="#" target="_blank" rel="noopener noreferrer" class="btn-primary" style="margin: 0 auto; width: 100%; justify-content: center; padding: 0.85rem;">
+          <i class="fa-brands fa-whatsapp"></i> Confirmar también por WhatsApp
+        </a>
+      </div>
+    </div>
   </div>
 
   <!-- MODAL 1: SELECTOR DE VÍA PARA EL PACK ELEGIDO -->
@@ -1689,95 +1798,18 @@
         <i class="fa-solid fa-chevron-right" style="color: var(--slate-gray); font-size: 0.85rem;"></i>
       </a>
 
-      <!-- Option 2: Email Form -->
+      <!-- Option 2: Email Form / Agendar llamada -->
       <div class="pack-choice-card" id="packChoiceEmailBtn">
         <div style="display: flex; align-items: center; gap: 0.95rem;">
           <div class="choice-icon-wrap choice-icon-mail">
-            <i class="fa-regular fa-envelope"></i>
+            <i class="fa-regular fa-calendar-check"></i>
           </div>
           <div>
-            <div style="font-weight: 700; color: var(--text-charcoal); font-size: 0.95rem;">Enviar Solicitud por Correo</div>
-            <div style="font-size: 0.78rem; color: var(--slate-gray);">Rellena un breve formulario y te contactamos hoy</div>
+            <div style="font-weight: 700; color: var(--text-charcoal); font-size: 0.95rem;">Agendar Llamada para este Pack</div>
+            <div style="font-size: 0.78rem; color: var(--slate-gray);">Elige día y hora (Lun - Vie, 9h a 19h) y te llamamos</div>
           </div>
         </div>
         <i class="fa-solid fa-chevron-right" style="color: var(--slate-gray); font-size: 0.85rem;"></i>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL 2: FORMULARIO DE CAPTURA SILENCIOSO -->
-  <div class="modal-backdrop" id="leadCaptureModal">
-    <div class="modal-sheet">
-      <button class="close-modal-x" id="closeLeadModalBtn">&times;</button>
-
-      <div style="margin-bottom: 1.5rem;">
-        <span class="hero-badge" style="margin-bottom: 0.6rem;">
-          <i class="fa-solid fa-calendar-check" style="color: var(--gold-deep);"></i> Diagnóstico Estratégico
-        </span>
-        <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.7rem; color: var(--text-charcoal); line-height: 1.2;">
-          Inicia la transformación de tu empresa
-        </h3>
-        <p style="color: var(--text-slate); font-size: 0.88rem; margin-top: 0.4rem;">
-          Envíanos tu caso o contacta directamente por WhatsApp.
-        </p>
-      </div>
-
-      <!-- Silent AJAX Form directly connected to hidden recipient email daanni26serrano@gmail.com -->
-      <form id="agencyLeadForm">
-        <div class="field-group">
-          <label class="field-label">Nombre o Empresa *</label>
-          <input type="text" id="leadName" name="name" class="field-input" placeholder="Ej. Javier García — Clínica Dental" required />
-        </div>
-
-        <div class="field-group">
-          <label class="field-label">Teléfono o WhatsApp de contacto *</label>
-          <input type="tel" id="leadPhone" name="phone" class="field-input" placeholder="Ej. 603 78 28 84" required />
-        </div>
-
-        <!-- High contrast select dropdown with crisp text -->
-        <div class="field-group">
-          <label class="field-label">Solución o Pack de máximo interés</label>
-          <select id="leadService" name="service" class="field-input">
-            <option value="Pack Básico (300€)">Pack Básico (300€) — Web & WhatsApp</option>
-            <option value="Pack Plata (700€)">Pack Plata (700€) — Web + Chatbot IA + Citas</option>
-            <option value="Pack Oro (1.200€)">Pack Oro (1.200€) — Ecosistema Completo + 800€ Autom.</option>
-            <option value="Arquitectura Web & Motores de Conversión">Arquitectura Web & Motores de Conversión</option>
-            <option value="Agentes Cognitivos Autónomos (WhatsApp/Web)">Agentes Cognitivos Autónomos (WhatsApp & Web)</option>
-            <option value="Pipelines de Integración n8n & Make">Pipelines de Integración n8n & Make</option>
-            <option value="Motor de Crecimiento & Reputación Local">Motor de Crecimiento & Reputación Local (Google Maps)</option>
-            <option value="Consultoría Integral de Inteligencia Artificial">Consultoría Integral de Inteligencia Artificial</option>
-          </select>
-        </div>
-
-        <div class="field-group">
-          <label class="field-label">Objetivo principal o detalles adicionales</label>
-          <textarea id="leadNotes" name="notes" class="field-input" rows="3" placeholder="Cuéntanos qué procesos o funcionalidades te gustaría implementar..."></textarea>
-        </div>
-
-        <button type="submit" class="btn-primary" id="btnSubmitLead" style="width: 100%; justify-content: center; padding: 0.9rem;">
-          <i class="fa-solid fa-paper-plane"></i> Enviar Petición a ROSER.AI
-        </button>
-
-        <div style="text-align: center; margin-top: 1.25rem;">
-          <span style="font-size: 0.8rem; color: var(--slate-gray);">¿Prefieres respuesta inmediata?</span> <br />
-          <a href="https://wa.me/34603782884?text=Hola%20ROSER.AI,%20quiero%20coordinar%20una%20reuni%C3%B3n%20para%20mi%20empresa" 
-             target="_blank" 
-             rel="noopener noreferrer" 
-             style="color: var(--gold-deep); font-size: 0.88rem; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 0.45rem; margin-top: 0.4rem;">
-            <i class="fa-brands fa-whatsapp" style="color: #25D366; font-size: 1.1rem;"></i> Abrir WhatsApp Directo (+34 603 78 28 84)
-          </a>
-        </div>
-      </form>
-
-      <div id="leadSuccessFeedback" style="display: none; text-align: center; padding: 2rem 0;">
-        <div style="font-size: 3.2rem; color: var(--gold-deep); margin-bottom: 0.9rem;">
-          <i class="fa-solid fa-circle-check"></i>
-        </div>
-        <h4 style="font-size: 1.4rem; color: var(--text-charcoal); margin-bottom: 0.4rem;">Petición recibida con éxito</h4>
-        <p style="color: var(--text-slate); font-size: 0.9rem; margin-bottom: 1.6rem;">
-          Tus datos se han guardado de forma segura. Nos pondremos en contacto contigo en breve para fijar la llamada de diagnóstico.
-        </p>
-        <button class="btn-primary" id="ackSuccessBtn" style="margin: 0 auto;">Cerrar</button>
       </div>
     </div>
   </div>
@@ -1848,7 +1880,7 @@
           <i class="fa-solid fa-comments"></i> Chat Privado Equipo
         </button>
         <button class="tab-btn" data-pane="paneLeads">
-          <i class="fa-solid fa-address-book"></i> Registro de Leads (<span id="leadsBadge">0</span>)
+          <i class="fa-solid fa-address-book"></i> Registro de Leads & Citas (<span id="leadsBadge">0</span>)
         </button>
       </div>
 
@@ -1930,10 +1962,10 @@
         </div>
       </div>
 
-      <!-- PANE 3: LEADS CAPTURADOS -->
+      <!-- PANE 3: LEADS & CITAS CAPTURADAS -->
       <div class="admin-panel-view" id="paneLeads">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.1rem;">
-          <h4 style="color: var(--text-charcoal); font-size: 0.98rem; font-weight: 700;">Empresas interesadas en servicios de ROSER.AI</h4>
+          <h4 style="color: var(--text-charcoal); font-size: 0.98rem; font-weight: 700;">Empresas y Citas registradas en ROSER.AI</h4>
           <button class="btn-ghost" id="btnClearLeads" style="font-size: 0.78rem; padding: 0.4rem 0.85rem;">
             Vaciar Registro
           </button>
@@ -1946,7 +1978,7 @@
                 <th style="padding: 0.95rem;">Momento</th>
                 <th style="padding: 0.95rem;">Contacto</th>
                 <th style="padding: 0.95rem;">WhatsApp / Tel</th>
-                <th style="padding: 0.95rem;">Interés</th>
+                <th style="padding: 0.95rem;">Servicio / Cita</th>
                 <th style="padding: 0.95rem;">Detalles</th>
                 <th style="padding: 0.95rem;">Acción</th>
               </tr>
@@ -2000,20 +2032,26 @@
     const mobileDrawer = document.getElementById('mobileDrawer');
 
     // Modals
+    const callScheduleModal = document.getElementById('callScheduleModal');
+    const closeCallModalBtn = document.getElementById('closeCallModalBtn');
+    const callScheduleForm = document.getElementById('callScheduleForm');
+    const callDateInput = document.getElementById('callDateInput');
+    const callTimeInput = document.getElementById('callTimeInput');
+    const callClientName = document.getElementById('callClientName');
+    const callClientPhone = document.getElementById('callClientPhone');
+    const callClientNotes = document.getElementById('callClientNotes');
+    const btnSubmitCallBooking = document.getElementById('btnSubmitCallBooking');
+    const callSuccessBox = document.getElementById('callSuccessBox');
+    const weekendErrorMsg = document.getElementById('weekendErrorMsg');
+    const callSummaryText = document.getElementById('callSummaryText');
+    const waConfirmLinkBtn = document.getElementById('waConfirmLinkBtn');
+
     const packSelectorModal = document.getElementById('packSelectorModal');
     const closePackModalBtn = document.getElementById('closePackModalBtn');
     const packChoiceBadge = document.getElementById('packChoiceBadge');
     const packChoiceTitle = document.getElementById('packChoiceTitle');
     const packChoiceWaBtn = document.getElementById('packChoiceWaBtn');
     const packChoiceEmailBtn = document.getElementById('packChoiceEmailBtn');
-
-    const leadCaptureModal = document.getElementById('leadCaptureModal');
-    const closeLeadModalBtn = document.getElementById('closeLeadModalBtn');
-    const agencyLeadForm = document.getElementById('agencyLeadForm');
-    const leadServiceSelect = document.getElementById('leadService');
-    const leadSuccessFeedback = document.getElementById('leadSuccessFeedback');
-    const ackSuccessBtn = document.getElementById('ackSuccessBtn');
-    const btnSubmitLead = document.getElementById('btnSubmitLead');
 
     const adminPassModal = document.getElementById('adminPassModal');
     const closePassModalBtn = document.getElementById('closePassModalBtn');
@@ -2037,6 +2075,122 @@
       });
     });
 
+    // SET MINIMUM DATE TO TODAY FOR CALL SCHEDULER
+    document.addEventListener('DOMContentLoaded', () => {
+      const today = new Date().toISOString().split('T')[0];
+      if (callDateInput) {
+        callDateInput.setAttribute('min', today);
+      }
+    });
+
+    // BLOCK WEEKENDS (LUNES A VIERNES ONLY)
+    callDateInput.addEventListener('change', () => {
+      if (!callDateInput.value) return;
+      const selected = new Date(callDateInput.value + 'T00:00:00');
+      const day = selected.getDay(); // 0 is Sunday, 6 is Saturday
+
+      if (day === 0 || day === 6) {
+        weekendErrorMsg.style.display = 'block';
+        callDateInput.value = '';
+      } else {
+        weekendErrorMsg.style.display = 'none';
+      }
+    });
+
+    // OPEN CALL BOOKING MODAL
+    function openCallModal(optionalNote = '') {
+      if (mobileDrawer) mobileDrawer.style.display = 'none';
+      callScheduleForm.style.display = 'block';
+      callSuccessBox.style.display = 'none';
+      weekendErrorMsg.style.display = 'none';
+
+      if (optionalNote) {
+        callClientNotes.value = optionalNote;
+      }
+      callScheduleModal.classList.add('active');
+    }
+
+    [
+      document.getElementById('topBookCallBtn'),
+      document.getElementById('mobileBookCallBtn'),
+      document.getElementById('heroBookCallBtn'),
+      document.getElementById('calcCtaBtn'),
+      document.getElementById('fabOpenLead')
+    ].forEach(btn => {
+      if (btn) btn.addEventListener('click', () => openCallModal());
+    });
+
+    closeCallModalBtn.addEventListener('click', () => {
+      callScheduleModal.classList.remove('active');
+    });
+
+    // SUBMIT CALL BOOKING -> SILENT EMAIL TO daanni26serrano@gmail.com
+    callScheduleForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const name = callClientName.value.trim();
+      const phone = callClientPhone.value.trim();
+      const date = callDateInput.value;
+      const time = callTimeInput.value;
+      const notes = callClientNotes.value.trim() || 'Sin observaciones previas';
+
+      const originalBtnContent = btnSubmitCallBooking.innerHTML;
+      btnSubmitCallBooking.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Agendando...';
+      btnSubmitCallBooking.disabled = true;
+
+      const payload = {
+        _subject: `🗓️ NUEVA CITA AGENDADA: ${name} [${date} a las ${time}]`,
+        Cliente: name,
+        Telefono: phone,
+        Dia_Seleccionado: date,
+        Hora_Seleccionada: time,
+        Detalles: notes,
+        Fecha_Solicitud: new Date().toLocaleString('es-ES')
+      };
+
+      try {
+        await fetch(`https://formsubmit.co/ajax/${HIDDEN_EMAIL_DEST}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+      } catch (networkError) {
+        console.warn('Silent local fallback triggered:', networkError);
+      }
+
+      // Format WhatsApp direct confirmation button
+      const waText = encodeURIComponent(
+        `Hola ROSER.AI, he agendado una llamada para el día ${date} a las ${time}h.\n• Nombre: ${name}\n• Teléfono: ${phone}`
+      );
+      waConfirmLinkBtn.href = `https://wa.me/${ROSER_PHONE_WA}?text=${waText}`;
+
+      callSummaryText.innerHTML = `Tu llamada ha quedado registrada para el <strong>${date}</strong> a las <strong>${time}</strong>. Se ha notificado inmediatamente al equipo de ROSER.AI.`;
+
+      // Save into Admin Suite leads table
+      const dateNow = new Date();
+      const timeFormatted = 'Hoy ' + dateNow.getHours().toString().padStart(2, '0') + ':' + dateNow.getMinutes().toString().padStart(2, '0');
+
+      capturedLeads.unshift({
+        id: Date.now(),
+        time: timeFormatted,
+        name: name,
+        phone: phone,
+        service: `🗓️ Cita: ${date} (${time}h)`,
+        notes: notes
+      });
+      writeStorage(KEY_LEADS_STORE, capturedLeads);
+      updateLeadsTable();
+
+      btnSubmitCallBooking.innerHTML = originalBtnContent;
+      btnSubmitCallBooking.disabled = false;
+      callScheduleForm.reset();
+      callScheduleForm.style.display = 'none';
+      callSuccessBox.style.display = 'block';
+    });
+
     // PACK SELECTOR INTERACTION
     window.openPackSelector = function(packName, packPrice) {
       currentSelectedPack = { name: packName, price: packPrice };
@@ -2057,96 +2211,10 @@
       packSelectorModal.classList.remove('active');
     });
 
-    // When client chooses Email path from pack selector
+    // When client chooses Email/Llamada path from pack selector
     packChoiceEmailBtn.addEventListener('click', () => {
       packSelectorModal.classList.remove('active');
-      openLeadModal(currentSelectedPack.name);
-    });
-
-    // Lead capture modal activation
-    function openLeadModal(preselectedService = null) {
-      if (mobileDrawer) mobileDrawer.style.display = 'none';
-      agencyLeadForm.style.display = 'block';
-      leadSuccessFeedback.style.display = 'none';
-
-      if (preselectedService) {
-        // Try matching select option value or default
-        for (let i = 0; i < leadServiceSelect.options.length; i++) {
-          if (leadServiceSelect.options[i].value.includes(preselectedService)) {
-            leadServiceSelect.selectedIndex = i;
-            break;
-          }
-        }
-      }
-
-      leadCaptureModal.classList.add('active');
-    }
-
-    [
-      document.getElementById('topCtaBtn'),
-      document.getElementById('mobileCtaBtn'),
-      document.getElementById('calcCtaBtn'),
-      document.getElementById('fabOpenLead')
-    ].forEach(btn => {
-      if (btn) btn.addEventListener('click', () => openLeadModal());
-    });
-
-    closeLeadModalBtn.addEventListener('click', () => leadCaptureModal.classList.remove('active'));
-    ackSuccessBtn.addEventListener('click', () => leadCaptureModal.classList.remove('active'));
-
-    // SILENT FORM SUBMISSION VIA AJAX TO daanni26serrano@gmail.com
-    agencyLeadForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      const name = document.getElementById('leadName').value.trim();
-      const phone = document.getElementById('leadPhone').value.trim();
-      const service = leadServiceSelect.value;
-      const notes = document.getElementById('leadNotes').value.trim() || 'Sin observaciones previas';
-
-      const originalBtnContent = btnSubmitLead.innerHTML;
-      btnSubmitLead.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Enviando...';
-      btnSubmitLead.disabled = true;
-
-      const payload = {
-        name: name,
-        phone: phone,
-        service: service,
-        notes: notes,
-        _subject: `Nuevo Lead para ROSER.AI: ${name} [${service}]`
-      };
-
-      try {
-        await fetch(`https://formsubmit.co/ajax/${HIDDEN_EMAIL_DEST}`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-          body: JSON.stringify(payload)
-        });
-      } catch (networkError) {
-        console.warn('Silent local fallback triggered:', networkError);
-      }
-
-      const dateNow = new Date();
-      const timeFormatted = 'Hoy ' + dateNow.getHours().toString().padStart(2, '0') + ':' + dateNow.getMinutes().toString().padStart(2, '0');
-
-      capturedLeads.unshift({
-        id: Date.now(),
-        time: timeFormatted,
-        name: name,
-        phone: phone,
-        service: service,
-        notes: notes
-      });
-      writeStorage(KEY_LEADS_STORE, capturedLeads);
-      updateLeadsTable();
-
-      btnSubmitLead.innerHTML = originalBtnContent;
-      btnSubmitLead.disabled = false;
-      agencyLeadForm.reset();
-      agencyLeadForm.style.display = 'none';
-      leadSuccessFeedback.style.display = 'block';
+      openCallModal(`Interesado en contratar: ${currentSelectedPack.name} (${currentSelectedPack.price})`);
     });
 
     // ADMIN AUTHENTICATION
@@ -2375,7 +2443,7 @@
     rateSlider.addEventListener('input', refreshCalculations);
 
     // Close modals on clicking background overlay
-    [packSelectorModal, leadCaptureModal, adminPassModal, adminWorkspaceModal].forEach(backdrop => {
+    [callScheduleModal, packSelectorModal, adminPassModal, adminWorkspaceModal].forEach(backdrop => {
       backdrop.addEventListener('click', (e) => {
         if (e.target === backdrop) backdrop.classList.remove('active');
       });
