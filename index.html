@@ -1,53 +1,49 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ROSER.AI — Sistemas de Inteligencia Artificial & Automatización Operativa</title>
-  <meta name="description" content="Infraestructura digital avanzada, agentes conversacionales autónomos y automatización de procesos para negocios locales de alto rendimiento.">
-
-  <!-- Google Fonts: Space Grotesk & Inter -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-
-  <!-- FontAwesome 6 Pro CDN -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ROSER.AI — Ingeniería de Software, Agentes IA & Automatización</title>
+  
+  <!-- Fonts: Space Grotesk & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  
+  <!-- FontAwesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
   <style>
     :root {
-      --bg-pure: #FFFFFF;
-      --bg-surface: #F9FAFB;
-      --bg-card: #FFFFFF;
-      --bg-subtle: #F3F4F6;
+      --white-pure: #FFFFFF;
+      --slate-gray: #6B7280;
+      --gold-metallic: #D4AF37;
+      --gold-deep: #B89025;
+      --gold-light: #F7E7A9;
+      --gold-subtle: rgba(212, 175, 55, 0.12);
+      --gold-glow: rgba(212, 175, 55, 0.28);
+      
+      --text-charcoal: #111827;
+      --text-slate: #4B5563;
+      --text-muted: #6B7280;
+      
+      --bg-canvas: #FFFFFF;
+      --bg-surface: #FFFFFF;
+      --bg-surface-soft: #F9FAFB;
+      --bg-surface-elevated: #F3F4F6;
       --border-light: #E5E7EB;
       --border-medium: #D1D5DB;
-
-      --text-charcoal: #111827;
-      --text-secondary: #6B7280;
-      --text-muted: #9CA3AF;
-
-      /* Metallic Gold Signature Palette */
-      --gold-primary: #D4AF37;
-      --gold-dark: #B89025;
-      --gold-soft: #FBF7ED;
-      --gold-glow: rgba(212, 175, 55, 0.22);
-      --gold-border: rgba(212, 175, 55, 0.45);
-
-      --success-green: #10B981;
-      --danger-red: #EF4444;
-
-      --font-heading: 'Space Grotesk', -apple-system, sans-serif;
-      --font-body: 'Inter', -apple-system, sans-serif;
-
+      --border-gold: rgba(212, 175, 55, 0.45);
+      
       --radius-sm: 8px;
       --radius-md: 14px;
       --radius-lg: 22px;
       --radius-full: 9999px;
-      --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
-      --shadow-md: 0 6px 20px rgba(17, 24, 39, 0.06);
-      --shadow-luxury: 0 20px 45px -10px rgba(212, 175, 55, 0.15), 0 8px 18px rgba(0, 0, 0, 0.04);
+
+      --shadow-luxury-sm: 0 4px 14px rgba(17, 24, 39, 0.04);
+      --shadow-luxury-md: 0 12px 30px rgba(17, 24, 39, 0.08);
+      --shadow-luxury-lg: 0 20px 45px rgba(17, 24, 39, 0.12);
+      --shadow-gold: 0 8px 24px rgba(212, 175, 55, 0.28);
     }
 
     * {
@@ -58,1126 +54,1610 @@
     }
 
     body {
-      background-color: var(--bg-pure);
+      background-color: var(--bg-canvas);
       color: var(--text-charcoal);
-      font-family: var(--font-body);
+      font-family: 'Inter', sans-serif;
       line-height: 1.6;
       overflow-x: hidden;
-    }
-
-    /* Ambient Subtle Grid */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
       background-image: 
-        linear-gradient(to right, rgba(229, 231, 235, 0.4) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(229, 231, 235, 0.4) 1px, transparent 1px);
-      background-size: 50px 50px;
+        radial-gradient(at 0% 0%, rgba(212, 175, 55, 0.07) 0px, transparent 50%),
+        radial-gradient(at 100% 20%, rgba(107, 114, 128, 0.05) 0px, transparent 40%),
+        radial-gradient(at 50% 100%, rgba(212, 175, 55, 0.05) 0px, transparent 60%);
+    }
+
+    .glow-bg {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(140px);
       pointer-events: none;
-      z-index: -1;
+      z-index: 0;
     }
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    button, input, select, textarea {
-      font-family: inherit;
+    .glow-hero {
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 720px;
+      height: 440px;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, rgba(247, 231, 169, 0.1) 40%, transparent 75%);
     }
 
     .container {
       max-width: 1220px;
       margin: 0 auto;
-      padding: 0 24px;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 1;
     }
 
-    /* TYPOGRAPHY */
-    h1, h2, h3, h4, .brand-name {
-      font-family: var(--font-heading);
-      letter-spacing: -0.03em;
-      color: var(--text-charcoal);
-    }
-
-    /* LUXURY BADGE */
-    .badge-gold {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 14px;
-      background: var(--gold-soft);
-      border: 1px solid var(--gold-border);
-      border-radius: var(--radius-full);
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--gold-dark);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    /* BUTTONS */
-    .btn-gold {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 13px 26px;
-      background: linear-gradient(135deg, var(--gold-primary) 0%, var(--gold-dark) 100%);
-      color: #FFFFFF;
-      font-weight: 600;
-      font-size: 0.95rem;
-      border-radius: var(--radius-full);
-      border: none;
-      cursor: pointer;
-      box-shadow: 0 8px 20px var(--gold-glow);
-      transition: var(--transition);
-    }
-    .btn-gold:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 28px rgba(212, 175, 55, 0.35);
-    }
-
-    .btn-outline {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 12px 24px;
-      background: #FFFFFF;
-      border: 1px solid var(--border-medium);
-      color: var(--text-charcoal);
-      font-weight: 600;
-      font-size: 0.95rem;
-      border-radius: var(--radius-full);
-      cursor: pointer;
-      transition: var(--transition);
-    }
-    .btn-outline:hover {
-      border-color: var(--gold-primary);
-      color: var(--gold-dark);
-      background: var(--gold-soft);
-      transform: translateY(-2px);
-    }
-
-    /* NAVIGATION */
-    .site-header {
+    header {
       position: sticky;
       top: 0;
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(14px);
+      z-index: 200;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
       border-bottom: 1px solid var(--border-light);
-      z-index: 100;
+      box-shadow: 0 2px 12px rgba(17, 24, 39, 0.03);
+      transition: all 0.3s ease;
     }
-    .nav-inner {
+
+    .nav-wrapper {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 74px;
+      height: 78px;
     }
-    .brand-logo {
+
+    .brand-container {
       display: flex;
       align-items: center;
-      gap: 12px;
-      cursor: pointer;
+      gap: 0.85rem;
+      text-decoration: none;
     }
-    .brand-logo svg {
-      width: 34px;
-      height: 34px;
+
+    .brand-icon-svg {
+      width: 38px;
+      height: 38px;
+      flex-shrink: 0;
+      filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.35));
     }
-    .brand-logo .brand-text {
+
+    .brand-title-wrap {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
+      font-family: 'Space Grotesk', sans-serif;
       font-size: 1.35rem;
       font-weight: 700;
       letter-spacing: -0.04em;
-    }
-    .brand-logo .brand-text span {
-      color: var(--gold-primary);
-    }
-    .nav-links {
+      color: var(--text-charcoal);
       display: flex;
       align-items: center;
-      gap: 28px;
+      gap: 0.2rem;
+    }
+
+    .brand-name .ai-accent {
+      background: linear-gradient(135deg, var(--gold-metallic), var(--gold-deep));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 800;
+    }
+
+    .brand-sub {
+      font-size: 0.62rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--slate-gray);
+      font-weight: 600;
+    }
+
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 2rem;
       list-style: none;
     }
+
+    @media (min-width: 860px) {
+      .nav-links {
+        display: flex;
+      }
+    }
+
     .nav-links a {
-      font-size: 0.92rem;
+      color: var(--text-slate);
+      text-decoration: none;
+      font-size: 0.9rem;
       font-weight: 500;
-      color: var(--text-secondary);
-      transition: var(--transition);
+      transition: color 0.2s ease;
     }
+
     .nav-links a:hover {
-      color: var(--gold-dark);
+      color: var(--gold-deep);
     }
+
     .nav-actions {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 0.75rem;
     }
 
-    /* HERO */
+    /* Buttons with Metallic Gold, Pure White and Slate */
+    .btn-primary {
+      background: linear-gradient(135deg, #D4AF37 0%, #B89025 100%);
+      color: #FFFFFF;
+      padding: 0.7rem 1.45rem;
+      border-radius: var(--radius-full);
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: var(--shadow-gold);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(212, 175, 55, 0.4);
+      background: linear-gradient(135deg, #DFBE52 0%, #A8811C 100%);
+    }
+
+    .btn-ghost {
+      background: #FFFFFF;
+      color: var(--text-charcoal);
+      padding: 0.7rem 1.45rem;
+      border-radius: var(--radius-full);
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid var(--border-medium);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: var(--shadow-luxury-sm);
+      transition: all 0.2s ease;
+    }
+
+    .btn-ghost:hover {
+      background: var(--bg-surface-soft);
+      border-color: var(--gold-metallic);
+      color: var(--gold-deep);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(17, 24, 39, 0.06);
+    }
+
+    .btn-admin-key {
+      background: var(--gold-subtle);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      color: var(--gold-deep);
+      padding: 0.52rem 0.95rem;
+      border-radius: var(--radius-full);
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: all 0.2s ease;
+    }
+
+    .btn-admin-key:hover {
+      background: rgba(212, 175, 55, 0.22);
+      border-color: var(--gold-metallic);
+      transform: translateY(-1px);
+    }
+
+    .mobile-menu-btn {
+      display: block;
+      background: none;
+      border: none;
+      color: var(--text-charcoal);
+      font-size: 1.35rem;
+      cursor: pointer;
+    }
+
+    @media (min-width: 860px) {
+      .mobile-menu-btn {
+        display: none;
+      }
+    }
+
     .hero-section {
-      padding: 85px 0 65px;
-      text-align: center;
+      padding: 5rem 0 4.2rem;
+      position: relative;
     }
-    .hero-content {
-      max-width: 860px;
-      margin: 0 auto;
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      background: #FFFFFF;
+      border: 1px solid var(--border-gold);
+      padding: 0.4rem 1.15rem;
+      border-radius: var(--radius-full);
+      font-size: 0.8rem;
+      color: var(--gold-deep);
+      font-weight: 600;
+      margin-bottom: 1.6rem;
+      box-shadow: var(--shadow-luxury-sm);
     }
-    .hero-title {
-      font-size: clamp(2.4rem, 5.5vw, 4.1rem);
-      line-height: 1.1;
+
+    .hero-headline {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.5rem, 5.6vw, 4.3rem);
+      line-height: 1.09;
       font-weight: 700;
-      margin: 22px 0 20px;
+      letter-spacing: -0.035em;
+      color: var(--text-charcoal);
+      margin-bottom: 1.5rem;
+      max-width: 980px;
     }
-    .hero-title span {
-      background: linear-gradient(135deg, var(--text-charcoal) 30%, var(--gold-dark) 100%);
+
+    .hero-headline .text-gradient {
+      background: linear-gradient(135deg, var(--gold-deep) 0%, var(--gold-metallic) 50%, var(--text-charcoal) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      display: inline-block;
     }
-    .hero-description {
+
+    .hero-lead {
       font-size: 1.15rem;
-      color: var(--text-secondary);
-      max-width: 680px;
-      margin: 0 auto 34px;
-      line-height: 1.7;
+      color: var(--text-slate);
+      max-width: 720px;
+      line-height: 1.75;
+      margin-bottom: 2.4rem;
+      font-weight: 400;
     }
-    .hero-ctas {
+
+    .hero-actions {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
       flex-wrap: wrap;
-      margin-bottom: 50px;
+      gap: 1rem;
+      margin-bottom: 3.8rem;
     }
 
-    /* METRICS STRIP */
-    .metrics-strip {
+    .proof-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      padding: 26px;
-      background: var(--bg-surface);
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-lg);
-      margin-top: 30px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      padding: 2.2rem 0;
+      border-top: 1px solid var(--border-light);
     }
-    .metric-item {
-      text-align: center;
+
+    @media (min-width: 768px) {
+      .proof-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
     }
-    .metric-number {
-      font-family: var(--font-heading);
-      font-size: 2.2rem;
+
+    .proof-item {
+      padding: 0.5rem;
+    }
+
+    .proof-metric {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.5rem;
       font-weight: 700;
-      color: var(--gold-primary);
+      line-height: 1;
+      color: var(--text-charcoal);
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: baseline;
+      gap: 0.2rem;
     }
-    .metric-label {
+
+    .proof-metric span {
+      color: var(--gold-metallic);
+      font-size: 1.7rem;
+    }
+
+    .proof-desc {
       font-size: 0.85rem;
-      color: var(--text-secondary);
-      font-weight: 500;
-      margin-top: 4px;
+      color: var(--slate-gray);
+      line-height: 1.45;
     }
 
-    /* SECTIONS */
-    .section-title-wrap {
-      text-align: center;
-      max-width: 640px;
-      margin: 0 auto 50px;
+    .section-wrap {
+      padding: 5.5rem 0;
+      position: relative;
     }
+
+    .section-header {
+      margin-bottom: 3.2rem;
+    }
+
+    .eyebrow {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+
     .section-title {
-      font-size: 2.3rem;
-      margin: 12px 0;
-    }
-    .section-subtitle {
-      color: var(--text-secondary);
-      font-size: 1rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2rem, 3.8vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text-charcoal);
+      line-height: 1.15;
     }
 
-    /* SERVICES GRID */
-    .services-grid {
+    .services-matrix {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 26px;
-      margin-bottom: 90px;
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
     }
+
+    @media (min-width: 768px) {
+      .services-matrix {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
     .service-card {
-      background: var(--bg-card);
+      background: #FFFFFF;
       border: 1px solid var(--border-light);
       border-radius: var(--radius-lg);
-      padding: 34px;
-      transition: var(--transition);
+      padding: 2.5rem 2.2rem;
+      position: relative;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      position: relative;
+      box-shadow: var(--shadow-luxury-sm);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--gold-metallic), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
     .service-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--gold-border);
-      box-shadow: var(--shadow-luxury);
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-luxury-lg), 0 0 24px rgba(212, 175, 55, 0.12);
+      border-color: var(--border-gold);
     }
+
+    .service-card:hover::before {
+      opacity: 1;
+    }
+
     .service-icon-box {
       width: 54px;
       height: 54px;
       border-radius: var(--radius-md);
-      background: var(--gold-soft);
-      border: 1px solid var(--gold-border);
+      background: var(--gold-subtle);
+      border: 1px solid rgba(212, 175, 55, 0.3);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.35rem;
-      color: var(--gold-dark);
-      margin-bottom: 22px;
+      color: var(--gold-deep);
+      font-size: 1.4rem;
+      margin-bottom: 1.6rem;
+      transition: transform 0.25s ease;
     }
-    .service-card h3 {
-      font-size: 1.35rem;
-      margin-bottom: 12px;
+
+    .service-card:hover .service-icon-box {
+      transform: scale(1.08);
+      background: rgba(212, 175, 55, 0.2);
     }
-    .service-card p {
-      color: var(--text-secondary);
+
+    .service-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-charcoal);
+      margin-bottom: 0.85rem;
+    }
+
+    .service-pitch {
       font-size: 0.95rem;
-      margin-bottom: 24px;
-      line-height: 1.6;
+      color: var(--text-slate);
+      line-height: 1.7;
+      margin-bottom: 2rem;
     }
-    .tags-container {
+
+    .feature-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 0.55rem;
+      margin-top: auto;
     }
-    .service-tag {
+
+    .tag-chip {
       font-size: 0.76rem;
       font-weight: 600;
-      padding: 4px 10px;
-      border-radius: var(--radius-full);
-      background: var(--bg-subtle);
-      color: var(--text-secondary);
+      color: var(--slate-gray);
+      background: var(--bg-surface-soft);
       border: 1px solid var(--border-light);
+      padding: 0.3rem 0.85rem;
+      border-radius: var(--radius-full);
+      transition: all 0.2s ease;
     }
 
-    /* ROI CALCULATOR */
-    .calc-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-lg);
-      padding: 40px;
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 40px;
-      align-items: center;
-      margin-bottom: 90px;
+    .service-card:hover .tag-chip {
+      border-color: rgba(212, 175, 55, 0.3);
+      color: var(--gold-deep);
     }
-    .calc-controls {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
-    .calc-group label {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.95rem;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-    .calc-group label span {
-      color: var(--gold-dark);
-    }
-    .slider {
-      width: 100%;
-      height: 6px;
-      background: var(--border-medium);
-      border-radius: 4px;
-      outline: none;
-      accent-color: var(--gold-primary);
-    }
-    .calc-result-box {
+
+    .interactive-card {
       background: #FFFFFF;
-      border: 1px solid var(--gold-border);
-      border-radius: var(--radius-md);
-      padding: 32px;
-      text-align: center;
-      box-shadow: var(--shadow-luxury);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-lg);
+      padding: 3rem 2.4rem;
+      margin: 4rem 0;
+      box-shadow: var(--shadow-luxury-md), 0 0 35px rgba(212, 175, 55, 0.08);
     }
-    .calc-result-value {
-      font-family: var(--font-heading);
+
+    .calculator-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.8rem;
+      align-items: center;
+    }
+
+    @media (min-width: 860px) {
+      .calculator-layout {
+        grid-template-columns: 1.25fr 0.85fr;
+      }
+    }
+
+    .range-input {
+      width: 100%;
+      height: 7px;
+      border-radius: var(--radius-full);
+      background: #E5E7EB;
+      outline: none;
+      -webkit-appearance: none;
+      margin: 1.1rem 0;
+    }
+
+    .range-input::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--gold-metallic);
+      border: 3px solid #FFFFFF;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(184, 144, 37, 0.45);
+      transition: transform 0.15s ease;
+    }
+
+    .range-input::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+    }
+
+    .calc-result-panel {
+      background: linear-gradient(180deg, #FAFAFA 0%, #F5F5F7 100%);
+      border: 1px solid var(--border-light);
+      border-top: 3px solid var(--gold-metallic);
+      border-radius: var(--radius-md);
+      padding: 2.2rem;
+      text-align: center;
+      box-shadow: var(--shadow-luxury-sm);
+    }
+
+    .calc-stat-number {
+      font-family: 'Space Grotesk', sans-serif;
       font-size: 2.8rem;
       font-weight: 700;
-      color: var(--gold-primary);
-      margin: 8px 0;
+      color: var(--gold-deep);
+      margin: 0.4rem 0;
     }
 
-    /* CONTACT / LEAD MODAL & DRAWER */
-    .modal-overlay {
+    /* Comparison Table */
+    .compare-container {
+      overflow-x: auto;
+      margin: 3.5rem 0;
+      background: #FFFFFF;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-light);
+      box-shadow: var(--shadow-luxury-sm);
+    }
+
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.92rem;
+    }
+
+    .compare-table th {
+      padding: 1.2rem 1.6rem;
+      background: var(--bg-surface-soft);
+      border-bottom: 1px solid var(--border-light);
+      color: var(--slate-gray);
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.74rem;
+      letter-spacing: 0.08em;
+    }
+
+    .compare-table td {
+      padding: 1.3rem 1.6rem;
+      border-bottom: 1px solid var(--border-light);
+      color: var(--text-charcoal);
+    }
+
+    .compare-table tr:hover td {
+      background: rgba(212, 175, 55, 0.03);
+    }
+
+    .badge-bad {
+      color: #DC2626;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 500;
+    }
+
+    .badge-good {
+      color: var(--gold-deep);
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(17, 24, 39, 0.45);
-      backdrop-filter: blur(6px);
-      z-index: 1000;
-      display: none;
+      background: rgba(17, 24, 39, 0.65);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      display: flex;
       align-items: center;
       justify-content: center;
-      padding: 16px;
+      padding: 1.2rem;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
     }
-    .modal-overlay.active {
-      display: flex;
+
+    .modal-backdrop.active {
+      opacity: 1;
+      pointer-events: auto;
     }
-    .modal-window {
+
+    .modal-sheet {
       background: #FFFFFF;
-      border: 1px solid var(--border-medium);
+      border: 1px solid var(--border-light);
       border-radius: var(--radius-lg);
       width: 100%;
-      max-width: 540px;
-      padding: 36px;
+      max-width: 530px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 2.4rem;
+      box-shadow: 0 25px 60px rgba(17, 24, 39, 0.2), 0 0 30px rgba(212, 175, 55, 0.15);
       position: relative;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2);
+      transform: scale(0.96);
+      transition: transform 0.25s ease;
     }
-    .modal-close {
+
+    .modal-backdrop.active .modal-sheet {
+      transform: scale(1);
+    }
+
+    .close-modal-x {
       position: absolute;
-      top: 20px;
-      right: 20px;
+      top: 1.2rem;
+      right: 1.2rem;
+      background: var(--bg-surface-soft);
+      border: 1px solid var(--border-light);
+      color: var(--slate-gray);
       width: 34px;
       height: 34px;
       border-radius: 50%;
-      background: var(--bg-subtle);
-      border: none;
+      cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      cursor: pointer;
-      color: var(--text-secondary);
-      transition: var(--transition);
+      font-size: 1.15rem;
+      transition: all 0.2s ease;
     }
-    .modal-close:hover {
-      background: var(--border-light);
+
+    .close-modal-x:hover {
+      background: #E5E7EB;
       color: var(--text-charcoal);
     }
 
-    /* FORM ELEMENTS (DROP-DOWN BUG FIX) */
-    .form-group {
-      margin-bottom: 18px;
+    .field-group {
+      margin-bottom: 1.35rem;
     }
-    .form-group label {
+
+    .field-label {
       display: block;
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       font-weight: 600;
-      margin-bottom: 6px;
-      color: var(--text-charcoal);
+      color: var(--text-slate);
+      margin-bottom: 0.45rem;
+      letter-spacing: 0.01em;
     }
-    .form-control {
+
+    .field-input {
       width: 100%;
-      padding: 12px 14px;
-      border-radius: var(--radius-sm);
-      border: 1px solid var(--border-medium);
+      background-color: #FFFFFF !important;
+      border: 1px solid var(--border-medium) !important;
+      border-radius: var(--radius-md);
+      padding: 0.85rem 1.05rem;
+      color: var(--text-charcoal) !important;
+      font-size: 0.92rem;
+      font-family: inherit;
+      outline: none;
+      transition: all 0.2s ease;
+      box-shadow: inset 0 1px 3px rgba(17, 24, 39, 0.02);
+    }
+
+    .field-input:focus {
+      border-color: var(--gold-metallic) !important;
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2) !important;
+      background-color: #FFFFFF !important;
+    }
+
+    select.field-input {
       background-color: #FFFFFF !important;
       color: var(--text-charcoal) !important;
-      font-size: 0.95rem;
-      outline: none;
-      transition: var(--transition);
-    }
-    .form-control:focus {
-      border-color: var(--gold-primary);
-      box-shadow: 0 0 0 3px var(--gold-glow);
-    }
-    select.form-control {
       cursor: pointer;
       appearance: none;
       -webkit-appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23D4AF37' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23B89025' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
       background-repeat: no-repeat;
-      background-position: right 14px center;
-      background-size: 14px;
-      padding-right: 38px;
-    }
-    select.form-control option {
-      background-color: #FFFFFF !important;
-      color: #111827 !important;
-      padding: 10px;
+      background-position: right 1rem center;
+      background-size: 1.1em;
+      padding-right: 2.6rem;
     }
 
-    /* ADMIN DASHBOARD */
-    .admin-suite {
-      display: none;
-      position: fixed;
-      inset: 0;
+    select.field-input option {
+      background-color: #FFFFFF !important;
+      color: #111827 !important;
+      padding: 12px 16px !important;
+      font-size: 0.95rem;
+    }
+
+    .admin-dashboard-sheet {
+      max-width: 1100px;
+      padding: 2.2rem;
       background: #FFFFFF;
-      z-index: 2000;
-      overflow-y: auto;
     }
-    .admin-suite.active {
-      display: block;
-    }
-    .admin-nav {
-      height: 68px;
-      border-bottom: 1px solid var(--border-light);
+
+    .admin-tabs-nav {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 30px;
-      background: var(--bg-surface);
-    }
-    .admin-container {
-      max-width: 1380px;
-      margin: 0 auto;
-      padding: 30px 24px;
-    }
-    .admin-tabs {
-      display: flex;
-      gap: 12px;
-      margin-bottom: 24px;
+      gap: 0.6rem;
       border-bottom: 1px solid var(--border-light);
-      padding-bottom: 12px;
+      padding-bottom: 1rem;
+      margin-bottom: 1.6rem;
+      overflow-x: auto;
     }
-    .admin-tab-btn {
-      padding: 8px 18px;
-      border-radius: var(--radius-sm);
-      font-size: 0.88rem;
+
+    .tab-btn {
+      background: var(--bg-surface-soft);
+      border: 1px solid var(--border-light);
+      color: var(--slate-gray);
+      padding: 0.6rem 1.25rem;
+      border-radius: var(--radius-full);
+      font-size: 0.85rem;
       font-weight: 600;
-      background: transparent;
-      border: none;
-      color: var(--text-secondary);
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      transition: var(--transition);
-    }
-    .admin-tab-btn.active {
-      background: var(--gold-soft);
-      color: var(--gold-dark);
-      border: 1px solid var(--gold-border);
+      gap: 0.5rem;
+      white-space: nowrap;
+      transition: all 0.2s ease;
     }
 
-    /* GOOGLE CALENDAR EMBED CONTAINER */
-    .gcal-embed-wrapper {
+    .tab-btn.active {
+      background: var(--gold-subtle);
+      border-color: var(--gold-metallic);
+      color: var(--gold-deep);
+    }
+
+    .admin-panel-view {
+      display: none;
+    }
+
+    .admin-panel-view.active {
+      display: block;
+    }
+
+    /* Embedded Google Calendar */
+    .gcal-admin-wrapper {
       background: #FFFFFF;
       border: 1px solid var(--border-light);
-      border-radius: var(--radius-lg);
-      padding: 24px;
-      box-shadow: var(--shadow-sm);
+      border-radius: var(--radius-md);
+      padding: 1.2rem;
+      box-shadow: var(--shadow-luxury-sm);
     }
-    .gcal-header-bar {
+
+    .gcal-controls-bar {
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 14px;
-      margin-bottom: 18px;
-      padding-bottom: 16px;
+      gap: 0.8rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.8rem;
       border-bottom: 1px solid var(--border-light);
     }
-    .gcal-notice {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.88rem;
-      color: var(--text-secondary);
-    }
-    .gcal-notice i {
-      color: var(--gold-dark);
-    }
-    .gcal-iframe-container {
-      position: relative;
+
+    .gcal-frame-container {
       width: 100%;
-      height: 700px;
-      border-radius: var(--radius-md);
+      height: 600px;
+      border-radius: var(--radius-sm);
       overflow: hidden;
       border: 1px solid var(--border-medium);
       background: #FFFFFF;
     }
-    .gcal-iframe-container iframe {
+
+    .gcal-frame-container iframe {
       width: 100%;
       height: 100%;
       border: 0;
     }
 
-    /* CHAT DE EQUIPO */
-    .chat-box-card {
-      background: #FFFFFF;
+    /* Internal Dev <-> Closer Chat */
+    .admin-chat-container {
+      background: #FDFDFD;
       border: 1px solid var(--border-light);
-      border-radius: var(--radius-lg);
-      height: 600px;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-    }
-    .chat-messages-area {
-      flex: 1;
-      padding: 20px;
-      overflow-y: auto;
-      background: var(--bg-surface);
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-    .chat-bubble {
-      max-width: 70%;
-      padding: 12px 16px;
       border-radius: var(--radius-md);
-      font-size: 0.92rem;
-      position: relative;
-    }
-    .chat-bubble.dev {
-      align-self: flex-start;
-      background: #FFFFFF;
-      border: 1px solid var(--border-medium);
-    }
-    .chat-bubble.closer {
-      align-self: flex-end;
-      background: var(--gold-soft);
-      border: 1px solid var(--gold-border);
-      color: #785A10;
-    }
-    .chat-bubble .author {
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      margin-bottom: 4px;
-      display: block;
-    }
-    .chat-input-bar {
-      padding: 16px 20px;
-      background: #FFFFFF;
-      border-top: 1px solid var(--border-light);
       display: flex;
-      gap: 12px;
-      align-items: center;
+      flex-direction: column;
+      height: 480px;
+      box-shadow: var(--shadow-luxury-sm);
     }
 
-    /* FLOATING WHATSAPP BUTTON */
-    .floating-whatsapp {
+    .chat-header {
+      padding: 0.9rem 1.3rem;
+      border-bottom: 1px solid var(--border-light);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--bg-surface-soft);
+    }
+
+    .chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      background: #FAFAFA;
+    }
+
+    .chat-bubble {
+      max-width: 78%;
+      padding: 0.85rem 1.15rem;
+      border-radius: var(--radius-md);
+      font-size: 0.9rem;
+      box-shadow: 0 2px 8px rgba(17, 24, 39, 0.04);
+    }
+
+    .chat-bubble.dev {
+      align-self: flex-end;
+      background: linear-gradient(135deg, #D4AF37 0%, #B89025 100%);
+      color: #FFFFFF;
+      border-bottom-right-radius: 4px;
+    }
+
+    .chat-bubble.closer {
+      align-self: flex-start;
+      background: #FFFFFF;
+      border: 1px solid var(--border-light);
+      color: var(--text-charcoal);
+      border-bottom-left-radius: 4px;
+    }
+
+    .bubble-author {
+      font-size: 0.74rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+      opacity: 0.9;
+    }
+
+    .bubble-time {
+      font-size: 0.68rem;
+      opacity: 0.7;
+      margin-top: 0.4rem;
+      text-align: right;
+    }
+
+    .chat-input-row {
+      padding: 0.9rem 1.2rem;
+      border-top: 1px solid var(--border-light);
+      display: flex;
+      gap: 0.75rem;
+      background: #FFFFFF;
+    }
+
+    .floating-support-cluster {
       position: fixed;
       bottom: 24px;
       right: 24px;
-      width: 60px;
-      height: 60px;
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      z-index: 150;
+    }
+
+    .action-fab {
+      width: 54px;
+      height: 54px;
       border-radius: 50%;
-      background: #25D366;
-      color: #FFFFFF;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.85rem;
-      box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
-      z-index: 99;
-      transition: var(--transition);
-    }
-    .floating-whatsapp:hover {
-      transform: scale(1.08) translateY(-3px);
+      border: 1px solid var(--border-light);
+      box-shadow: 0 10px 25px rgba(17, 24, 39, 0.12);
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
-    /* FOOTER */
-    .site-footer {
-      border-top: 1px solid var(--border-light);
-      background: var(--bg-surface);
-      padding: 60px 0 30px;
-      font-size: 0.88rem;
-      color: var(--text-secondary);
+    .action-fab:hover {
+      transform: scale(1.1);
     }
+
+    .fab-wa {
+      background: #25D366;
+      color: #FFFFFF;
+      font-size: 1.6rem;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+    }
+
+    .fab-quote {
+      background: linear-gradient(135deg, var(--gold-metallic) 0%, var(--gold-deep) 100%);
+      color: #FFFFFF;
+      font-size: 1.3rem;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+    }
+
+    footer {
+      border-top: 1px solid var(--border-light);
+      padding: 4.5rem 0 2.8rem;
+      background: #FAFAFA;
+      font-size: 0.9rem;
+    }
+
     .footer-grid {
       display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 40px;
-      margin-bottom: 40px;
-    }
-    .footer-bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-top: 24px;
-      border-top: 1px solid var(--border-light);
-      font-size: 0.8rem;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      margin-bottom: 3.5rem;
     }
 
-    /* RESPONSIVE */
-    @media (max-width: 900px) {
-      .calc-card {
-        grid-template-columns: 1fr;
-      }
-      .nav-links {
-        display: none;
-      }
+    @media (min-width: 768px) {
       .footer-grid {
-        grid-template-columns: 1fr;
-      }
-      .gcal-iframe-container {
-        height: 520px;
+        grid-template-columns: 2fr 1fr 1fr;
       }
     }
   </style>
 </head>
-<body>
 
-  <!-- NAVEGACIÓN PRINCIPAL -->
-  <header class="site-header">
+<body>
+  <!-- Ambient background lighting -->
+  <div class="glow-bg glow-hero"></div>
+
+  <header>
     <div class="container">
-      <div class="nav-inner">
-        <div class="brand-logo" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-          <!-- Vector Signature Glyph (Hex Metallic Gold) -->
-          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <polygon points="50,6 90,28 90,72 50,94 10,72 10,28" stroke="#D4AF37" stroke-width="6" fill="#FBF7ED"/>
-            <circle cx="50" cy="50" r="14" fill="#D4AF37"/>
-            <line x1="50" y1="20" x2="50" y2="36" stroke="#D4AF37" stroke-width="4"/>
-            <line x1="50" y1="64" x2="50" y2="80" stroke="#D4AF37" stroke-width="4"/>
+      <div class="nav-wrapper">
+        <a href="#" class="brand-container">
+          <!-- Vector Hex-Vortex in Metallic Gold -->
+          <svg class="brand-icon-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="goldBrandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#F7E7A9" />
+                <stop offset="50%" stop-color="#D4AF37" />
+                <stop offset="100%" stop-color="#B89025" />
+              </linearGradient>
+            </defs>
+            <polygon points="50,6 90,28 90,72 50,94 10,72 10,28" stroke="url(#goldBrandGrad)" stroke-width="4.5" fill="rgba(212, 175, 55, 0.08)" />
+            <circle cx="50" cy="50" r="14" fill="url(#goldBrandGrad)" />
+            <line x1="50" y1="6" x2="50" y2="36" stroke="url(#goldBrandGrad)" stroke-width="3" />
+            <line x1="90" y1="72" x2="62" y2="58" stroke="url(#goldBrandGrad)" stroke-width="3" />
+            <line x1="10" y1="72" x2="38" y2="58" stroke="url(#goldBrandGrad)" stroke-width="3" />
           </svg>
-          <div class="brand-text">ROSER<span>.AI</span></div>
-        </div>
+          <div class="brand-title-wrap">
+            <span class="brand-name">ROSER<span class="ai-accent">.AI</span></span>
+            <span class="brand-sub">Software & Systems</span>
+          </div>
+        </a>
 
         <ul class="nav-links">
           <li><a href="#soluciones">Soluciones</a></li>
-          <li><a href="#roi">Calculadora</a></li>
-          <li><a href="#metodologia">Ecosistema</a></li>
-          <li><a href="javascript:void(0)" onclick="openAdminModal()"><i class="fa-solid fa-lock" style="font-size: 0.8rem; margin-right: 4px;"></i> Acceso Privado</a></li>
+          <li><a href="#calculadora">Calculadora ROI</a></li>
+          <li><a href="#comparativa">Ecosistema</a></li>
         </ul>
 
         <div class="nav-actions">
-          <a href="https://wa.me/34603782884?text=Hola%20ROSER%20AI,%20quiero%20información%20para%20mi%20negocio" target="_blank" class="btn-outline">
-            <i class="fa-brands fa-whatsapp"></i> WhatsApp
-          </a>
-          <button class="btn-gold" onclick="openContactModal('Diagnóstico')">
-            <i class="fa-solid fa-calendar-check"></i> Agendar Llamada
+          <button class="btn-admin-key" id="openAdminTrigger" title="Acceso reservado equipo">
+            <i class="fa-solid fa-lock"></i>
+            <span>Equipo</span>
+          </button>
+          
+          <button class="btn-primary" id="topCtaBtn">
+            <span>Agendar Diagnóstico</span>
+          </button>
+
+          <button class="mobile-menu-btn" id="mobileToggle" aria-label="Abrir Menú">
+            <i class="fa-solid fa-bars-staggered"></i>
           </button>
         </div>
       </div>
     </div>
   </header>
 
-  <!-- HERO SECTION -->
-  <section class="hero-section">
-    <div class="container">
-      <div class="hero-content">
-        <div class="badge-gold">
-          <i class="fa-solid fa-microchip"></i> Arquitectura de Alto Crecimiento
+  <!-- Mobile Drawer -->
+  <div id="mobileDrawer" style="display: none; background: #FFFFFF; border-bottom: 1px solid var(--border-light); padding: 1.5rem;" class="container">
+    <div style="display: flex; flex-direction: column; gap: 1.2rem;">
+      <a href="#soluciones" class="mobile-item" style="color: var(--text-slate); text-decoration: none; font-size: 0.95rem; font-weight: 500;">Soluciones</a>
+      <a href="#calculadora" class="mobile-item" style="color: var(--text-slate); text-decoration: none; font-size: 0.95rem; font-weight: 500;">Calculadora ROI</a>
+      <a href="#comparativa" class="mobile-item" style="color: var(--text-slate); text-decoration: none; font-size: 0.95rem; font-weight: 500;">Ecosistema</a>
+      <button class="btn-primary" id="mobileCtaBtn" style="justify-content: center; width: 100%;">
+        Agendar Diagnóstico
+      </button>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-badge">
+          <i class="fa-solid fa-gem" style="color: var(--gold-deep);"></i>
+          Ingeniería Digital & Agentes Autónomos en Badajoz, Mérida y toda España
         </div>
-        <h1 class="hero-title">
-          Convertimos procesos manuales en <span>máquinas automáticas de facturación</span>.
+
+        <h1 class="hero-headline">
+          Ingeniería de software y sistemas autónomos que <br />
+          <span class="text-gradient">multiplican la facturación</span> de tu empresa.
         </h1>
-        <p class="hero-description">
-          Desarrollamos páginas web orientadas a conversión directa, agentes de IA entrenados para atender 24/7 y automatizaciones operativas con Make y n8n que liberan cientos de horas al mes.
+
+        <p class="hero-lead">
+          Desarrollamos ecosistemas digitales a medida: webs de alta velocidad para conversión comercial, agentes inteligentes en WhatsApp que atienden y cualifican sin descanso, y flujos automáticos que eliminan las tareas manuales de tu día a día.
         </p>
-        <div class="hero-ctas">
-          <button class="btn-gold" onclick="openContactModal('Auditoría')">
-            <i class="fa-solid fa-bolt"></i> Solicitar Auditoría Gratuita
+
+        <div class="hero-actions">
+          <button class="btn-primary" id="heroStartBtn">
+            <span>Solicitar Auditoría Gratuita</span>
+            <i class="fa-solid fa-chevron-right" style="font-size: 0.8rem;"></i>
           </button>
-          <a href="https://wa.me/34603782884?text=Hola,%20quiero%20ver%20una%20demostración%20para%20mi%20empresa" target="_blank" class="btn-outline">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Hablar con un especialista
+
+          <!-- WhatsApp Direct Link with 603782884 -->
+          <a href="https://wa.me/34603782884?text=Hola%20ROSER.AI,%20quiero%20conocer%20c%C3%B3mo%20pod%C3%A9is%20automatizar%20mi%20empresa" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             class="btn-ghost">
+            <i class="fa-brands fa-whatsapp" style="color: #25D366;"></i>
+            <span>Hablar por WhatsApp (603 78 28 84)</span>
           </a>
         </div>
 
-        <!-- METRICS -->
-        <div class="metrics-strip">
-          <div class="metric-item">
-            <div class="metric-number">+180h</div>
-            <div class="metric-label">Ahorradas por cliente cada mes</div>
+        <div class="proof-grid">
+          <div class="proof-item">
+            <div class="proof-metric">&lt; 3<span>min</span></div>
+            <div class="proof-desc">Respuesta comercial garantizada en WhatsApp 24/7</div>
           </div>
-          <div class="metric-item">
-            <div class="metric-number">&lt; 90s</div>
-            <div class="metric-label">Tiempo de respuesta a leads 24/7</div>
+          <div class="proof-item">
+            <div class="proof-metric">+38<span>%</span></div>
+            <div class="proof-desc">Aumento medio en tasa de cierre de leads calificados</div>
           </div>
-          <div class="metric-item">
-            <div class="metric-number">100%</div>
-            <div class="metric-label">Estructuras web personalizadas</div>
+          <div class="proof-item">
+            <div class="proof-metric">100<span>%</span></div>
+            <div class="proof-desc">Código limpio, sin plantillas lentas ni sobrecostes</div>
           </div>
-          <div class="metric-item">
-            <div class="metric-number">0€</div>
-            <div class="metric-label">Coste mensual de hosting inicial</div>
+          <div class="proof-item">
+            <div class="proof-metric">0<span>h</span></div>
+            <div class="proof-desc">Tiempo perdido en tareas administrativas repetitivas</div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- SOLUCIONES -->
-  <section class="container" id="soluciones">
-    <div class="section-title-wrap">
-      <div class="badge-gold">Infraestructura Propietaria</div>
-      <h2 class="section-title">Soluciones de Software & Automatización</h2>
-      <p class="section-subtitle">Sistemas construidos a medida para negocios que no pueden permitirse perder clientes por falta de agilidad.</p>
-    </div>
+    <section class="section-wrap" id="soluciones">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Capacidades Técnicas</span>
+          <h2 class="section-title">Estructura tecnológica orientada a resultados tangibles</h2>
+        </div>
 
-    <div class="services-grid">
-      <!-- 1 -->
-      <div class="service-card">
-        <div>
-          <div class="service-icon-box">
-            <i class="fa-solid fa-laptop-code"></i>
-          </div>
-          <h3>Webs de Alta Conversión</h3>
-          <p>Plataformas ultra-rápidas construidas con código limpio y arquitectura moderna. Optimizadas para posicionamiento local en Google y diseñadas para transformar visitas en llamadas reales.</p>
-        </div>
-        <div class="tags-container">
-          <span class="service-tag">Responsive Puro</span>
-          <span class="service-tag">Carga &lt;0.8s</span>
-          <span class="service-tag">SEO Local</span>
-        </div>
-      </div>
-
-      <!-- 2 -->
-      <div class="service-card">
-        <div>
-          <div class="service-icon-box">
-            <i class="fa-solid fa-robot"></i>
-          </div>
-          <h3>Agentes de IA en WhatsApp & Web</h3>
-          <p>Asistentes virtuales entrenados con el catálogo, preguntas frecuentes y tarifas de tu empresa. Cualifican prospectos, resuelven dudas complejas y agendan reuniones sin intervención humana.</p>
-        </div>
-        <div class="tags-container">
-          <span class="service-tag">WhatsApp API</span>
-          <span class="service-tag">Venta 24/7</span>
-          <span class="service-tag">Agendamiento Cal.com</span>
-        </div>
-      </div>
-
-      <!-- 3 -->
-      <div class="service-card">
-        <div>
-          <div class="service-icon-box">
-            <i class="fa-solid fa-network-wired"></i>
-          </div>
-          <h3>Pipelines de Integración (Make / n8n)</h3>
-          <p>Conectamos tu web con tu CRM, avisos por WhatsApp a tu equipo de ventas, generación de facturas en PDF y sincronización automática con Google Sheets en tiempo real.</p>
-        </div>
-        <div class="tags-container">
-          <span class="service-tag">Cero Errores Manuales</span>
-          <span class="service-tag">Notificaciones Instantáneas</span>
-        </div>
-      </div>
-
-      <!-- 4 -->
-      <div class="service-card">
-        <div>
-          <div class="service-icon-box">
-            <i class="fa-solid fa-star"></i>
-          </div>
-          <h3>Motor de Reseñas en Google Maps</h3>
-          <p>Sistema automatizado de captura de valoraciones positivas post-servicio. Multiplica la visibilidad y autoridad en tu localidad desplazando a tu competencia directa en el mapa.</p>
-        </div>
-        <div class="tags-container">
-          <span class="service-tag">Filtro de Satisfacción</span>
-          <span class="service-tag">Impacto Local</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CALCULADORA DE ROI -->
-  <section class="container" id="roi">
-    <div class="section-title-wrap">
-      <div class="badge-gold">Retorno de Inversión</div>
-      <h2 class="section-title">Calculadora de Eficiencia Operativa</h2>
-      <p class="section-subtitle">Calcula cuánto dinero y tiempo pierde tu equipo en tareas mecánicas repetitivas que una automatización resuelve sola.</p>
-    </div>
-
-    <div class="calc-card">
-      <div class="calc-controls">
-        <div class="calc-group">
-          <label>Horas semanales invertidas en tareas manuales: <span id="hoursVal">15h</span></label>
-          <input type="range" class="slider" id="hoursInput" min="5" max="60" value="15" oninput="updateRoiCalc()">
-        </div>
-        <div class="calc-group">
-          <label>Coste medio por hora del personal: <span id="wageVal">18€/h</span></label>
-          <input type="range" class="slider" id="wageInput" min="10" max="60" value="18" oninput="updateRoiCalc()">
-        </div>
-        <p style="font-size: 0.85rem; color: var(--text-secondary);">
-          *Basado en el tiempo promedio de contestación de mensajes, redacción de presupuestos estándar y sincronización de datos con clientes.
-        </p>
-      </div>
-
-      <div class="calc-result-box">
-        <span class="badge-gold">Capital Anual Recuperable</span>
-        <div class="calc-result-value" id="savingsAmount">14.040 €</div>
-        <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 20px;">
-          Equivalente a <strong id="hoursYear">780 horas</strong> de trabajo repetitivo que puedes reinvertir en cerrar más ventas.
-        </p>
-        <button class="btn-gold" style="width: 100%;" onclick="openContactModal('Estudio ROI')">
-          <i class="fa-solid fa-chart-line"></i> Automatizar este flujo
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <!-- MODAL DE CONTACTO / LEAD (AJAX SILENCIOSO) -->
-  <div class="modal-overlay" id="contactModal">
-    <div class="modal-window">
-      <button class="modal-close" onclick="closeContactModal()"><i class="fa-solid fa-xmark"></i></button>
-      <div class="badge-gold" style="margin-bottom: 12px;">Paso 1 de 2</div>
-      <h3 style="font-size: 1.5rem; margin-bottom: 8px;" id="modalFormTitle">Solicitar Diagnóstico</h3>
-      <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 24px;">
-        Déjanos tus datos y nos pondremos en contacto contigo en menos de 2 horas laborables.
-      </p>
-
-      <form id="leadCaptureForm" onsubmit="handleLeadSubmit(event)">
-        <div class="form-group">
-          <label>Nombre o Empresa</label>
-          <input type="text" id="leadName" class="form-control" placeholder="Ej. Taller Mecánico García" required>
-        </div>
-        <div class="form-group">
-          <label>Teléfono / WhatsApp</label>
-          <input type="tel" id="leadPhone" class="form-control" placeholder="Ej. 612 34 56 78" required>
-        </div>
-        <div class="form-group">
-          <label>Servicio prioritario</label>
-          <select id="leadService" class="form-control" required>
-            <option value="Web Alta Conversión">Página Web Profesional</option>
-            <option value="Agente WhatsApp IA">Chatbot IA de WhatsApp & Citas</option>
-            <option value="Automatización Procesos">Automatización de Procesos con IA</option>
-            <option value="Pack Completo">Digitalización Integral de Empresa</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Mensaje o reto actual (Opcional)</label>
-          <textarea id="leadNotes" class="form-control" rows="3" placeholder="¿Qué proceso te quita más tiempo a diario?"></textarea>
-        </div>
-        <button type="submit" class="btn-gold" id="btnSubmitLead" style="width: 100%;">
-          <i class="fa-solid fa-paper-plane"></i> Enviar Solicitud
-        </button>
-        <div id="formStatusMsg" style="margin-top: 14px; font-size: 0.88rem; text-align: center; display: none;"></div>
-      </form>
-    </div>
-  </div>
-
-  <!-- MODAL DE LOGIN ADMIN (CLAVE: alepelae) -->
-  <div class="modal-overlay" id="adminLoginModal">
-    <div class="modal-window" style="max-width: 400px; text-align: center;">
-      <button class="modal-close" onclick="closeAdminModal()"><i class="fa-solid fa-xmark"></i></button>
-      <div class="service-icon-box" style="margin: 0 auto 16px;">
-        <i class="fa-solid fa-shield-halved"></i>
-      </div>
-      <h3 style="margin-bottom: 8px;">Área Privada ROSER.AI</h3>
-      <p style="color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 20px;">
-        Terminal restringida únicamente para Desarrollador y Closer de ventas.
-      </p>
-
-      <form onsubmit="handleAdminLogin(event)">
-        <div class="form-group" style="text-align: left;">
-          <label>Clave de acceso</label>
-          <input type="password" id="adminPasswordInput" class="form-control" placeholder="Introduce la contraseña" required>
-        </div>
-        <button type="submit" class="btn-gold" style="width: 100%;">
-          <i class="fa-solid fa-key"></i> Desbloquear Suite
-        </button>
-      </form>
-    </div>
-  </div>
-
-  <!-- SUITE INTERNA DE ADMINISTRACIÓN (DEV & CLOSER) -->
-  <div class="admin-suite" id="adminDashboard">
-    <header class="admin-nav">
-      <div style="display: flex; align-items: center; gap: 14px;">
-        <span class="badge-gold"><i class="fa-solid fa-terminal"></i> Terminal Interna</span>
-        <strong style="font-family: var(--font-heading); font-size: 1.1rem;">ROSER.AI Operations</strong>
-      </div>
-      <div style="display: flex; align-items: center; gap: 14px;">
-        <span style="font-size: 0.85rem; color: var(--text-secondary);">Sesión activa: <strong>Equipo Comercial & Dev</strong></span>
-        <button class="btn-outline" style="padding: 7px 16px; font-size: 0.8rem;" onclick="exitAdminDashboard()">
-          <i class="fa-solid fa-right-from-bracket"></i> Salir
-        </button>
-      </div>
-    </header>
-
-    <div class="admin-container">
-      <div class="admin-tabs">
-        <button class="admin-tab-btn active" id="tabBtnCal" onclick="switchAdminTab('calendar')">
-          <i class="fa-regular fa-calendar-days"></i> Calendario de Huecos & Citas
-        </button>
-        <button class="admin-tab-btn" id="tabBtnChat" onclick="switchAdminTab('chat')">
-          <i class="fa-regular fa-comments"></i> Chat Privado Equipo
-        </button>
-        <button class="admin-tab-btn" id="tabBtnLeads" onclick="switchAdminTab('leads')">
-          <i class="fa-solid fa-inbox"></i> Leads Recibidos
-        </button>
-      </div>
-
-      <!-- VISTA 1: CALENDARIO OFICIAL GOOGLE CALENDAR EMBEBIDO -->
-      <div id="adminTabContentCal">
-        <div class="gcal-embed-wrapper">
-          <div class="gcal-header-bar">
+        <div class="services-matrix">
+          <div class="service-card">
             <div>
-              <h3 style="font-size: 1.25rem; margin-bottom: 4px;">Agenda de Llamadas Compartida</h3>
-              <div class="gcal-notice">
-                <i class="fa-solid fa-circle-check"></i> Sincronizado en directo con la cuenta de Google Calendar (Madrid GMT+2).
+              <div class="service-icon-box">
+                <i class="fa-solid fa-code"></i>
+              </div>
+              <h3 class="service-name">Arquitectura Web & Motores de Conversión</h3>
+              <p class="service-pitch">
+                Desarrollo web exclusivo desde cero. Carga en milisegundos, diseño limpio que transmite autoridad inmediata y embudos orientados a que el visitante solicite una llamada o presupuesto.
+              </p>
+            </div>
+            <div class="feature-tags">
+              <span class="tag-chip">Core Web Vitals 99+</span>
+              <span class="tag-chip">Embudos de Cierre</span>
+              <span class="tag-chip">SEO Local</span>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <div>
+              <div class="service-icon-box">
+                <i class="fa-solid fa-brain"></i>
+              </div>
+              <h3 class="service-name">Agentes Cognitivos Autónomos</h3>
+              <p class="service-pitch">
+                Chatbots multicanal conectados a WhatsApp y tu web entrenados con el catálogo, tarifas y objeciones de tu negocio. Resuelven dudas complejas y agendan llamadas directamente en tu calendario.
+              </p>
+            </div>
+            <div class="feature-tags">
+              <span class="tag-chip">WhatsApp Cloud API</span>
+              <span class="tag-chip">Memoria Contextual</span>
+              <span class="tag-chip">Agendamiento Activo</span>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <div>
+              <div class="service-icon-box">
+                <i class="fa-solid fa-network-wired"></i>
+              </div>
+              <h3 class="service-name">Pipelines de Integración n8n & Make</h3>
+              <p class="service-pitch">
+                Interconectamos tus formularios, CRM, pasarelas de facturación y hojas de cálculo. Cada vez que entra un cliente potencial, se dispara una cadena de acciones sin fallo humano.
+              </p>
+            </div>
+            <div class="feature-tags">
+              <span class="tag-chip">Orquestación n8n</span>
+              <span class="tag-chip">Facturación Auto</span>
+              <span class="tag-chip">Cero Duplicidades</span>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <div>
+              <div class="service-icon-box">
+                <i class="fa-solid fa-chart-line"></i>
+              </div>
+              <h3 class="service-name">Motor de Crecimiento & Reputación Local</h3>
+              <p class="service-pitch">
+                Sistemas automatizados post-servicio que contactan a clientes reales para solicitar reseñas de 5 estrellas en Google Business Profile y reactivan antiguos compradores de forma desatendida.
+              </p>
+            </div>
+            <div class="feature-tags">
+              <span class="tag-chip">Google Maps Rank</span>
+              <span class="tag-chip">Reactivación WhatsApp</span>
+              <span class="tag-chip">Filtro de Satisfacción</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-wrap" id="calculadora">
+      <div class="container">
+        <div class="interactive-card">
+          <div class="calculator-layout">
+            <div>
+              <span class="eyebrow">Calculadora de Eficiencia Operativa</span>
+              <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 2rem; color: var(--text-charcoal); margin-bottom: 1rem;">
+                ¿Cuánto dinero pierde tu negocio en tareas mecánicas?
+              </h3>
+              <p style="color: var(--text-slate); font-size: 0.95rem; margin-bottom: 1.6rem;">
+                Ajusta las variables de tu operativa semanal para estimar el retorno de integrar agentes y automatizaciones en tu empresa:
+              </p>
+
+              <div>
+                <label style="font-size: 0.88rem; color: var(--text-charcoal); font-weight: 600;">
+                  Horas semanales dedicadas a responder dudas, enviar presupuestos y agendar citas:
+                  <strong id="hoursDisplay" style="color: var(--gold-deep); margin-left: 0.4rem;">15 horas</strong>
+                </label>
+                <input type="range" min="5" max="50" value="15" class="range-input" id="hoursSlider" />
+              </div>
+
+              <div style="margin-top: 1.1rem;">
+                <label style="font-size: 0.88rem; color: var(--text-charcoal); font-weight: 600;">
+                  Coste estimado por hora de trabajo / gestión comercial:
+                  <strong id="rateDisplay" style="color: var(--slate-gray); margin-left: 0.4rem;">22 €/h</strong>
+                </label>
+                <input type="range" min="12" max="60" value="22" class="range-input" id="rateSlider" />
               </div>
             </div>
-            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-              <button class="btn-outline" style="padding: 8px 16px; font-size: 0.85rem;" onclick="reloadGoogleCalendar()">
+
+            <div class="calc-result-panel">
+              <span style="font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--slate-gray); font-weight: 700;">
+                Ahorro Anual Proyectado con ROSER.AI
+              </span>
+              <div class="calc-stat-number" id="annualSavings">15.840 €</div>
+              <p style="color: var(--text-slate); font-size: 0.85rem; margin-bottom: 1.35rem;">
+                Equivalente a <strong id="hoursFreed" style="color: var(--text-charcoal);">60 horas/mes</strong> liberadas para cerrar ventas de mayor valor.
+              </p>
+              <button class="btn-primary" id="calcCtaBtn" style="width: 100%; justify-content: center;">
+                Recuperar este tiempo ahora
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-wrap" id="comparativa">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Diferencial Estratégico</span>
+          <h2 class="section-title">Negocio Convencional vs Ecosistema ROSER.AI</h2>
+        </div>
+
+        <div class="compare-container">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>Factor Operativo</th>
+                <th>Modelo Analógico / Tradicional</th>
+                <th>Empresa impulsada por ROSER.AI</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Atención en WhatsApp</strong></td>
+                <td><span class="badge-bad"><i class="fa-solid fa-xmark"></i> Respuestas tardías de 2 a 12 horas</span></td>
+                <td><span class="badge-good"><i class="fa-solid fa-check"></i> Agente inteligente responde en &lt; 30 segundos</span></td>
+              </tr>
+              <tr>
+                <td><strong>Sitio Web Comercial</strong></td>
+                <td><span class="badge-bad"><i class="fa-solid fa-xmark"></i> Folleto digital estático que no capta contactos</span></td>
+                <td><span class="badge-good"><i class="fa-solid fa-check"></i> Embudo reactivo con llamadas a la acción directas</span></td>
+              </tr>
+              <tr>
+                <td><strong>Agendamiento de Citas</strong></td>
+                <td><span class="badge-bad"><i class="fa-solid fa-xmark"></i> Intercambio infinito de mensajes y huecos perdidos</span></td>
+                <td><span class="badge-good"><i class="fa-solid fa-check"></i> Sincronización automática de Google Calendar / Cal.com</span></td>
+              </tr>
+              <tr>
+                <td><strong>Cierre y Seguimiento (Closer)</strong></td>
+                <td><span class="badge-bad"><i class="fa-solid fa-xmark"></i> Leads olvidados en libretas o chats personales</span></td>
+                <td><span class="badge-good"><i class="fa-solid fa-check"></i> Pipeline transparente con alertas instantáneas al móvil</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="brand-container" style="margin-bottom: 0.9rem;">
+            <svg class="brand-icon-svg" viewBox="0 0 100 100" fill="none" style="width: 32px; height: 32px;">
+              <polygon points="50,6 90,28 90,72 50,94 10,72 10,28" stroke="url(#goldBrandGrad)" stroke-width="5" fill="rgba(212, 175, 55, 0.1)" />
+            </svg>
+            <span class="brand-name" style="font-size: 1.25rem;">ROSER<span class="ai-accent">.AI</span></span>
+          </div>
+          <p style="color: var(--slate-gray); max-width: 380px; font-size: 0.88rem; line-height: 1.65;">
+            Diseño de software, automatizaciones de alto impacto y consultoría en IA aplicada para empresas en Badajoz, Mérida y toda España.
+          </p>
+        </div>
+
+        <div>
+          <h5 style="color: var(--text-charcoal); font-size: 0.92rem; font-weight: 700; margin-bottom: 1.1rem;">Navegación</h5>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.65rem; font-size: 0.88rem;">
+            <li><a href="#soluciones" style="color: var(--slate-gray); text-decoration: none;">Soluciones</a></li>
+            <li><a href="#calculadora" style="color: var(--slate-gray); text-decoration: none;">Calculadora ROI</a></li>
+            <li><a href="#comparativa" style="color: var(--slate-gray); text-decoration: none;">Ecosistema</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h5 style="color: var(--text-charcoal); font-size: 0.92rem; font-weight: 700; margin-bottom: 1.1rem;">Operativa Privada</h5>
+          <p style="color: var(--slate-gray); font-size: 0.84rem; margin-bottom: 0.9rem;">
+            Acceso reservado a la mesa de trabajo técnica y comercial.
+          </p>
+          <button class="btn-admin-key" id="footerAdminTrigger">
+            <i class="fa-solid fa-lock"></i> Entrar a Terminal de Control
+          </button>
+        </div>
+      </div>
+
+      <div style="border-top: 1px solid var(--border-light); padding-top: 1.6rem; text-align: center; color: var(--slate-gray); font-size: 0.82rem;">
+        © 2026 ROSER.AI — Software & Systems. Todos los derechos reservados.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Cluster: WhatsApp Direct and Consultation FAB -->
+  <div class="floating-support-cluster">
+    <button class="action-fab fab-quote" id="fabOpenLead" title="Solicitar información">
+      <i class="fa-solid fa-paper-plane"></i>
+    </button>
+    <!-- Direct link to official phone 603782884 -->
+    <a href="https://wa.me/34603782884?text=Hola%20ROSER.AI,%20me%20gustar%C3%ADa%20agendar%20un%20diagn%C3%B3stico%20estrat%C3%A9gico%20para%20mi%20negocio" 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       class="action-fab fab-wa" 
+       title="WhatsApp Directo (+34 603 78 28 84)">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+  </div>
+
+  <div class="modal-backdrop" id="leadCaptureModal">
+    <div class="modal-sheet">
+      <button class="close-modal-x" id="closeLeadModalBtn">&times;</button>
+
+      <div style="margin-bottom: 1.5rem;">
+        <span class="hero-badge" style="margin-bottom: 0.6rem;">
+          <i class="fa-solid fa-calendar-check" style="color: var(--gold-deep);"></i> Diagnóstico Estratégico
+        </span>
+        <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.7rem; color: var(--text-charcoal); line-height: 1.2;">
+          Inicia la transformación de tu empresa
+        </h3>
+        <p style="color: var(--text-slate); font-size: 0.88rem; margin-top: 0.4rem;">
+          Envíanos tu caso o contacta directamente por WhatsApp.
+        </p>
+      </div>
+
+      <!-- Silent AJAX Form directly connected to hidden recipient email daanni26serrano@gmail.com -->
+      <form id="agencyLeadForm">
+        <div class="field-group">
+          <label class="field-label">Nombre o Empresa *</label>
+          <input type="text" id="leadName" name="name" class="field-input" placeholder="Ej. Javier García — Clínica Dental" required />
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Teléfono o WhatsApp de contacto *</label>
+          <input type="tel" id="leadPhone" name="phone" class="field-input" placeholder="Ej. 603 78 28 84" required />
+        </div>
+
+        <!-- High contrast select dropdown with crisp text -->
+        <div class="field-group">
+          <label class="field-label">Solución de máximo interés</label>
+          <select id="leadService" name="service" class="field-input">
+            <option value="Arquitectura Web & Motores de Conversión">Arquitectura Web & Motores de Conversión</option>
+            <option value="Agentes Cognitivos Autónomos (WhatsApp/Web)">Agentes Cognitivos Autónomos (WhatsApp & Web)</option>
+            <option value="Pipelines de Integración n8n & Make">Pipelines de Integración n8n & Make</option>
+            <option value="Motor de Crecimiento & Reputación Local">Motor de Crecimiento & Reputación Local (Google Maps)</option>
+            <option value="Consultoría Integral de Inteligencia Artificial">Consultoría Integral de Inteligencia Artificial</option>
+          </select>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Objetivo principal o cuello de botella a resolver</label>
+          <textarea id="leadNotes" name="notes" class="field-input" rows="3" placeholder="Cuéntanos brevemente qué procesos te gustaría automatizar..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-primary" id="btnSubmitLead" style="width: 100%; justify-content: center; padding: 0.9rem;">
+          <i class="fa-solid fa-paper-plane"></i> Enviar Petición a ROSER.AI
+        </button>
+
+        <div style="text-align: center; margin-top: 1.25rem;">
+          <span style="font-size: 0.8rem; color: var(--slate-gray);">¿Prefieres respuesta inmediata?</span> <br />
+          <a href="https://wa.me/34603782884?text=Hola%20ROSER.AI,%20quiero%20coordinar%20una%20reuni%C3%B3n%20para%20mi%20empresa" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             style="color: var(--gold-deep); font-size: 0.88rem; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 0.45rem; margin-top: 0.4rem;">
+            <i class="fa-brands fa-whatsapp" style="color: #25D366; font-size: 1.1rem;"></i> Abrir WhatsApp Directo (+34 603 78 28 84)
+          </a>
+        </div>
+      </form>
+
+      <div id="leadSuccessFeedback" style="display: none; text-align: center; padding: 2rem 0;">
+        <div style="font-size: 3.2rem; color: var(--gold-deep); margin-bottom: 0.9rem;">
+          <i class="fa-solid fa-circle-check"></i>
+        </div>
+        <h4 style="font-size: 1.4rem; color: var(--text-charcoal); margin-bottom: 0.4rem;">Petición recibida con éxito</h4>
+        <p style="color: var(--text-slate); font-size: 0.9rem; margin-bottom: 1.6rem;">
+          Tus datos se han guardado de forma segura. Nos pondremos en contacto contigo en breve para fijar la llamada de diagnóstico.
+        </p>
+        <button class="btn-primary" id="ackSuccessBtn" style="margin: 0 auto;">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="adminPassModal">
+    <div class="modal-sheet" style="max-width: 410px;">
+      <button class="close-modal-x" id="closePassModalBtn">&times;</button>
+      
+      <div style="text-align: center; margin-bottom: 1.6rem;">
+        <div style="width: 52px; height: 52px; background: var(--gold-subtle); border: 1px solid var(--gold-metallic); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.9rem; color: var(--gold-deep); font-size: 1.35rem;">
+          <i class="fa-solid fa-shield-halved"></i>
+        </div>
+        <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.35rem; color: var(--text-charcoal);">Terminal de Control</h3>
+        <p style="color: var(--slate-gray); font-size: 0.82rem; margin-top: 0.25rem;">
+          Acceso privado para el equipo de ROSER.AI
+        </p>
+      </div>
+
+      <form id="adminAuthForm">
+        <div class="field-group">
+          <label class="field-label">Clave de Seguridad</label>
+          <input type="password" id="adminPassKey" class="field-input" placeholder="Introduce tu clave de acceso..." required autocomplete="current-password" />
+        </div>
+
+        <div id="authAlert" style="display: none; color: #DC2626; font-size: 0.82rem; margin-bottom: 0.9rem; text-align: center;">
+          <i class="fa-solid fa-circle-exclamation"></i> Clave de acceso incorrecta.
+        </div>
+
+        <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; padding: 0.8rem;">
+          Acceder al Panel
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="adminWorkspaceModal">
+    <div class="modal-sheet admin-dashboard-sheet">
+      <button class="close-modal-x" id="closeWorkspaceBtn">&times;</button>
+
+      <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.4rem;">
+        <div>
+          <span style="font-size: 0.74rem; color: var(--gold-deep); font-weight: 700; text-transform: uppercase;">
+            <i class="fa-solid fa-circle" style="font-size: 0.45rem; vertical-align: middle;"></i> Nodo ROSER.AI Activo
+          </span>
+          <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; color: var(--text-charcoal);">
+            Panel de Operaciones: Dev & Closer
+          </h2>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 0.85rem;">
+          <span style="font-size: 0.84rem; color: var(--text-slate);" id="activeRoleLabel">
+            Rol: <strong style="color: var(--gold-deep);">Tú (Fundador / Dev)</strong>
+          </span>
+          <button id="btnSignOut" style="background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.3); color: #DC2626; padding: 0.35rem 0.85rem; border-radius: var(--radius-full); font-size: 0.78rem; font-weight: 600; cursor: pointer;">
+            Cerrar Sesión
+          </button>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <div class="admin-tabs-nav">
+        <button class="tab-btn active" data-pane="paneCalendar">
+          <i class="fa-regular fa-calendar-check"></i> Calendario de Huecos & Citas
+        </button>
+        <button class="tab-btn" data-pane="paneChat">
+          <i class="fa-solid fa-comments"></i> Chat Privado Equipo
+        </button>
+        <button class="tab-btn" data-pane="paneLeads">
+          <i class="fa-solid fa-address-book"></i> Registro de Leads (<span id="leadsBadge">0</span>)
+        </button>
+      </div>
+
+      <!-- PANE 1: GOOGLE CALENDAR EMBEBIDO OFICIAL -->
+      <div class="admin-panel-view active" id="paneCalendar">
+        <div class="gcal-admin-wrapper">
+          <div class="gcal-controls-bar">
+            <div>
+              <div style="font-size: 0.95rem; font-weight: 700; color: var(--text-charcoal); display: flex; align-items: center; gap: 0.45rem;">
+                <i class="fa-solid fa-calendar-days" style="color: var(--gold-deep);"></i> Agenda Sincronizada en Directo
+              </div>
+              <div style="font-size: 0.78rem; color: var(--slate-gray); margin-top: 0.15rem;">
+                Conectado con tu Google Calendar oficial (Zona horaria: Europa / Madrid)
+              </div>
+            </div>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <button type="button" class="btn-ghost" id="btnRefreshCalendar" style="padding: 0.4rem 0.85rem; font-size: 0.78rem;">
                 <i class="fa-solid fa-rotate-right"></i> Recargar Sincronización
               </button>
-              <a href="https://calendar.google.com/calendar/u/0/r" target="_blank" class="btn-gold" style="padding: 8px 18px; font-size: 0.85rem;">
-                <i class="fa-solid fa-plus"></i> Añadir Cita en Google Calendar
+              <a href="https://calendar.google.com/calendar/u/0/r" target="_blank" rel="noopener noreferrer" class="btn-primary" style="padding: 0.4rem 0.95rem; font-size: 0.78rem;">
+                <i class="fa-solid fa-plus"></i> Abrir en Google Calendar
               </a>
             </div>
           </div>
 
-          <!-- IFRAME GOOGLE CALENDAR EN VIVO -->
-          <div class="gcal-iframe-container">
+          <div class="gcal-frame-container">
             <iframe 
-              id="gcalIframe"
+              id="gcalAdminFrame"
               src="https://calendar.google.com/calendar/embed?src=21ed3c441adc01b9a3d00379cf8c5eade68e47f172de1ae0b270c386f9b8a654%40group.calendar.google.com&ctz=Europe%2FMadrid" 
               style="border: 0" 
               frameborder="0" 
               scrolling="no">
             </iframe>
           </div>
+
+          <div style="margin-top: 1.2rem; background: var(--bg-surface-soft); border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 1rem 1.2rem; display: flex; flex-wrap: wrap; gap: 0.8rem; align-items: center; justify-content: space-between;">
+            <div>
+              <div style="font-size: 0.85rem; font-weight: 600; color: var(--text-charcoal);">Enlace directo del calendario para compartir</div>
+              <div style="font-size: 0.76rem; color: var(--slate-gray);">Acceso público para agendamiento y visualización rápida</div>
+            </div>
+            <div style="display: flex; gap: 0.5rem; width: 100%; max-width: 420px;">
+              <input type="text" id="bookingDirectUrl" class="field-input" value="https://calendar.google.com/calendar/embed?src=21ed3c441adc01b9a3d00379cf8c5eade68e47f172de1ae0b270c386f9b8a654%40group.calendar.google.com&ctz=Europe%2FMadrid" readonly style="font-size: 0.75rem; padding: 0.5rem 0.8rem;" />
+              <button class="btn-ghost" id="btnCopyBookingUrl" style="padding: 0.45rem 0.95rem;" title="Copiar enlace">
+                <i class="fa-regular fa-copy"></i>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- VISTA 2: CHAT PRIVADO DEV <-> CLOSER -->
-      <div id="adminTabContentChat" style="display: none;">
-        <div class="chat-box-card">
-          <div style="padding: 14px 20px; border-bottom: 1px solid var(--border-light); display: flex; justify-content: space-between; align-items: center; background: #FFFFFF;">
-            <div style="font-size: 0.9rem; font-weight: 600;">
-              <i class="fa-solid fa-comments" style="color: var(--gold-dark); margin-right: 6px;"></i> Canal Interno: Coordinación Comercial
+      <!-- PANE 2: CHAT PRIVADO DEV <-> CLOSER -->
+      <div class="admin-panel-view" id="paneChat">
+        <div class="admin-chat-container">
+          <div class="chat-header">
+            <div style="display: flex; align-items: center; gap: 0.55rem;">
+              <span style="width: 9px; height: 9px; border-radius: 50%; background: #10B981;"></span>
+              <span style="font-size: 0.88rem; font-weight: 700; color: var(--text-charcoal);">Canal Interno Dev ↔ Closer</span>
             </div>
-            <div style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem;">
-              <span>Publicando como:</span>
-              <select id="chatRoleSelector" class="form-control" style="width: auto; padding: 4px 10px; height: 32px; font-size: 0.82rem;">
-                <option value="dev">Dev (Tú)</option>
-                <option value="closer">Closer (Ventas)</option>
+
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <span style="font-size: 0.78rem; color: var(--slate-gray);">Hablar como:</span>
+              <select id="chatSenderRole" class="field-input" style="padding: 0.25rem 0.6rem; font-size: 0.78rem; width: auto;">
+                <option value="dev">Tú (Dev / Fundador)</option>
+                <option value="closer">Closer de Ventas</option>
               </select>
             </div>
           </div>
 
-          <div class="chat-messages-area" id="chatMessagesArea">
-            <!-- Mensajes dinámicos -->
+          <div class="chat-messages" id="chatMessageFlow">
+            <!-- Messages rendered via JS -->
           </div>
 
-          <form class="chat-input-bar" onsubmit="handleSendChatMessage(event)">
-            <input type="text" id="chatMessageInput" class="form-control" placeholder="Escribe un mensaje de coordinación..." autocomplete="off" required>
-            <button type="submit" class="btn-gold" style="padding: 10px 22px;">
+          <form class="chat-input-row" id="chatMessageForm">
+            <input type="text" id="chatInputField" class="field-input" placeholder="Escribe un mensaje de coordinación..." required autocomplete="off" />
+            <button type="submit" class="btn-primary" style="padding: 0.65rem 1.25rem;">
               <i class="fa-solid fa-paper-plane"></i>
             </button>
           </form>
         </div>
       </div>
 
-      <!-- VISTA 3: TABLA DE LEADS -->
-      <div id="adminTabContentLeads" style="display: none;">
-        <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 24px;">
-          <h3 style="font-size: 1.2rem; margin-bottom: 16px;">Registro de Solicitudes Web</h3>
-          <div style="overflow-x: auto;">
-            <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
-              <thead>
-                <tr style="border-bottom: 2px solid var(--border-light); color: var(--text-secondary);">
-                  <th style="padding: 10px;">Fecha</th>
-                  <th style="padding: 10px;">Cliente / Negocio</th>
-                  <th style="padding: 10px;">Teléfono</th>
-                  <th style="padding: 10px;">Servicio</th>
-                  <th style="padding: 10px;">Detalles</th>
-                  <th style="padding: 10px;">Acción Rápida</th>
-                </tr>
-              </thead>
-              <tbody id="leadsTableBody">
-                <!-- Se llena automáticamente con cada envío -->
-              </tbody>
-            </table>
-          </div>
+      <!-- PANE 3: LEADS CAPTURADOS -->
+      <div class="admin-panel-view" id="paneLeads">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.1rem;">
+          <h4 style="color: var(--text-charcoal); font-size: 0.98rem; font-weight: 700;">Empresas interesadas en servicios de ROSER.AI</h4>
+          <button class="btn-ghost" id="btnClearLeads" style="font-size: 0.78rem; padding: 0.4rem 0.85rem;">
+            Vaciar Registro
+          </button>
+        </div>
+
+        <div style="overflow-x: auto; background: #FFFFFF; border: 1px solid var(--border-light); border-radius: var(--radius-md);">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.86rem; text-align: left;">
+            <thead>
+              <tr style="border-bottom: 1px solid var(--border-light); color: var(--slate-gray); background: var(--bg-surface-soft);">
+                <th style="padding: 0.95rem;">Momento</th>
+                <th style="padding: 0.95rem;">Contacto</th>
+                <th style="padding: 0.95rem;">WhatsApp / Tel</th>
+                <th style="padding: 0.95rem;">Interés</th>
+                <th style="padding: 0.95rem;">Detalles</th>
+                <th style="padding: 0.95rem;">Acción</th>
+              </tr>
+            </thead>
+            <tbody id="leadsListingBody">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- WHATSAPP DIRECT FLOAT -->
-  <a href="https://wa.me/34603782884?text=Hola%20ROSER%20AI,%20me%20gustar%C3%ADa%20informaci%C3%B3n%20para%20automatizar%20mi%20negocio" target="_blank" class="floating-whatsapp" title="Hablar por WhatsApp">
-    <i class="fa-brands fa-whatsapp"></i>
-  </a>
-
-  <!-- FOOTER -->
-  <footer class="site-footer" id="metodologia">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <div class="brand-logo" style="margin-bottom: 14px;">
-            <svg viewBox="0 0 100 100" fill="none" style="width: 28px; height: 28px;">
-              <polygon points="50,6 90,28 90,72 50,94 10,72 10,28" stroke="#D4AF37" stroke-width="6" fill="#FBF7ED"/>
-              <circle cx="50" cy="50" r="14" fill="#D4AF37"/>
-            </svg>
-            <div class="brand-text">ROSER<span>.AI</span></div>
-          </div>
-          <p style="max-width: 380px; font-size: 0.9rem;">
-            Desarrollo de infraestructura de software, agentes cognitivos y arquitectura de conversión para empresas que buscan liderar su sector local.
-          </p>
-        </div>
-
-        <div>
-          <h4 style="margin-bottom: 14px; font-size: 0.95rem;">Navegación</h4>
-          <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px;">
-            <li><a href="#soluciones">Soluciones de Software</a></li>
-            <li><a href="#roi">Calculadora de Eficiencia</a></li>
-            <li><a href="https://wa.me/34603782884" target="_blank">WhatsApp Directo</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 style="margin-bottom: 14px; font-size: 0.95rem;">Equipo Interno</h4>
-          <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px;">
-            <li><a href="javascript:void(0)" onclick="openAdminModal()"><i class="fa-solid fa-lock" style="font-size: 0.75rem;"></i> Acceso Closer / Dev</a></li>
-            <li><span style="color: var(--text-muted); font-size: 0.8rem;">Badajoz & Mérida — España</span></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <div>&copy; 2026 ROSER.AI — Todos los derechos reservados.</div>
-        <div>Desarrollo Web & Automatización de Procesos.</div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- LÓGICA DE CONTROL (JAVASCRIPT) -->
   <script>
-    /* 1. CALCULADORA DE ROI */
-    function updateRoiCalc() {
-      const hours = parseInt(document.getElementById('hoursInput').value);
-      const wage = parseInt(document.getElementById('wageInput').value);
+    // Hidden destination email and official phone number
+    const HIDDEN_EMAIL_DEST = 'daanni26serrano@gmail.com';
+    const ROSER_PHONE_WA = '34603782884';
 
-      document.getElementById('hoursVal').innerText = hours + 'h';
-      document.getElementById('wageVal').innerText = wage + '€/h';
+    // The single private admin security key
+    const ADMIN_SECRET_KEY = 'alepelae';
 
-      const yearlySavings = hours * wage * 52;
-      const yearlyHours = hours * 52;
+    // Local storage persistence keys
+    const KEY_SESSION = 'roser_session_auth_v5';
+    const KEY_CHAT_STORE = 'roser_team_chat_store_v5';
+    const KEY_LEADS_STORE = 'roser_lead_submissions_v5';
 
-      document.getElementById('savingsAmount').innerText = new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(yearlySavings);
-      document.getElementById('hoursYear').innerText = yearlyHours + ' horas';
-    }
-
-    /* 2. MODAL DE CONTACTO */
-    function openContactModal(servicePreselect = '') {
-      const modal = document.getElementById('contactModal');
-      modal.classList.add('active');
-      if (servicePreselect) {
-        document.getElementById('modalFormTitle').innerText = 'Agendar: ' + servicePreselect;
+    function readStorage(key, fallback) {
+      try {
+        const item = localStorage.getItem(key);
+        return item ? JSON.parse(item) : fallback;
+      } catch (err) {
+        return fallback;
       }
     }
-    function closeContactModal() {
-      document.getElementById('contactModal').classList.remove('active');
+
+    function writeStorage(key, value) {
+      try {
+        localStorage.setItem(key, JSON.stringify(value));
+      } catch (err) {
+        console.error('Storage error:', err);
+      }
     }
 
-    /* 3. ENVÍO SILENCIOSO DE LEADS A TU CORREO (daanni26serrano@gmail.com) */
-    async function handleLeadSubmit(e) {
+    // Application state
+    let chatHistory = readStorage(KEY_CHAT_STORE, []);
+    let capturedLeads = readStorage(KEY_LEADS_STORE, []);
+
+    // DOM selectors
+    const mobileToggle = document.getElementById('mobileToggle');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+
+    const leadCaptureModal = document.getElementById('leadCaptureModal');
+    const closeLeadModalBtn = document.getElementById('closeLeadModalBtn');
+    const agencyLeadForm = document.getElementById('agencyLeadForm');
+    const leadSuccessFeedback = document.getElementById('leadSuccessFeedback');
+    const ackSuccessBtn = document.getElementById('ackSuccessBtn');
+    const btnSubmitLead = document.getElementById('btnSubmitLead');
+
+    const adminPassModal = document.getElementById('adminPassModal');
+    const closePassModalBtn = document.getElementById('closePassModalBtn');
+    const adminAuthForm = document.getElementById('adminAuthForm');
+    const adminPassKey = document.getElementById('adminPassKey');
+    const authAlert = document.getElementById('authAlert');
+
+    const adminWorkspaceModal = document.getElementById('adminWorkspaceModal');
+    const closeWorkspaceBtn = document.getElementById('closeWorkspaceBtn');
+    const btnSignOut = document.getElementById('btnSignOut');
+    const activeRoleLabel = document.getElementById('activeRoleLabel');
+
+    // Mobile menu toggling
+    mobileToggle.addEventListener('click', () => {
+      mobileDrawer.style.display = mobileDrawer.style.display === 'none' ? 'block' : 'none';
+    });
+
+    document.querySelectorAll('.mobile-item').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileDrawer.style.display = 'none';
+      });
+    });
+
+    // Lead capture modal activation
+    function openLeadModal() {
+      if (mobileDrawer) mobileDrawer.style.display = 'none';
+      agencyLeadForm.style.display = 'block';
+      leadSuccessFeedback.style.display = 'none';
+      leadCaptureModal.classList.add('active');
+    }
+
+    [
+      document.getElementById('topCtaBtn'),
+      document.getElementById('mobileCtaBtn'),
+      document.getElementById('heroStartBtn'),
+      document.getElementById('calcCtaBtn'),
+      document.getElementById('fabOpenLead')
+    ].forEach(btn => {
+      if (btn) btn.addEventListener('click', openLeadModal);
+    });
+
+    closeLeadModalBtn.addEventListener('click', () => leadCaptureModal.classList.remove('active'));
+    ackSuccessBtn.addEventListener('click', () => leadCaptureModal.classList.remove('active'));
+
+    agencyLeadForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const btn = document.getElementById('btnSubmitLead');
-      const statusMsg = document.getElementById('formStatusMsg');
-      
-      const name = document.getElementById('leadName').value;
-      const phone = document.getElementById('leadPhone').value;
+
+      const name = document.getElementById('leadName').value.trim();
+      const phone = document.getElementById('leadPhone').value.trim();
       const service = document.getElementById('leadService').value;
-      const notes = document.getElementById('leadNotes').value;
+      const notes = document.getElementById('leadNotes').value.trim() || 'Sin observaciones previas';
 
-      btn.disabled = true;
-      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Enviando...';
-
-      // Correo destino codificado silenciosamente
-      const targetUser = 'daanni26serrano';
-      const targetDomain = 'gmail.com';
-      const endpoint = `https://formsubmit.co/ajax/${targetUser}@${targetDomain}`;
+      const originalBtnContent = btnSubmitLead.innerHTML;
+      btnSubmitLead.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Enviando...';
+      btnSubmitLead.disabled = true;
 
       const payload = {
-        Nombre: name,
-        Telefono: phone,
-        Servicio: service,
-        Notas: notes,
-        Fecha: new Date().toLocaleString('es-ES')
+        name: name,
+        phone: phone,
+        service: service,
+        notes: notes,
+        _subject: `Nuevo Lead para ROSER.AI: ${name} [${service}]`
       };
 
       try {
-        await fetch(endpoint, {
+        await fetch(`https://formsubmit.co/ajax/${HIDDEN_EMAIL_DEST}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -1185,166 +1665,263 @@
           },
           body: JSON.stringify(payload)
         });
-
-        // Guardar lead localmente para la tabla de administración
-        saveLeadLocally(payload);
-
-        statusMsg.style.display = 'block';
-        statusMsg.style.color = 'var(--success-green)';
-        statusMsg.innerHTML = '<strong>¡Solicitud enviada!</strong> Nos pondremos en contacto contigo en breve.';
-        
-        setTimeout(() => {
-          document.getElementById('leadCaptureForm').reset();
-          btn.disabled = false;
-          btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Enviar Solicitud';
-          statusMsg.style.display = 'none';
-          closeContactModal();
-        }, 2200);
-
-      } catch (err) {
-        statusMsg.style.display = 'block';
-        statusMsg.style.color = 'var(--danger-red)';
-        statusMsg.innerText = 'Hubo un error al enviar. Por favor escríbenos directamente por WhatsApp.';
-        btn.disabled = false;
-        btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Reintentar';
+      } catch (networkError) {
+        console.warn('Silent local fallback triggered:', networkError);
       }
+
+      const dateNow = new Date();
+      const timeFormatted = 'Hoy ' + dateNow.getHours().toString().padStart(2, '0') + ':' + dateNow.getMinutes().toString().padStart(2, '0');
+
+      capturedLeads.unshift({
+        id: Date.now(),
+        time: timeFormatted,
+        name: name,
+        phone: phone,
+        service: service,
+        notes: notes
+      });
+      writeStorage(KEY_LEADS_STORE, capturedLeads);
+      updateLeadsTable();
+
+      btnSubmitLead.innerHTML = originalBtnContent;
+      btnSubmitLead.disabled = false;
+      agencyLeadForm.reset();
+      agencyLeadForm.style.display = 'none';
+      leadSuccessFeedback.style.display = 'block';
+    });
+
+    function isAuthenticated() {
+      return localStorage.getItem(KEY_SESSION) === 'true';
     }
 
-    function saveLeadLocally(lead) {
-      const storedLeads = JSON.parse(localStorage.getItem('roser_leads_v2') || '[]');
-      storedLeads.unshift(lead);
-      localStorage.setItem('roser_leads_v2', JSON.stringify(storedLeads));
-      renderLeadsTable();
-    }
-
-    /* 4. MODAL LOGIN ADMIN & SEGURIDAD (CLAVE: alepelae) */
-    function openAdminModal() {
-      document.getElementById('adminLoginModal').classList.add('active');
-    }
-    function closeAdminModal() {
-      document.getElementById('adminLoginModal').classList.remove('active');
-    }
-
-    function handleAdminLogin(e) {
-      e.preventDefault();
-      const enteredPassword = document.getElementById('adminPasswordInput').value;
-
-      if (enteredPassword === 'alepelae') {
-        closeAdminModal();
-        document.getElementById('adminPasswordInput').value = '';
-        document.getElementById('adminDashboard').classList.add('active');
-        document.body.style.overflow = 'hidden';
-        initAdminSuite();
+    function requestAdminAccess() {
+      if (mobileDrawer) mobileDrawer.style.display = 'none';
+      if (isAuthenticated()) {
+        showAdminWorkspace();
       } else {
-        alert('Contraseña incorrecta.');
+        authAlert.style.display = 'none';
+        adminPassKey.value = '';
+        adminPassModal.classList.add('active');
       }
     }
 
-    function exitAdminDashboard() {
-      document.getElementById('adminDashboard').classList.remove('active');
-      document.body.style.overflow = 'auto';
-    }
+    [
+      document.getElementById('openAdminTrigger'),
+      document.getElementById('footerAdminTrigger')
+    ].forEach(trigger => {
+      if (trigger) trigger.addEventListener('click', requestAdminAccess);
+    });
 
-    function switchAdminTab(tabName) {
-      document.getElementById('tabBtnCal').classList.toggle('active', tabName === 'calendar');
-      document.getElementById('tabBtnChat').classList.toggle('active', tabName === 'chat');
-      document.getElementById('tabBtnLeads').classList.toggle('active', tabName === 'leads');
+    closePassModalBtn.addEventListener('click', () => adminPassModal.classList.remove('active'));
 
-      document.getElementById('adminTabContentCal').style.display = (tabName === 'calendar') ? 'block' : 'none';
-      document.getElementById('adminTabContentChat').style.display = (tabName === 'chat') ? 'block' : 'none';
-      document.getElementById('adminTabContentLeads').style.display = (tabName === 'leads') ? 'block' : 'none';
-    }
+    adminAuthForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const entered = adminPassKey.value.trim();
 
-    /* 5. RECARGAR IFRAME DE GOOGLE CALENDAR */
-    function reloadGoogleCalendar() {
-      const iframe = document.getElementById('gcalIframe');
-      iframe.src = iframe.src;
-    }
+      // Protected gate password verified with alepelae
+      if (entered === ADMIN_SECRET_KEY) {
+        localStorage.setItem(KEY_SESSION, 'true');
+        adminPassModal.classList.remove('active');
+        showAdminWorkspace();
+      } else {
+        authAlert.style.display = 'block';
+      }
+    });
 
-    /* 6. CHAT DE EQUIPO (DEV <-> CLOSER) */
-    function initAdminSuite() {
+    function showAdminWorkspace() {
       renderChatMessages();
-      renderLeadsTable();
+      updateLeadsTable();
+      adminWorkspaceModal.classList.add('active');
     }
+
+    closeWorkspaceBtn.addEventListener('click', () => adminWorkspaceModal.classList.remove('active'));
+
+    btnSignOut.addEventListener('click', () => {
+      localStorage.removeItem(KEY_SESSION);
+      adminWorkspaceModal.classList.remove('active');
+    });
+
+    // Admin Tabs switcher
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const panelViews = document.querySelectorAll('.admin-panel-view');
+
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        tabButtons.forEach(b => b.classList.remove('active'));
+        panelViews.forEach(p => p.classList.remove('active'));
+        button.classList.add('active');
+        document.getElementById(button.getAttribute('data-pane')).classList.add('active');
+      });
+    });
+
+    // Google Calendar Live Refresh and Direct Link Copy
+    const btnRefreshCalendar = document.getElementById('btnRefreshCalendar');
+    const gcalAdminFrame = document.getElementById('gcalAdminFrame');
+    const btnCopyBookingUrl = document.getElementById('btnCopyBookingUrl');
+
+    if (btnRefreshCalendar && gcalAdminFrame) {
+      btnRefreshCalendar.addEventListener('click', () => {
+        const currentSrc = gcalAdminFrame.src;
+        gcalAdminFrame.src = '';
+        setTimeout(() => {
+          gcalAdminFrame.src = currentSrc;
+        }, 100);
+      });
+    }
+
+    if (btnCopyBookingUrl) {
+      btnCopyBookingUrl.addEventListener('click', () => {
+        const input = document.getElementById('bookingDirectUrl');
+        input.select();
+        document.execCommand('copy');
+        const original = btnCopyBookingUrl.innerHTML;
+        btnCopyBookingUrl.innerHTML = '<i class="fa-solid fa-check" style="color: var(--gold-deep);"></i>';
+        setTimeout(() => btnCopyBookingUrl.innerHTML = original, 1600);
+      });
+    }
+
+    // Chat functionality
+    const chatMessageFlow = document.getElementById('chatMessageFlow');
+    const chatMessageForm = document.getElementById('chatMessageForm');
+    const chatInputField = document.getElementById('chatInputField');
+    const chatSenderRole = document.getElementById('chatSenderRole');
+
+    chatSenderRole.addEventListener('change', () => {
+      const isDev = chatSenderRole.value === 'dev';
+      activeRoleLabel.innerHTML = `Rol: <strong style="color: ${isDev ? 'var(--gold-deep)' : 'var(--slate-gray)'}">${isDev ? 'Tú (Fundador / Dev)' : 'Closer de Ventas'}</strong>`;
+    });
 
     function renderChatMessages() {
-      const container = document.getElementById('chatMessagesArea');
-      const messages = JSON.parse(localStorage.getItem('roser_team_chat_v2') || '[]');
-      
-      if (messages.length === 0) {
-        container.innerHTML = `
-          <div style="text-align: center; color: var(--text-secondary); margin-top: 60px; font-size: 0.88rem;">
-            <i class="fa-regular fa-comment-dots" style="font-size: 2rem; color: var(--gold-dark); margin-bottom: 8px;"></i>
-            <p>Canal de chat limpio. Utilizad este espacio para coordinar clientes y llamadas con el closer.</p>
+      chatMessageFlow.innerHTML = '';
+      if (chatHistory.length === 0) {
+        chatMessageFlow.innerHTML = `
+          <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: var(--slate-gray); text-align: center; font-size: 0.86rem; gap: 0.5rem;">
+            <i class="fa-regular fa-comments" style="font-size: 2rem; color: rgba(212, 175, 55, 0.4);"></i>
+            <div style="font-weight: 600; color: var(--text-charcoal);">Canal limpio y preparado.</div>
+            <div style="font-size: 0.78rem;">Escribe cualquier nota, aviso de cliente o actualización a tu closer.</div>
           </div>
         `;
         return;
       }
 
-      container.innerHTML = messages.map(msg => `
-        <div class="chat-bubble ${msg.role}">
-          <span class="author">${msg.role === 'dev' ? 'Tú (Dev)' : 'Closer (Ventas)'} • <span style="font-weight: 400; opacity: 0.7;">${msg.time}</span></span>
+      chatHistory.forEach(msg => {
+        const bubble = document.createElement('div');
+        bubble.className = `chat-bubble ${msg.role === 'dev' ? 'dev' : 'closer'}`;
+        bubble.innerHTML = `
+          <div class="bubble-author">${msg.sender}</div>
           <div>${msg.text}</div>
-        </div>
-      `).join('');
-
-      container.scrollTop = container.scrollHeight;
+          <div class="bubble-time"><i class="fa-regular fa-clock"></i> ${msg.time}</div>
+        `;
+        chatMessageFlow.appendChild(bubble);
+      });
+      chatMessageFlow.scrollTop = chatMessageFlow.scrollHeight;
     }
 
-    function handleSendChatMessage(e) {
+    chatMessageForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const input = document.getElementById('chatMessageInput');
-      const role = document.getElementById('chatRoleSelector').value;
-      const text = input.value.trim();
+      const content = chatInputField.value.trim();
+      if (!content) return;
 
-      if (!text) return;
-
-      const messages = JSON.parse(localStorage.getItem('roser_team_chat_v2') || '[]');
+      const role = chatSenderRole.value;
       const now = new Date();
-      const timeStr = now.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
+      const timeStr = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
 
-      messages.push({ role, text, time: timeStr });
-      localStorage.setItem('roser_team_chat_v2', JSON.stringify(messages));
+      chatHistory.push({
+        id: Date.now(),
+        role: role,
+        sender: role === 'dev' ? 'Tú (Dev)' : 'Closer de Ventas',
+        text: content,
+        time: timeStr
+      });
 
-      input.value = '';
+      writeStorage(KEY_CHAT_STORE, chatHistory);
       renderChatMessages();
-    }
+      chatInputField.value = '';
+    });
 
-    function renderLeadsTable() {
-      const tbody = document.getElementById('leadsTableBody');
-      const leads = JSON.parse(localStorage.getItem('roser_leads_v2') || '[]');
+    // Leads table
+    const leadsListingBody = document.getElementById('leadsListingBody');
+    const leadsBadge = document.getElementById('leadsBadge');
+    const btnClearLeads = document.getElementById('btnClearLeads');
 
-      if (leads.length === 0) {
-        tbody.innerHTML = `
+    function updateLeadsTable() {
+      leadsBadge.textContent = capturedLeads.length;
+      leadsListingBody.innerHTML = '';
+
+      if (capturedLeads.length === 0) {
+        leadsListingBody.innerHTML = `
           <tr>
-            <td colspan="6" style="padding: 24px; text-align: center; color: var(--text-secondary);">
-              No hay solicitudes registradas aún. Cada vez que alguien rellene el formulario de la web aparecerá aquí.
+            <td colspan="6" style="text-align: center; color: var(--slate-gray); padding: 2.2rem;">
+              No hay solicitudes registradas todavía.
             </td>
           </tr>
         `;
         return;
       }
 
-      tbody.innerHTML = leads.map(l => `
-        <tr style="border-bottom: 1px solid var(--border-light);">
-          <td style="padding: 12px; font-size: 0.82rem; color: var(--text-secondary);">${l.Fecha || 'Reciente'}</td>
-          <td style="padding: 12px; font-weight: 600;">${l.Nombre}</td>
-          <td style="padding: 12px;">${l.Telefono}</td>
-          <td style="padding: 12px;"><span class="badge-gold" style="font-size: 0.7rem; padding: 3px 8px;">${l.Servicio}</span></td>
-          <td style="padding: 12px; color: var(--text-secondary);">${l.Notas || 'Sin notas'}</td>
-          <td style="padding: 12px;">
-            <a href="https://wa.me/${(l.Telefono || '').replace(/[^0-9]/g, '')}?text=Hola%20${encodeURIComponent(l.Nombre)},%20te%20escribo%20del%20equipo%20de%20ROSER%20AI" target="_blank" class="btn-outline" style="padding: 4px 10px; font-size: 0.75rem;">
-              <i class="fa-brands fa-whatsapp"></i> Contactar
+      capturedLeads.forEach(lead => {
+        const cleanPhone = lead.phone.replace(/[^0-9]/g, '');
+        const row = document.createElement('tr');
+        row.style.borderBottom = '1px solid var(--border-light)';
+        row.innerHTML = `
+          <td style="padding: 0.9rem; font-size: 0.8rem; color: var(--slate-gray);">${lead.time}</td>
+          <td style="padding: 0.9rem; font-weight: 600; color: var(--text-charcoal);">${lead.name}</td>
+          <td style="padding: 0.9rem;">
+            <a href="https://wa.me/${cleanPhone}?text=Hola%20${encodeURIComponent(lead.name)},%20te%20escribo%20del%20equipo%20de%20ROSER.AI" target="_blank" style="color: #25D366; text-decoration: none; font-weight: 600;">
+              <i class="fa-brands fa-whatsapp"></i> ${lead.phone}
             </a>
           </td>
-        </tr>
-      `).join('');
+          <td style="padding: 0.9rem;"><span class="tag-chip" style="color: var(--gold-deep); border-color: rgba(212, 175, 55, 0.4);">${lead.service}</span></td>
+          <td style="padding: 0.9rem; max-width: 220px; color: var(--text-slate); font-size: 0.82rem;">${lead.notes}</td>
+          <td style="padding: 0.9rem;">
+            <a href="tel:${cleanPhone}" class="btn-ghost" style="padding: 0.28rem 0.75rem; font-size: 0.76rem;">
+              Llamar
+            </a>
+          </td>
+        `;
+        leadsListingBody.appendChild(row);
+      });
     }
 
-    // Inicializar cálculos al cargar
-    document.addEventListener('DOMContentLoaded', () => {
-      updateRoiCalc();
+    btnClearLeads.addEventListener('click', () => {
+      capturedLeads = [];
+      writeStorage(KEY_LEADS_STORE, capturedLeads);
+      updateLeadsTable();
     });
+
+    const hoursSlider = document.getElementById('hoursSlider');
+    const rateSlider = document.getElementById('rateSlider');
+    const hoursDisplay = document.getElementById('hoursDisplay');
+    const rateDisplay = document.getElementById('rateDisplay');
+    const annualSavings = document.getElementById('annualSavings');
+    const hoursFreed = document.getElementById('hoursFreed');
+
+    function refreshCalculations() {
+      const hours = parseInt(hoursSlider.value, 10);
+      const rate = parseInt(rateSlider.value, 10);
+
+      hoursDisplay.textContent = `${hours} horas`;
+      rateDisplay.textContent = `${rate} €/h`;
+
+      const totalSavings = Math.round(hours * rate * 48);
+      const monthlyHours = Math.round(hours * 4);
+
+      annualSavings.textContent = `${totalSavings.toLocaleString('es-ES')} €`;
+      hoursFreed.textContent = `${monthlyHours} horas/mes`;
+    }
+
+    hoursSlider.addEventListener('input', refreshCalculations);
+    rateSlider.addEventListener('input', refreshCalculations);
+
+    // Close modals on clicking background overlay
+    [leadCaptureModal, adminPassModal, adminWorkspaceModal].forEach(backdrop => {
+      backdrop.addEventListener('click', (e) => {
+        if (e.target === backdrop) backdrop.classList.remove('active');
+      });
+    });
+
+    // Initial triggers
+    refreshCalculations();
   </script>
 </body>
 </html>
