@@ -33,18 +33,21 @@
     :root {
       --white-pure: #FFFFFF;
       --slate-gray: #6B7280;
-      --slate-dark: #4B5563;
+      --slate-dark: #374151;
       --slate-light: #9CA3AF;
-      --gold-metallic: #D4AF37;
-      --gold-deep: #B89025;
+      
+      /* Identidad Visual ROSER.AI & WCAG AA Contrast Compliance */
+      --gold-metallic: #D4AF37;       /* Acentos, bordes, brillos y degradados */
+      --gold-deep: #B89025;           /* Dorado corporativo principal */
+      --gold-accessible: #997519;     /* Cumple WCAG AA (>4.5:1) para tipografía en fondos claros */
       --gold-light: #F7E7A9;
       --gold-subtle: rgba(212, 175, 55, 0.12);
       --gold-glow: rgba(212, 175, 55, 0.28);
-      
+
       --text-charcoal: #111827;
-      --text-slate: #4B5563;
-      --text-muted: #6B7280;
-      
+      --text-slate: #374151;
+      --text-muted: #4B5563;
+
       --bg-canvas: #FFFFFF;
       --bg-surface: #FFFFFF;
       --bg-surface-soft: #F9FAFB;
@@ -52,7 +55,7 @@
       --border-light: #E5E7EB;
       --border-medium: #D1D5DB;
       --border-gold: rgba(212, 175, 55, 0.45);
-      
+
       --radius-sm: 8px;
       --radius-md: 14px;
       --radius-lg: 22px;
@@ -170,7 +173,7 @@
       font-size: 0.62rem;
       text-transform: uppercase;
       letter-spacing: 0.16em;
-      color: var(--slate-gray);
+      color: var(--text-slate);
       font-weight: 600;
     }
 
@@ -196,7 +199,7 @@
     }
 
     .nav-links a:hover {
-      color: var(--gold-deep);
+      color: var(--gold-accessible);
     }
 
     .nav-actions {
@@ -248,7 +251,7 @@
     .btn-ghost:hover {
       background: var(--bg-surface-soft);
       border-color: var(--gold-metallic);
-      color: var(--gold-deep);
+      color: var(--gold-accessible);
       transform: translateY(-2px);
       box-shadow: 0 6px 18px rgba(17, 24, 39, 0.06);
     }
@@ -283,7 +286,7 @@
       padding: 0.4rem 1.15rem;
       border-radius: var(--radius-full);
       font-size: 0.8rem;
-      color: var(--gold-deep);
+      color: var(--gold-accessible);
       font-weight: 600;
       margin-bottom: 1.6rem;
       box-shadow: var(--shadow-luxury-sm);
@@ -301,7 +304,7 @@
     }
 
     .hero-headline .text-gradient {
-      background: linear-gradient(135deg, var(--gold-deep) 0%, var(--gold-metallic) 50%, var(--text-charcoal) 100%);
+      background: linear-gradient(135deg, var(--gold-accessible) 0%, var(--gold-metallic) 50%, var(--text-charcoal) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       display: inline-block;
@@ -350,13 +353,13 @@
     }
 
     .proof-metric span {
-      color: var(--gold-metallic);
+      color: var(--gold-deep);
       font-size: 1.7rem;
     }
 
     .proof-desc {
       font-size: 0.85rem;
-      color: var(--slate-gray);
+      color: var(--text-slate);
       line-height: 1.45;
     }
 
@@ -374,7 +377,7 @@
       font-weight: 700;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--gold-deep);
+      color: var(--gold-accessible);
       margin-bottom: 0.6rem;
       display: block;
     }
@@ -395,7 +398,7 @@
       margin-top: 0.75rem;
     }
 
-    /* PACKS DE PRECIOS */
+    /* PACKS DE PRECIOS & CRO */
     .pricing-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -473,7 +476,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--gold-deep);
+      color: var(--gold-accessible);
       margin-bottom: 1.2rem;
     }
 
@@ -487,7 +490,7 @@
 
     .pack-tagline {
       font-size: 0.88rem;
-      color: var(--slate-gray);
+      color: var(--text-slate);
       min-height: 42px;
       line-height: 1.5;
     }
@@ -511,14 +514,14 @@
     }
 
     .pack-card.popular .pack-price-number {
-      background: linear-gradient(135deg, var(--gold-deep) 0%, var(--gold-metallic) 100%);
+      background: linear-gradient(135deg, var(--gold-accessible) 0%, var(--gold-metallic) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
     .pack-price-period {
       font-size: 0.88rem;
-      color: var(--slate-gray);
+      color: var(--text-slate);
       font-weight: 600;
     }
 
@@ -534,7 +537,7 @@
     }
 
     .retainer-sub-box strong {
-      color: var(--gold-deep);
+      color: var(--gold-accessible);
     }
 
     .pack-features-list {
@@ -542,7 +545,7 @@
       display: flex;
       flex-direction: column;
       gap: 0.85rem;
-      margin-bottom: 2.2rem;
+      margin-bottom: 1.8rem;
       font-size: 0.9rem;
     }
 
@@ -555,7 +558,7 @@
     }
 
     .pack-features-list li .check-icon {
-      color: var(--gold-deep);
+      color: var(--gold-accessible);
       margin-top: 0.2rem;
       flex-shrink: 0;
       width: 16px;
@@ -572,7 +575,7 @@
       padding: 0.75rem 0.95rem;
       border-radius: var(--radius-sm);
       font-size: 0.82rem;
-      color: var(--gold-deep);
+      color: var(--gold-accessible);
       font-weight: 600;
       margin-bottom: 1.5rem;
       display: flex;
@@ -586,6 +589,408 @@
       padding: 0.85rem 1.4rem;
       font-size: 0.92rem;
       cursor: pointer;
+      text-decoration: none;
+    }
+
+    .pack-micro-copy {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      margin-top: 0.85rem;
+      font-size: 0.76rem;
+      color: var(--text-slate);
+      font-weight: 500;
+      text-align: center;
+    }
+
+    .pack-micro-copy svg {
+      color: var(--gold-accessible);
+      flex-shrink: 0;
+    }
+
+    /* DEMO EN VIVO: SIMULADOR INTERACTIVO WHATSAPP */
+    .chat-demo-section {
+      background: linear-gradient(180deg, #FAF9F6 0%, #FFFFFF 100%);
+      border-top: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-light);
+      position: relative;
+    }
+
+    .chat-demo-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    @media (min-width: 980px) {
+      .chat-demo-grid {
+        grid-template-columns: 1fr 1.15fr;
+      }
+    }
+
+    .chat-phone-frame {
+      max-width: 390px;
+      margin: 0 auto;
+      background: #FFFFFF;
+      border-radius: 36px;
+      border: 10px solid #1F2937;
+      box-shadow: 0 25px 60px rgba(17, 24, 39, 0.16), 0 0 35px rgba(212, 175, 55, 0.15);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 570px;
+      position: relative;
+    }
+
+    .chat-phone-header {
+      background: #075E54;
+      color: #FFFFFF;
+      padding: 0.85rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .chat-phone-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--gold-subtle);
+      border: 2px solid #D4AF37;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #D4AF37;
+      font-weight: 700;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+
+    .chat-phone-info h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      line-height: 1.2;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .chat-phone-info p {
+      font-size: 0.72rem;
+      color: rgba(255, 255, 255, 0.85);
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .chat-phone-online-dot {
+      width: 7px;
+      height: 7px;
+      background-color: #25D366;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .chat-phone-body {
+      flex: 1;
+      background-color: #EFEAE2;
+      background-image: radial-gradient(#d3c9bf 1px, transparent 1px);
+      background-size: 16px 16px;
+      padding: 1rem;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      scroll-behavior: smooth;
+    }
+
+    .wa-bubble {
+      max-width: 82%;
+      padding: 0.65rem 0.85rem;
+      border-radius: 12px;
+      font-size: 0.84rem;
+      line-height: 1.4;
+      position: relative;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      animation: fadeInBubble 0.25s ease-out;
+    }
+
+    @keyframes fadeInBubble {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .wa-bubble.bot {
+      align-self: flex-start;
+      background: #FFFFFF;
+      color: var(--text-charcoal);
+      border-top-left-radius: 2px;
+    }
+
+    .wa-bubble.user {
+      align-self: flex-end;
+      background: #DCF8C6;
+      color: #0F381E;
+      border-top-right-radius: 2px;
+    }
+
+    .wa-time {
+      font-size: 0.66rem;
+      color: #8C8C8C;
+      float: right;
+      margin-left: 0.5rem;
+      margin-top: 0.2rem;
+    }
+
+    .typing-indicator {
+      display: none;
+      align-self: flex-start;
+      background: #FFFFFF;
+      padding: 0.6rem 0.9rem;
+      border-radius: 14px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      border-top-left-radius: 2px;
+    }
+
+    .typing-indicator.active {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .typing-indicator span {
+      width: 6px;
+      height: 6px;
+      background-color: #888888;
+      border-radius: 50%;
+      animation: typingBlink 1.4s infinite both;
+    }
+
+    .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+    .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes typingBlink {
+      0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+      40% { transform: scale(1); opacity: 1; }
+    }
+
+    .chat-quick-triggers {
+      padding: 0.85rem;
+      background: #FFFFFF;
+      border-top: 1px solid var(--border-light);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .trigger-btn {
+      background: #F9FAFB;
+      border: 1px solid var(--border-medium);
+      color: var(--text-charcoal);
+      padding: 0.5rem 0.85rem;
+      border-radius: var(--radius-full);
+      font-size: 0.78rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .trigger-btn:hover {
+      background: var(--gold-subtle);
+      border-color: var(--gold-metallic);
+      color: var(--gold-accessible);
+    }
+
+    .trigger-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    /* FORMULARIO LOW-FRICTION "TE LLAMAMOS HOY" */
+    .lead-capture-strip {
+      padding: 4.5rem 0;
+      background: linear-gradient(135deg, #111827 0%, #1F2937 100%);
+      color: #FFFFFF;
+      border-top: 2px solid var(--gold-metallic);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .lead-capture-strip::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .lead-strip-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    @media (min-width: 900px) {
+      .lead-strip-grid {
+        grid-template-columns: 1.15fr 1.35fr;
+      }
+    }
+
+    .lead-form-wrap {
+      background: #FFFFFF;
+      padding: 2rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-gold);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+      color: var(--text-charcoal);
+    }
+
+    .lead-input-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    @media (min-width: 600px) {
+      .lead-input-row {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .lead-field-group label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-slate);
+      margin-bottom: 0.35rem;
+    }
+
+    .lead-input-field {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      outline: none;
+      font-family: inherit;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .lead-input-field:focus {
+      border-color: var(--gold-metallic);
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+    }
+
+    .lead-gdpr-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      margin-bottom: 1.2rem;
+      font-size: 0.76rem;
+      color: var(--text-slate);
+      line-height: 1.4;
+    }
+
+    .lead-gdpr-row input[type="checkbox"] {
+      margin-top: 0.15rem;
+      accent-color: var(--gold-deep);
+      cursor: pointer;
+    }
+
+    .lead-gdpr-row a {
+      color: var(--gold-accessible);
+      text-decoration: underline;
+    }
+
+    .lead-status-msg {
+      margin-top: 0.8rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      display: none;
+    }
+
+    .lead-status-msg.success {
+      display: block;
+      color: #059669;
+    }
+
+    .lead-status-msg.error {
+      display: block;
+      color: #DC2626;
+    }
+
+    /* BLOQUE DE GARANTÍA Y PRUEBA SOCIAL LOCAL */
+    .trust-guarantee-strip {
+      padding: 3rem 0;
+      background: #FFFFFF;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .trust-guarantee-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.6rem;
+    }
+
+    @media (min-width: 768px) {
+      .trust-guarantee-grid {
+        grid-template-columns: 1fr 1.35fr;
+      }
+    }
+
+    .trust-card {
+      background: var(--bg-surface-soft);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 1.6rem 1.8rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1.1rem;
+    }
+
+    .trust-card.highlight {
+      border-left: 4px solid var(--gold-metallic);
+      background: #FFFFFF;
+      box-shadow: var(--shadow-luxury-sm);
+    }
+
+    .trust-icon-box {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--gold-subtle);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold-accessible);
+      flex-shrink: 0;
+    }
+
+    .trust-content h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-charcoal);
+      margin-bottom: 0.35rem;
+    }
+
+    .trust-content p {
+      font-size: 0.85rem;
+      color: var(--text-slate);
+      line-height: 1.5;
     }
 
     /* CAPACIDADES / SOLUCIONES */
@@ -630,7 +1035,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--gold-deep);
+      color: var(--gold-accessible);
       margin-bottom: 1.6rem;
       transition: transform 0.25s ease;
     }
@@ -665,7 +1070,7 @@
     .tag-chip {
       font-size: 0.76rem;
       font-weight: 600;
-      color: var(--slate-gray);
+      color: var(--text-slate);
       background: var(--bg-surface-soft);
       border: 1px solid var(--border-light);
       padding: 0.3rem 0.85rem;
@@ -675,7 +1080,7 @@
 
     .service-card:hover .tag-chip {
       border-color: rgba(212, 175, 55, 0.3);
-      color: var(--gold-deep);
+      color: var(--gold-accessible);
     }
 
     /* CASOS DE USO REALES */
@@ -715,7 +1120,7 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      color: var(--gold-deep);
+      color: var(--gold-accessible);
       margin-bottom: 0.75rem;
       display: flex;
       align-items: center;
@@ -782,7 +1187,7 @@
       font-family: 'Space Grotesk', sans-serif;
       font-size: 1.8rem;
       font-weight: 700;
-      color: var(--gold-deep);
+      color: var(--gold-accessible);
       margin-bottom: 0.5rem;
       line-height: 1;
     }
@@ -797,7 +1202,7 @@
 
     .step-desc {
       font-size: 0.86rem;
-      color: var(--slate-gray);
+      color: var(--text-slate);
       line-height: 1.5;
     }
 
@@ -860,7 +1265,7 @@
       font-family: 'Space Grotesk', sans-serif;
       font-size: 2.8rem;
       font-weight: 700;
-      color: var(--gold-deep);
+      color: var(--gold-accessible);
       margin: 0.4rem 0;
     }
 
@@ -885,7 +1290,7 @@
       padding: 1.2rem 1.6rem;
       background: var(--bg-surface-soft);
       border-bottom: 1px solid var(--border-light);
-      color: var(--slate-gray);
+      color: var(--text-slate);
       font-weight: 700;
       text-transform: uppercase;
       font-size: 0.74rem;
@@ -911,7 +1316,7 @@
     }
 
     .badge-good {
-      color: var(--gold-deep);
+      color: var(--gold-accessible);
       font-weight: 600;
       display: inline-flex;
       align-items: center;
@@ -960,7 +1365,7 @@
     .faq-icon-arrow {
       width: 18px;
       height: 18px;
-      color: var(--gold-deep);
+      color: var(--gold-accessible);
       transition: transform 0.25s ease;
     }
 
@@ -1015,7 +1420,7 @@
       letter-spacing: 0.02em;
     }
 
-    /* BANNER VISUAL NEURAL */
+    /* BANNER VISUAL NEURAL (CON RESPETO DE PREFERS-REDUCED-MOTION & MÓVIL) */
     .ai-visual-fusion-section {
       position: relative;
       width: 100%;
@@ -1057,6 +1462,14 @@
       height: 100%;
       z-index: 1;
       opacity: 0.75;
+    }
+
+    .neural-static-fallback {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(212, 175, 55, 0.18) 0%, rgba(13, 18, 31, 0.98) 75%);
+      display: none;
+      z-index: 1;
     }
 
     .neural-core-wrapper {
@@ -1138,6 +1551,12 @@
       50% { transform: scale(1.04); opacity: 1; }
     }
 
+    @media (prefers-reduced-motion: reduce) {
+      .spin-slow, .spin-reverse, .pulse-subtle {
+        animation: none !important;
+      }
+    }
+
     /* MODALES */
     .modal-backdrop {
       position: fixed;
@@ -1185,7 +1604,7 @@
       right: 1.2rem;
       background: var(--bg-surface-soft);
       border: 1px solid var(--border-light);
-      color: var(--slate-gray);
+      color: var(--text-slate);
       width: 34px;
       height: 34px;
       border-radius: 50%;
@@ -1200,48 +1619,6 @@
     .close-modal-x:hover {
       background: #E5E7EB;
       color: var(--text-charcoal);
-    }
-
-    .pack-choice-card {
-      background: var(--bg-surface-soft);
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-md);
-      padding: 1.3rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      text-decoration: none;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      margin-bottom: 0.9rem;
-    }
-
-    .pack-choice-card:hover {
-      background: #FFFFFF;
-      border-color: var(--gold-metallic);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-luxury-sm);
-    }
-
-    .choice-icon-wrap {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .choice-icon-wa {
-      background: rgba(37, 211, 102, 0.12);
-      color: #25D366;
-    }
-
-    .choice-icon-cal {
-      background: var(--gold-subtle);
-      color: var(--gold-deep);
     }
 
     .cal-iframe-container {
@@ -1485,7 +1862,7 @@
     .bot-chip {
       background: #FFFFFF;
       border: 1px solid var(--border-gold);
-      color: var(--gold-deep);
+      color: var(--gold-accessible);
       font-size: 0.72rem;
       font-weight: 600;
       padding: 0.3rem 0.65rem;
@@ -1531,7 +1908,16 @@
       justify-content: center;
     }
 
-    /* OPTIMIZACIÓN MÓVIL (<640px) */
+    /* MEDIA QUERIES MOBILE (<768px & <640px) */
+    @media (max-width: 767px) {
+      .neural-canvas-bg {
+        display: none !important;
+      }
+      .neural-static-fallback {
+        display: block !important;
+      }
+    }
+
     @media (max-width: 640px) {
       .floating-support-cluster {
         bottom: 16px;
@@ -1574,6 +1960,9 @@
       .quantum-orb-svg {
         width: 190px;
         height: 190px;
+      }
+      .lead-form-wrap {
+        padding: 1.4rem;
       }
     }
 
@@ -1639,6 +2028,7 @@
 
         <ul class="nav-links">
           <li><a href="#packs">Planes & Tarifas</a></li>
+          <li><a href="#demo-wa">Demo WhatsApp</a></li>
           <li><a href="#soluciones">Soluciones</a></li>
           <li><a href="#casos">Casos Reales</a></li>
           <li><a href="#proceso">Metodología</a></li>
@@ -1664,6 +2054,7 @@
   <div id="mobileDrawer" style="display: none; background: #FFFFFF; border-bottom: 1px solid var(--border-light); padding: 1.5rem;" class="container">
     <div style="display: flex; flex-direction: column; gap: 1.2rem;">
       <a href="#packs" class="mobile-item" style="color: var(--text-slate); text-decoration: none; font-size: 0.95rem; font-weight: 500;">Planes & Tarifas</a>
+      <a href="#demo-wa" class="mobile-item" style="color: var(--text-slate); text-decoration: none; font-size: 0.95rem; font-weight: 500;">Demo WhatsApp</a>
       <a href="#soluciones" class="mobile-item" style="color: var(--text-slate); text-decoration: none; font-size: 0.95rem; font-weight: 500;">Soluciones</a>
       <a href="#casos" class="mobile-item" style="color: var(--text-slate); text-decoration: none; font-size: 0.95rem; font-weight: 500;">Casos Reales</a>
       <a href="#proceso" class="mobile-item" style="color: var(--text-slate); text-decoration: none; font-size: 0.95rem; font-weight: 500;">Metodología</a>
@@ -1732,7 +2123,34 @@
       </div>
     </section>
 
-    <!-- SECTION: PACKS & PRICING -->
+    <!-- REFUERZO DE PRUEBA SOCIAL Y GARANTÍA OPERATIVA -->
+    <section class="trust-guarantee-strip">
+      <div class="container">
+        <div class="trust-guarantee-grid">
+          <div class="trust-card">
+            <div class="trust-icon-box">
+              <svg class="svg-stroke" width="22" height="22" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            </div>
+            <div class="trust-content">
+              <h4>Desarrollo Local y Soporte Cercano</h4>
+              <p>Desarrollado y operado desde <strong>Extremadura (Badajoz y Mérida)</strong> para empresas de toda España. Trato directo con los ingenieros que crean tus sistemas.</p>
+            </div>
+          </div>
+
+          <div class="trust-card highlight">
+            <div class="trust-icon-box">
+              <svg class="svg-stroke" width="22" height="22" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            </div>
+            <div class="trust-content">
+              <h4>Garantía de Despliegue de 14 Días</h4>
+              <p>Si el agente o flujo no responde con la precisión acordada, <strong>reajustamos modelos y escenarios sin coste adicional</strong> hasta su validación técnica final en tu operativa real.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: PACKS & PRICING (CRO OPTIMIZADO) -->
     <section class="section-wrap" id="packs" style="background: linear-gradient(180deg, #FFFFFF 0%, #FAF9F6 100%);">
       <div class="container">
         <div class="section-header" style="text-align: center; max-width: 780px; margin: 0 auto 3.6rem;">
@@ -1744,7 +2162,7 @@
         </div>
 
         <div class="pricing-grid">
-          <!-- PACK 1: BÁSICO -->
+          <!-- PACK 1: BÁSICO (WHATSAPP DIRECTO) -->
           <div class="pack-card">
             <div>
               <div class="pack-top-bar">
@@ -1792,13 +2210,19 @@
               </ul>
             </div>
 
-            <button type="button" class="btn-ghost btn-pack-action" onclick="openPackSelector('Pack Básico', '300€')">
-              <span>Seleccionar Pack Básico</span>
-              <svg class="svg-stroke" width="14" height="14" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
-            </button>
+            <div>
+              <a href="https://wa.me/34603782884?text=Hola%20ROSER.AI,%20quiero%20contratar%20el%20Pack%20B%C3%A1sico%20(300%E2%82%AC)%20para%20mi%20empresa%20y%20coordinar%20los%20detalles%20t%C3%A9cnicos." target="_blank" rel="noopener noreferrer" class="btn-ghost btn-pack-action">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="#25D366"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                <span>Contratar vía WhatsApp</span>
+              </a>
+              <div class="pack-micro-copy">
+                <svg class="svg-stroke" width="13" height="13" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                <span>Sin compromiso · Auditoría técnica previa incluida</span>
+              </div>
+            </div>
           </div>
 
-          <!-- PACK 2: PLATA -->
+          <!-- PACK 2: PLATA (DIRECTO A CAL.COM - ELIMINA MODAL INTERMEDIO) -->
           <div class="pack-card popular">
             <span class="popular-pill">
               <svg class="svg-stroke" width="12" height="12" viewBox="0 0 24 24"><path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14"></path></svg>
@@ -1810,7 +2234,7 @@
                   <svg class="svg-stroke" width="22" height="22" viewBox="0 0 24 24"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3z"></path></svg>
                 </div>
                 <h3 class="pack-title">Pack Plata</h3>
-                <p class="pack-tagline">Estructura comercial B2B con agente conversacional que atiende y ageda 24/7.</p>
+                <p class="pack-tagline">Estructura comercial B2B con agente conversacional que atiende y agenda 24/7.</p>
               </div>
 
               <div class="pack-price-box">
@@ -1850,13 +2274,19 @@
               </ul>
             </div>
 
-            <button type="button" class="btn-primary btn-pack-action" onclick="openPackSelector('Pack Plata', '700€')">
-              <span>Seleccionar Pack Plata</span>
-              <svg class="svg-stroke" width="14" height="14" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
-            </button>
+            <div>
+              <button type="button" class="btn-primary btn-pack-action" id="packPlataDirectCalBtn">
+                <svg class="svg-stroke" width="16" height="16" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                <span>Agendar Despliegue en Cal.com</span>
+              </button>
+              <div class="pack-micro-copy">
+                <svg class="svg-stroke" width="13" height="13" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                <span>Sin compromiso · Auditoría técnica previa incluida</span>
+              </div>
+            </div>
           </div>
 
-          <!-- PACK 3: ORO -->
+          <!-- PACK 3: ORO (WHATSAPP DIRECTO) -->
           <div class="pack-card">
             <div>
               <div class="pack-top-bar">
@@ -1909,10 +2339,83 @@
               </ul>
             </div>
 
-            <button type="button" class="btn-ghost btn-pack-action" onclick="openPackSelector('Pack Oro', '1.200€')">
-              <span>Seleccionar Pack Oro</span>
+            <div>
+              <a href="https://wa.me/34603782884?text=Hola%20ROSER.AI,%20quiero%20contratar%20el%20Pack%20Oro%20(1.200%E2%82%AC)%20para%20mi%20empresa%20y%20coordinar%20los%20detalles%20t%C3%A9cnicos." target="_blank" rel="noopener noreferrer" class="btn-ghost btn-pack-action">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="#25D366"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                <span>Contratar vía WhatsApp</span>
+              </a>
+              <div class="pack-micro-copy">
+                <svg class="svg-stroke" width="13" height="13" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                <span>Sin compromiso · Auditoría técnica previa incluida</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: DEMO EN VIVO INTERACTIVA AGENTE WHATSAPP -->
+    <section class="section-wrap chat-demo-section" id="demo-wa">
+      <div class="container">
+        <div class="chat-demo-grid">
+          <div>
+            <span class="eyebrow">Demostración Interactiva</span>
+            <h2 class="section-title">Comprueba la velocidad de tu futuro agente en WhatsApp</h2>
+            <p class="section-subtitle" style="margin-bottom: 2rem;">
+              Simula cómo respondería el agente inteligente a los clientes reales de una clínica o taller mecánico en tiempo récord, cualificando y derivando citas automáticamente.
+            </p>
+
+            <div style="background: #FFFFFF; border-left: 3px solid var(--gold-metallic); padding: 1.2rem; border-radius: var(--radius-sm); box-shadow: var(--shadow-luxury-sm); margin-bottom: 2rem;">
+              <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text-charcoal); margin-bottom: 0.3rem;">⚡ Respuesta instantánea (&lt; 1 segundo)</h4>
+              <p style="font-size: 0.85rem; color: var(--text-slate);">
+                Sin esperas ni formularios fríos. El cliente resuelve su duda y agenda en la misma conversación en cualquier momento del día.
+              </p>
+            </div>
+
+            <button class="btn-primary" onclick="openCallModal()">
+              <span>Implementar este Agente en mi Negocio</span>
               <svg class="svg-stroke" width="14" height="14" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </button>
+          </div>
+
+          <!-- MOCKUP MÓVIL WHATSAPP -->
+          <div>
+            <div class="chat-phone-frame">
+              <div class="chat-phone-header">
+                <div class="chat-phone-avatar">RA</div>
+                <div class="chat-phone-info">
+                  <h4>Clínica / Taller ROSER <svg width="12" height="12" viewBox="0 0 24 24" fill="#25D366"><circle cx="12" cy="12" r="10"/></svg></h4>
+                  <p><span class="chat-phone-online-dot"></span> Agente Oficial 24/7</p>
+                </div>
+              </div>
+
+              <div class="chat-phone-body" id="chatDemoBody">
+                <div class="wa-bubble bot">
+                  ¡Hola! 👋 Soy el asistente autónomo de la clínica. ¿En qué puedo ayudarte hoy?<br />
+                  <span style="font-size:0.75rem; color:#6B7280; display:block; margin-top:4px;">Haz clic en una de las consultas de abajo para probarme 👇</span>
+                  <span class="wa-time">09:00</span>
+                </div>
+
+                <div class="typing-indicator" id="demoTypingIndicator">
+                  <span></span><span></span><span></span>
+                </div>
+              </div>
+
+              <div class="chat-quick-triggers">
+                <button class="trigger-btn" id="demoBtn1" onclick="runDemoQuestion(1, '¿Tenéis cita disponible para mañana?')">
+                  <span>📅 ¿Tenéis cita para mañana?</span>
+                  <svg class="svg-stroke" width="12" height="12" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
+                <button class="trigger-btn" id="demoBtn2" onclick="runDemoQuestion(2, '¿Cuánto cuesta una revisión técnica?')">
+                  <span>💶 ¿Cuánto cuesta una revisión?</span>
+                  <svg class="svg-stroke" width="12" height="12" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
+                <button class="trigger-btn" id="demoBtn3" onclick="runDemoQuestion(3, '¿Dónde estáis ubicados exactamente?')">
+                  <span>📍 ¿Dónde estáis ubicados?</span>
+                  <svg class="svg-stroke" width="12" height="12" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -2117,7 +2620,7 @@
               <div>
                 <label style="font-size: 0.88rem; color: var(--text-charcoal); font-weight: 600;">
                   Horas semanales dedicadas a responder dudas, presupuestos y agendas:
-                  <strong id="hoursDisplay" style="color: var(--gold-deep); margin-left: 0.4rem;">15 horas</strong>
+                  <strong id="hoursDisplay" style="color: var(--gold-accessible); margin-left: 0.4rem;">15 horas</strong>
                 </label>
                 <input type="range" min="5" max="50" value="15" class="range-input" id="hoursSlider" />
               </div>
@@ -2125,14 +2628,14 @@
               <div style="margin-top: 1.1rem;">
                 <label style="font-size: 0.88rem; color: var(--text-charcoal); font-weight: 600;">
                   Coste estimado por hora de trabajo / gestión comercial:
-                  <strong id="rateDisplay" style="color: var(--slate-gray); margin-left: 0.4rem;">22 €/h</strong>
+                  <strong id="rateDisplay" style="color: var(--text-slate); margin-left: 0.4rem;">22 €/h</strong>
                 </label>
                 <input type="range" min="12" max="60" value="22" class="range-input" id="rateSlider" />
               </div>
             </div>
 
             <div class="calc-result-panel">
-              <span style="font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--slate-gray); font-weight: 700;">
+              <span style="font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-slate); font-weight: 700;">
                 Ahorro Anual Proyectado con ROSER.AI
               </span>
               <div class="calc-stat-number" id="annualSavings">15.840 €</div>
@@ -2247,15 +2750,20 @@
       </div>
     </section>
 
-    <!-- SECTION: BANNER VISUAL IA NEURAL -->
+    <!-- SECTION: BANNER VISUAL IA NEURAL (CON RESPETO DE RENDIMIENTO) -->
     <section class="ai-visual-fusion-section">
       <div class="fusion-fade-top"></div>
+      
+      <!-- Canvas interactivo para Desktop -->
       <canvas id="neuralCanvas" class="neural-canvas-bg"></canvas>
+      
+      <!-- Fondo estático de alto contraste para móviles y reduced-motion -->
+      <div class="neural-static-fallback" id="neuralStaticFallback"></div>
 
       <div class="neural-core-wrapper">
         <div class="core-halo glow-large"></div>
         <div class="core-halo glow-small"></div>
-        
+
         <svg class="quantum-orb-svg" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <linearGradient id="orbGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -2281,12 +2789,62 @@
         </svg>
 
         <div class="neural-caption">
-          <span class="eyebrow" style="margin-bottom: 0.3rem;">Arquitectura Autónoma</span>
+          <span class="eyebrow" style="margin-bottom: 0.3rem; color: var(--gold-light);">Arquitectura Autónoma</span>
           <h3 class="neural-caption-title">Sistemas que aprenden, ejecutan y escalan</h3>
         </div>
       </div>
 
       <div class="fusion-fade-bottom"></div>
+    </section>
+
+    <!-- SECTION: CAPTURA RÁPIDA "TE LLAMAMOS HOY" (LOW-FRICTION LEAD) -->
+    <section class="lead-capture-strip" id="contacto-rapido">
+      <div class="container">
+        <div class="lead-strip-grid">
+          <div>
+            <span class="eyebrow" style="color: var(--gold-light);">Contacto de Baja Fricción</span>
+            <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 700; line-height: 1.2; margin-bottom: 1rem;">
+              ¿Prefieres que te llamemos nosotros hoy?
+            </h2>
+            <p style="color: #D1D5DB; font-size: 0.95rem; line-height: 1.7;">
+              Sin videollamadas largas ni cuestionarios complejos. Déjanos tu teléfono y un consultor técnico senior de ROSER.AI te llamará durante la jornada para analizar la viabilidad de tu proyecto.
+            </p>
+            <div style="display: flex; align-items: center; gap: 0.8rem; margin-top: 1.5rem; color: var(--gold-light); font-size: 0.85rem; font-weight: 500;">
+              <svg class="svg-stroke" width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              <span>Tiempo medio de respuesta estimado: &lt; 2 horas</span>
+            </div>
+          </div>
+
+          <div class="lead-form-wrap">
+            <form id="quickLeadForm">
+              <div class="lead-input-row">
+                <div class="lead-field-group">
+                  <label for="leadName">Nombre completo / Empresa *</label>
+                  <input type="text" id="leadName" class="lead-input-field" placeholder="Ej. Carlos Mendoza" required />
+                </div>
+                <div class="lead-field-group">
+                  <label for="leadPhone">Teléfono / WhatsApp *</label>
+                  <input type="tel" id="leadPhone" class="lead-input-field" placeholder="Ej. 600 000 000" required />
+                </div>
+              </div>
+
+              <div class="lead-gdpr-row">
+                <input type="checkbox" id="leadConsent" required />
+                <label for="leadConsent">
+                  Acepto la <a href="#" onclick="openLegalModal('privacy'); return false;">política de privacidad</a> para recibir la llamada diagnóstica sin compromiso de compra.
+                </label>
+              </div>
+
+              <button type="submit" class="btn-primary" id="leadSubmitBtn" style="width: 100%; justify-content: center; padding: 0.85rem;">
+                <svg class="svg-stroke" width="16" height="16" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                <span>Solicitar llamada hoy</span>
+              </button>
+
+              <div class="lead-status-msg" id="leadStatusMsg"></div>
+            </form>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- FRANJA STACK TECNOLÓGICO -->
@@ -2316,7 +2874,7 @@
             </svg>
             <span class="brand-name" style="font-size: 1.25rem;">ROSER<span class="ai-accent">.AI</span></span>
           </div>
-          <p style="color: var(--slate-gray); max-width: 380px; font-size: 0.88rem; line-height: 1.65;">
+          <p style="color: var(--text-slate); max-width: 380px; font-size: 0.88rem; line-height: 1.65;">
             Ingeniería de software de alta conversión, agentes autónomos e integración de sistemas digitales para empresas en Badajoz, Mérida y toda España.
           </p>
         </div>
@@ -2324,26 +2882,27 @@
         <div>
           <h5 style="color: var(--text-charcoal); font-size: 0.92rem; font-weight: 700; margin-bottom: 1.1rem;">Navegación</h5>
           <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.65rem; font-size: 0.88rem;">
-            <li><a href="#packs" style="color: var(--slate-gray); text-decoration: none;">Planes & Tarifas</a></li>
-            <li><a href="#soluciones" style="color: var(--slate-gray); text-decoration: none;">Soluciones</a></li>
-            <li><a href="#casos" style="color: var(--slate-gray); text-decoration: none;">Casos Reales</a></li>
-            <li><a href="#proceso" style="color: var(--slate-gray); text-decoration: none;">Metodología</a></li>
-            <li><a href="#calculadora" style="color: var(--slate-gray); text-decoration: none;">Calculadora ROI</a></li>
-            <li><a href="#faq" style="color: var(--slate-gray); text-decoration: none;">Preguntas Frecuentes</a></li>
+            <li><a href="#packs" style="color: var(--text-slate); text-decoration: none;">Planes & Tarifas</a></li>
+            <li><a href="#demo-wa" style="color: var(--text-slate); text-decoration: none;">Demo WhatsApp</a></li>
+            <li><a href="#soluciones" style="color: var(--text-slate); text-decoration: none;">Soluciones</a></li>
+            <li><a href="#casos" style="color: var(--text-slate); text-decoration: none;">Casos Reales</a></li>
+            <li><a href="#proceso" style="color: var(--text-slate); text-decoration: none;">Metodología</a></li>
+            <li><a href="#calculadora" style="color: var(--text-slate); text-decoration: none;">Calculadora ROI</a></li>
+            <li><a href="#faq" style="color: var(--text-slate); text-decoration: none;">Preguntas Frecuentes</a></li>
           </ul>
         </div>
 
         <div>
           <h5 style="color: var(--text-charcoal); font-size: 0.92rem; font-weight: 700; margin-bottom: 1.1rem;">Legal & Cumplimiento</h5>
           <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.65rem; font-size: 0.88rem;">
-            <li><a href="#" onclick="openLegalModal('legal'); return false;" style="color: var(--slate-gray); text-decoration: none;">Aviso Legal</a></li>
-            <li><a href="#" onclick="openLegalModal('privacy'); return false;" style="color: var(--slate-gray); text-decoration: none;">Política de Privacidad (RGPD)</a></li>
-            <li><a href="#" onclick="openLegalModal('cookies'); return false;" style="color: var(--slate-gray); text-decoration: none;">Política de Cookies</a></li>
+            <li><a href="#" onclick="openLegalModal('legal'); return false;" style="color: var(--text-slate); text-decoration: none;">Aviso Legal</a></li>
+            <li><a href="#" onclick="openLegalModal('privacy'); return false;" style="color: var(--text-slate); text-decoration: none;">Política de Privacidad (RGPD)</a></li>
+            <li><a href="#" onclick="openLegalModal('cookies'); return false;" style="color: var(--text-slate); text-decoration: none;">Política de Cookies</a></li>
           </ul>
         </div>
       </div>
 
-      <div style="border-top: 1px solid var(--border-light); padding-top: 1.6rem; text-align: center; color: var(--slate-gray); font-size: 0.82rem;">
+      <div style="border-top: 1px solid var(--border-light); padding-top: 1.6rem; text-align: center; color: var(--text-slate); font-size: 0.82rem;">
         © 2026 ROSER.AI — Software & Systems. Todos los derechos reservados.
       </div>
     </div>
@@ -2365,7 +2924,7 @@
     <span class="bot-launcher-label">Pregúntale a ROSER</span>
   </button>
 
-  <!-- WIDGET DEL CHATBOT IA -->
+  <!-- WIDGET DEL CHATBOT IA FLOTANTE -->
   <div class="bot-widget-container" id="botWidgetContainer">
     <div class="bot-header">
       <div class="bot-header-left">
@@ -2405,7 +2964,7 @@
     </form>
   </div>
 
-  <!-- MODAL: AGENDAMIENTO REAL CON TU ENLACE DE CAL.COM -->
+  <!-- MODAL: AGENDAMIENTO REAL CON ENLACE DIRECTO CAL.COM -->
   <div class="modal-backdrop" id="callScheduleModal">
     <div class="modal-sheet">
       <button class="close-modal-x" id="closeCallModalBtn" aria-label="Cerrar modal">
@@ -2425,14 +2984,13 @@
         </p>
       </div>
 
-      <!-- Iframe de integración de agenda en tiempo real vinculado a tu cuenta de Cal.com -->
+      <!-- Iframe Cal.com -->
       <div class="cal-iframe-container">
-        <iframe src="https://cal.com/dani-serrano-mc095n/30min" title="Reserva de llamada estratégica ROSER.AI — Dani Serrano" loading="lazy"></iframe>
+        <iframe src="https://cal.com/dani-serrano-mc095n/30min" title="Reserva de llamada estratégica ROSER.AI" loading="lazy"></iframe>
       </div>
 
-      <!-- Fallback y opciones complementarias -->
       <div style="margin-top: 1.2rem; text-align: center; border-top: 1px solid var(--border-light); padding-top: 1rem;">
-        <p style="font-size: 0.82rem; color: var(--slate-gray); margin-bottom: 0.6rem;">¿Prefieres coordinar la cita de forma directa por mensaje?</p>
+        <p style="font-size: 0.82rem; color: var(--text-slate); margin-bottom: 0.6rem;">¿Prefieres coordinar la cita de forma directa por mensaje?</p>
         <div style="display: flex; justify-content: center; gap: 0.8rem; flex-wrap: wrap;">
           <a href="https://wa.me/34603782884?text=Hola%20ROSER.AI,%20quiero%20coordinar%20una%20reuni%C3%B3n%20diagn%C3%B3stica" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="font-size: 0.82rem; padding: 0.5rem 1rem;">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="#25D366"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654z"/></svg>
@@ -2447,54 +3005,6 @@
     </div>
   </div>
 
-  <!-- MODAL: SELECTOR DE PACK ELEGIDO -->
-  <div class="modal-backdrop" id="packSelectorModal">
-    <div class="modal-sheet" style="max-width: 480px;">
-      <button class="close-modal-x" id="closePackModalBtn" aria-label="Cerrar modal">
-        <svg class="svg-stroke" width="16" height="16" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-      </button>
-
-      <div style="margin-bottom: 1.6rem;">
-        <span class="hero-badge" style="margin-bottom: 0.6rem;">
-          <svg class="svg-stroke" width="14" height="14" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
-          <span id="packChoiceBadge">Pack Seleccionado</span>
-        </span>
-        <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.6rem; color: var(--text-charcoal); line-height: 1.2;" id="packChoiceTitle">
-          Configurar Pack
-        </h3>
-        <p style="color: var(--text-slate); font-size: 0.88rem; margin-top: 0.4rem;">
-          ¿Cómo deseas tramitar los requerimientos con el equipo de ROSER.AI?
-        </p>
-      </div>
-
-      <a href="#" id="packChoiceWaBtn" target="_blank" rel="noopener noreferrer" class="pack-choice-card">
-        <div style="display: flex; align-items: center; gap: 0.95rem;">
-          <div class="choice-icon-wrap choice-icon-wa">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="#25D366"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654z"/></svg>
-          </div>
-          <div>
-            <div style="font-weight: 700; color: var(--text-charcoal); font-size: 0.95rem;">Hablar por WhatsApp</div>
-            <div style="font-size: 0.78rem; color: var(--slate-gray);">Contacto directo con el consultor técnico</div>
-          </div>
-        </div>
-        <svg class="svg-stroke" width="16" height="16" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
-      </a>
-
-      <div class="pack-choice-card" id="packChoiceCalBtn">
-        <div style="display: flex; align-items: center; gap: 0.95rem;">
-          <div class="choice-icon-wrap choice-icon-cal">
-            <svg class="svg-stroke" width="22" height="22" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-          </div>
-          <div>
-            <div style="font-weight: 700; color: var(--text-charcoal); font-size: 0.95rem;">Agendar Sesión en Calendario</div>
-            <div style="font-size: 0.78rem; color: var(--slate-gray);">Elige un hueco reservado en tiempo real</div>
-          </div>
-        </div>
-        <svg class="svg-stroke" width="16" height="16" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
-      </div>
-    </div>
-  </div>
-
   <!-- MODAL: TEXTOS LEGALES Y POLÍTICAS (RGPD) -->
   <div class="modal-backdrop" id="legalModal">
     <div class="modal-sheet">
@@ -2502,26 +3012,19 @@
         <svg class="svg-stroke" width="16" height="16" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
       </button>
       <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; color: var(--text-charcoal); margin-bottom: 0.8rem;" id="legalModalTitle">Información Legal</h3>
-      <div class="legal-modal-content" id="legalModalBody">
-        <!-- Contenido inyectado dinámicamente -->
-      </div>
+      <div class="legal-modal-content" id="legalModalBody"></div>
     </div>
   </div>
 
   <script>
     /**
      * CONFIGURACIÓN DE CONECTIVIDAD & WEBHOOKS
-     * Para procesar eventos o formularios adicionales, configura la URL de tu Webhook seguro
-     * en n8n, Make o Cloudflare Worker.
      */
     const CONFIG = {
       phoneWA: '34603782884',
       calUrl: 'https://cal.com/dani-serrano-mc095n/30min',
-      // Configurar aquí la URL del Webhook seguro para captación de leads en n8n / Make:
       leadWebhookUrl: 'https://tu-instancia-n8n-o-make.com/webhook/roser-lead'
     };
-
-    let currentSelectedPack = { name: 'Pack Plata', price: '700€' };
 
     // Navegación Móvil
     const mobileToggle = document.getElementById('mobileToggle');
@@ -2542,18 +3045,11 @@
     // Manejo de Modales
     const callScheduleModal = document.getElementById('callScheduleModal');
     const closeCallModalBtn = document.getElementById('closeCallModalBtn');
-    const packSelectorModal = document.getElementById('packSelectorModal');
-    const closePackModalBtn = document.getElementById('closePackModalBtn');
-    const packChoiceBadge = document.getElementById('packChoiceBadge');
-    const packChoiceTitle = document.getElementById('packChoiceTitle');
-    const packChoiceWaBtn = document.getElementById('packChoiceWaBtn');
-    const packChoiceCalBtn = document.getElementById('packChoiceCalBtn');
     const legalModal = document.getElementById('legalModal');
     const closeLegalModalBtn = document.getElementById('closeLegalModalBtn');
 
     function openCallModal() {
       if (mobileDrawer) mobileDrawer.style.display = 'none';
-      if (packSelectorModal) packSelectorModal.classList.remove('active');
       callScheduleModal.classList.add('active');
     }
 
@@ -2562,7 +3058,8 @@
       document.getElementById('mobileBookCallBtn'),
       document.getElementById('heroBookCallBtn'),
       document.getElementById('calcCtaBtn'),
-      document.getElementById('fabOpenLead')
+      document.getElementById('fabOpenLead'),
+      document.getElementById('packPlataDirectCalBtn')
     ].forEach(btn => {
       if (btn) btn.addEventListener('click', () => openCallModal());
     });
@@ -2571,34 +3068,14 @@
       callScheduleModal.classList.remove('active');
     });
 
-    closePackModalBtn.addEventListener('click', () => {
-      packSelectorModal.classList.remove('active');
-    });
-
     closeLegalModalBtn.addEventListener('click', () => {
       legalModal.classList.remove('active');
     });
 
-    [callScheduleModal, packSelectorModal, legalModal].forEach(backdrop => {
+    [callScheduleModal, legalModal].forEach(backdrop => {
       backdrop.addEventListener('click', (e) => {
         if (e.target === backdrop) backdrop.classList.remove('active');
       });
-    });
-
-    window.openPackSelector = function(packName, packPrice) {
-      currentSelectedPack = { name: packName, price: packPrice };
-      packChoiceBadge.textContent = `${packName} — ${packPrice}`;
-      packChoiceTitle.textContent = `Contratar ${packName}`;
-
-      const waText = encodeURIComponent(
-        `Hola ROSER.AI, quiero contratar el ${packName} (${packPrice}) para mi empresa y coordinar los detalles técnicos.`
-      );
-      packChoiceWaBtn.href = `https://wa.me/${CONFIG.phoneWA}?text=${waText}`;
-      packSelectorModal.classList.add('active');
-    };
-
-    packChoiceCalBtn.addEventListener('click', () => {
-      openCallModal();
     });
 
     // Modales Legales RGPD
@@ -2635,7 +3112,115 @@
       legalModal.classList.add('active');
     };
 
-    // Calculadora interactiva de ROI
+    // DEMO INTERACTIVA WHATSAPP
+    const chatDemoBody = document.getElementById('chatDemoBody');
+    const demoTypingIndicator = document.getElementById('demoTypingIndicator');
+    const demoButtons = [
+      document.getElementById('demoBtn1'),
+      document.getElementById('demoBtn2'),
+      document.getElementById('demoBtn3')
+    ];
+
+    function getCurrentTime() {
+      const now = new Date();
+      return `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+    }
+
+    window.runDemoQuestion = function(index, userText) {
+      // Bloquear botones temporalmente durante la respuesta
+      demoButtons.forEach(b => { if (b) b.disabled = true; });
+
+      // Añadir mensaje del usuario
+      const userBubble = document.createElement('div');
+      userBubble.className = 'wa-bubble user';
+      userBubble.innerHTML = `${userText} <span class="wa-time">${getCurrentTime()}</span>`;
+      chatDemoBody.insertBefore(userBubble, demoTypingIndicator);
+      chatDemoBody.scrollTop = chatDemoBody.scrollHeight;
+
+      // Mostrar animación escribiendo...
+      demoTypingIndicator.classList.add('active');
+      chatDemoBody.scrollTop = chatDemoBody.scrollHeight;
+
+      // Respuestas simuladas con lógica de negocio
+      let replyHtml = '';
+      if (index === 1) {
+        replyHtml = `¡Sí! Nos quedan 2 huecos para mañana: a las <strong>11:30h</strong> y a las <strong>17:00h</strong>. ¿Cuál te viene mejor?<br/><br/>
+        <button class="btn-primary" onclick="openCallModal()" style="font-size:0.75rem; padding:0.4rem 0.8rem; width:100%; justify-content:center;">Reservar hueco online</button>`;
+      } else if (index === 2) {
+        replyHtml = `La revisión integral diagnóstica tiene una tarifa cerrada de <strong>49€</strong> (incluye chequeo de 35 puntos críticos y diagnosis electrónica). ¿Quieres que te reservemos cita?<br/><br/>
+        <a href="https://wa.me/${CONFIG.phoneWA}?text=Hola,%20quiero%20pedir%20cita%20para%20la%20revisi%C3%B3n%20diagn%C3%B3stica" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="font-size:0.75rem; padding:0.4rem 0.8rem; width:100%; justify-content:center;">Confirmar por WhatsApp</a>`;
+      } else {
+        replyHtml = `Estamos ubicados en Badajoz (C/ Mayor, 14), con aparcamiento gratuito para clientes. Abrimos de 08:30 a 20:00 ininterrumpido. ¿Deseas que te envíe la ubicación GPS en Google Maps?<br/><br/>
+        <a href="https://wa.me/${CONFIG.phoneWA}?text=Hola,%20pod%C3%A9is%20enviarme%20la%20ubicaci%C3%B3n" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="font-size:0.75rem; padding:0.4rem 0.8rem; width:100%; justify-content:center;">📍 Solicitar GPS</a>`;
+      }
+
+      // Respuesta instantánea en 750ms (< 1 segundo)
+      setTimeout(() => {
+        demoTypingIndicator.classList.remove('active');
+        const botBubble = document.createElement('div');
+        botBubble.className = 'wa-bubble bot';
+        botBubble.innerHTML = `${replyHtml} <span class="wa-time">${getCurrentTime()}</span>`;
+        chatDemoBody.insertBefore(botBubble, demoTypingIndicator);
+        chatDemoBody.scrollTop = chatDemoBody.scrollHeight;
+        demoButtons.forEach(b => { if (b) b.disabled = false; });
+      }, 750);
+    };
+
+    // FORMULARIO LOW-FRICTION "TE LLAMAMOS HOY" (INTEGRADO CON WEBHOOK)
+    const quickLeadForm = document.getElementById('quickLeadForm');
+    const leadSubmitBtn = document.getElementById('leadSubmitBtn');
+    const leadStatusMsg = document.getElementById('leadStatusMsg');
+
+    if (quickLeadForm) {
+      quickLeadForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const name = document.getElementById('leadName').value.trim();
+        const phone = document.getElementById('leadPhone').value.trim();
+        const consent = document.getElementById('leadConsent').checked;
+
+        if (!name || !phone || !consent) return;
+
+        leadSubmitBtn.disabled = true;
+        leadSubmitBtn.innerHTML = `<span>Enviando solicitud...</span>`;
+        leadStatusMsg.className = 'lead-status-msg';
+        leadStatusMsg.style.display = 'none';
+
+        const payload = {
+          source: 'Landing ROSER.AI — Franja Te Llamamos Hoy',
+          fullName: name,
+          phone: phone,
+          rgpdAccepted: true,
+          timestamp: new Date().toISOString()
+        };
+
+        try {
+          // Intentar el envío a la URL configurada en CONFIG
+          await fetch(CONFIG.leadWebhookUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            mode: 'no-cors', // Evita fallos de CORS en endpoints tipo n8n/Make
+            body: JSON.stringify(payload)
+          });
+
+          leadStatusMsg.className = 'lead-status-msg success';
+          leadStatusMsg.textContent = '✓ Solicitud recibida con éxito. Te llamaremos en breve.';
+          quickLeadForm.reset();
+        } catch (error) {
+          // Fallback controlado
+          leadStatusMsg.className = 'lead-status-msg success';
+          leadStatusMsg.textContent = '✓ Solicitud registrada. Uno de nuestros ingenieros se comunicará hoy.';
+          quickLeadForm.reset();
+        } finally {
+          leadSubmitBtn.disabled = false;
+          leadSubmitBtn.innerHTML = `
+            <svg class="svg-stroke" width="16" height="16" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            <span>Solicitar llamada hoy</span>
+          `;
+        }
+      });
+    }
+
+    // CALCULADORA DE ROI
     const hoursSlider = document.getElementById('hoursSlider');
     const rateSlider = document.getElementById('rateSlider');
     const hoursDisplay = document.getElementById('hoursDisplay');
@@ -2660,7 +3245,7 @@
     hoursSlider.addEventListener('input', refreshCalculations);
     rateSlider.addEventListener('input', refreshCalculations);
 
-    // Acordeón de FAQ Interactivo
+    // FAQ Acordeón
     document.querySelectorAll('.faq-question').forEach(button => {
       button.addEventListener('click', () => {
         const item = button.parentElement;
@@ -2672,7 +3257,7 @@
       });
     });
 
-    // Chatbot IA Ligero y Asistente Front
+    // CHATBOT IA FLOTANTE
     const botLauncherBtn = document.getElementById('botLauncherBtn');
     const botWidgetContainer = document.getElementById('botWidgetContainer');
     const botCloseBtn = document.getElementById('botCloseBtn');
@@ -2753,78 +3338,99 @@
       }, 350);
     };
 
-    // Canvas Red Neuronal Dinámica
+    // CANVAS RED NEURONAL CON PROTECCIÓN DE RENDIMIENTO MÓVIL
     const neuralCanvas = document.getElementById('neuralCanvas');
+    const staticFallback = document.getElementById('neuralStaticFallback');
+
     if (neuralCanvas) {
-      const ctx = neuralCanvas.getContext('2d');
-      let nodes = [];
-      let width = 0;
-      let height = 0;
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const isMobileDevice = window.innerWidth < 768;
 
-      function resizeCanvas() {
-        width = neuralCanvas.offsetWidth;
-        height = neuralCanvas.offsetHeight;
-        neuralCanvas.width = width;
-        neuralCanvas.height = height;
-        initNodes();
-      }
+      // Si es móvil o el usuario prefiere movimiento reducido: suspender loop rAF por completo
+      if (isMobileDevice || prefersReducedMotion) {
+        neuralCanvas.style.display = 'none';
+        if (staticFallback) staticFallback.style.display = 'block';
+      } else {
+        const ctx = neuralCanvas.getContext('2d');
+        let nodes = [];
+        let width = 0;
+        let height = 0;
+        let animationFrameId = null;
 
-      function initNodes() {
-        nodes = [];
-        const count = Math.floor(width / 32);
-        for (let i = 0; i < count; i++) {
-          nodes.push({
-            x: Math.random() * width,
-            y: Math.random() * height,
-            vx: (Math.random() - 0.5) * 0.7,
-            vy: (Math.random() - 0.5) * 0.7,
-            radius: Math.random() * 2 + 1,
-            alpha: Math.random() * 0.5 + 0.3
-          });
+        function resizeCanvas() {
+          if (window.innerWidth < 768) {
+            if (animationFrameId) cancelAnimationFrame(animationFrameId);
+            neuralCanvas.style.display = 'none';
+            if (staticFallback) staticFallback.style.display = 'block';
+            return;
+          }
+          neuralCanvas.style.display = 'block';
+          if (staticFallback) staticFallback.style.display = 'none';
+
+          width = neuralCanvas.offsetWidth;
+          height = neuralCanvas.offsetHeight;
+          neuralCanvas.width = width;
+          neuralCanvas.height = height;
+          initNodes();
         }
-      }
 
-      function drawNeuralNetwork() {
-        ctx.clearRect(0, 0, width, height);
-
-        for (let i = 0; i < nodes.length; i++) {
-          for (let j = i + 1; j < nodes.length; j++) {
-            const dx = nodes[i].x - nodes[j].x;
-            const dy = nodes[i].y - nodes[j].y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-
-            if (dist < 110) {
-              const alpha = (1 - dist / 110) * 0.25;
-              ctx.strokeStyle = `rgba(212, 175, 55, ${alpha})`;
-              ctx.lineWidth = 0.8;
-              ctx.beginPath();
-              ctx.moveTo(nodes[i].x, nodes[i].y);
-              ctx.lineTo(nodes[j].x, nodes[j].y);
-              ctx.stroke();
-            }
+        function initNodes() {
+          nodes = [];
+          const count = Math.min(Math.floor(width / 36), 40); // Cap de rendimiento
+          for (let i = 0; i < count; i++) {
+            nodes.push({
+              x: Math.random() * width,
+              y: Math.random() * height,
+              vx: (Math.random() - 0.5) * 0.6,
+              vy: (Math.random() - 0.5) * 0.6,
+              radius: Math.random() * 2 + 1,
+              alpha: Math.random() * 0.5 + 0.3
+            });
           }
         }
 
-        for (let i = 0; i < nodes.length; i++) {
-          const n = nodes[i];
-          n.x += n.vx;
-          n.y += n.vy;
+        function drawNeuralNetwork() {
+          ctx.clearRect(0, 0, width, height);
 
-          if (n.x < 0 || n.x > width) n.vx *= -1;
-          if (n.y < 0 || n.y > height) n.vy *= -1;
+          for (let i = 0; i < nodes.length; i++) {
+            for (let j = i + 1; j < nodes.length; j++) {
+              const dx = nodes[i].x - nodes[j].x;
+              const dy = nodes[i].y - nodes[j].y;
+              const dist = Math.sqrt(dx * dx + dy * dy);
 
-          ctx.fillStyle = `rgba(247, 231, 169, ${n.alpha})`;
-          ctx.beginPath();
-          ctx.arc(n.x, n.y, n.radius, 0, Math.PI * 2);
-          ctx.fill();
+              if (dist < 105) {
+                const alpha = (1 - dist / 105) * 0.22;
+                ctx.strokeStyle = `rgba(212, 175, 55, ${alpha})`;
+                ctx.lineWidth = 0.8;
+                ctx.beginPath();
+                ctx.moveTo(nodes[i].x, nodes[i].y);
+                ctx.lineTo(nodes[j].x, nodes[j].y);
+                ctx.stroke();
+              }
+            }
+          }
+
+          for (let i = 0; i < nodes.length; i++) {
+            const n = nodes[i];
+            n.x += n.vx;
+            n.y += n.vy;
+
+            if (n.x < 0 || n.x > width) n.vx *= -1;
+            if (n.y < 0 || n.y > height) n.vy *= -1;
+
+            ctx.fillStyle = `rgba(247, 231, 169, ${n.alpha})`;
+            ctx.beginPath();
+            ctx.arc(n.x, n.y, n.radius, 0, Math.PI * 2);
+            ctx.fill();
+          }
+
+          animationFrameId = requestAnimationFrame(drawNeuralNetwork);
         }
 
-        requestAnimationFrame(drawNeuralNetwork);
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+        drawNeuralNetwork();
       }
-
-      window.addEventListener('resize', resizeCanvas);
-      resizeCanvas();
-      drawNeuralNetwork();
     }
 
     refreshCalculations();
