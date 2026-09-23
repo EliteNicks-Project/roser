@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Planes, Tarifas & Calculadora de ROI — ROSER.AI</title>
+  <meta name="description" content="Estructura transparente de inversión para automatizar tu negocio: Pack Básico (300€), Pack Plata (700€) y Pack Oro (1.200€) con retainers opcionales y proyección de ahorro." />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .range-input {
+      width: 100%;
+      height: 7px;
+      border-radius: var(--radius-full);
+      background: #E5E7EB;
+      outline: none;
+      -webkit-appearance: none;
+      margin: 1.1rem 0;
+    }
+    .range-input::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--gold-metallic);
+      border: 3px solid #FFFFFF;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(184, 144, 37, 0.45);
+    }
+    .calc-result-panel {
+      background: linear-gradient(180deg, #FAFAFA 0%, #F5F5F7 100%);
+      border: 1px solid var(--border-light);
+      border-top: 3px solid var(--gold-metallic);
+      border-radius: var(--radius-md);
+      padding: 2.2rem;
+      text-align: center;
+      box-shadow: var(--shadow-luxury-sm);
+    }
+    .calc-stat-number {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--gold-accessible);
+      margin: 0.4rem 0;
+    }
+    .compare-container {
+      overflow-x: auto;
+      margin: 3rem 0;
+      background: #FFFFFF;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-light);
+      box-shadow: var(--shadow-luxury-sm);
+    }
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.92rem;
+    }
+    .compare-table th {
+      padding: 1.2rem 1.6rem;
+      background: var(--bg-surface-soft);
+      border-bottom: 1px solid var(--border-light);
+      color: var(--text-slate);
+      font-weight: 700;
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .compare-table td {
+      padding: 1.3rem 1.6rem;
+      border-bottom: 1px solid var(--border-light);
+      color: var(--text-charcoal);
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div class="nav-wrapper">
+        <a href="index.html" class="brand-container">
+          <span class="brand-name">ROSER<span class="ai-accent">.AI</span></span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="soluciones.html">Soluciones & Demo</a></li>
+          <li><a href="precios.html" class="active">Packs & ROI</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a href="https://cal.com/dani-serrano-mc095n/30min" target="_blank" rel="noopener noreferrer" class="btn-primary">
+            Agendar Llamada
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container section-wrap">
+    <div class="section-header" style="text-align: center; max-width: 800px; margin: 0 auto 3.5rem;">
+      <span class="eyebrow">Tarifas Transparentes</span>
+      <h1 class="section-title">Inversión con retorno operativo cuantificable</h1>
+      <p class="section-subtitle" style="margin: 0.8rem auto 0;">
+        Todos nuestros proyectos se entregan con propiedad 100% en tus manos y garantía de despliegue de 14 días.
+      </p>
+    </div>
+
+    <!-- TARJETAS DE LOS TRES PACKS -->
+    <div class="pricing-grid">
+      <!-- BÁSICO -->
+      <div class="pack-card">
+        <div>
+          <h3 class="pack-title">Pack Básico</h3>
+          <p class="pack-tagline">Presencia web moderna y canal directo para captación comercial inmediata.</p>
+          <div class="pack-price-box">
+            <div class="pack-price-number">300€</div>
+            <div class="pack-price-period">implementación única</div>
+          </div>
+          <div class="retainer-sub-box">
+            <strong>Retainer Opcional:</strong> desde <strong>49 €/mes</strong> (mantenimiento y seguridad preventiva).
+          </div>
+          <ul class="pack-features-list">
+            <li><span>Web One-Page responsive ultrarrápida.</span></li>
+            <li><span>Canal directo a WhatsApp para atención directa.</span></li>
+            <li><span>Formulario seguro con webhook a tu email/móvil.</span></li>
+            <li><span>Optimización básica de ficha en Google Maps.</span></li>
+            <li><span>Entrega en 3 a 5 días laborables.</span></li>
+          </ul>
+        </div>
+        <a href="https://wa.me/34603782884?text=Hola%20ROSER.AI,%20quiero%20contratar%20el%20Pack%20B%C3%A1sico%20(300%E2%82%AC)" target="_blank" rel="noopener noreferrer" class="btn-ghost btn-pack-action">
+          Contratar vía WhatsApp
+        </a>
+      </div>
+
+      <!-- PLATA (ESTRELLA) -->
+      <div class="pack-card popular">
+        <span class="popular-pill">Más Recomendado</span>
+        <div>
+          <h3 class="pack-title">Pack Plata</h3>
+          <p class="pack-tagline">Estructura comercial B2B con agente conversacional que atiende y agenda 24/7.</p>
+          <div class="pack-price-box">
+            <div class="pack-price-number">700€</div>
+            <div class="pack-price-period">implementación única</div>
+          </div>
+          <div class="retainer-sub-box">
+            <strong>Retainer Opcional:</strong> desde <strong>89 €/mes</strong> (reentrenamiento continuo y monitorización de APIs).
+          </div>
+          <ul class="pack-features-list">
+            <li><span>Todo lo incluido en el Pack Básico.</span></li>
+            <li><span>Web multi-sección con arquitectura de persuasión.</span></li>
+            <li><span><strong>Agente IA conversacional</strong> en Web o WhatsApp.</span></li>
+            <li><span><strong>Sincronización en tiempo real vía Cal.com</strong>.</span></li>
+            <li><span>Cualificación automática 24/7 de prospectos.</span></li>
+            <li><span>SEO técnico local para Badajoz, Mérida y España.</span></li>
+            <li><span>Entrega en 7 a 10 días laborables.</span></li>
+          </ul>
+        </div>
+        <a href="https://cal.com/dani-serrano-mc095n/30min" target="_blank" rel="noopener noreferrer" class="btn-primary btn-pack-action">
+          Agendar Sesión en Cal.com
+        </a>
+      </div>
+
+      <!-- ORO -->
+      <div class="pack-card">
+        <div>
+          <h3 class="pack-title">Pack Oro</h3>
+          <p class="pack-tagline">Ecosistema integral corporativo para delegar la operativa técnica y administrativa.</p>
+          <div class="pack-price-box">
+            <div class="pack-price-number">1.200€</div>
+            <div class="pack-price-period">implementación única</div>
+          </div>
+          <div class="retainer-sub-box">
+            <strong>Retainer Opcional:</strong> desde <strong>149 €/mes</strong> (supervisión continua de webhooks y SLAs críticos).
+          </div>
+          <ul class="pack-features-list">
+            <li><span>Todo lo incluido en el Pack Plata.</span></li>
+            <li><span>Web corporativa premium con diseño exclusivo.</span></li>
+            <li><span><strong>Meta Cloud API Oficial + Web RAG</strong>.</span></li>
+            <li><span><strong>Pipelines de automatización con n8n y Make</strong>.</span></li>
+            <li><span>Generación desatendida de facturas/presupuestos PDF.</span></li>
+            <li><span>Integración total con CRM (HubSpot, Sheets, Notion).</span></li>
+            <li><span>Entrega en 12 a 18 días laborables.</span></li>
+          </ul>
+        </div>
+        <a href="https://wa.me/34603782884?text=Hola%20ROSER.AI,%20quiero%20coordinar%20el%20Pack%20Oro%20(1.200%E2%82%AC)" target="_blank" rel="noopener noreferrer" class="btn-ghost btn-pack-action">
+          Alcance Técnico en WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <!-- CALCULADORA ROI -->
+    <div style="background: #FFFFFF; border: 1px solid var(--border-gold); border-radius: var(--radius-lg); padding: 3rem 2.4rem; margin: 5rem 0; box-shadow: var(--shadow-luxury-md);">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; align-items: center;">
+        <div>
+          <span class="eyebrow">Calculadora de Eficiencia</span>
+          <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.9rem; margin-bottom: 0.8rem;">¿Cuánto dinero recuperará tu empresa?</h2>
+          <p style="color: var(--text-slate); font-size: 0.95rem; margin-bottom: 1.5rem;">
+            Ajusta las variables de tu operativa semanal para proyectar el ahorro al sustituir tareas manuales por sistemas autónomos:
+          </p>
+
+          <label style="font-size: 0.88rem; font-weight: 600;">
+            Horas semanales dedicadas a responder clientes y gestionar citas:
+            <strong id="hoursDisplay" style="color: var(--gold-accessible);">15 horas</strong>
+          </label>
+          <input type="range" min="5" max="50" value="15" class="range-input" id="hoursSlider" />
+
+          <label style="font-size: 0.88rem; font-weight: 600; display: block; margin-top: 1rem;">
+            Coste por hora de gestión comercial/administrativa:
+            <strong id="rateDisplay" style="color: var(--text-slate);">22 €/h</strong>
+          </label>
+          <input type="range" min="12" max="60" value="22" class="range-input" id="rateSlider" />
+        </div>
+
+        <div class="calc-result-panel">
+          <span style="font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-slate); font-weight: 700;">Ahorro Anual Proyectado</span>
+          <div class="calc-stat-number" id="annualSavings">15.840 €</div>
+          <p style="color: var(--text-slate); font-size: 0.85rem; margin-bottom: 1.4rem;">
+            Equivalente a <strong id="hoursFreed" style="color: var(--text-charcoal);">60 horas/mes</strong> recuperadas para cerrar ventas estratégicas.
+          </p>
+          <a href="https://cal.com/dani-serrano-mc095n/30min" target="_blank" rel="noopener noreferrer" class="btn-primary" style="width: 100%; justify-content: center;">
+            Recuperar este tiempo ahora
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMPARATIVA -->
+    <div class="section-header" style="margin-top: 3rem;">
+      <span class="eyebrow">Diferencial Operativo</span>
+      <h2 class="section-title">Modelo Analógico vs ROSER.AI</h2>
+    </div>
+
+    <div class="compare-container">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Factor</th>
+            <th>Modelo Analógico Convencional</th>
+            <th>Ecosistema ROSER.AI</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Respuesta en WhatsApp</strong></td>
+            <td style="color: #DC2626;">Demora de 2 a 12 horas (leads perdidos)</td>
+            <td style="color: var(--gold-accessible); font-weight: 600;">Respuesta en &lt; 60 segundos 24/7</td>
+          </tr>
+          <tr>
+            <td><strong>Agendamiento</strong></td>
+            <td style="color: #DC2626;">Rondas de mensajes y citas solapadas</td>
+            <td style="color: var(--gold-accessible); font-weight: 600;">Sincronizado en tiempo real vía Cal.com</td>
+          </tr>
+          <tr>
+            <td><strong>Propiedad Técnica</strong></td>
+            <td style="color: #DC2626;">Retención y cobros mensuales cautivos</td>
+            <td style="color: var(--gold-accessible); font-weight: 600;">100% propiedad del cliente sin ataduras</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container" style="text-align: center; color: var(--text-slate); font-size: 0.85rem;">
+      © 2026 ROSER.AI — Ingeniería de Software & Sistemas Autónomos. Operado desde Badajoz y Mérida.
+    </div>
+  </footer>
+
+  <script>
+    const hoursSlider = document.getElementById('hoursSlider');
+    const rateSlider = document.getElementById('rateSlider');
+    const hoursDisplay = document.getElementById('hoursDisplay');
+    const rateDisplay = document.getElementById('rateDisplay');
+    const annualSavings = document.getElementById('annualSavings');
+    const hoursFreed = document.getElementById('hoursFreed');
+
+    function refresh() {
+      const h = parseInt(hoursSlider.value, 10);
+      const r = parseInt(rateSlider.value, 10);
+      hoursDisplay.textContent = `${h} horas`;
+      rateDisplay.textContent = `${r} €/h`;
+      annualSavings.textContent = `${Math.round(h * r * 48).toLocaleString('es-ES')} €`;
+      hoursFreed.textContent = `${Math.round(h * 4)} horas/mes`;
+    }
+    hoursSlider.oninput = refresh;
+    rateSlider.oninput = refresh;
+    refresh();
+  </script>
+</body>
+</html>
