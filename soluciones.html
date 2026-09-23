@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Soluciones Técnicas & Demo Agente WhatsApp — ROSER.AI</title>
-  <meta name="description" content="Descubre cómo funcionan los agentes conversacionales en WhatsApp, la integración con n8n/Make y el simulador en tiempo real de ROSER.AI." />
+  <meta name="description" content="Descubre cómo funcionan los agentes conversacionales en WhatsApp con Meta Cloud API oficial y pipelines con n8n/Make desarrollados por ROSER.AI." />
   
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,7 +17,7 @@
       background: #FFFFFF;
       border-radius: 36px;
       border: 10px solid #1F2937;
-      box-shadow: 0 25px 60px rgba(17, 24, 39, 0.16);
+      box-shadow: 0 25px 60px rgba(17, 24, 39, 0.16), 0 0 35px rgba(212, 175, 55, 0.15);
       overflow: hidden;
       display: flex;
       flex-direction: column;
@@ -73,6 +73,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      transition: all 0.2s ease;
     }
     .trigger-btn:hover {
       background: var(--gold-subtle);
@@ -83,49 +84,70 @@
 </head>
 
 <body>
+  <!-- HEADER -->
   <header>
     <div class="container">
       <div class="nav-wrapper">
         <a href="index.html" class="brand-container">
-          <span class="brand-name">ROSER<span class="ai-accent">.AI</span></span>
+          <svg class="brand-icon-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="goldBrandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#F7E7A9" />
+                <stop offset="50%" stop-color="#D4AF37" />
+                <stop offset="100%" stop-color="#B89025" />
+              </linearGradient>
+            </defs>
+            <polygon points="50,6 90,28 90,72 50,94 10,72 10,28" stroke="url(#goldBrandGrad)" stroke-width="4.5" fill="rgba(212, 175, 55, 0.08)" />
+            <circle cx="50" cy="50" r="14" fill="url(#goldBrandGrad)" />
+            <line x1="50" y1="6" x2="50" y2="36" stroke="url(#goldBrandGrad)" stroke-width="3" />
+            <line x1="90" y1="72" x2="62" y2="58" stroke="url(#goldBrandGrad)" stroke-width="3" />
+            <line x1="10" y1="72" x2="38" y2="58" stroke="url(#goldBrandGrad)" stroke-width="3" />
+          </svg>
+          <div class="brand-title-wrap">
+            <span class="brand-name">ROSER<span class="ai-accent">.AI</span></span>
+            <span class="brand-sub">Software & Systems</span>
+          </div>
         </a>
+
         <ul class="nav-links">
           <li><a href="index.html">Inicio</a></li>
           <li><a href="soluciones.html" class="active">Soluciones & Demo</a></li>
           <li><a href="precios.html">Packs & ROI</a></li>
+          <li><a href="index.html#contacto-rapido">Contacto Rápido</a></li>
         </ul>
+
         <div class="nav-actions">
-          <a href="https://cal.com/dani-serrano-mc095n/30min" target="_blank" rel="noopener noreferrer" class="btn-primary">
-            Agendar 30 min
-          </a>
+          <button class="btn-primary" onclick="openCallModal()">
+            <svg class="svg-stroke" width="16" height="16" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line><path d="m9 16 2 2 4-4"></path></svg>
+            <span>Agendar 30 min</span>
+          </button>
         </div>
       </div>
     </div>
   </header>
 
   <main class="container section-wrap">
-    <!-- DEMO INTERACTIVA WHATSAPP -->
+    <!-- SIMULADOR INTERACTIVO -->
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 3rem; align-items: center; margin-bottom: 5rem;">
       <div>
         <span class="eyebrow">Demostración en Tiempo Real</span>
-        <h1 class="section-title">Comprueba la velocidad de tu futuro Agente en WhatsApp</h1>
+        <h1 class="section-title">Comprueba la velocidad de respuesta de tu Agente</h1>
         <p class="section-subtitle" style="margin-bottom: 2rem;">
-          Simula cómo respondería un agente inteligente de ROSER.AI a consultas reales de clientes en una clínica o taller mecánico:
+          Prueba el flujo de atención autónoma para una clínica o taller mecánico: respuesta en menos de 1 segundo y derivación directa a agendamiento o WhatsApp.
         </p>
 
         <div style="background: #FFFFFF; border-left: 3px solid var(--gold-metallic); padding: 1.2rem; border-radius: var(--radius-sm); box-shadow: var(--shadow-luxury-sm); margin-bottom: 2rem;">
           <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text-charcoal); margin-bottom: 0.3rem;">⚡ Respuesta inmediata (&lt; 1 segundo)</h4>
           <p style="font-size: 0.85rem; color: var(--text-slate);">
-            Cero colas de espera. El prospecto cualifica sus necesidades y sincroniza su cita directamente con la agenda del negocio.
+            Cero tiempos muertos. El prospecto califica sus necesidades y sincroniza su cita directamente con la agenda del negocio.
           </p>
         </div>
 
-        <a href="https://cal.com/dani-serrano-mc095n/30min" target="_blank" rel="noopener noreferrer" class="btn-primary">
+        <button class="btn-primary" onclick="openCallModal()">
           Implementar Agente con Pack Plata (700€)
-        </a>
+        </button>
       </div>
 
-      <!-- MÓVIL SIMULADOR -->
       <div>
         <div class="chat-phone-frame">
           <div class="chat-phone-header">
@@ -138,7 +160,7 @@
 
           <div class="chat-phone-body" id="chatDemoBody">
             <div class="wa-bubble bot">
-              ¡Hola! 👋 Soy el agente virtual inteligente. ¿En qué te puedo ayudar hoy? Haz clic en una consulta de abajo para probarme:
+              ¡Hola! 👋 Soy el agente virtual de ROSER.AI. ¿En qué te puedo ayudar hoy? Haz clic en una consulta de abajo para probar mi respuesta:
             </div>
           </div>
 
@@ -157,10 +179,10 @@
       </div>
     </div>
 
-    <!-- CASOS DE USO POR SECTOR -->
+    <!-- MATRIZ DE SERVICIOS -->
     <div class="section-header">
       <span class="eyebrow">Arquitectura Aplicada</span>
-      <h2 class="section-title">Ecosistemas en producción</h2>
+      <h2 class="section-title">Soluciones de ingeniería en producción</h2>
     </div>
 
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.8rem; margin-bottom: 4rem;">
@@ -190,13 +212,103 @@
     </div>
   </main>
 
+  <!-- FOOTER -->
   <footer>
-    <div class="container" style="text-align: center; color: var(--text-slate); font-size: 0.85rem;">
-      © 2026 ROSER.AI — Especialistas en Agentes WhatsApp & Automatización B2B.
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <span class="brand-name" style="font-size: 1.25rem; margin-bottom: 0.8rem; display: block;">ROSER<span class="ai-accent">.AI</span></span>
+          <p style="color: var(--text-slate); font-size: 0.88rem; max-width: 380px;">
+            Ingeniería de software, automatización B2B y agentes de inteligencia artificial operados desde Badajoz y Mérida para empresas de toda España.
+          </p>
+        </div>
+        <div>
+          <h5 style="color: var(--text-charcoal); font-weight: 700; margin-bottom: 0.8rem;">Páginas</h5>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.88rem;">
+            <li><a href="index.html" style="color: var(--text-slate); text-decoration: none;">Inicio</a></li>
+            <li><a href="soluciones.html" style="color: var(--text-slate); text-decoration: none;">Soluciones & Demo WhatsApp</a></li>
+            <li><a href="precios.html" style="color: var(--text-slate); text-decoration: none;">Precios, Retainers & Calculadora ROI</a></li>
+            <li><a href="index.html#contacto-rapido" style="color: var(--text-slate); text-decoration: none;">Contacto Rápido</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 style="color: var(--text-charcoal); font-weight: 700; margin-bottom: 0.8rem;">Contacto Directo</h5>
+          <p style="font-size: 0.88rem; color: var(--text-slate); margin-bottom: 0.5rem;">WhatsApp: <a href="https://wa.me/34603782884" style="color: var(--gold-accessible); font-weight: 600; text-decoration: none;">+34 603 78 28 84</a></p>
+          <p style="font-size: 0.88rem; color: var(--text-slate);">Agenda: <a href="https://cal.com/dani-serrano-mc095n/30min" target="_blank" style="color: var(--gold-accessible); text-decoration: none;">cal.com/dani-serrano-mc095n/30min</a></p>
+        </div>
+      </div>
+      <div style="border-top: 1px solid var(--border-light); padding-top: 1.4rem; text-align: center; color: var(--text-slate); font-size: 0.82rem;">
+        © 2026 ROSER.AI — Todos los derechos reservados.
+      </div>
     </div>
   </footer>
 
+  <!-- ELEMENTOS FLOTANTES PERSISTENTES -->
+  <div class="floating-support-cluster">
+    <button class="action-fab fab-quote" onclick="openCallModal()" title="Agendar llamada de 30 min">
+      <svg class="svg-stroke" width="20" height="20" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+    </button>
+    <a href="https://wa.me/34603782884?text=Hola%20ROSER.AI,%20quiero%20conocer%20c%C3%B3mo%20pod%C3%A9is%20automatizar%20mi%20empresa" target="_blank" rel="noopener noreferrer" class="action-fab fab-wa" title="WhatsApp (+34 603 78 28 84)">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+    </a>
+  </div>
+
+  <button class="bot-launcher-fab" id="botLauncherBtn" title="Asistente Virtual ROSER.AI">
+    <span class="bot-status-pulse"></span>
+    <svg class="svg-stroke" width="16" height="16" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="10" rx="2"></rect><circle cx="12" cy="5" r="2"></circle><path d="M12 7v4"></path><line x1="8" y1="16" x2="8" y2="16"></line><line x1="16" y1="16" x2="16" y2="16"></line></svg>
+    <span>Pregúntale a ROSER</span>
+  </button>
+
+  <!-- WIDGET DEL ASISTENTE IA -->
+  <div class="bot-widget-container" id="botWidgetContainer">
+    <div class="bot-header">
+      <div>
+        <div style="font-weight: 700; font-size: 0.95rem;">ROSER Asistente IA</div>
+        <div style="font-size: 0.72rem; color: var(--gold-light);">En línea | Especialista Sistemas</div>
+      </div>
+      <button style="background: none; border: none; color: #FFFFFF; cursor: pointer;" id="botCloseBtn" aria-label="Cerrar">✕</button>
+    </div>
+
+    <div class="bot-messages-area" id="botMessagesArea">
+      <div class="bot-msg bot">
+        ¡Hola! 👋 Conozco los detalles técnicos del <strong>Pack Básico (300€)</strong>, <strong>Pack Plata (700€)</strong> y <strong>Pack Oro (1.200€)</strong>, así como la integración de WhatsApp y Cal.com. ¿Qué duda técnica tienes?
+      </div>
+    </div>
+
+    <div class="bot-quick-chips">
+      <button class="bot-chip" onclick="botAskQuick('¿Qué incluye el Pack Plata de 700€?')">Pack Plata (700€)</button>
+      <button class="bot-chip" onclick="botAskQuick('¿Cómo funciona el bot de WhatsApp?')">Agente WhatsApp</button>
+      <button class="bot-chip" onclick="botAskQuick('¿Cómo agendo una llamada?')">Agendar 30 min</button>
+    </div>
+
+    <form class="bot-input-container" id="botForm">
+      <input type="text" id="botInputText" placeholder="Escribe tu consulta..." required />
+      <button type="submit" class="bot-send-btn">➔</button>
+    </form>
+  </div>
+
+  <!-- MODAL CAL.COM -->
+  <div class="modal-backdrop" id="callScheduleModal">
+    <div class="modal-sheet">
+      <button class="close-modal-x" id="closeCallModalBtn" aria-label="Cerrar modal">
+        <svg class="svg-stroke" width="16" height="16" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; margin-bottom: 0.5rem;">Reserva de Sesión Estratégica (30 min)</h3>
+      <div class="cal-iframe-container">
+        <iframe src="https://cal.com/dani-serrano-mc095n/30min" title="Reserva Cal.com ROSER.AI" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+
   <script>
+    // Control de Modal Cal.com
+    const modal = document.getElementById('callScheduleModal');
+    const closeBtn = document.getElementById('closeCallModalBtn');
+    function openCallModal() { modal.classList.add('active'); }
+    if (closeBtn) closeBtn.onclick = () => modal.classList.remove('active');
+    modal.onclick = (e) => { if (e.target === modal) modal.classList.remove('active'); };
+
+    // Chat Demo WhatsApp
     function runDemo(userMsg, botMsg) {
       const body = document.getElementById('chatDemoBody');
       const u = document.createElement('div');
@@ -213,6 +325,56 @@
         body.scrollTop = body.scrollHeight;
       }, 550);
     }
+
+    // Chatbot Flotante ROSER
+    const botLauncherBtn = document.getElementById('botLauncherBtn');
+    const botWidgetContainer = document.getElementById('botWidgetContainer');
+    const botCloseBtn = document.getElementById('botCloseBtn');
+    const botMessagesArea = document.getElementById('botMessagesArea');
+    const botForm = document.getElementById('botForm');
+    const botInputText = document.getElementById('botInputText');
+
+    botLauncherBtn.onclick = () => botWidgetContainer.classList.toggle('active');
+    botCloseBtn.onclick = () => botWidgetContainer.classList.remove('active');
+
+    function botAppendMessage(sender, text) {
+      const m = document.createElement('div');
+      m.className = `bot-msg ${sender}`;
+      m.innerHTML = text;
+      botMessagesArea.appendChild(m);
+      botMessagesArea.scrollTop = botMessagesArea.scrollHeight;
+    }
+
+    function evalQuery(q) {
+      const query = q.toLowerCase();
+      if (query.includes('plata') || query.includes('700')) {
+        return `El <strong>Pack Plata (700€)</strong> es nuestro plan estrella: incluye web multi-sección, agente IA conversacional para WhatsApp y sincronización con Cal.com sin solapes de horario.`;
+      }
+      if (query.includes('oro') || query.includes('1200') || query.includes('1.200')) {
+        return `El <strong>Pack Oro (1.200€)</strong> es el ecosistema completo: automatización con n8n/Make, facturas PDF automáticas y Meta Cloud API oficial.`;
+      }
+      if (query.includes('basico') || query.includes('básico') || query.includes('300')) {
+        return `El <strong>Pack Básico (300€)</strong> incluye web moderna One-Page ultrarrápida y canal directo a WhatsApp con webhook.`;
+      }
+      if (query.includes('agenda') || query.includes('cita') || query.includes('llamada')) {
+        return `Puedes reservar tus 30 minutos de diagnóstico directamente en <a href="https://cal.com/dani-serrano-mc095n/30min" target="_blank" style="color:var(--gold-accessible); font-weight:700;">cal.com/dani-serrano-mc095n/30min</a> o escribirnos al WhatsApp (+34 603 78 28 84).`;
+      }
+      return `Para requerimientos específicos de tu negocio, puedes escribirnos por <a href="https://wa.me/34603782884" target="_blank" style="color:var(--gold-accessible); font-weight:700;">WhatsApp directo (+34 603 78 28 84)</a> o agendar tu sesión técnica de 30 min.`;
+    }
+
+    botForm.onsubmit = (e) => {
+      e.preventDefault();
+      const txt = botInputText.value.trim();
+      if (!txt) return;
+      botAppendMessage('user', txt);
+      botInputText.value = '';
+      setTimeout(() => botAppendMessage('bot', evalQuery(txt)), 350);
+    };
+
+    window.botAskQuick = function(txt) {
+      botAppendMessage('user', txt);
+      setTimeout(() => botAppendMessage('bot', evalQuery(txt)), 350);
+    };
   </script>
 </body>
 </html>
