@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ROSER.AI — Ingeniería de Software & Agentes IA en Badajoz y Mérida</title>
-  <meta name="description" content="Sistemas autónomos de ingeniería digital, agentes IA en WhatsApp y pipelines de automatización para empresas en Badajoz, Mérida y toda España." />
+  <title>ROSER.AI — Ingeniería de Software, Agentes IA & Automatización B2B</title>
+  <meta name="description" content="Sistemas autónomos de ingeniería digital, agentes IA en WhatsApp y pipelines de automatización con n8n y Make en Badajoz, Mérida y toda España." />
   
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -38,6 +38,7 @@
           </div>
         </a>
 
+        <!-- NAVEGACIÓN PRINCIPAL (RUTAS CORREGIDAS) -->
         <ul class="nav-links">
           <li><a href="index.html" class="active">Inicio</a></li>
           <li><a href="soluciones.html">Soluciones & Demo</a></li>
@@ -46,7 +47,7 @@
         </ul>
 
         <div class="nav-actions">
-          <button class="btn-primary" id="topBookCallBtn">
+          <button class="btn-primary" onclick="openCallModal()">
             <svg class="svg-stroke" width="16" height="16" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line><path d="m9 16 2 2 4-4"></path></svg>
             <span>Agendar 30 min</span>
           </button>
@@ -58,14 +59,14 @@
     </div>
   </header>
 
-  <!-- Mobile Drawer -->
+  <!-- MENÚ MÓVIL DESPLEGABLE -->
   <div id="mobileDrawer" style="display: none; background: #FFFFFF; border-bottom: 1px solid var(--border-light); padding: 1.5rem;" class="container">
     <div style="display: flex; flex-direction: column; gap: 1.2rem;">
       <a href="index.html" style="color: var(--gold-accessible); font-weight: 700; text-decoration: none;">Inicio</a>
       <a href="soluciones.html" style="color: var(--text-slate); font-weight: 500; text-decoration: none;">Soluciones & Demo</a>
       <a href="precios.html" style="color: var(--text-slate); font-weight: 500; text-decoration: none;">Packs & ROI</a>
       <a href="#contacto-rapido" style="color: var(--text-slate); font-weight: 500; text-decoration: none;">Contacto Rápido</a>
-      <button class="btn-primary" id="mobileBookCallBtn" style="justify-content: center; width: 100%;">
+      <button class="btn-primary" onclick="openCallModal()" style="justify-content: center; width: 100%;">
         Agendar Llamada en Cal.com
       </button>
     </div>
@@ -77,7 +78,7 @@
       <div class="container">
         <div style="display: inline-flex; align-items: center; gap: 0.55rem; background: #FFFFFF; border: 1px solid var(--border-gold); padding: 0.4rem 1.15rem; border-radius: var(--radius-full); font-size: 0.8rem; color: var(--gold-accessible); font-weight: 600; margin-bottom: 1.6rem; box-shadow: var(--shadow-luxury-sm);">
           <svg class="svg-stroke" width="14" height="14" viewBox="0 0 24 24"><polygon points="6 2 18 2 22 8 12 22 2 8 6 2"></polygon></svg>
-          Ingeniería Digital B2B & Agentes Autónomos · Badajoz, Mérida y toda España
+          Ingeniería de Software & Agentes Autónomos · Badajoz, Mérida y toda España
         </div>
 
         <h1 style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.3rem, 5vw, 4.1rem); line-height: 1.1; font-weight: 700; letter-spacing: -0.035em; color: var(--text-charcoal); margin-bottom: 1.5rem; max-width: 980px;">
@@ -86,18 +87,25 @@
         </h1>
 
         <p style="font-size: 1.15rem; color: var(--text-slate); max-width: 720px; line-height: 1.75; margin-bottom: 2.4rem;">
-          Desarrollamos interfaces de alto impacto comercial, agentes inteligentes en WhatsApp que atienden y agendan 24/7 y pipelines de automatización que erradican las tareas manuales de tu operativa diaria.
+          Desarrollamos interfaces de alto impacto comercial, agentes inteligentes en WhatsApp que atienden y agendan 24/7 y pipelines de automatización con n8n/Make que erradican las tareas manuales de tu operativa diaria.
         </p>
 
         <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 3.5rem;">
-          <button class="btn-primary" id="heroBookCallBtn" style="padding: 0.85rem 1.8rem; font-size: 0.95rem;">
+          <button class="btn-primary" onclick="openCallModal()" style="padding: 0.85rem 1.8rem; font-size: 0.95rem;">
             <svg class="svg-stroke" width="16" height="16" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
             <span>Agenda tu llamada (30 min)</span>
           </button>
 
+          <!-- ENLACE CORREGIDO DIRECTO A SOLUCIONES & DEMO -->
+          <a href="soluciones.html" class="btn-ghost">
+            <span>Ver Soluciones & Demo</span>
+            <svg class="svg-stroke" width="14" height="14" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </a>
+
+          <!-- ENLACE A PRECIOS -->
           <a href="precios.html" class="btn-ghost">
             <span>Ver Tarifas & Retainers</span>
-            <svg class="svg-stroke" width="14" height="14" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            <svg class="svg-stroke" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
           </a>
 
           <a href="https://wa.me/34603782884?text=Hola%20ROSER.AI,%20quiero%20conocer%20c%C3%B3mo%20pod%C3%A9is%20automatizar%20mi%20empresa" target="_blank" rel="noopener noreferrer" class="btn-ghost">
@@ -118,7 +126,7 @@
             </div>
             <div class="trust-content">
               <h4>Desarrollo Local y Soporte Senior</h4>
-              <p>Operado desde <strong>Badajoz y Mérida (Extremadura)</strong> para empresas de toda España. Trato directo con ingenieros de software, sin intermediarios comerciales ni plantillas lentas.</p>
+              <p>Operado desde <strong>Badajoz y Mérida (Extremadura)</strong> para empresas de toda España. Trato directo con ingenieros de software, sin intermediarios ni plantillas lentas.</p>
             </div>
           </div>
 
@@ -235,7 +243,11 @@
           </div>
         </div>
 
-        <div style="text-align: center; margin-top: 2.8rem;">
+        <div style="text-align: center; margin-top: 2.8rem; display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+          <a href="soluciones.html" style="font-weight: 600; color: var(--gold-accessible); text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem;">
+            <span>Probar Simulador de Agente WhatsApp</span>
+            <svg class="svg-stroke" width="16" height="16" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </a>
           <a href="precios.html" style="font-weight: 600; color: var(--gold-accessible); text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem;">
             <span>Ver tabla comparativa completa y Calculadora de ROI</span>
             <svg class="svg-stroke" width="16" height="16" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
@@ -305,6 +317,7 @@
             <li><a href="index.html" style="color: var(--text-slate); text-decoration: none;">Inicio</a></li>
             <li><a href="soluciones.html" style="color: var(--text-slate); text-decoration: none;">Soluciones & Demo WhatsApp</a></li>
             <li><a href="precios.html" style="color: var(--text-slate); text-decoration: none;">Precios, Retainers & Calculadora ROI</a></li>
+            <li><a href="#contacto-rapido" style="color: var(--text-slate); text-decoration: none;">Contacto Rápido</a></li>
           </ul>
         </div>
         <div>
@@ -319,6 +332,50 @@
     </div>
   </footer>
 
+  <!-- ELEMENTOS FLOTANTES -->
+  <div class="floating-support-cluster">
+    <button class="action-fab fab-quote" onclick="openCallModal()" title="Agendar llamada de 30 min">
+      <svg class="svg-stroke" width="20" height="20" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+    </button>
+    <a href="https://wa.me/34603782884" target="_blank" rel="noopener noreferrer" class="action-fab fab-wa" title="WhatsApp (+34 603 78 28 84)">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+    </a>
+  </div>
+
+  <button class="bot-launcher-fab" id="botLauncherBtn" title="Asistente Virtual ROSER.AI">
+    <span class="bot-status-pulse"></span>
+    <svg class="svg-stroke" width="16" height="16" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="10" rx="2"></rect><circle cx="12" cy="5" r="2"></circle><path d="M12 7v4"></path><line x1="8" y1="16" x2="8" y2="16"></line><line x1="16" y1="16" x2="16" y2="16"></line></svg>
+    <span>Pregúntale a ROSER</span>
+  </button>
+
+  <!-- WIDGET DEL ASISTENTE IA -->
+  <div class="bot-widget-container" id="botWidgetContainer">
+    <div class="bot-header">
+      <div>
+        <div style="font-weight: 700; font-size: 0.95rem;">ROSER Asistente IA</div>
+        <div style="font-size: 0.72rem; color: var(--gold-light);">En línea | Especialista Sistemas</div>
+      </div>
+      <button style="background: none; border: none; color: #FFFFFF; cursor: pointer;" id="botCloseBtn" aria-label="Cerrar">✕</button>
+    </div>
+
+    <div class="bot-messages-area" id="botMessagesArea">
+      <div class="bot-msg bot">
+        ¡Hola! 👋 Conozco los detalles del <strong>Pack Básico (300€)</strong>, <strong>Pack Plata (700€)</strong> y <strong>Pack Oro (1.200€)</strong>, además del funcionamiento de los agentes de WhatsApp. ¿Qué duda técnica puedo resolverte?
+      </div>
+    </div>
+
+    <div class="bot-quick-chips">
+      <button class="bot-chip" onclick="botAskQuick('¿Qué incluye el Pack Plata de 700€?')">Pack Plata (700€)</button>
+      <button class="bot-chip" onclick="botAskQuick('¿Cómo funciona el bot de WhatsApp?')">Agente WhatsApp</button>
+      <button class="bot-chip" onclick="botAskQuick('¿Cómo agendo llamada?')">Agendar 30 min</button>
+    </div>
+
+    <form class="bot-input-container" id="botForm">
+      <input type="text" id="botInputText" placeholder="Escribe tu consulta..." required />
+      <button type="submit" class="bot-send-btn">➔</button>
+    </form>
+  </div>
+
   <!-- MODAL CAL.COM -->
   <div class="modal-backdrop" id="callScheduleModal">
     <div class="modal-sheet">
@@ -332,25 +389,15 @@
     </div>
   </div>
 
-  <!-- ELEMENTOS FLOTANTES -->
-  <div class="floating-support-cluster">
-    <button class="action-fab fab-quote" onclick="openCallModal()" title="Agendar llamada de 30 min">
-      <svg class="svg-stroke" width="20" height="20" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-    </button>
-    <a href="https://wa.me/34603782884" target="_blank" rel="noopener noreferrer" class="action-fab fab-wa" title="WhatsApp (+34 603 78 28 84)">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-    </a>
-  </div>
-
   <script>
+    // Modal Cal.com
     const modal = document.getElementById('callScheduleModal');
     const closeBtn = document.getElementById('closeCallModalBtn');
     function openCallModal() { modal.classList.add('active'); }
     if (closeBtn) closeBtn.onclick = () => modal.classList.remove('active');
-    [document.getElementById('topBookCallBtn'), document.getElementById('heroBookCallBtn'), document.getElementById('mobileBookCallBtn')].forEach(btn => {
-      if (btn) btn.onclick = openCallModal;
-    });
+    modal.onclick = (e) => { if (e.target === modal) modal.classList.remove('active'); };
 
+    // Mobile Menu
     const mobileToggle = document.getElementById('mobileToggle');
     const mobileDrawer = document.getElementById('mobileDrawer');
     if (mobileToggle) {
@@ -359,16 +406,67 @@
       };
     }
 
+    // Formulario Rápido
     const form = document.getElementById('quickLeadForm');
     const statusMsg = document.getElementById('leadStatusMsg');
     if (form) {
       form.onsubmit = (e) => {
         e.preventDefault();
         statusMsg.className = 'lead-status-msg success';
-        statusMsg.textContent = '✓ Solicitud recibida. Nos pondremos en contacto contigo en breve.';
+        statusMsg.textContent = '✓ Solicitud recibida. Nos pondremos en contacto contigo hoy.';
         form.reset();
       };
     }
+
+    // Bot Flotante ROSER
+    const botLauncherBtn = document.getElementById('botLauncherBtn');
+    const botWidgetContainer = document.getElementById('botWidgetContainer');
+    const botCloseBtn = document.getElementById('botCloseBtn');
+    const botMessagesArea = document.getElementById('botMessagesArea');
+    const botForm = document.getElementById('botForm');
+    const botInputText = document.getElementById('botInputText');
+
+    botLauncherBtn.onclick = () => botWidgetContainer.classList.toggle('active');
+    botCloseBtn.onclick = () => botWidgetContainer.classList.remove('active');
+
+    function botAppendMessage(sender, text) {
+      const m = document.createElement('div');
+      m.className = `bot-msg ${sender}`;
+      m.innerHTML = text;
+      botMessagesArea.appendChild(m);
+      botMessagesArea.scrollTop = botMessagesArea.scrollHeight;
+    }
+
+    function evalQuery(q) {
+      const query = q.toLowerCase();
+      if (query.includes('plata') || query.includes('700')) {
+        return `El <strong>Pack Plata (700€)</strong> es nuestro plan estrella: incluye web multi-sección, agente IA conversacional para WhatsApp y sincronización con Cal.com sin solapes de horario.`;
+      }
+      if (query.includes('oro') || query.includes('1200') || query.includes('1.200')) {
+        return `El <strong>Pack Oro (1.200€)</strong> es el ecosistema completo: automatización con n8n/Make, facturas PDF automáticas y Meta Cloud API oficial.`;
+      }
+      if (query.includes('basico') || query.includes('básico') || query.includes('300')) {
+        return `El <strong>Pack Básico (300€)</strong> incluye web moderna One-Page ultrarrápida y canal directo a WhatsApp con webhook.`;
+      }
+      if (query.includes('agenda') || query.includes('cita') || query.includes('llamada')) {
+        return `Puedes reservar tus 30 minutos directamente en <a href="https://cal.com/dani-serrano-mc095n/30min" target="_blank" style="color:var(--gold-accessible); font-weight:700;">cal.com/dani-serrano-mc095n/30min</a> o escribirnos por WhatsApp (+34 603 78 28 84).`;
+      }
+      return `Para cualquier duda técnica sobre tu operativa, escríbenos directamente por <a href="https://wa.me/34603782884" target="_blank" style="color:var(--gold-accessible); font-weight:700;">WhatsApp (+34 603 78 28 84)</a> o agenda tu videollamada diagnóstica.`;
+    }
+
+    botForm.onsubmit = (e) => {
+      e.preventDefault();
+      const txt = botInputText.value.trim();
+      if (!txt) return;
+      botAppendMessage('user', txt);
+      botInputText.value = '';
+      setTimeout(() => botAppendMessage('bot', evalQuery(txt)), 350);
+    };
+
+    window.botAskQuick = function(txt) {
+      botAppendMessage('user', txt);
+      setTimeout(() => botAppendMessage('bot', evalQuery(txt)), 350);
+    };
   </script>
 </body>
 </html>
