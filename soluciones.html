@@ -3,82 +3,77 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Soluciones Técnicas & Demo Agente WhatsApp — ROSER.AI</title>
-  <meta name="description" content="Descubre cómo funcionan los agentes conversacionales en WhatsApp con Meta Cloud API oficial y pipelines con n8n/Make desarrollados por ROSER.AI." />
+  <title>Planes, Tarifas & Calculadora de ROI — ROSER.AI</title>
+  <meta name="description" content="Estructura transparente de inversión para automatizar tu negocio: Pack Básico (300€), Pack Plata (700€) y Pack Oro (1.200€) con retainers opcionales y proyección de ahorro." />
   
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
   <style>
-    .chat-phone-frame {
-      max-width: 390px;
-      margin: 0 auto;
-      background: #FFFFFF;
-      border-radius: 36px;
-      border: 10px solid #1F2937;
-      box-shadow: 0 25px 60px rgba(17, 24, 39, 0.16), 0 0 35px rgba(212, 175, 55, 0.15);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      height: 560px;
-    }
-    .chat-phone-header {
-      background: #075E54;
-      color: #FFFFFF;
-      padding: 0.85rem 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    .chat-phone-body {
-      flex: 1;
-      background-color: #EFEAE2;
-      background-image: radial-gradient(#d3c9bf 1px, transparent 1px);
-      background-size: 16px 16px;
-      padding: 1rem;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-    .wa-bubble {
-      max-width: 82%;
-      padding: 0.65rem 0.85rem;
-      border-radius: 12px;
-      font-size: 0.84rem;
-      line-height: 1.4;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    }
-    .wa-bubble.bot {
-      align-self: flex-start;
-      background: #FFFFFF;
-      color: var(--text-charcoal);
-    }
-    .wa-bubble.user {
-      align-self: flex-end;
-      background: #DCF8C6;
-      color: #0F381E;
-    }
-    .trigger-btn {
-      background: #F9FAFB;
-      border: 1px solid var(--border-medium);
-      color: var(--text-charcoal);
-      padding: 0.5rem 0.85rem;
+    .range-input {
+      width: 100%;
+      height: 7px;
       border-radius: var(--radius-full);
-      font-size: 0.78rem;
-      font-weight: 500;
-      cursor: pointer;
-      text-align: left;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      transition: all 0.2s ease;
+      background: #E5E7EB;
+      outline: none;
+      -webkit-appearance: none;
+      margin: 1.1rem 0;
     }
-    .trigger-btn:hover {
-      background: var(--gold-subtle);
-      border-color: var(--gold-metallic);
+    .range-input::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--gold-metallic);
+      border: 3px solid #FFFFFF;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(184, 144, 37, 0.45);
+    }
+    .calc-result-panel {
+      background: linear-gradient(180deg, #FAFAFA 0%, #F5F5F7 100%);
+      border: 1px solid var(--border-light);
+      border-top: 3px solid var(--gold-metallic);
+      border-radius: var(--radius-md);
+      padding: 2.2rem;
+      text-align: center;
+      box-shadow: var(--shadow-luxury-sm);
+    }
+    .calc-stat-number {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.8rem;
+      font-weight: 700;
       color: var(--gold-accessible);
+      margin: 0.4rem 0;
+    }
+    .compare-container {
+      overflow-x: auto;
+      margin: 3rem 0;
+      background: #FFFFFF;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-light);
+      box-shadow: var(--shadow-luxury-sm);
+    }
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.92rem;
+    }
+    .compare-table th {
+      padding: 1.2rem 1.6rem;
+      background: var(--bg-surface-soft);
+      border-bottom: 1px solid var(--border-light);
+      color: var(--text-slate);
+      font-weight: 700;
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .compare-table td {
+      padding: 1.3rem 1.6rem;
+      border-bottom: 1px solid var(--border-light);
+      color: var(--text-charcoal);
     }
   </style>
 </head>
@@ -90,35 +85,23 @@
       <div class="nav-wrapper">
         <a href="index.html" class="brand-container">
           <svg class="brand-icon-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="goldBrandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#F7E7A9" />
-                <stop offset="50%" stop-color="#D4AF37" />
-                <stop offset="100%" stop-color="#B89025" />
-              </linearGradient>
-            </defs>
-            <polygon points="50,6 90,28 90,72 50,94 10,72 10,28" stroke="url(#goldBrandGrad)" stroke-width="4.5" fill="rgba(212, 175, 55, 0.08)" />
-            <circle cx="50" cy="50" r="14" fill="url(#goldBrandGrad)" />
-            <line x1="50" y1="6" x2="50" y2="36" stroke="url(#goldBrandGrad)" stroke-width="3" />
-            <line x1="90" y1="72" x2="62" y2="58" stroke="url(#goldBrandGrad)" stroke-width="3" />
-            <line x1="10" y1="72" x2="38" y2="58" stroke="url(#goldBrandGrad)" stroke-width="3" />
+            <polygon points="50,6 90,28 90,72 50,94 10,72 10,28" stroke="#D4AF37" stroke-width="4.5" fill="rgba(212, 175, 55, 0.08)" />
+            <circle cx="50" cy="50" r="14" fill="#D4AF37" />
           </svg>
           <div class="brand-title-wrap">
             <span class="brand-name">ROSER<span class="ai-accent">.AI</span></span>
             <span class="brand-sub">Software & Systems</span>
           </div>
         </a>
-
         <ul class="nav-links">
           <li><a href="index.html">Inicio</a></li>
-          <li><a href="soluciones.html" class="active">Soluciones & Demo</a></li>
-          <li><a href="precios.html">Packs & ROI</a></li>
+          <li><a href="soluciones.html">Soluciones & Demo</a></li>
+          <li><a href="precios.html" class="active">Packs & ROI</a></li>
           <li><a href="index.html#contacto-rapido">Contacto Rápido</a></li>
         </ul>
-
         <div class="nav-actions">
           <button class="btn-primary" onclick="openCallModal()">
-            <svg class="svg-stroke" width="16" height="16" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line><path d="m9 16 2 2 4-4"></path></svg>
+            <svg class="svg-stroke" width="16" height="16" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
             <span>Agendar 30 min</span>
           </button>
         </div>
@@ -127,88 +110,166 @@
   </header>
 
   <main class="container section-wrap">
-    <!-- SIMULADOR INTERACTIVO -->
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 3rem; align-items: center; margin-bottom: 5rem;">
-      <div>
-        <span class="eyebrow">Demostración en Tiempo Real</span>
-        <h1 class="section-title">Comprueba la velocidad de respuesta de tu Agente</h1>
-        <p class="section-subtitle" style="margin-bottom: 2rem;">
-          Prueba el flujo de atención autónoma para una clínica o taller mecánico: respuesta en menos de 1 segundo y derivación directa a agendamiento o WhatsApp.
-        </p>
+    <div class="section-header" style="text-align: center; max-width: 800px; margin: 0 auto 3.5rem;">
+      <span class="eyebrow">Tarifas Transparentes</span>
+      <h1 class="section-title">Inversión con retorno operativo cuantificable</h1>
+      <p class="section-subtitle" style="margin: 0.8rem auto 0;">
+        Todos nuestros proyectos se entregan con propiedad 100% en tus manos, código limpio y garantía de despliegue de 14 días.
+      </p>
+    </div>
 
-        <div style="background: #FFFFFF; border-left: 3px solid var(--gold-metallic); padding: 1.2rem; border-radius: var(--radius-sm); box-shadow: var(--shadow-luxury-sm); margin-bottom: 2rem;">
-          <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text-charcoal); margin-bottom: 0.3rem;">⚡ Respuesta inmediata (&lt; 1 segundo)</h4>
-          <p style="font-size: 0.85rem; color: var(--text-slate);">
-            Cero tiempos muertos. El prospecto califica sus necesidades y sincroniza su cita directamente con la agenda del negocio.
-          </p>
+    <!-- TARJETAS DE LOS TRES PACKS -->
+    <div class="pricing-grid">
+      <!-- BÁSICO -->
+      <div class="pack-card">
+        <div>
+          <h3 class="pack-title">Pack Básico</h3>
+          <p class="pack-tagline">Presencia web moderna y canal directo para captación comercial inmediata.</p>
+          <div class="pack-price-box">
+            <div class="pack-price-number">300€</div>
+            <div class="pack-price-period">implementación única</div>
+          </div>
+          <div class="retainer-sub-box">
+            <strong>Retainer Opcional:</strong> desde <strong>49 €/mes</strong> (mantenimiento y seguridad preventiva).
+          </div>
+          <ul class="pack-features-list">
+            <li><span>Web One-Page responsive ultrarrápida.</span></li>
+            <li><span>Canal directo a WhatsApp para atención directa.</span></li>
+            <li><span>Formulario seguro con webhook a tu email o CRM.</span></li>
+            <li><span>Optimización básica de ficha en Google Maps.</span></li>
+            <li><span>Entrega en 3 a 5 días laborables.</span></li>
+          </ul>
         </div>
+        <a href="https://wa.me/34603782884?text=Hola%20ROSER.AI,%20quiero%20contratar%20el%20Pack%20B%C3%A1sico%20(300%E2%82%AC)" target="_blank" rel="noopener noreferrer" class="btn-ghost btn-pack-action">
+          Contratar vía WhatsApp
+        </a>
+      </div>
 
-        <button class="btn-primary" onclick="openCallModal()">
-          Implementar Agente con Pack Plata (700€)
+      <!-- PLATA (ESTRELLA) -->
+      <div class="pack-card popular">
+        <span class="popular-pill">Más Recomendado</span>
+        <div>
+          <h3 class="pack-title">Pack Plata</h3>
+          <p class="pack-tagline">Estructura comercial B2B con agente conversacional que atiende y agenda 24/7.</p>
+          <div class="pack-price-box">
+            <div class="pack-price-number">700€</div>
+            <div class="pack-price-period">implementación única</div>
+          </div>
+          <div class="retainer-sub-box">
+            <strong>Retainer Opcional:</strong> desde <strong>89 €/mes</strong> (reentrenamiento continuo y monitorización de APIs).
+          </div>
+          <ul class="pack-features-list">
+            <li><span>Todo lo incluido en el Pack Básico.</span></li>
+            <li><span>Web multi-sección con arquitectura de persuasión.</span></li>
+            <li><span><strong>Agente IA conversacional</strong> en Web o WhatsApp.</span></li>
+            <li><span><strong>Sincronización en tiempo real vía Cal.com</strong>.</span></li>
+            <li><span>Cualificación automática 24/7 de prospectos.</span></li>
+            <li><span>SEO técnico local para Badajoz, Mérida y España.</span></li>
+            <li><span>Entrega en 7 a 10 días laborables.</span></li>
+          </ul>
+        </div>
+        <button type="button" class="btn-primary btn-pack-action" onclick="openCallModal()">
+          Agendar Sesión en Cal.com
         </button>
       </div>
 
-      <div>
-        <div class="chat-phone-frame">
-          <div class="chat-phone-header">
-            <div style="width: 36px; height: 36px; border-radius: 50%; background: #D4AF37; display: flex; align-items: center; justify-content: center; font-weight: 700;">RA</div>
-            <div>
-              <h4 style="font-size: 0.92rem; font-weight: 700;">Clínica / Taller ROSER</h4>
-              <p style="font-size: 0.7rem; color: #DCF8C6;">● Agente Oficial 24/7</p>
-            </div>
+      <!-- ORO -->
+      <div class="pack-card">
+        <div>
+          <h3 class="pack-title">Pack Oro</h3>
+          <p class="pack-tagline">Ecosistema integral corporativo para delegar la operativa técnica y administrativa.</p>
+          <div class="pack-price-box">
+            <div class="pack-price-number">1.200€</div>
+            <div class="pack-price-period">implementación única</div>
           </div>
+          <div class="retainer-sub-box">
+            <strong>Retainer Opcional:</strong> desde <strong>149 €/mes</strong> (supervisión continua de webhooks y SLAs críticos).
+          </div>
+          <ul class="pack-features-list">
+            <li><span>Todo lo incluido en el Pack Plata.</span></li>
+            <li><span>Web corporativa premium con diseño exclusivo.</span></li>
+            <li><span><strong>Meta Cloud API Oficial + Web RAG</strong>.</span></li>
+            <li><span><strong>Pipelines de automatización con n8n y Make</strong>.</span></li>
+            <li><span>Generación desatendida de facturas/presupuestos PDF.</span></li>
+            <li><span>Integración total con CRM (HubSpot, Sheets, Notion).</span></li>
+            <li><span>Entrega en 12 a 18 días laborables.</span></li>
+          </ul>
+        </div>
+        <a href="https://wa.me/34603782884?text=Hola%20ROSER.AI,%20quiero%20coordinar%20el%20Pack%20Oro%20(1.200%E2%82%AC)" target="_blank" rel="noopener noreferrer" class="btn-ghost btn-pack-action">
+          Alcance Técnico en WhatsApp
+        </a>
+      </div>
+    </div>
 
-          <div class="chat-phone-body" id="chatDemoBody">
-            <div class="wa-bubble bot">
-              ¡Hola! 👋 Soy el agente virtual de ROSER.AI. ¿En qué te puedo ayudar hoy? Haz clic en una consulta de abajo para probar mi respuesta:
-            </div>
-          </div>
+    <!-- CALCULADORA ROI -->
+    <div style="background: #FFFFFF; border: 1px solid var(--border-gold); border-radius: var(--radius-lg); padding: 3rem 2.4rem; margin: 5rem 0; box-shadow: var(--shadow-luxury-md);">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; align-items: center;">
+        <div>
+          <span class="eyebrow">Calculadora de Eficiencia</span>
+          <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.9rem; margin-bottom: 0.8rem;">¿Cuánto dinero recuperará tu empresa?</h2>
+          <p style="color: var(--text-slate); font-size: 0.95rem; margin-bottom: 1.5rem;">
+            Ajusta las variables de tu operativa semanal para proyectar el ahorro al sustituir tareas manuales por sistemas autónomos:
+          </p>
 
-          <div style="padding: 0.85rem; background: #FFFFFF; border-top: 1px solid var(--border-light); display: flex; flex-direction: column; gap: 0.5rem;">
-            <button class="trigger-btn" onclick="runDemo('¿Tenéis hueco para mañana?', '¡Hola! Nos quedan dos citas disponibles mañana: a las 11:30h o a las 17:00h. ¿Cuál prefieres reservar?')">
-              <span>📅 ¿Tenéis cita para mañana?</span>
-            </button>
-            <button class="trigger-btn" onclick="runDemo('¿Cuánto cuesta una revisión?', 'La revisión diagnóstica completa son 49€ (incluye diagnosis electrónica). ¿Deseas que te reservemos turno?')">
-              <span>💶 ¿Cuánto cuesta una revisión?</span>
-            </button>
-            <button class="trigger-btn" onclick="runDemo('¿Dónde estáis ubicados?', 'Estamos ubicados en Badajoz (C/ Mayor, 14) con parking propio para clientes. Abrimos de 08:30 a 20:00.')">
-              <span>📍 ¿Dónde estáis ubicados?</span>
-            </button>
-          </div>
+          <label style="font-size: 0.88rem; font-weight: 600;">
+            Horas semanales dedicadas a responder clientes y gestionar citas:
+            <strong id="hoursDisplay" style="color: var(--gold-accessible);">15 horas</strong>
+          </label>
+          <input type="range" min="5" max="50" value="15" class="range-input" id="hoursSlider" />
+
+          <label style="font-size: 0.88rem; font-weight: 600; display: block; margin-top: 1rem;">
+            Coste por hora de gestión comercial/administrativa:
+            <strong id="rateDisplay" style="color: var(--text-slate);">22 €/h</strong>
+          </label>
+          <input type="range" min="12" max="60" value="22" class="range-input" id="rateSlider" />
+        </div>
+
+        <div class="calc-result-panel">
+          <span style="font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-slate); font-weight: 700;">Ahorro Anual Proyectado</span>
+          <div class="calc-stat-number" id="annualSavings">15.840 €</div>
+          <p style="color: var(--text-slate); font-size: 0.85rem; margin-bottom: 1.4rem;">
+            Equivalente a <strong id="hoursFreed" style="color: var(--text-charcoal);">60 horas/mes</strong> recuperadas para cerrar ventas estratégicas.
+          </p>
+          <button class="btn-primary" onclick="openCallModal()" style="width: 100%; justify-content: center;">
+            Recuperar este tiempo ahora
+          </button>
         </div>
       </div>
     </div>
 
-    <!-- MATRIZ DE SERVICIOS -->
-    <div class="section-header">
-      <span class="eyebrow">Arquitectura Aplicada</span>
-      <h2 class="section-title">Soluciones de ingeniería en producción</h2>
+    <!-- COMPARATIVA -->
+    <div class="section-header" style="margin-top: 3rem;">
+      <span class="eyebrow">Diferencial Operativo</span>
+      <h2 class="section-title">Modelo Analógico vs ROSER.AI</h2>
     </div>
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.8rem; margin-bottom: 4rem;">
-      <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 2.2rem; box-shadow: var(--shadow-luxury-sm);">
-        <span class="eyebrow" style="margin-bottom: 0.4rem;">Clínicas & Salud</span>
-        <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.25rem; margin-bottom: 0.6rem;">Recordatorios y citas desatendidas</h3>
-        <p style="font-size: 0.9rem; color: var(--text-slate); line-height: 1.6;">
-          Atención y resolución de dudas 24/7 sobre tratamientos, agendamiento sincronizado y aviso automático 24 horas antes por WhatsApp que reduce el absentismo un 75%.
-        </p>
-      </div>
-
-      <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 2.2rem; box-shadow: var(--shadow-luxury-sm);">
-        <span class="eyebrow" style="margin-bottom: 0.4rem;">Talleres & Concesionarios</span>
-        <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.25rem; margin-bottom: 0.6rem;">Presupuestos en PDF al instante</h3>
-        <p style="font-size: 0.9rem; color: var(--text-slate); line-height: 1.6;">
-          Recepción de datos del vehículo vía WhatsApp, generación automática de la hoja de presupuesto en PDF y remisión al cliente sin intervención del recepcionista.
-        </p>
-      </div>
-
-      <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 2.2rem; box-shadow: var(--shadow-luxury-sm);">
-        <span class="eyebrow" style="margin-bottom: 0.4rem;">Servicios B2B</span>
-        <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.25rem; margin-bottom: 0.6rem;">Cualificación hacia CRM y Cal.com</h3>
-        <p style="font-size: 0.9rem; color: var(--text-slate); line-height: 1.6;">
-          El agente recopila presupuesto, urgencia y tipo de cliente; si cumple el perfil ideal, le facilita el enlace a la agenda y guarda los datos en HubSpot o Sheets.
-        </p>
-      </div>
+    <div class="compare-container">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Factor</th>
+            <th>Modelo Analógico Convencional</th>
+            <th>Ecosistema ROSER.AI</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Respuesta en WhatsApp</strong></td>
+            <td style="color: #DC2626;">Demora de 2 a 12 horas (leads perdidos)</td>
+            <td style="color: var(--gold-accessible); font-weight: 600;">Respuesta en &lt; 60 segundos 24/7</td>
+          </tr>
+          <tr>
+            <td><strong>Agendamiento</strong></td>
+            <td style="color: #DC2626;">Rondas de mensajes y citas solapadas</td>
+            <td style="color: var(--gold-accessible); font-weight: 600;">Sincronizado en tiempo real vía Cal.com</td>
+          </tr>
+          <tr>
+            <td><strong>Propiedad Técnica</strong></td>
+            <td style="color: #DC2626;">Retención y cobros mensuales cautivos</td>
+            <td style="color: var(--gold-accessible); font-weight: 600;">100% propiedad del cliente sin ataduras</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </main>
 
@@ -259,7 +320,7 @@
     <span>Pregúntale a ROSER</span>
   </button>
 
-  <!-- WIDGET DEL ASISTENTE IA -->
+  <!-- WIDGET CHATBOT IA FLOTANTE -->
   <div class="bot-widget-container" id="botWidgetContainer">
     <div class="bot-header">
       <div>
@@ -271,18 +332,18 @@
 
     <div class="bot-messages-area" id="botMessagesArea">
       <div class="bot-msg bot">
-        ¡Hola! 👋 Conozco los detalles técnicos del <strong>Pack Básico (300€)</strong>, <strong>Pack Plata (700€)</strong> y <strong>Pack Oro (1.200€)</strong>, así como la integración de WhatsApp y Cal.com. ¿Qué duda técnica tienes?
+        ¡Hola! 👋 Si tienes dudas entre el <strong>Pack Plata (700€)</strong> y el <strong>Pack Oro (1.200€)</strong> o sobre los retainers de mantenimiento, pregúntame directamente.
       </div>
     </div>
 
     <div class="bot-quick-chips">
       <button class="bot-chip" onclick="botAskQuick('¿Qué incluye el Pack Plata de 700€?')">Pack Plata (700€)</button>
-      <button class="bot-chip" onclick="botAskQuick('¿Cómo funciona el bot de WhatsApp?')">Agente WhatsApp</button>
-      <button class="bot-chip" onclick="botAskQuick('¿Cómo agendo una llamada?')">Agendar 30 min</button>
+      <button class="bot-chip" onclick="botAskQuick('¿Cómo son los retainers mensuales?')">Retainers Mensuales</button>
+      <button class="bot-chip" onclick="botAskQuick('¿Cómo agendo llamada?')">Agendar 30 min</button>
     </div>
 
     <form class="bot-input-container" id="botForm">
-      <input type="text" id="botInputText" placeholder="Escribe tu consulta..." required />
+      <input type="text" id="botInputText" placeholder="Pregunta sobre tarifas o ROI..." required />
       <button type="submit" class="bot-send-btn">➔</button>
     </form>
   </div>
@@ -301,30 +362,32 @@
   </div>
 
   <script>
-    // Control de Modal Cal.com
+    // Modal Cal.com
     const modal = document.getElementById('callScheduleModal');
     const closeBtn = document.getElementById('closeCallModalBtn');
     function openCallModal() { modal.classList.add('active'); }
     if (closeBtn) closeBtn.onclick = () => modal.classList.remove('active');
     modal.onclick = (e) => { if (e.target === modal) modal.classList.remove('active'); };
 
-    // Chat Demo WhatsApp
-    function runDemo(userMsg, botMsg) {
-      const body = document.getElementById('chatDemoBody');
-      const u = document.createElement('div');
-      u.className = 'wa-bubble user';
-      u.textContent = userMsg;
-      body.appendChild(u);
-      body.scrollTop = body.scrollHeight;
+    // Calculadora ROI
+    const hoursSlider = document.getElementById('hoursSlider');
+    const rateSlider = document.getElementById('rateSlider');
+    const hoursDisplay = document.getElementById('hoursDisplay');
+    const rateDisplay = document.getElementById('rateDisplay');
+    const annualSavings = document.getElementById('annualSavings');
+    const hoursFreed = document.getElementById('hoursFreed');
 
-      setTimeout(() => {
-        const b = document.createElement('div');
-        b.className = 'wa-bubble bot';
-        b.textContent = botMsg;
-        body.appendChild(b);
-        body.scrollTop = body.scrollHeight;
-      }, 550);
+    function refresh() {
+      const h = parseInt(hoursSlider.value, 10);
+      const r = parseInt(rateSlider.value, 10);
+      hoursDisplay.textContent = `${h} horas`;
+      rateDisplay.textContent = `${r} €/h`;
+      annualSavings.textContent = `${Math.round(h * r * 48).toLocaleString('es-ES')} €`;
+      hoursFreed.textContent = `${Math.round(h * 4)} horas/mes`;
     }
+    hoursSlider.oninput = refresh;
+    rateSlider.oninput = refresh;
+    refresh();
 
     // Chatbot Flotante ROSER
     const botLauncherBtn = document.getElementById('botLauncherBtn');
@@ -348,18 +411,18 @@
     function evalQuery(q) {
       const query = q.toLowerCase();
       if (query.includes('plata') || query.includes('700')) {
-        return `El <strong>Pack Plata (700€)</strong> es nuestro plan estrella: incluye web multi-sección, agente IA conversacional para WhatsApp y sincronización con Cal.com sin solapes de horario.`;
+        return `El <strong>Pack Plata (700€)</strong> es nuestro plan más contratado: web multi-sección, agente IA en WhatsApp y Cal.com sincronizado. Retainer opcional de 89 €/mes.`;
       }
       if (query.includes('oro') || query.includes('1200') || query.includes('1.200')) {
-        return `El <strong>Pack Oro (1.200€)</strong> es el ecosistema completo: automatización con n8n/Make, facturas PDF automáticas y Meta Cloud API oficial.`;
+        return `El <strong>Pack Oro (1.200€)</strong> incluye automatizaciones n8n/Make, facturación automática en PDF, CRM y Meta Cloud API oficial. Retainer opcional de 149 €/mes.`;
       }
       if (query.includes('basico') || query.includes('básico') || query.includes('300')) {
-        return `El <strong>Pack Básico (300€)</strong> incluye web moderna One-Page ultrarrápida y canal directo a WhatsApp con webhook.`;
+        return `El <strong>Pack Básico (300€)</strong> es perfecto para presencia directa y canal de WhatsApp. Retainer opcional de 49 €/mes.`;
       }
-      if (query.includes('agenda') || query.includes('cita') || query.includes('llamada')) {
-        return `Puedes reservar tus 30 minutos de diagnóstico directamente en <a href="https://cal.com/dani-serrano-mc095n/30min" target="_blank" style="color:var(--gold-accessible); font-weight:700;">cal.com/dani-serrano-mc095n/30min</a> o escribirnos al WhatsApp (+34 603 78 28 84).`;
+      if (query.includes('retainer') || query.includes('mantenimiento')) {
+        return `Los retainers son opcionales y sin permanencia: Básico (49€/mes), Plata (89€/mes) y Oro (149€/mes) para supervisión técnica, reentrenamiento de IA y SLAs.`;
       }
-      return `Para requerimientos específicos de tu negocio, puedes escribirnos por <a href="https://wa.me/34603782884" target="_blank" style="color:var(--gold-accessible); font-weight:700;">WhatsApp directo (+34 603 78 28 84)</a> o agendar tu sesión técnica de 30 min.`;
+      return `Puedes tratar los detalles directamente agendando una sesión en <a href="https://cal.com/dani-serrano-mc095n/30min" target="_blank" style="color:var(--gold-accessible); font-weight:700;">Cal.com (30 min)</a> o por WhatsApp (+34 603 78 28 84).`;
     }
 
     botForm.onsubmit = (e) => {
