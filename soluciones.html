@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Soluciones Técnicas & Demo Agente WhatsApp — ROSER.AI</title>
+  <meta name="description" content="Descubre cómo funcionan los agentes conversacionales en WhatsApp, la integración con n8n/Make y el simulador en tiempo real de ROSER.AI." />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .chat-phone-frame {
+      max-width: 390px;
+      margin: 0 auto;
+      background: #FFFFFF;
+      border-radius: 36px;
+      border: 10px solid #1F2937;
+      box-shadow: 0 25px 60px rgba(17, 24, 39, 0.16);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 560px;
+    }
+    .chat-phone-header {
+      background: #075E54;
+      color: #FFFFFF;
+      padding: 0.85rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .chat-phone-body {
+      flex: 1;
+      background-color: #EFEAE2;
+      background-image: radial-gradient(#d3c9bf 1px, transparent 1px);
+      background-size: 16px 16px;
+      padding: 1rem;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .wa-bubble {
+      max-width: 82%;
+      padding: 0.65rem 0.85rem;
+      border-radius: 12px;
+      font-size: 0.84rem;
+      line-height: 1.4;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+    .wa-bubble.bot {
+      align-self: flex-start;
+      background: #FFFFFF;
+      color: var(--text-charcoal);
+    }
+    .wa-bubble.user {
+      align-self: flex-end;
+      background: #DCF8C6;
+      color: #0F381E;
+    }
+    .trigger-btn {
+      background: #F9FAFB;
+      border: 1px solid var(--border-medium);
+      color: var(--text-charcoal);
+      padding: 0.5rem 0.85rem;
+      border-radius: var(--radius-full);
+      font-size: 0.78rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .trigger-btn:hover {
+      background: var(--gold-subtle);
+      border-color: var(--gold-metallic);
+      color: var(--gold-accessible);
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div class="nav-wrapper">
+        <a href="index.html" class="brand-container">
+          <span class="brand-name">ROSER<span class="ai-accent">.AI</span></span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="soluciones.html" class="active">Soluciones & Demo</a></li>
+          <li><a href="precios.html">Packs & ROI</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a href="https://cal.com/dani-serrano-mc095n/30min" target="_blank" rel="noopener noreferrer" class="btn-primary">
+            Agendar 30 min
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container section-wrap">
+    <!-- DEMO INTERACTIVA WHATSAPP -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 3rem; align-items: center; margin-bottom: 5rem;">
+      <div>
+        <span class="eyebrow">Demostración en Tiempo Real</span>
+        <h1 class="section-title">Comprueba la velocidad de tu futuro Agente en WhatsApp</h1>
+        <p class="section-subtitle" style="margin-bottom: 2rem;">
+          Simula cómo respondería un agente inteligente de ROSER.AI a consultas reales de clientes en una clínica o taller mecánico:
+        </p>
+
+        <div style="background: #FFFFFF; border-left: 3px solid var(--gold-metallic); padding: 1.2rem; border-radius: var(--radius-sm); box-shadow: var(--shadow-luxury-sm); margin-bottom: 2rem;">
+          <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text-charcoal); margin-bottom: 0.3rem;">⚡ Respuesta inmediata (&lt; 1 segundo)</h4>
+          <p style="font-size: 0.85rem; color: var(--text-slate);">
+            Cero colas de espera. El prospecto cualifica sus necesidades y sincroniza su cita directamente con la agenda del negocio.
+          </p>
+        </div>
+
+        <a href="https://cal.com/dani-serrano-mc095n/30min" target="_blank" rel="noopener noreferrer" class="btn-primary">
+          Implementar Agente con Pack Plata (700€)
+        </a>
+      </div>
+
+      <!-- MÓVIL SIMULADOR -->
+      <div>
+        <div class="chat-phone-frame">
+          <div class="chat-phone-header">
+            <div style="width: 36px; height: 36px; border-radius: 50%; background: #D4AF37; display: flex; align-items: center; justify-content: center; font-weight: 700;">RA</div>
+            <div>
+              <h4 style="font-size: 0.92rem; font-weight: 700;">Clínica / Taller ROSER</h4>
+              <p style="font-size: 0.7rem; color: #DCF8C6;">● Agente Oficial 24/7</p>
+            </div>
+          </div>
+
+          <div class="chat-phone-body" id="chatDemoBody">
+            <div class="wa-bubble bot">
+              ¡Hola! 👋 Soy el agente virtual inteligente. ¿En qué te puedo ayudar hoy? Haz clic en una consulta de abajo para probarme:
+            </div>
+          </div>
+
+          <div style="padding: 0.85rem; background: #FFFFFF; border-top: 1px solid var(--border-light); display: flex; flex-direction: column; gap: 0.5rem;">
+            <button class="trigger-btn" onclick="runDemo('¿Tenéis hueco para mañana?', '¡Hola! Nos quedan dos citas disponibles mañana: a las 11:30h o a las 17:00h. ¿Cuál prefieres reservar?')">
+              <span>📅 ¿Tenéis cita para mañana?</span>
+            </button>
+            <button class="trigger-btn" onclick="runDemo('¿Cuánto cuesta una revisión?', 'La revisión diagnóstica completa son 49€ (incluye diagnosis electrónica). ¿Deseas que te reservemos turno?')">
+              <span>💶 ¿Cuánto cuesta una revisión?</span>
+            </button>
+            <button class="trigger-btn" onclick="runDemo('¿Dónde estáis ubicados?', 'Estamos ubicados en Badajoz (C/ Mayor, 14) con parking propio para clientes. Abrimos de 08:30 a 20:00.')">
+              <span>📍 ¿Dónde estáis ubicados?</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CASOS DE USO POR SECTOR -->
+    <div class="section-header">
+      <span class="eyebrow">Arquitectura Aplicada</span>
+      <h2 class="section-title">Ecosistemas en producción</h2>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.8rem; margin-bottom: 4rem;">
+      <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 2.2rem; box-shadow: var(--shadow-luxury-sm);">
+        <span class="eyebrow" style="margin-bottom: 0.4rem;">Clínicas & Salud</span>
+        <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.25rem; margin-bottom: 0.6rem;">Recordatorios y citas desatendidas</h3>
+        <p style="font-size: 0.9rem; color: var(--text-slate); line-height: 1.6;">
+          Atención y resolución de dudas 24/7 sobre tratamientos, agendamiento sincronizado y aviso automático 24 horas antes por WhatsApp que reduce el absentismo un 75%.
+        </p>
+      </div>
+
+      <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 2.2rem; box-shadow: var(--shadow-luxury-sm);">
+        <span class="eyebrow" style="margin-bottom: 0.4rem;">Talleres & Concesionarios</span>
+        <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.25rem; margin-bottom: 0.6rem;">Presupuestos en PDF al instante</h3>
+        <p style="font-size: 0.9rem; color: var(--text-slate); line-height: 1.6;">
+          Recepción de datos del vehículo vía WhatsApp, generación automática de la hoja de presupuesto en PDF y remisión al cliente sin intervención del recepcionista.
+        </p>
+      </div>
+
+      <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 2.2rem; box-shadow: var(--shadow-luxury-sm);">
+        <span class="eyebrow" style="margin-bottom: 0.4rem;">Servicios B2B</span>
+        <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.25rem; margin-bottom: 0.6rem;">Cualificación hacia CRM y Cal.com</h3>
+        <p style="font-size: 0.9rem; color: var(--text-slate); line-height: 1.6;">
+          El agente recopila presupuesto, urgencia y tipo de cliente; si cumple el perfil ideal, le facilita el enlace a la agenda y guarda los datos en HubSpot o Sheets.
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container" style="text-align: center; color: var(--text-slate); font-size: 0.85rem;">
+      © 2026 ROSER.AI — Especialistas en Agentes WhatsApp & Automatización B2B.
+    </div>
+  </footer>
+
+  <script>
+    function runDemo(userMsg, botMsg) {
+      const body = document.getElementById('chatDemoBody');
+      const u = document.createElement('div');
+      u.className = 'wa-bubble user';
+      u.textContent = userMsg;
+      body.appendChild(u);
+      body.scrollTop = body.scrollHeight;
+
+      setTimeout(() => {
+        const b = document.createElement('div');
+        b.className = 'wa-bubble bot';
+        b.textContent = botMsg;
+        body.appendChild(b);
+        body.scrollTop = body.scrollHeight;
+      }, 550);
+    }
+  </script>
+</body>
+</html>
