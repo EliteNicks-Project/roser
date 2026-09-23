@@ -4,13 +4,515 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Planes, Tarifas & Calculadora de ROI — ROSER.AI</title>
-  <meta name="description" content="Estructura transparente de inversión para automatizar tu negocio: Pack Básico (300€), Pack Plata (700€) y Pack Oro (1.200€) con retainers opcionales y proyección de ahorro." />
-  
+  <meta name="description" content="Estructura transparente de inversión para automatizar tu negocio: Pack Básico (300€), Pack Plata (700€) y Pack Oro (1.200€) con retainers opcionales, proyección de ahorro y metodología en 4 fases." />
+
+  <!-- Tipografía Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css" />
+
   <style>
+    :root {
+      --white-pure: #FFFFFF;
+      --slate-gray: #6B7280;
+      --slate-dark: #374151;
+      --slate-light: #9CA3AF;
+      
+      --gold-metallic: #D4AF37;
+      --gold-deep: #B89025;
+      --gold-accessible: #997519;
+      --gold-light: #F7E7A9;
+      --gold-subtle: rgba(212, 175, 55, 0.12);
+      --gold-glow: rgba(212, 175, 55, 0.28);
+
+      --text-charcoal: #111827;
+      --text-slate: #374151;
+      --text-muted: #4B5563;
+
+      --bg-canvas: #FFFFFF;
+      --bg-surface: #FFFFFF;
+      --bg-surface-soft: #F9FAFB;
+      --bg-surface-elevated: #F3F4F6;
+      --border-light: #E5E7EB;
+      --border-medium: #D1D5DB;
+      --border-gold: rgba(212, 175, 55, 0.45);
+
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 22px;
+      --radius-full: 9999px;
+
+      --shadow-luxury-sm: 0 4px 14px rgba(17, 24, 39, 0.04);
+      --shadow-luxury-md: 0 12px 30px rgba(17, 24, 39, 0.08);
+      --shadow-luxury-lg: 0 20px 45px rgba(17, 24, 39, 0.12);
+      --shadow-gold: 0 8px 24px rgba(212, 175, 55, 0.28);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background-color: var(--bg-canvas);
+      color: var(--text-charcoal);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(212, 175, 55, 0.07) 0px, transparent 50%),
+        radial-gradient(at 100% 20%, rgba(107, 114, 128, 0.05) 0px, transparent 40%);
+    }
+
+    .container {
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .svg-stroke {
+      fill: none;
+      stroke: currentColor;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-width: 2;
+    }
+
+    /* HEADER */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border-light);
+      box-shadow: 0 2px 12px rgba(17, 24, 39, 0.03);
+    }
+
+    .nav-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 78px;
+    }
+
+    .brand-container {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      text-decoration: none;
+    }
+
+    .brand-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      color: var(--text-charcoal);
+    }
+
+    .brand-name .ai-accent {
+      background: linear-gradient(135deg, var(--gold-metallic), var(--gold-deep));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 800;
+    }
+
+    .brand-sub {
+      font-size: 0.62rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-slate);
+      font-weight: 600;
+      display: block;
+    }
+
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 1.8rem;
+      list-style: none;
+    }
+
+    @media (min-width: 960px) {
+      .nav-links {
+        display: flex;
+      }
+    }
+
+    .nav-links a {
+      color: var(--text-slate);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--gold-accessible);
+      font-weight: 600;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #D4AF37 0%, #B89025 100%);
+      color: #FFFFFF;
+      padding: 0.7rem 1.45rem;
+      border-radius: var(--radius-full);
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: var(--shadow-gold);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(212, 175, 55, 0.4);
+      background: linear-gradient(135deg, #DFBE52 0%, #A8811C 100%);
+    }
+
+    .btn-ghost {
+      background: #FFFFFF;
+      color: var(--text-charcoal);
+      padding: 0.7rem 1.45rem;
+      border-radius: var(--radius-full);
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid var(--border-medium);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: var(--shadow-luxury-sm);
+      transition: all 0.2s ease;
+    }
+
+    .btn-ghost:hover {
+      background: var(--bg-surface-soft);
+      border-color: var(--gold-metallic);
+      color: var(--gold-accessible);
+    }
+
+    /* SECCIONES & ENCABEZADOS */
+    .section-wrap {
+      padding: 4.8rem 0;
+      position: relative;
+    }
+
+    .eyebrow {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold-accessible);
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2rem, 3.8vw, 2.9rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text-charcoal);
+      line-height: 1.15;
+    }
+
+    .section-subtitle {
+      color: var(--text-slate);
+      font-size: 1rem;
+      max-width: 680px;
+      margin-top: 0.75rem;
+    }
+
+    /* TARJETAS DE PACKS */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      align-items: stretch;
+      margin-top: 2rem;
+    }
+
+    @media (min-width: 980px) {
+      .pricing-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .pack-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 2.6rem 2.2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      box-shadow: var(--shadow-luxury-sm);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .pack-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-luxury-lg), 0 0 28px rgba(212, 175, 55, 0.15);
+      border-color: var(--border-gold);
+    }
+
+    .pack-card.popular {
+      border: 2px solid var(--gold-metallic);
+      box-shadow: var(--shadow-luxury-md), 0 0 35px rgba(212, 175, 55, 0.18);
+      position: relative;
+    }
+
+    @media (min-width: 980px) {
+      .pack-card.popular {
+        transform: scale(1.04);
+      }
+      .pack-card.popular:hover {
+        transform: scale(1.04) translateY(-8px);
+      }
+    }
+
+    .popular-pill {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, var(--gold-metallic) 0%, var(--gold-deep) 100%);
+      color: #FFFFFF;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 0.32rem 1rem;
+      border-radius: var(--radius-full);
+      box-shadow: var(--shadow-gold);
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .pack-badge-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-md);
+      background: var(--gold-subtle);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold-accessible);
+      margin-bottom: 1.2rem;
+    }
+
+    .pack-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: var(--text-charcoal);
+      margin-bottom: 0.4rem;
+    }
+
+    .pack-tagline {
+      font-size: 0.88rem;
+      color: var(--text-slate);
+      min-height: 42px;
+      line-height: 1.5;
+    }
+
+    .pack-price-box {
+      margin: 1.4rem 0 1.2rem;
+      padding: 1.2rem 0;
+      border-top: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-light);
+      display: flex;
+      align-items: baseline;
+      gap: 0.4rem;
+    }
+
+    .pack-price-number {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 3.2rem;
+      font-weight: 700;
+      color: var(--text-charcoal);
+      line-height: 1;
+    }
+
+    .pack-card.popular .pack-price-number {
+      background: linear-gradient(135deg, var(--gold-accessible) 0%, var(--gold-metallic) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .pack-price-period {
+      font-size: 0.88rem;
+      color: var(--text-slate);
+      font-weight: 600;
+    }
+
+    .retainer-sub-box {
+      background: var(--bg-surface-soft);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      padding: 0.75rem 0.95rem;
+      margin-bottom: 1.4rem;
+      font-size: 0.8rem;
+      color: var(--text-slate);
+      line-height: 1.45;
+    }
+
+    .retainer-sub-box strong {
+      color: var(--gold-accessible);
+    }
+
+    .pack-highlight-bonus {
+      background: rgba(212, 175, 55, 0.08);
+      border: 1px dashed var(--gold-metallic);
+      padding: 0.75rem 0.95rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.82rem;
+      color: var(--gold-accessible);
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .pack-features-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      margin-bottom: 1.8rem;
+      font-size: 0.9rem;
+    }
+
+    .pack-features-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      color: var(--text-slate);
+      line-height: 1.45;
+    }
+
+    .pack-features-list li .check-icon {
+      color: var(--gold-accessible);
+      margin-top: 0.2rem;
+      flex-shrink: 0;
+      width: 16px;
+      height: 16px;
+    }
+
+    .btn-pack-action {
+      width: 100%;
+      justify-content: center;
+      padding: 0.85rem 1.4rem;
+      font-size: 0.92rem;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .pack-micro-copy {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      margin-top: 0.85rem;
+      font-size: 0.76rem;
+      color: var(--text-slate);
+      font-weight: 500;
+      text-align: center;
+    }
+
+    /* METODOLOGÍA (4 FASES) */
+    .process-timeline {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .process-timeline {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .process-step {
+      background: #FFFFFF;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 1.8rem 1.4rem;
+      box-shadow: var(--shadow-luxury-sm);
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .process-step:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-gold);
+    }
+
+    .step-number {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--gold-accessible);
+      margin-bottom: 0.5rem;
+      line-height: 1;
+    }
+
+    .step-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-charcoal);
+      margin-bottom: 0.5rem;
+    }
+
+    .step-desc {
+      font-size: 0.86rem;
+      color: var(--text-slate);
+      line-height: 1.5;
+    }
+
+    /* CALCULADORA DE ROI */
+    .interactive-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-lg);
+      padding: 3rem 2.4rem;
+      margin: 3.5rem 0;
+      box-shadow: var(--shadow-luxury-md), 0 0 35px rgba(212, 175, 55, 0.08);
+    }
+
+    .calculator-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.8rem;
+      align-items: center;
+    }
+
+    @media (min-width: 860px) {
+      .calculator-layout {
+        grid-template-columns: 1.25fr 0.85fr;
+      }
+    }
+
     .range-input {
       width: 100%;
       height: 7px;
@@ -20,6 +522,7 @@
       -webkit-appearance: none;
       margin: 1.1rem 0;
     }
+
     .range-input::-webkit-slider-thumb {
       -webkit-appearance: none;
       width: 24px;
@@ -29,7 +532,9 @@
       border: 3px solid #FFFFFF;
       cursor: pointer;
       box-shadow: 0 2px 8px rgba(184, 144, 37, 0.45);
+      transition: transform 0.15s ease;
     }
+
     .calc-result-panel {
       background: linear-gradient(180deg, #FAFAFA 0%, #F5F5F7 100%);
       border: 1px solid var(--border-light);
@@ -39,6 +544,7 @@
       text-align: center;
       box-shadow: var(--shadow-luxury-sm);
     }
+
     .calc-stat-number {
       font-family: 'Space Grotesk', sans-serif;
       font-size: 2.8rem;
@@ -46,230 +552,797 @@
       color: var(--gold-accessible);
       margin: 0.4rem 0;
     }
+
+    /* COMPARATIVA */
     .compare-container {
       overflow-x: auto;
-      margin: 3rem 0;
+      margin: 2.5rem 0 4rem;
       background: #FFFFFF;
       border-radius: var(--radius-md);
       border: 1px solid var(--border-light);
       box-shadow: var(--shadow-luxury-sm);
     }
+
     .compare-table {
       width: 100%;
       border-collapse: collapse;
       text-align: left;
       font-size: 0.92rem;
     }
+
     .compare-table th {
       padding: 1.2rem 1.6rem;
       background: var(--bg-surface-soft);
       border-bottom: 1px solid var(--border-light);
       color: var(--text-slate);
       font-weight: 700;
-      font-size: 0.74rem;
       text-transform: uppercase;
+      font-size: 0.74rem;
       letter-spacing: 0.08em;
     }
+
     .compare-table td {
       padding: 1.3rem 1.6rem;
       border-bottom: 1px solid var(--border-light);
       color: var(--text-charcoal);
     }
+
+    .badge-bad {
+      color: #DC2626;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 500;
+    }
+
+    .badge-good {
+      color: var(--gold-accessible);
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* FAQ */
+    .faq-wrapper {
+      max-width: 820px;
+      margin: 1.5rem auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .faq-item {
+      background: #FFFFFF;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .faq-item.active {
+      border-color: var(--gold-metallic);
+      box-shadow: var(--shadow-luxury-sm);
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 1.25rem 1.5rem;
+      text-align: left;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-charcoal);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      cursor: pointer;
+    }
+
+    .faq-icon-arrow {
+      width: 18px;
+      height: 18px;
+      color: var(--gold-accessible);
+      transition: transform 0.25s ease;
+    }
+
+    .faq-item.active .faq-icon-arrow {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s cubic-bezier(0, 1, 0, 1);
+      padding: 0 1.5rem;
+      color: var(--text-slate);
+      font-size: 0.92rem;
+      line-height: 1.65;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 500px;
+      transition: max-height 0.4s ease-in-out;
+      padding-bottom: 1.35rem;
+    }
+
+    /* FORMULARIO "TE LLAMAMOS HOY" (LOW-FRICTION) */
+    .lead-capture-strip {
+      padding: 4.5rem 0;
+      background: linear-gradient(135deg, #111827 0%, #1F2937 100%);
+      color: #FFFFFF;
+      border-top: 2px solid var(--gold-metallic);
+      position: relative;
+      overflow: hidden;
+      margin-top: 4rem;
+    }
+
+    .lead-strip-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    @media (min-width: 900px) {
+      .lead-strip-grid {
+        grid-template-columns: 1.15fr 1.35fr;
+      }
+    }
+
+    .lead-form-wrap {
+      background: #FFFFFF;
+      padding: 2rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-gold);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+      color: var(--text-charcoal);
+    }
+
+    .lead-input-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    @media (min-width: 600px) {
+      .lead-input-row {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .lead-field-group label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-slate);
+      margin-bottom: 0.35rem;
+    }
+
+    .lead-input-field {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      outline: none;
+      font-family: inherit;
+    }
+
+    .lead-input-field:focus {
+      border-color: var(--gold-metallic);
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+    }
+
+    .lead-gdpr-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      margin-bottom: 1.2rem;
+      font-size: 0.76rem;
+      color: var(--text-slate);
+      line-height: 1.4;
+    }
+
+    .lead-gdpr-row input[type="checkbox"] {
+      margin-top: 0.15rem;
+      accent-color: var(--gold-deep);
+      cursor: pointer;
+    }
+
+    .lead-status-msg {
+      margin-top: 0.8rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      display: none;
+    }
+
+    .lead-status-msg.success {
+      display: block;
+      color: #059669;
+    }
+
+    /* ELEMENTOS FLOTANTES */
+    .floating-support-cluster {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      z-index: 150;
+    }
+
+    .action-fab {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border-light);
+      box-shadow: 0 10px 25px rgba(17, 24, 39, 0.12);
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s;
+    }
+
+    .action-fab:hover {
+      transform: scale(1.1);
+    }
+
+    .fab-wa {
+      background: #25D366;
+      color: #FFFFFF;
+    }
+
+    .fab-quote {
+      background: linear-gradient(135deg, var(--gold-metallic) 0%, var(--gold-deep) 100%);
+      color: #FFFFFF;
+    }
+
+    /* MODAL CAL.COM */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(17, 24, 39, 0.65);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.2rem;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .modal-backdrop.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-sheet {
+      background: #FFFFFF;
+      border-radius: var(--radius-lg);
+      width: 100%;
+      max-width: 640px;
+      padding: 2.2rem;
+      box-shadow: 0 25px 60px rgba(17, 24, 39, 0.2), 0 0 30px rgba(212, 175, 55, 0.15);
+      position: relative;
+    }
+
+    .close-modal-x {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.2rem;
+      background: var(--bg-surface-soft);
+      border: 1px solid var(--border-light);
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cal-iframe-container {
+      width: 100%;
+      height: 520px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border-light);
+    }
+
+    .cal-iframe-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    footer {
+      border-top: 1px solid var(--border-light);
+      padding: 4.5rem 0 2.8rem;
+      background: #FAFAFA;
+      font-size: 0.9rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      margin-bottom: 3.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .footer-grid {
+        grid-template-columns: 2fr 1fr 1fr;
+      }
+    }
   </style>
 </head>
 
 <body>
+  <!-- HEADER -->
   <header>
     <div class="container">
       <div class="nav-wrapper">
         <a href="index.html" class="brand-container">
-          <span class="brand-name">ROSER<span class="ai-accent">.AI</span></span>
+          <div class="brand-title-wrap">
+            <span class="brand-name">ROSER<span class="ai-accent">.AI</span></span>
+            <span class="brand-sub">Software & Systems</span>
+          </div>
         </a>
+
         <ul class="nav-links">
           <li><a href="index.html">Inicio</a></li>
           <li><a href="soluciones.html">Soluciones & Demo</a></li>
           <li><a href="precios.html" class="active">Packs & ROI</a></li>
+          <li><a href="#contacto-rapido">Contacto Rápido</a></li>
         </ul>
+
         <div class="nav-actions">
-          <a href="https://cal.com/dani-serrano-mc095n/30min" target="_blank" rel="noopener noreferrer" class="btn-primary">
-            Agendar Llamada
-          </a>
+          <button class="btn-primary" onclick="openCallModal()">
+            <svg class="svg-stroke" width="16" height="16" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line><path d="m9 16 2 2 4-4"></path></svg>
+            <span>Agendar 30 min</span>
+          </button>
         </div>
       </div>
     </div>
   </header>
 
-  <main class="container section-wrap">
-    <div class="section-header" style="text-align: center; max-width: 800px; margin: 0 auto 3.5rem;">
-      <span class="eyebrow">Tarifas Transparentes</span>
-      <h1 class="section-title">Inversión con retorno operativo cuantificable</h1>
-      <p class="section-subtitle" style="margin: 0.8rem auto 0;">
-        Todos nuestros proyectos se entregan con propiedad 100% en tus manos y garantía de despliegue de 14 días.
-      </p>
-    </div>
-
-    <!-- TARJETAS DE LOS TRES PACKS -->
-    <div class="pricing-grid">
-      <!-- BÁSICO -->
-      <div class="pack-card">
-        <div>
-          <h3 class="pack-title">Pack Básico</h3>
-          <p class="pack-tagline">Presencia web moderna y canal directo para captación comercial inmediata.</p>
-          <div class="pack-price-box">
-            <div class="pack-price-number">300€</div>
-            <div class="pack-price-period">implementación única</div>
-          </div>
-          <div class="retainer-sub-box">
-            <strong>Retainer Opcional:</strong> desde <strong>49 €/mes</strong> (mantenimiento y seguridad preventiva).
-          </div>
-          <ul class="pack-features-list">
-            <li><span>Web One-Page responsive ultrarrápida.</span></li>
-            <li><span>Canal directo a WhatsApp para atención directa.</span></li>
-            <li><span>Formulario seguro con webhook a tu email/móvil.</span></li>
-            <li><span>Optimización básica de ficha en Google Maps.</span></li>
-            <li><span>Entrega en 3 a 5 días laborables.</span></li>
-          </ul>
-        </div>
-        <a href="https://wa.me/34603782884?text=Hola%20ROSER.AI,%20quiero%20contratar%20el%20Pack%20B%C3%A1sico%20(300%E2%82%AC)" target="_blank" rel="noopener noreferrer" class="btn-ghost btn-pack-action">
-          Contratar vía WhatsApp
-        </a>
-      </div>
-
-      <!-- PLATA (ESTRELLA) -->
-      <div class="pack-card popular">
-        <span class="popular-pill">Más Recomendado</span>
-        <div>
-          <h3 class="pack-title">Pack Plata</h3>
-          <p class="pack-tagline">Estructura comercial B2B con agente conversacional que atiende y agenda 24/7.</p>
-          <div class="pack-price-box">
-            <div class="pack-price-number">700€</div>
-            <div class="pack-price-period">implementación única</div>
-          </div>
-          <div class="retainer-sub-box">
-            <strong>Retainer Opcional:</strong> desde <strong>89 €/mes</strong> (reentrenamiento continuo y monitorización de APIs).
-          </div>
-          <ul class="pack-features-list">
-            <li><span>Todo lo incluido en el Pack Básico.</span></li>
-            <li><span>Web multi-sección con arquitectura de persuasión.</span></li>
-            <li><span><strong>Agente IA conversacional</strong> en Web o WhatsApp.</span></li>
-            <li><span><strong>Sincronización en tiempo real vía Cal.com</strong>.</span></li>
-            <li><span>Cualificación automática 24/7 de prospectos.</span></li>
-            <li><span>SEO técnico local para Badajoz, Mérida y España.</span></li>
-            <li><span>Entrega en 7 a 10 días laborables.</span></li>
-          </ul>
-        </div>
-        <a href="https://cal.com/dani-serrano-mc095n/30min" target="_blank" rel="noopener noreferrer" class="btn-primary btn-pack-action">
-          Agendar Sesión en Cal.com
-        </a>
-      </div>
-
-      <!-- ORO -->
-      <div class="pack-card">
-        <div>
-          <h3 class="pack-title">Pack Oro</h3>
-          <p class="pack-tagline">Ecosistema integral corporativo para delegar la operativa técnica y administrativa.</p>
-          <div class="pack-price-box">
-            <div class="pack-price-number">1.200€</div>
-            <div class="pack-price-period">implementación única</div>
-          </div>
-          <div class="retainer-sub-box">
-            <strong>Retainer Opcional:</strong> desde <strong>149 €/mes</strong> (supervisión continua de webhooks y SLAs críticos).
-          </div>
-          <ul class="pack-features-list">
-            <li><span>Todo lo incluido en el Pack Plata.</span></li>
-            <li><span>Web corporativa premium con diseño exclusivo.</span></li>
-            <li><span><strong>Meta Cloud API Oficial + Web RAG</strong>.</span></li>
-            <li><span><strong>Pipelines de automatización con n8n y Make</strong>.</span></li>
-            <li><span>Generación desatendida de facturas/presupuestos PDF.</span></li>
-            <li><span>Integración total con CRM (HubSpot, Sheets, Notion).</span></li>
-            <li><span>Entrega en 12 a 18 días laborables.</span></li>
-          </ul>
-        </div>
-        <a href="https://wa.me/34603782884?text=Hola%20ROSER.AI,%20quiero%20coordinar%20el%20Pack%20Oro%20(1.200%E2%82%AC)" target="_blank" rel="noopener noreferrer" class="btn-ghost btn-pack-action">
-          Alcance Técnico en WhatsApp
-        </a>
-      </div>
-    </div>
-
-    <!-- CALCULADORA ROI -->
-    <div style="background: #FFFFFF; border: 1px solid var(--border-gold); border-radius: var(--radius-lg); padding: 3rem 2.4rem; margin: 5rem 0; box-shadow: var(--shadow-luxury-md);">
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; align-items: center;">
-        <div>
-          <span class="eyebrow">Calculadora de Eficiencia</span>
-          <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.9rem; margin-bottom: 0.8rem;">¿Cuánto dinero recuperará tu empresa?</h2>
-          <p style="color: var(--text-slate); font-size: 0.95rem; margin-bottom: 1.5rem;">
-            Ajusta las variables de tu operativa semanal para proyectar el ahorro al sustituir tareas manuales por sistemas autónomos:
+  <main>
+    <!-- BLOQUE 1: LOS 3 PACKS DE INVERSIÓN -->
+    <section class="section-wrap" style="background: linear-gradient(180deg, #FFFFFF 0%, #FAF9F6 100%);">
+      <div class="container">
+        <div class="section-header" style="text-align: center; max-width: 780px; margin: 0 auto 3rem;">
+          <span class="eyebrow">Inversión & Planes de Implementación</span>
+          <h1 class="section-title">Estructura de precios transparente y escalable</h1>
+          <p class="section-subtitle" style="margin: 0.8rem auto 0;">
+            Implementación inicial cerrada con propiedad 100% en tus manos y servicio de mantenimiento preventivo opcional.
           </p>
-
-          <label style="font-size: 0.88rem; font-weight: 600;">
-            Horas semanales dedicadas a responder clientes y gestionar citas:
-            <strong id="hoursDisplay" style="color: var(--gold-accessible);">15 horas</strong>
-          </label>
-          <input type="range" min="5" max="50" value="15" class="range-input" id="hoursSlider" />
-
-          <label style="font-size: 0.88rem; font-weight: 600; display: block; margin-top: 1rem;">
-            Coste por hora de gestión comercial/administrativa:
-            <strong id="rateDisplay" style="color: var(--text-slate);">22 €/h</strong>
-          </label>
-          <input type="range" min="12" max="60" value="22" class="range-input" id="rateSlider" />
         </div>
 
-        <div class="calc-result-panel">
-          <span style="font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-slate); font-weight: 700;">Ahorro Anual Proyectado</span>
-          <div class="calc-stat-number" id="annualSavings">15.840 €</div>
-          <p style="color: var(--text-slate); font-size: 0.85rem; margin-bottom: 1.4rem;">
-            Equivalente a <strong id="hoursFreed" style="color: var(--text-charcoal);">60 horas/mes</strong> recuperadas para cerrar ventas estratégicas.
-          </p>
-          <a href="https://cal.com/dani-serrano-mc095n/30min" target="_blank" rel="noopener noreferrer" class="btn-primary" style="width: 100%; justify-content: center;">
-            Recuperar este tiempo ahora
-          </a>
+        <div class="pricing-grid">
+          <!-- PACK 1: BÁSICO -->
+          <div class="pack-card">
+            <div>
+              <div class="pack-badge-icon">
+                <svg class="svg-stroke" width="22" height="22" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+              </div>
+              <h3 class="pack-title">Pack Básico</h3>
+              <p class="pack-tagline">Presencia web moderna y canal directo para captación comercial inmediata.</p>
+
+              <div class="pack-price-box">
+                <div class="pack-price-number">300€</div>
+                <div class="pack-price-period">implementación inicial</div>
+              </div>
+
+              <div class="retainer-sub-box">
+                <strong>Retainer Opcional:</strong> desde <strong>49 €/mes</strong> (Soporte preventivo, monitorización y actualización continua).
+              </div>
+
+              <ul class="pack-features-list">
+                <li><svg class="check-icon svg-stroke" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Web moderna One-Page</strong> ultrarrápida y 100% responsive.</span></li>
+                <li><svg class="check-icon svg-stroke" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Diseño a medida</strong> enfocado en conversión y autoridad de marca.</span></li>
+                <li><svg class="check-icon svg-stroke" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Canal directo a WhatsApp</strong> para captura de prospectos calificados.</span></li>
+                <li><svg class="check-icon svg-stroke" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Formulario con Webhook</strong> seguro con alerta instantánea.</span></li>
+                <li><svg class="check-icon svg-stroke" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Arquitectura Cloud Serverless</strong> de alta disponibilidad.</span></li>
+                <li><svg class="check-icon svg-stroke" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Optimización básica de Google Maps</strong> y visibilidad local.</span></li>
+              </ul>
+            </div>
+
+            <div>
+              <a href="https://wa.me/34603782884?text=Hola%20ROSER.AI,%20quiero%20contratar%20el%20Pack%20B%C3%A1sico%20(300%E2%82%AC)" target="_blank" rel="noopener noreferrer" class="btn-ghost btn-pack-action">
+                Contratar vía WhatsApp
+              </a>
+              <div class="pack-micro-copy">
+                <span>Sin compromiso · Auditoría técnica previa incluida</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- PACK 2: PLATA (RECOMENDADO) -->
+          <div class="pack-card popular">
+            <span class="popular-pill">Más Recomendado</span>
+            <div>
+              <div class="pack-badge-icon" style="background: rgba(212, 175, 55, 0.18); border-color: var(--gold-metallic);">
+                <svg class="svg-stroke" width="22" height="22" viewBox="0 0 24 24"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3z"></path></svg>
+              </div>
+              <h3 class="pack-title">Pack Plata</h3>
+              <p class="pack-tagline">Estructura comercial B2B con agente conversacional que atiende y agenda 24/7.</p>
+
+              <div class="pack-price-box">
+                <div class="pack-price-number">700€</div>
+                <div class="pack-price-period">implementación inicial</div>
+              </div>
+
+              <div class="retainer-sub-box">
+                <strong>Retainer Opcional:</strong> desde <strong>89 €/mes</strong> (Afinación de prompts, reentrenamiento y monitorización de APIs).
+              </div>
+
+              <ul class="pack-features-list">
+                <li><svg class="check-icon svg-stroke" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Todo lo incluido en el Pack Básico.</strong></span></li>
+                <li><svg class="check-icon svg-stroke" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Web profesional multi-sección</strong> con arquitectura B2B.</span></li>
+                <li><svg class="check-icon svg-stroke" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Agente IA conversacional</strong> en Web o WhatsApp.</span></li>
+                <li><svg class="check-icon svg-stroke" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Cualificación automática 24/7</strong> filtrando leads previo al equipo.</span></li>
+                <li><svg class="check-icon svg-stroke" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Sincronización en tiempo real vía Cal.com</strong> sin solapes de horario.</span></li>
+                <li><svg class="check-icon svg-stroke" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>SEO técnico local</strong> para Badajoz, Mérida y toda España.</span></li>
+              </ul>
+            </div>
+
+            <div>
+              <button type="button" class="btn-primary btn-pack-action" onclick="openCallModal()">
+                Agendar Despliegue en Cal.com
+              </button>
+              <div class="pack-micro-copy">
+                <span>Sin compromiso · Auditoría técnica previa incluida</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- PACK 3: ORO -->
+          <div class="pack-card">
+            <div>
+              <div class="pack-badge-icon">
+                <svg class="svg-stroke" width="22" height="22" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"></rect><rect x="9" y="9" width="6" height="6"></rect></svg>
+              </div>
+              <h3 class="pack-title">Pack Oro</h3>
+              <p class="pack-tagline">Ecosistema integral corporativo para delegar la operativa técnica y flujos en sistemas.</p>
+
+              <div class="pack-price-box">
+                <div class="pack-price-number">1.200€</div>
+                <div class="pack-price-period">implementación inicial</div>
+              </div>
+
+              <div class="retainer-sub-box">
+                <strong>Retainer Opcional:</strong> desde <strong>149 €/mes</strong> (Supervisión continua de webhooks, SLAs críticos y optimización).
+              </div>
+
+              <div class="pack-highlight-bonus">
+                <span>Incluye <strong>más de 800€</strong> en arquitectura de automatizaciones</span>
+              </div>
+
+              <ul class="pack-features-list">
+                <li><svg class="check-icon svg-stroke" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Web corporativa premium</strong> reactiva y exclusiva.</span></li>
+                <li><svg class="check-icon svg-stroke" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Agente multicanal</strong> (Meta Cloud API oficial + Web RAG).</span></li>
+                <li><svg class="check-icon svg-stroke" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Pipelines de integración con n8n / Make</strong> sincronizando sistemas.</span></li>
+                <li><svg class="check-icon svg-stroke" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Generación de facturas/presupuestos PDF</strong> al vuelo.</span></li>
+                <li><svg class="check-icon svg-stroke" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Integración total con CRM</strong> (HubSpot, Notion, Sheets).</span></li>
+                <li><svg class="check-icon svg-stroke" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Reactivación de clientes</strong> y captura automática de reviews.</span></li>
+              </ul>
+            </div>
+
+            <div>
+              <a href="https://wa.me/34603782884?text=Hola%20ROSER.AI,%20quiero%20tratar%20el%20Pack%20Oro%20(1.200%E2%82%AC)" target="_blank" rel="noopener noreferrer" class="btn-ghost btn-pack-action">
+                Consultar Alcance en WhatsApp
+              </a>
+              <div class="pack-micro-copy">
+                <span>Sin compromiso · Auditoría técnica previa incluida</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- COMPARATIVA -->
-    <div class="section-header" style="margin-top: 3rem;">
-      <span class="eyebrow">Diferencial Operativo</span>
-      <h2 class="section-title">Modelo Analógico vs ROSER.AI</h2>
-    </div>
+    <!-- BLOQUE 2: METODOLOGÍA (4 FASES) -->
+    <section class="section-wrap" style="background: #FFFFFF;">
+      <div class="container">
+        <div class="section-header" style="text-align: center; max-width: 750px; margin: 0 auto 3rem;">
+          <span class="eyebrow">Proceso de Trabajo en 4 Fases</span>
+          <h2 class="section-title">Metodología de ingeniería orientada a resultados</h2>
+          <p class="section-subtitle" style="margin: 0.8rem auto 0;">
+            De la auditoría estratégica a la ejecución autónoma continua sin desvíos de presupuesto.
+          </p>
+        </div>
 
-    <div class="compare-container">
-      <table class="compare-table">
-        <thead>
-          <tr>
-            <th>Factor</th>
-            <th>Modelo Analógico Convencional</th>
-            <th>Ecosistema ROSER.AI</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Respuesta en WhatsApp</strong></td>
-            <td style="color: #DC2626;">Demora de 2 a 12 horas (leads perdidos)</td>
-            <td style="color: var(--gold-accessible); font-weight: 600;">Respuesta en &lt; 60 segundos 24/7</td>
-          </tr>
-          <tr>
-            <td><strong>Agendamiento</strong></td>
-            <td style="color: #DC2626;">Rondas de mensajes y citas solapadas</td>
-            <td style="color: var(--gold-accessible); font-weight: 600;">Sincronizado en tiempo real vía Cal.com</td>
-          </tr>
-          <tr>
-            <td><strong>Propiedad Técnica</strong></td>
-            <td style="color: #DC2626;">Retención y cobros mensuales cautivos</td>
-            <td style="color: var(--gold-accessible); font-weight: 600;">100% propiedad del cliente sin ataduras</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+        <div class="process-timeline">
+          <div class="process-step">
+            <div class="step-number">01</div>
+            <h3 class="step-title">Diagnóstico Estratégico</h3>
+            <p class="step-desc">Sesión técnica de 30 minutos para mapear procesos repetitivos, cuellos de botella y fugas de conversión en tu embudo.</p>
+          </div>
+          <div class="process-step">
+            <div class="step-number">02</div>
+            <h3 class="step-title">Arquitectura de Flujos</h3>
+            <p class="step-desc">Diseño de interfaces, entrenamiento de la base de conocimiento del agente y modelado de webhooks e integraciones.</p>
+          </div>
+          <div class="process-step">
+            <div class="step-number">03</div>
+            <h3 class="step-title">Despliegue e Integración</h3>
+            <p class="step-desc">Puesta en marcha, conexión con Meta Cloud API, sincronización de calendarios y pruebas de estrés funcionales.</p>
+          </div>
+          <div class="process-step">
+            <div class="step-number">04</div>
+            <h3 class="step-title">Operativa Autónoma 24/7</h3>
+            <p class="step-desc">Ecosistema trabajando en piloto automático, capturando prospectos y liberando carga de trabajo a tu equipo.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOQUE 3: CALCULADORA DE ROI -->
+    <section class="section-wrap" style="background: var(--bg-surface-soft);">
+      <div class="container">
+        <div class="interactive-card">
+          <div class="calculator-layout">
+            <div>
+              <span class="eyebrow">Calculadora de Eficiencia Operativa</span>
+              <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 2rem; color: var(--text-charcoal); margin-bottom: 1rem;">
+                ¿Cuánto dinero pierde tu negocio en tareas mecánicas?
+              </h3>
+              <p style="color: var(--text-slate); font-size: 0.95rem; margin-bottom: 1.6rem;">
+                Ajusta las variables de tu operativa semanal para proyectar el retorno de inversión al delegar tareas en sistemas autónomos:
+              </p>
+
+              <div>
+                <label style="font-size: 0.88rem; color: var(--text-charcoal); font-weight: 600;">
+                  Horas semanales dedicadas a responder dudas, presupuestos y agendas:
+                  <strong id="hoursDisplay" style="color: var(--gold-accessible); margin-left: 0.4rem;">15 horas</strong>
+                </label>
+                <input type="range" min="5" max="50" value="15" class="range-input" id="hoursSlider" />
+              </div>
+
+              <div style="margin-top: 1.1rem;">
+                <label style="font-size: 0.88rem; color: var(--text-charcoal); font-weight: 600;">
+                  Coste estimado por hora de trabajo / gestión comercial:
+                  <strong id="rateDisplay" style="color: var(--text-slate); margin-left: 0.4rem;">22 €/h</strong>
+                </label>
+                <input type="range" min="12" max="60" value="22" class="range-input" id="rateSlider" />
+              </div>
+            </div>
+
+            <div class="calc-result-panel">
+              <span style="font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-slate); font-weight: 700;">
+                Ahorro Anual Proyectado con ROSER.AI
+              </span>
+              <div class="calc-stat-number" id="annualSavings">15.840 €</div>
+              <p style="color: var(--text-slate); font-size: 0.85rem; margin-bottom: 1.35rem;">
+                Equivalente a <strong id="hoursFreed" style="color: var(--text-charcoal);">60 horas/mes</strong> recuperadas para cerrar ventas estratégicas.
+              </p>
+              <button class="btn-primary" onclick="openCallModal()" style="width: 100%; justify-content: center;">
+                Recuperar este tiempo ahora
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOQUE 4: COMPARATIVA ESTRATÉGICA -->
+    <section class="section-wrap" style="background: #FFFFFF;">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Diferencial Operativo</span>
+          <h2 class="section-title">Modelo Analógico vs Ecosistema ROSER.AI</h2>
+        </div>
+
+        <div class="compare-container">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>Factor Operativo</th>
+                <th>Modelo Analógico Convencional</th>
+                <th>Ecosistema ROSER.AI</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Respuesta en WhatsApp</strong></td>
+                <td><span class="badge-bad">Demora de 2 a 12 horas (leads perdidos)</span></td>
+                <td><span class="badge-good">Respuesta en &lt; 60 segundos 24/7</span></td>
+              </tr>
+              <tr>
+                <td><strong>Sitio Web Comercial</strong></td>
+                <td><span class="badge-bad">Folleto estático sin tracción</span></td>
+                <td><span class="badge-good">Embudo reactivo con conversión directa</span></td>
+              </tr>
+              <tr>
+                <td><strong>Agendamiento de Citas</strong></td>
+                <td><span class="badge-bad">Rondas de mensajes y citas solapadas</span></td>
+                <td><span class="badge-good">Sincronizado en tiempo real vía Cal.com</span></td>
+              </tr>
+              <tr>
+                <td><strong>Propiedad Técnica</strong></td>
+                <td><span class="badge-bad">Retención y cobros mensuales cautivos</span></td>
+                <td><span class="badge-good">100% propiedad del cliente sin ataduras</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOQUE 5: PREGUNTAS FRECUENTES (FAQ) -->
+    <section class="section-wrap" style="background: var(--bg-surface-soft);">
+      <div class="container">
+        <div class="section-header" style="text-align: center; max-width: 780px; margin: 0 auto 3rem;">
+          <span class="eyebrow">Resolución de Dudas Críticas</span>
+          <h2 class="section-title">Preguntas Frecuentes</h2>
+          <p class="section-subtitle" style="margin: 0.8rem auto 0;">
+            Transparencia técnica y operativa sobre cómo trabajamos y qué garantías ofrecemos.
+          </p>
+        </div>
+
+        <div class="faq-wrapper">
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>¿Cuáles son los costes asociados a la API de Meta y las herramientas?</span>
+              <svg class="faq-icon-arrow svg-stroke" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              Meta Cloud API ofrece las <strong>primeras 1.000 conversaciones de servicio al mes completamente gratuitas</strong> para cada cuenta comercial, volumen suficiente para la inmensa mayoría de PYMEs. Si superas esa cuota, el coste es de fracciones de céntimo por conversación, gestionado directamente desde tu cuenta publicitaria de Meta sin sobrecostes ocultos por nuestra parte.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>¿Quién es el propietario del código y los flujos automatizados?</span>
+              <svg class="faq-icon-arrow svg-stroke" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              <strong>Tú eres el dueño al 100%</strong>. Todo el código frontend, las credenciales, los escenarios de Make o n8n y los agentes configurados se transfieren a tus propias cuentas o repositorios. No ejercemos retención técnica ni cobramos licencias de bloqueo (vendor lock-in).
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>¿Qué tiempos de entrega y despliegue tienen los proyectos?</span>
+              <svg class="faq-icon-arrow svg-stroke" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              El <strong>Pack Básico</strong> se entrega habitualmente en <strong>3 a 5 días laborables</strong>. El <strong>Pack Plata</strong> (con agente conversacional y agendamiento) requiere entre <strong>7 y 10 días</strong> para pruebas de precisión. Proyectos corporativos integrales o el <strong>Pack Oro</strong> se entregan en una ventana de <strong>12 a 18 días laborables</strong>.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>¿Cómo funciona el soporte continuo y el servicio de Retainer?</span>
+              <svg class="faq-icon-arrow svg-stroke" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              Todos los proyectos incluyen garantía inicial tras el despliegue. Para empresas que requieren monitorización proactiva, actualización de promociones en el agente, supervisión de webhooks y adaptación a cambios de versiones de APIs, ofrecemos planes de mantenimiento mensual flexibles desde 49 €/mes sin permanencia obligatoria.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOQUE 6: FORMULARIO "TE LLAMAMOS HOY" (LOW FRICTION) -->
+    <section class="lead-capture-strip" id="contacto-rapido">
+      <div class="container">
+        <div class="lead-strip-grid">
+          <div>
+            <span class="eyebrow" style="color: var(--gold-light);">Contacto Inmediato</span>
+            <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 700; line-height: 1.2; margin-bottom: 1rem;">
+              ¿Prefieres que te llamemos hoy?
+            </h2>
+            <p style="color: #D1D5DB; font-size: 0.95rem; line-height: 1.7;">
+              Sin cuestionarios eternos. Déjanos tu nombre y teléfono y un consultor senior de ROSER.AI se pondrá en contacto contigo durante la jornada para evaluar la viabilidad de tu sistema.
+            </p>
+          </div>
+
+          <div class="lead-form-wrap">
+            <form id="quickLeadForm">
+              <div class="lead-input-row">
+                <div class="lead-field-group">
+                  <label for="leadName">Nombre / Empresa *</label>
+                  <input type="text" id="leadName" class="lead-input-field" placeholder="Ej. Carlos García" required />
+                </div>
+                <div class="lead-field-group">
+                  <label for="leadPhone">Teléfono o WhatsApp *</label>
+                  <input type="tel" id="leadPhone" class="lead-input-field" placeholder="Ej. 603 78 28 84" required />
+                </div>
+              </div>
+
+              <div class="lead-gdpr-row">
+                <input type="checkbox" id="leadConsent" required />
+                <label for="leadConsent">
+                  Acepto el tratamiento de datos según el RGPD para recibir la llamada diagnóstica sin compromiso comercial.
+                </label>
+              </div>
+
+              <button type="submit" class="btn-primary" id="leadSubmitBtn" style="width: 100%; justify-content: center;">
+                Solicitar llamada hoy
+              </button>
+              <div class="lead-status-msg" id="leadStatusMsg"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
+  <!-- FOOTER -->
   <footer>
-    <div class="container" style="text-align: center; color: var(--text-slate); font-size: 0.85rem;">
-      © 2026 ROSER.AI — Ingeniería de Software & Sistemas Autónomos. Operado desde Badajoz y Mérida.
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <span class="brand-name" style="font-size: 1.25rem; margin-bottom: 0.8rem; display: block;">ROSER<span class="ai-accent">.AI</span></span>
+          <p style="color: var(--text-slate); font-size: 0.88rem; max-width: 380px;">
+            Ingeniería de software, automatización B2B y agentes de inteligencia artificial operados desde Badajoz y Mérida para empresas de toda España.
+          </p>
+        </div>
+        <div>
+          <h5 style="color: var(--text-charcoal); font-weight: 700; margin-bottom: 0.8rem;">Páginas</h5>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.88rem;">
+            <li><a href="index.html" style="color: var(--text-slate); text-decoration: none;">Inicio</a></li>
+            <li><a href="soluciones.html" style="color: var(--text-slate); text-decoration: none;">Soluciones & Demo WhatsApp</a></li>
+            <li><a href="precios.html" style="color: var(--text-slate); text-decoration: none;">Precios, Retainers & Calculadora ROI</a></li>
+            <li><a href="#contacto-rapido" style="color: var(--text-slate); text-decoration: none;">Contacto Rápido</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 style="color: var(--text-charcoal); font-weight: 700; margin-bottom: 0.8rem;">Contacto Directo</h5>
+          <p style="font-size: 0.88rem; color: var(--text-slate); margin-bottom: 0.5rem;">WhatsApp: <a href="https://wa.me/34603782884" style="color: var(--gold-accessible); font-weight: 600; text-decoration: none;">+34 603 78 28 84</a></p>
+          <p style="font-size: 0.88rem; color: var(--text-slate);">Agenda: <a href="https://cal.com/dani-serrano-mc095n/30min" target="_blank" style="color: var(--gold-accessible); text-decoration: none;">cal.com/dani-serrano-mc095n/30min</a></p>
+        </div>
+      </div>
+      <div style="border-top: 1px solid var(--border-light); padding-top: 1.4rem; text-align: center; color: var(--text-slate); font-size: 0.82rem;">
+        © 2026 ROSER.AI — Todos los derechos reservados.
+      </div>
     </div>
   </footer>
 
+  <!-- ELEMENTOS FLOTANTES -->
+  <div class="floating-support-cluster">
+    <button class="action-fab fab-quote" onclick="openCallModal()" title="Agendar llamada de 30 min">
+      <svg class="svg-stroke" width="20" height="20" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+    </button>
+    <a href="https://wa.me/34603782884?text=Hola%20ROSER.AI,%20quiero%20conocer%20c%C3%B3mo%20pod%C3%A9is%20automatizar%20mi%20empresa" target="_blank" rel="noopener noreferrer" class="action-fab fab-wa" title="WhatsApp (+34 603 78 28 84)">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+    </a>
+  </div>
+
+  <!-- MODAL CAL.COM -->
+  <div class="modal-backdrop" id="callScheduleModal">
+    <div class="modal-sheet">
+      <button class="close-modal-x" id="closeCallModalBtn" aria-label="Cerrar modal">
+        <svg class="svg-stroke" width="16" height="16" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; margin-bottom: 0.5rem;">Reserva de Sesión Estratégica (30 min)</h3>
+      <div class="cal-iframe-container">
+        <iframe src="https://cal.com/dani-serrano-mc095n/30min" title="Reserva Cal.com ROSER.AI" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+
   <script>
+    // Modal Cal.com
+    const modal = document.getElementById('callScheduleModal');
+    const closeBtn = document.getElementById('closeCallModalBtn');
+    function openCallModal() { modal.classList.add('active'); }
+    if (closeBtn) closeBtn.onclick = () => modal.classList.remove('active');
+    modal.onclick = (e) => { if (e.target === modal) modal.classList.remove('active'); };
+
+    // Calculadora ROI
     const hoursSlider = document.getElementById('hoursSlider');
     const rateSlider = document.getElementById('rateSlider');
     const hoursDisplay = document.getElementById('hoursDisplay');
@@ -288,6 +1361,28 @@
     hoursSlider.oninput = refresh;
     rateSlider.oninput = refresh;
     refresh();
+
+    // FAQ Acordeón
+    document.querySelectorAll('.faq-question').forEach(button => {
+      button.addEventListener('click', () => {
+        const item = button.parentElement;
+        const isActive = item.classList.contains('active');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+        if (!isActive) item.classList.add('active');
+      });
+    });
+
+    // Formulario Rápido
+    const form = document.getElementById('quickLeadForm');
+    const statusMsg = document.getElementById('leadStatusMsg');
+    if (form) {
+      form.onsubmit = (e) => {
+        e.preventDefault();
+        statusMsg.className = 'lead-status-msg success';
+        statusMsg.textContent = '✓ Solicitud recibida. Nos pondremos en contacto contigo en breve.';
+        form.reset();
+      };
+    }
   </script>
 </body>
 </html>
