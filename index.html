@@ -4,10 +4,29 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ROSER.AI — Ingeniería de Software, Agentes IA & Automatización</title>
-  
-  <!-- Fonts: Space Grotesk & Inter -->
+  <meta name="description" content="Desarrollo de software a medida, agentes inteligentes en WhatsApp y sistemas de automatización con n8n/Make para multiplicar la facturación de tu empresa en Badajoz, Mérida y toda España." />
+  <meta name="keywords" content="Inteligencia Artificial, Chatbots WhatsApp, Automatización n8n, Desarrollo Web Badajoz, Software a medida, ROSER AI" />
+  <meta name="author" content="ROSER.AI" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Metadatos Open Graph / Facebook / WhatsApp -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://roser.ai/" />
+  <meta property="og:title" content="ROSER.AI — Ingeniería de Software, Agentes IA & Automatización" />
+  <meta property="og:description" content="Sistemas autónomos y desarrollo digital de alto rendimiento. Automatiza tu atención comercial en WhatsApp y delega tareas repetitivas." />
+  <meta property="og:image" content="https://roser.ai/assets/og-roser.jpg" />
+  <meta property="og:locale" content="es_ES" />
+
+  <!-- Metadatos Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://roser.ai/" />
+  <meta name="twitter:title" content="ROSER.AI — Ingeniería de Software, Agentes IA & Automatización" />
+  <meta name="twitter:description" content="Sistemas autónomos y desarrollo digital de alto rendimiento. Automatiza tu atención comercial en WhatsApp y delega tareas repetitivas." />
+  <meta name="twitter:image" content="https://roser.ai/assets/og-roser.jpg" />
+
+  <!-- Fuentes: Space Grotesk & Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
   
   <!-- FontAwesome 6 -->
@@ -187,7 +206,6 @@
       gap: 0.75rem;
     }
 
-    /* Buttons */
     .btn-primary {
       background: linear-gradient(135deg, #D4AF37 0%, #B89025 100%);
       color: #FFFFFF;
@@ -236,27 +254,6 @@
       box-shadow: 0 6px 18px rgba(17, 24, 39, 0.06);
     }
 
-    .btn-admin-key {
-      background: var(--gold-subtle);
-      border: 1px solid rgba(212, 175, 55, 0.4);
-      color: var(--gold-deep);
-      padding: 0.52rem 0.95rem;
-      border-radius: var(--radius-full);
-      font-size: 0.78rem;
-      font-weight: 600;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      transition: all 0.2s ease;
-    }
-
-    .btn-admin-key:hover {
-      background: rgba(212, 175, 55, 0.22);
-      border-color: var(--gold-metallic);
-      transform: translateY(-1px);
-    }
-
     .mobile-menu-btn {
       display: block;
       background: none;
@@ -294,8 +291,8 @@
 
     .hero-headline {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(2.5rem, 5.6vw, 4.3rem);
-      line-height: 1.09;
+      font-size: clamp(2.4rem, 5.2vw, 4.2rem);
+      line-height: 1.1;
       font-weight: 700;
       letter-spacing: -0.035em;
       color: var(--text-charcoal);
@@ -338,10 +335,6 @@
       .proof-grid {
         grid-template-columns: repeat(4, 1fr);
       }
-    }
-
-    .proof-item {
-      padding: 0.5rem;
     }
 
     .proof-metric {
@@ -402,7 +395,7 @@
       margin-top: 0.75rem;
     }
 
-    /* PRICING PACKS LUXURY SECTION */
+    /* PRICING PACKS */
     .pricing-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -582,7 +575,7 @@
       cursor: pointer;
     }
 
-    /* SERVICES MATRIX */
+    /* SERVICIOS */
     .services-matrix {
       display: grid;
       grid-template-columns: 1fr;
@@ -689,6 +682,127 @@
       color: var(--gold-deep);
     }
 
+    /* CASOS DE USO / APLICACIONES REALES */
+    .use-cases-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+      margin-top: 1.5rem;
+    }
+
+    @media (min-width: 860px) {
+      .use-cases-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .use-case-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 2.2rem 1.8rem;
+      box-shadow: var(--shadow-luxury-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.3s ease;
+    }
+
+    .use-case-card:hover {
+      border-color: var(--border-gold);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-luxury-md);
+    }
+
+    .use-case-industry {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gold-deep);
+      margin-bottom: 0.75rem;
+    }
+
+    .use-case-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-charcoal);
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+
+    .use-case-desc {
+      font-size: 0.9rem;
+      color: var(--text-slate);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .use-case-benefit {
+      background: var(--bg-surface-soft);
+      border-left: 3px solid var(--gold-metallic);
+      padding: 0.75rem 1rem;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: 0.82rem;
+      color: var(--text-charcoal);
+      font-weight: 600;
+    }
+
+    /* PROCESO DE TRABAJO EN 4 PASOS */
+    .process-timeline {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      position: relative;
+      margin-top: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .process-timeline {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .process-step {
+      background: #FFFFFF;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 1.8rem 1.4rem;
+      position: relative;
+      box-shadow: var(--shadow-luxury-sm);
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .process-step:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-gold);
+    }
+
+    .step-number {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--gold-deep);
+      margin-bottom: 0.5rem;
+      line-height: 1;
+    }
+
+    .step-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-charcoal);
+      margin-bottom: 0.5rem;
+    }
+
+    .step-desc {
+      font-size: 0.86rem;
+      color: var(--slate-gray);
+      line-height: 1.5;
+    }
+
+    /* CALCULADORA ROI */
     .interactive-card {
       background: #FFFFFF;
       border: 1px solid var(--border-gold);
@@ -755,7 +869,7 @@
       margin: 0.4rem 0;
     }
 
-    /* Comparison Table */
+    /* TABLA COMPARATIVA */
     .compare-container {
       overflow-x: auto;
       margin: 3.5rem 0;
@@ -809,7 +923,72 @@
       gap: 0.5rem;
     }
 
-    /* MODAL ARCHITECTURE */
+    /* PREGUNTAS FRECUENTES (FAQ ACORDEÓN) */
+    .faq-wrapper {
+      max-width: 820px;
+      margin: 1.5rem auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .faq-item {
+      background: #FFFFFF;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .faq-item.active {
+      border-color: var(--gold-metallic);
+      box-shadow: var(--shadow-luxury-sm);
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 1.25rem 1.5rem;
+      text-align: left;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-charcoal);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      cursor: pointer;
+    }
+
+    .faq-question i {
+      color: var(--gold-deep);
+      transition: transform 0.25s ease;
+      font-size: 0.9rem;
+    }
+
+    .faq-item.active .faq-question i {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s cubic-bezier(0, 1, 0, 1);
+      padding: 0 1.5rem;
+      color: var(--text-slate);
+      font-size: 0.92rem;
+      line-height: 1.65;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 500px;
+      transition: max-height 0.4s ease-in-out;
+      padding-bottom: 1.35rem;
+    }
+
+    /* MODAL BASE */
     .modal-backdrop {
       position: fixed;
       inset: 0;
@@ -873,7 +1052,6 @@
       color: var(--text-charcoal);
     }
 
-    /* ACTION SELECTOR MODAL (WHATSAPP VS EMAIL) */
     .pack-choice-card {
       background: var(--bg-surface-soft);
       border: 1px solid var(--border-light);
@@ -963,169 +1141,7 @@
       padding-right: 2.6rem;
     }
 
-    select.field-input option {
-      background-color: #FFFFFF !important;
-      color: #111827 !important;
-      padding: 12px 16px !important;
-      font-size: 0.95rem;
-    }
-
-    /* ADMIN DASHBOARD */
-    .admin-dashboard-sheet {
-      max-width: 1100px;
-      padding: 2.2rem;
-      background: #FFFFFF;
-    }
-
-    .admin-tabs-nav {
-      display: flex;
-      gap: 0.6rem;
-      border-bottom: 1px solid var(--border-light);
-      padding-bottom: 1rem;
-      margin-bottom: 1.6rem;
-      overflow-x: auto;
-    }
-
-    .tab-btn {
-      background: var(--bg-surface-soft);
-      border: 1px solid var(--border-light);
-      color: var(--slate-gray);
-      padding: 0.6rem 1.25rem;
-      border-radius: var(--radius-full);
-      font-size: 0.85rem;
-      font-weight: 600;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      white-space: nowrap;
-      transition: all 0.2s ease;
-    }
-
-    .tab-btn.active {
-      background: var(--gold-subtle);
-      border-color: var(--gold-metallic);
-      color: var(--gold-deep);
-    }
-
-    .admin-panel-view {
-      display: none;
-    }
-
-    .admin-panel-view.active {
-      display: block;
-    }
-
-    /* Embedded Google Calendar */
-    .gcal-admin-wrapper {
-      background: #FFFFFF;
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-md);
-      padding: 1.2rem;
-      box-shadow: var(--shadow-luxury-sm);
-    }
-
-    .gcal-controls-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-      margin-bottom: 1rem;
-      padding-bottom: 0.8rem;
-      border-bottom: 1px solid var(--border-light);
-    }
-
-    .gcal-frame-container {
-      width: 100%;
-      height: 600px;
-      border-radius: var(--radius-sm);
-      overflow: hidden;
-      border: 1px solid var(--border-medium);
-      background: #FFFFFF;
-    }
-
-    .gcal-frame-container iframe {
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
-
-    /* Internal Dev <-> Closer Chat */
-    .admin-chat-container {
-      background: #FDFDFD;
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-md);
-      display: flex;
-      flex-direction: column;
-      height: 480px;
-      box-shadow: var(--shadow-luxury-sm);
-    }
-
-    .chat-header {
-      padding: 0.9rem 1.3rem;
-      border-bottom: 1px solid var(--border-light);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: var(--bg-surface-soft);
-    }
-
-    .chat-messages {
-      flex: 1;
-      overflow-y: auto;
-      padding: 1.3rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      background: #FAFAFA;
-    }
-
-    .chat-bubble {
-      max-width: 78%;
-      padding: 0.85rem 1.15rem;
-      border-radius: var(--radius-md);
-      font-size: 0.9rem;
-      box-shadow: 0 2px 8px rgba(17, 24, 39, 0.04);
-    }
-
-    .chat-bubble.dev {
-      align-self: flex-end;
-      background: linear-gradient(135deg, #D4AF37 0%, #B89025 100%);
-      color: #FFFFFF;
-      border-bottom-right-radius: 4px;
-    }
-
-    .chat-bubble.closer {
-      align-self: flex-start;
-      background: #FFFFFF;
-      border: 1px solid var(--border-light);
-      color: var(--text-charcoal);
-      border-bottom-left-radius: 4px;
-    }
-
-    .bubble-author {
-      font-size: 0.74rem;
-      font-weight: 700;
-      margin-bottom: 0.25rem;
-      opacity: 0.9;
-    }
-
-    .bubble-time {
-      font-size: 0.68rem;
-      opacity: 0.7;
-      margin-top: 0.4rem;
-      text-align: right;
-    }
-
-    .chat-input-row {
-      padding: 0.9rem 1.2rem;
-      border-top: 1px solid var(--border-light);
-      display: flex;
-      gap: 0.75rem;
-      background: #FFFFFF;
-    }
-
+    /* FLOATING CLUSTERS & BOT LAUNCHER */
     .floating-support-cluster {
       position: fixed;
       bottom: 24px;
@@ -1168,29 +1184,6 @@
       border: 1px solid rgba(255, 255, 255, 0.4);
     }
 
-    footer {
-      border-top: 1px solid var(--border-light);
-      padding: 4.5rem 0 2.8rem;
-      background: #FAFAFA;
-      font-size: 0.9rem;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2.5rem;
-      margin-bottom: 3.5rem;
-    }
-
-    @media (min-width: 768px) {
-      .footer-grid {
-        grid-template-columns: 2fr 1fr 1fr;
-      }
-    }
-
-    /* ==============================================================
-       AI BOT EMBEDDED WIDGET STYLES (ROSER BOT)
-       ============================================================== */
     .bot-launcher-fab {
       position: fixed;
       bottom: 24px;
@@ -1227,15 +1220,9 @@
     }
 
     @keyframes botPulse {
-      0% {
-        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
-      }
-      70% {
-        box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
-      }
-      100% {
-        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
-      }
+      0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+      70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
     }
 
     .bot-widget-container {
@@ -1245,7 +1232,7 @@
       width: 375px;
       max-width: calc(100vw - 48px);
       height: 540px;
-      max-height: 82vh;
+      max-height: 80vh;
       background: #FFFFFF;
       border: 1px solid var(--border-gold);
       border-radius: var(--radius-lg);
@@ -1318,11 +1305,6 @@
       cursor: pointer;
       line-height: 1;
       padding: 0.2rem;
-      transition: color 0.2s ease;
-    }
-
-    .bot-close-btn:hover {
-      color: #FFFFFF;
     }
 
     .bot-messages-area {
@@ -1341,12 +1323,6 @@
       border-radius: var(--radius-md);
       font-size: 0.86rem;
       line-height: 1.5;
-      animation: msgAppear 0.2s ease forwards;
-    }
-
-    @keyframes msgAppear {
-      from { opacity: 0; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
     }
 
     .bot-msg.bot {
@@ -1379,12 +1355,6 @@
       font-size: 0.8rem;
       margin-top: 0.6rem;
       box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
-      transition: transform 0.2s ease;
-    }
-
-    .bot-cta-wa:hover {
-      transform: scale(1.04);
-      background: #22c35e;
     }
 
     .bot-quick-chips {
@@ -1411,7 +1381,6 @@
 
     .bot-chip:hover {
       background: var(--gold-subtle);
-      border-color: var(--gold-metallic);
     }
 
     .bot-input-container {
@@ -1431,7 +1400,6 @@
       font-size: 0.85rem;
       outline: none;
       font-family: inherit;
-      color: var(--text-charcoal);
     }
 
     .bot-input-container input:focus {
@@ -1450,25 +1418,71 @@
       align-items: center;
       justify-content: center;
       font-size: 0.9rem;
-      transition: transform 0.15s ease;
-      flex-shrink: 0;
     }
 
-    .bot-send-btn:hover {
-      transform: scale(1.08);
+    /* RESPONSIVE & MOBILE POLISH (Resolución de choques flotantes) */
+    @media (max-width: 640px) {
+      .floating-support-cluster {
+        bottom: 16px;
+        right: 16px;
+        gap: 0.5rem;
+      }
+      .action-fab {
+        width: 48px;
+        height: 48px;
+        font-size: 1.3rem;
+      }
+      .bot-launcher-fab {
+        bottom: 16px;
+        left: 16px;
+        padding: 0.6rem 0.9rem;
+        font-size: 0.78rem;
+        gap: 0.45rem;
+      }
+      .bot-launcher-fab span:last-child {
+        display: none; /* Oculta texto largo para dejar solo ícono y estado */
+      }
+      .bot-launcher-fab::after {
+        content: "Chat IA";
+      }
+      .bot-widget-container {
+        bottom: 74px;
+        left: 12px;
+        width: calc(100vw - 24px);
+        max-width: none;
+        height: 72vh;
+      }
+    }
+
+    footer {
+      border-top: 1px solid var(--border-light);
+      padding: 4.5rem 0 2.8rem;
+      background: #FAFAFA;
+      font-size: 0.9rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      margin-bottom: 3.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .footer-grid {
+        grid-template-columns: 2fr 1fr 1fr;
+      }
     }
   </style>
 </head>
 
 <body>
-  <!-- Ambient background lighting -->
   <div class="glow-bg glow-hero"></div>
 
   <header>
     <div class="container">
       <div class="nav-wrapper">
         <a href="#" class="brand-container">
-          <!-- Vector Hex-Vortex in Metallic Gold -->
           <svg class="brand-icon-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <linearGradient id="goldBrandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -1492,17 +1506,13 @@
         <ul class="nav-links">
           <li><a href="#packs">Planes & Tarifas</a></li>
           <li><a href="#soluciones">Soluciones</a></li>
+          <li><a href="#casos">Casos Reales</a></li>
+          <li><a href="#proceso">Metodología</a></li>
           <li><a href="#calculadora">Calculadora ROI</a></li>
-          <li><a href="#comparativa">Ecosistema</a></li>
+          <li><a href="#faq">Preguntas Frecuentes</a></li>
         </ul>
 
         <div class="nav-actions">
-          <button class="btn-admin-key" id="openAdminTrigger" title="Acceso reservado equipo">
-            <i class="fa-solid fa-lock"></i>
-            <span>Equipo</span>
-          </button>
-          
-          <!-- BOTÓN AGENDAR LLAMADA EN HEADER -->
           <button class="btn-primary" id="topBookCallBtn">
             <i class="fa-regular fa-calendar-check"></i>
             <span>Agendar Llamada</span>
@@ -1521,8 +1531,10 @@
     <div style="display: flex; flex-direction: column; gap: 1.2rem;">
       <a href="#packs" class="mobile-item" style="color: var(--text-slate); text-decoration: none; font-size: 0.95rem; font-weight: 500;">Planes & Tarifas</a>
       <a href="#soluciones" class="mobile-item" style="color: var(--text-slate); text-decoration: none; font-size: 0.95rem; font-weight: 500;">Soluciones</a>
+      <a href="#casos" class="mobile-item" style="color: var(--text-slate); text-decoration: none; font-size: 0.95rem; font-weight: 500;">Casos Reales</a>
+      <a href="#proceso" class="mobile-item" style="color: var(--text-slate); text-decoration: none; font-size: 0.95rem; font-weight: 500;">Metodología</a>
       <a href="#calculadora" class="mobile-item" style="color: var(--text-slate); text-decoration: none; font-size: 0.95rem; font-weight: 500;">Calculadora ROI</a>
-      <a href="#comparativa" class="mobile-item" style="color: var(--text-slate); text-decoration: none; font-size: 0.95rem; font-weight: 500;">Ecosistema</a>
+      <a href="#faq" class="mobile-item" style="color: var(--text-slate); text-decoration: none; font-size: 0.95rem; font-weight: 500;">Preguntas Frecuentes</a>
       <button class="btn-primary" id="mobileBookCallBtn" style="justify-content: center; width: 100%;">
         <i class="fa-regular fa-calendar-check"></i> Agendar Llamada
       </button>
@@ -1547,7 +1559,6 @@
         </p>
 
         <div class="hero-actions">
-          <!-- BOTÓN PRINCIPAL DE AGENDAR TU LLAMADA -->
           <button class="btn-primary" id="heroBookCallBtn" style="padding: 0.85rem 1.8rem; font-size: 0.95rem;">
             <i class="fa-regular fa-calendar-check"></i>
             <span>Agenda tu llamada</span>
@@ -1558,13 +1569,12 @@
             <i class="fa-solid fa-arrow-down" style="font-size: 0.8rem;"></i>
           </a>
 
-          <!-- WhatsApp Direct Link with 603782884 -->
           <a href="https://wa.me/34603782884?text=Hola%20ROSER.AI,%20quiero%20conocer%20c%C3%B3mo%20pod%C3%A9is%20automatizar%20mi%20empresa" 
              target="_blank" 
              rel="noopener noreferrer" 
              class="btn-ghost">
             <i class="fa-brands fa-whatsapp" style="color: #25D366;"></i>
-            <span>WhatsApp (603 78 28 84)</span>
+            <span>WhatsApp Directo</span>
           </a>
         </div>
 
@@ -1589,7 +1599,7 @@
       </div>
     </section>
 
-    <!-- SECTION: 3 LUXURY PRICING PACKS -->
+    <!-- SECTION: 3 PRICING PACKS -->
     <section class="section-wrap" id="packs" style="background: linear-gradient(180deg, #FFFFFF 0%, #FAF9F6 100%);">
       <div class="container">
         <div class="section-header" style="text-align: center; max-width: 780px; margin: 0 auto 3.6rem;">
@@ -1622,7 +1632,7 @@
                 <li><i class="fa-solid fa-circle-check"></i> <span><strong>Diseño personalizado</strong> adaptado a tu identidad de marca.</span></li>
                 <li><i class="fa-solid fa-circle-check"></i> <span><strong>Botón flotante directo de WhatsApp</strong> para chats instantáneos.</span></li>
                 <li><i class="fa-solid fa-circle-check"></i> <span><strong>Formulario de contacto silencioso</strong> con aviso directo a tu email.</span></li>
-                <li><i class="fa-solid fa-circle-check"></i> <span><strong>Alojamiento en la nube gratuito</strong> de por vida (0€/mes de servidor).</span></li>
+                <li><i class="fa-solid fa-circle-check"></i> <span><strong>Alojamiento en la nube gratuito</strong> permanente (0€/mes de servidor).</span></li>
                 <li><i class="fa-solid fa-circle-check"></i> <span><strong>Optimización básica de Google Maps</strong> y ficha de negocio.</span></li>
               </ul>
             </div>
@@ -1786,6 +1796,99 @@
       </div>
     </section>
 
+    <!-- SECTION: CASOS DE USO / APLICACIONES REALES -->
+    <section class="section-wrap" id="casos" style="background: var(--bg-surface-soft);">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Aplicaciones Prácticas</span>
+          <h2 class="section-title">Ecosistemas en funcionamiento por sector</h2>
+          <p class="section-subtitle">
+            Cómo transformamos los cuellos de botella operativos en sistemas que operan en piloto automático.
+          </p>
+        </div>
+
+        <div class="use-cases-grid">
+          <!-- Caso 1 -->
+          <div class="use-case-card">
+            <div>
+              <div class="use-case-industry"><i class="fa-solid fa-heart-pulse"></i> Clínicas & Salud Privada</div>
+              <h3 class="use-case-title">Agendamiento autónomo y recordatorios WhatsApp</h3>
+              <p class="use-case-desc">
+                El agente atiende a los pacientes 24/7, responde sobre tratamientos, sincroniza citas con la agenda de la clínica y envía recordatorios automáticos 24h antes por WhatsApp, reduciendo un 75% las inasistencias.
+              </p>
+            </div>
+            <div class="use-case-benefit">
+              <i class="fa-solid fa-check" style="color: var(--gold-deep); margin-right: 0.3rem;"></i> -75% Citas perdidas sin sobrecargar recepción
+            </div>
+          </div>
+
+          <!-- Caso 2 -->
+          <div class="use-case-card">
+            <div>
+              <div class="use-case-industry"><i class="fa-solid fa-wrench"></i> Talleres & Concesionarios</div>
+              <h3 class="use-case-title">Presupuestos automáticos en PDF y fidelización</h3>
+              <p class="use-case-desc">
+                Generación y remisión desatendida de hojas de presupuesto en PDF validadas mediante formularios web o WhatsApp. Flujo post-servicio que solicita revisiones de ITV y campañas de mantenimiento programado.
+              </p>
+            </div>
+            <div class="use-case-benefit">
+              <i class="fa-solid fa-check" style="color: var(--gold-deep); margin-right: 0.3rem;"></i> Presupuestos emitidos en &lt; 2 minutos
+            </div>
+          </div>
+
+          <!-- Caso 3 -->
+          <div class="use-case-card">
+            <div>
+              <div class="use-case-industry"><i class="fa-solid fa-briefcase"></i> Servicios B2B & Despachos</div>
+              <h3 class="use-case-title">Cualificación de leads y sincronización CRM</h3>
+              <p class="use-case-desc">
+                Filtra prospectos según presupuesto, volumen y urgencia antes de llegar al equipo comercial. Conexión directa en tiempo real con HubSpot, Notion o Google Sheets, derivando solo reuniones de alto ticket.
+              </p>
+            </div>
+            <div class="use-case-benefit">
+              <i class="fa-solid fa-check" style="color: var(--gold-deep); margin-right: 0.3rem;"></i> +100% Leads filtrados con datos clave
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: METODOLOGÍA EN 4 PASOS -->
+    <section class="section-wrap" id="proceso">
+      <div class="container">
+        <div class="section-header" style="text-align: center; max-width: 750px; margin: 0 auto 3rem;">
+          <span class="eyebrow">Metodología Comprobada</span>
+          <h2 class="section-title">Tu sistema listo en 4 etapas transparentes</h2>
+          <p class="section-subtitle" style="margin: 0.8rem auto 0;">
+            Sin tecnicismos innecesarios ni desviaciones de plazos. Un proceso de ingeniería estructurado hacia el ROI.
+          </p>
+        </div>
+
+        <div class="process-timeline">
+          <div class="process-step">
+            <div class="step-number">01</div>
+            <h3 class="step-title">Diagnóstico</h3>
+            <p class="step-desc">Sesión estratégica inicial para mapear tareas repetitivas, cuellos de botella y fugas comerciales en tu embudo.</p>
+          </div>
+          <div class="process-step">
+            <div class="step-number">02</div>
+            <h3 class="step-title">Arquitectura</h3>
+            <p class="step-desc">Diseño de interfaces, entrenamiento de bases de conocimiento para la IA y configuración de pipelines de automatización.</p>
+          </div>
+          <div class="process-step">
+            <div class="step-number">03</div>
+            <h3 class="step-title">Despliegue</h3>
+            <p class="step-desc">Puesta en marcha, conexión con WhatsApp Cloud API, sincronización con calendarios y pruebas de estrés reales.</p>
+          </div>
+          <div class="process-step">
+            <div class="step-number">04</div>
+            <h3 class="step-title">Operativa 24/7</h3>
+            <p class="step-desc">Tu ecosistema digital operando de forma desatendida, captando leads y liberando horas de trabajo de tu equipo.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- SECTION: CALCULADORA ROI -->
     <section class="section-wrap" id="calculadora">
       <div class="container">
@@ -1802,7 +1905,7 @@
 
               <div>
                 <label style="font-size: 0.88rem; color: var(--text-charcoal); font-weight: 600;">
-                  Horas semanales dedicadas a responder dudas, enviar presupuestos y agendar citas:
+                  Horas semanales dedicadas a responder dudas, presupuestos y agendas:
                   <strong id="hoursDisplay" style="color: var(--gold-deep); margin-left: 0.4rem;">15 horas</strong>
                 </label>
                 <input type="range" min="5" max="50" value="15" class="range-input" id="hoursSlider" />
@@ -1865,15 +1968,70 @@
               <tr>
                 <td><strong>Agendamiento de Citas</strong></td>
                 <td><span class="badge-bad"><i class="fa-solid fa-xmark"></i> Intercambio infinito de mensajes y huecos perdidos</span></td>
-                <td><span class="badge-good"><i class="fa-solid fa-check"></i> Sincronización automática de Google Calendar / Cal.com</span></td>
+                <td><span class="badge-good"><i class="fa-solid fa-check"></i> Sincronización automática de Google Calendar</span></td>
               </tr>
               <tr>
-                <td><strong>Cierre y Seguimiento (Closer)</strong></td>
+                <td><strong>Cierre y Seguimiento</strong></td>
                 <td><span class="badge-bad"><i class="fa-solid fa-xmark"></i> Leads olvidados en libretas o chats personales</span></td>
-                <td><span class="badge-good"><i class="fa-solid fa-check"></i> Pipeline transparente con alertas instantáneas al móvil</span></td>
+                <td><span class="badge-good"><i class="fa-solid fa-check"></i> Pipeline transparente con alertas instantáneas</span></td>
               </tr>
             </tbody>
           </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: PREGUNTAS FRECUENTES (FAQ) -->
+    <section class="section-wrap" id="faq" style="background: var(--bg-surface-soft);">
+      <div class="container">
+        <div class="section-header" style="text-align: center; max-width: 780px; margin: 0 auto 3rem;">
+          <span class="eyebrow">Resolución de Dudas</span>
+          <h2 class="section-title">Preguntas Frecuentes</h2>
+          <p class="section-subtitle" style="margin: 0.8rem auto 0;">
+            Todo lo que necesitas conocer antes de iniciar la digitalización de tu negocio.
+          </p>
+        </div>
+
+        <div class="faq-wrapper">
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>¿Cuánto tiempo toma tener el sistema listo y funcionando?</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              Para el <strong>Pack Básico</strong> el plazo habitual es de <strong>3 a 5 días laborables</strong>. Para el <strong>Pack Plata</strong> (que incluye el agente conversacional entrenado) el despliegue toma de <strong>7 a 10 días</strong>. Proyectos a medida o el <strong>Pack Oro</strong> con integraciones complejas n8n/Make se entregan habitualmente en un periodo de <strong>12 a 18 días laborables</strong>.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>¿Hay cuotas mensuales obligatorias o costes ocultos?</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              No. Nuestros packs principales son de <strong>pago único</strong>. El alojamiento web está resuelto para que no tengas gastos recurrentes de servidor. En el caso de WhatsApp Cloud API, Meta ofrece las primeras 1.000 conversaciones mensuales de atención al cliente de forma gratuita, lo cual cubre sobradamente la operativa de la inmensa mayoría de PYMEs.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>¿Cómo aprende el agente de IA las características de mi empresa?</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              Durante la fase de diseño recopilamos tus catálogos, preguntas frecuentes habituales, políticas de precios, condiciones y tono de comunicación. El agente se programa y calibra con protecciones para ceñirse estrictamente a la realidad de tu negocio, derivando educadamente a WhatsApp personal cuando detecta un caso excepcional.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>¿Trabajáis únicamente en Extremadura o en toda España?</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              Nuestra base técnica se encuentra en <strong>Badajoz y Mérida</strong>, donde trabajamos estrechamente con el tejido empresarial local, pero desarrollamos e implementamos software para empresas en <strong>toda España</strong> mediante sesiones de trabajo y seguimiento en remoto.
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1899,19 +2057,19 @@
           <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.65rem; font-size: 0.88rem;">
             <li><a href="#packs" style="color: var(--slate-gray); text-decoration: none;">Planes & Tarifas</a></li>
             <li><a href="#soluciones" style="color: var(--slate-gray); text-decoration: none;">Soluciones</a></li>
+            <li><a href="#casos" style="color: var(--slate-gray); text-decoration: none;">Casos Reales</a></li>
             <li><a href="#calculadora" style="color: var(--slate-gray); text-decoration: none;">Calculadora ROI</a></li>
-            <li><a href="#comparativa" style="color: var(--slate-gray); text-decoration: none;">Ecosistema</a></li>
+            <li><a href="#faq" style="color: var(--slate-gray); text-decoration: none;">Preguntas Frecuentes</a></li>
           </ul>
         </div>
 
         <div>
-          <h5 style="color: var(--text-charcoal); font-size: 0.92rem; font-weight: 700; margin-bottom: 1.1rem;">Operativa Privada</h5>
-          <p style="color: var(--slate-gray); font-size: 0.84rem; margin-bottom: 0.9rem;">
-            Acceso reservado a la mesa de trabajo técnica y comercial.
-          </p>
-          <button class="btn-admin-key" id="footerAdminTrigger">
-            <i class="fa-solid fa-lock"></i> Entrar a Terminal de Control
-          </button>
+          <h5 style="color: var(--text-charcoal); font-size: 0.92rem; font-weight: 700; margin-bottom: 1.1rem;">Legal & RGPD</h5>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.65rem; font-size: 0.88rem;">
+            <li><a href="#" onclick="alert('Aviso Legal: ROSER.AI opera de conformidad con la legislación española vigente.'); return false;" style="color: var(--slate-gray); text-decoration: none;">Aviso Legal</a></li>
+            <li><a href="#" onclick="alert('Política de Privacidad: Tratamiento confidencial de datos según el RGPD de la UE.'); return false;" style="color: var(--slate-gray); text-decoration: none;">Política de Privacidad</a></li>
+            <li><a href="#" onclick="alert('Política de Cookies: Esta web utiliza únicamente cookies técnicas esenciales para su correcto funcionamiento.'); return false;" style="color: var(--slate-gray); text-decoration: none;">Política de Cookies</a></li>
+          </ul>
         </div>
       </div>
 
@@ -1921,12 +2079,11 @@
     </div>
   </footer>
 
-  <!-- Floating Cluster: WhatsApp Direct and Consultation FAB -->
+  <!-- Cluster Flotante: WhatsApp Directo y Agendar Cita -->
   <div class="floating-support-cluster">
     <button class="action-fab fab-quote" id="fabOpenLead" title="Agenda tu llamada">
       <i class="fa-regular fa-calendar-check"></i>
     </button>
-    <!-- Direct link to official phone 603782884 -->
     <a href="https://wa.me/34603782884?text=Hola%20ROSER.AI,%20me%20gustar%C3%ADa%20agendar%20un%20diagn%C3%B3stico%20estrat%C3%A9gico%20para%20mi%20negocio" 
        target="_blank" 
        rel="noopener noreferrer" 
@@ -1936,15 +2093,14 @@
     </a>
   </div>
 
-  <!-- ==============================================================
-       AI AGENT CHATBOT WIDGET (ROSER.AI BOT)
-       ============================================================== -->
+  <!-- Botón de apertura del Asistente Virtual IA -->
   <button class="bot-launcher-fab" id="botLauncherBtn" title="Asistente Virtual ROSER.AI">
     <span class="bot-status-pulse"></span>
     <i class="fa-solid fa-brain" style="color: var(--gold-metallic);"></i>
     <span>Pregúntale a ROSER</span>
   </button>
 
+  <!-- Ventana del Asistente Virtual IA -->
   <div class="bot-widget-container" id="botWidgetContainer">
     <div class="bot-header">
       <div class="bot-header-left">
@@ -1962,13 +2118,11 @@
     </div>
 
     <div class="bot-messages-area" id="botMessagesArea">
-      <!-- Mensaje inicial de bienvenida -->
       <div class="bot-msg bot">
         ¡Hola! 👋 Soy el agente inteligente de <strong>ROSER.AI</strong>. Conozco todos nuestros planes, precios, automatizaciones y cómo podemos digitalizar tu empresa. ¿Qué duda tienes?
       </div>
     </div>
 
-    <!-- Quick question chips -->
     <div class="bot-quick-chips">
       <button class="bot-chip" onclick="botAskQuick('¿Qué precios tienen los packs?')">💰 Precios y Packs</button>
       <button class="bot-chip" onclick="botAskQuick('¿Cómo funciona el bot de WhatsApp?')">🤖 Agente WhatsApp</button>
@@ -1983,7 +2137,7 @@
     </form>
   </div>
 
-  <!-- MODAL: AGENDAR TU LLAMADA -->
+  <!-- MODAL: AGENDAR LLAMADA CON RGPD -->
   <div class="modal-backdrop" id="callScheduleModal">
     <div class="modal-sheet">
       <button class="close-modal-x" id="closeCallModalBtn">&times;</button>
@@ -2000,11 +2154,10 @@
         </p>
       </div>
 
-      <!-- Silent Form for Booking -->
       <form id="callScheduleForm">
         <div class="field-group">
           <label class="field-label">Nombre o Empresa *</label>
-          <input type="text" id="callClientName" class="field-input" placeholder="Ej. Carlos Martínez — Taller Mecánico" required />
+          <input type="text" id="callClientName" class="field-input" placeholder="Ej. Carlos Martínez — Clínica Dental" required />
         </div>
 
         <div class="field-group">
@@ -2013,16 +2166,17 @@
         </div>
 
         <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 0.85rem;">
-          <!-- Day picker with Weekend blocking -->
           <div class="field-group">
             <label class="field-label">Día preferido *</label>
             <input type="date" id="callDateInput" class="field-input" required />
+            <span style="font-size: 0.72rem; color: var(--slate-gray); margin-top: 0.25rem; display: block;">
+              Horario de atención: <strong>Lunes a Viernes</strong>.
+            </span>
             <span id="weekendErrorMsg" style="display: none; color: #DC2626; font-size: 0.74rem; margin-top: 0.3rem;">
               Solo laborables (Lun - Vie).
             </span>
           </div>
 
-          <!-- Time slot dropdown from 09:00 to 19:00 -->
           <div class="field-group">
             <label class="field-label">Hora preferida *</label>
             <select id="callTimeInput" class="field-input" required>
@@ -2053,6 +2207,14 @@
           <textarea id="callClientNotes" class="field-input" rows="2" placeholder="Ej. Presupuesto para web, automatización de WhatsApp, etc..."></textarea>
         </div>
 
+        <!-- Checkbox RGPD -->
+        <div class="field-group" style="display: flex; align-items: flex-start; gap: 0.55rem; margin-top: 0.5rem;">
+          <input type="checkbox" id="rgpdConsentCheck" required style="margin-top: 0.25rem; accent-color: var(--gold-deep); cursor: pointer;" />
+          <label for="rgpdConsentCheck" style="font-size: 0.78rem; color: var(--text-slate); line-height: 1.4; cursor: pointer;">
+            Acepto el tratamiento de mis datos de contacto según la política de privacidad de ROSER.AI exclusivamente para coordinar esta llamada diagnóstica.
+          </label>
+        </div>
+
         <button type="submit" class="btn-primary" id="btnSubmitCallBooking" style="width: 100%; justify-content: center; padding: 0.9rem;">
           <i class="fa-solid fa-calendar-check"></i> Confirmar Cita Automática
         </button>
@@ -2068,7 +2230,6 @@
         </div>
       </form>
 
-      <!-- Feedback Confirmation Screen -->
       <div id="callSuccessBox" style="display: none; text-align: center; padding: 2rem 0;">
         <div style="font-size: 3.2rem; color: var(--gold-deep); margin-bottom: 0.9rem;">
           <i class="fa-solid fa-circle-check"></i>
@@ -2084,7 +2245,7 @@
     </div>
   </div>
 
-  <!-- MODAL 1: SELECTOR DE VÍA PARA EL PACK ELEGIDO -->
+  <!-- MODAL: SELECTOR DE VÍA PARA PACK ELEGIDO -->
   <div class="modal-backdrop" id="packSelectorModal">
     <div class="modal-sheet" style="max-width: 480px;">
       <button class="close-modal-x" id="closePackModalBtn">&times;</button>
@@ -2101,7 +2262,6 @@
         </p>
       </div>
 
-      <!-- Option 1: WhatsApp -->
       <a href="#" id="packChoiceWaBtn" target="_blank" rel="noopener noreferrer" class="pack-choice-card">
         <div style="display: flex; align-items: center; gap: 0.95rem;">
           <div class="choice-icon-wrap choice-icon-wa">
@@ -2115,7 +2275,6 @@
         <i class="fa-solid fa-chevron-right" style="color: var(--slate-gray); font-size: 0.85rem;"></i>
       </a>
 
-      <!-- Option 2: Email Form / Agendar llamada -->
       <div class="pack-choice-card" id="packChoiceEmailBtn">
         <div style="display: flex; align-items: center; gap: 0.95rem;">
           <div class="choice-icon-wrap choice-icon-mail">
@@ -2131,224 +2290,27 @@
     </div>
   </div>
 
-  <!-- MODAL 3: ACCESO ADMIN CON CLAVE alepelae -->
-  <div class="modal-backdrop" id="adminPassModal">
-    <div class="modal-sheet" style="max-width: 410px;">
-      <button class="close-modal-x" id="closePassModalBtn">&times;</button>
-      
-      <div style="text-align: center; margin-bottom: 1.6rem;">
-        <div style="width: 52px; height: 52px; background: var(--gold-subtle); border: 1px solid var(--gold-metallic); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.9rem; color: var(--gold-deep); font-size: 1.35rem;">
-          <i class="fa-solid fa-shield-halved"></i>
-        </div>
-        <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.35rem; color: var(--text-charcoal);">Terminal de Control</h3>
-        <p style="color: var(--slate-gray); font-size: 0.82rem; margin-top: 0.25rem;">
-          Acceso privado para el equipo de ROSER.AI
-        </p>
-      </div>
-
-      <form id="adminAuthForm">
-        <div class="field-group">
-          <label class="field-label">Clave de Seguridad</label>
-          <input type="password" id="adminPassKey" class="field-input" placeholder="Introduce tu clave de acceso..." required autocomplete="current-password" />
-        </div>
-
-        <div id="authAlert" style="display: none; color: #DC2626; font-size: 0.82rem; margin-bottom: 0.9rem; text-align: center;">
-          <i class="fa-solid fa-circle-exclamation"></i> Clave de acceso incorrecta.
-        </div>
-
-        <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; padding: 0.8rem;">
-          Acceder al Panel
-        </button>
-      </form>
-    </div>
-  </div>
-
-  <!-- MODAL 4: SUITE DE ADMINISTRACIÓN CON GOOGLE CALENDAR EMBEBIDO -->
-  <div class="modal-backdrop" id="adminWorkspaceModal">
-    <div class="modal-sheet admin-dashboard-sheet">
-      <button class="close-modal-x" id="closeWorkspaceBtn">&times;</button>
-
-      <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.4rem;">
-        <div>
-          <span style="font-size: 0.74rem; color: var(--gold-deep); font-weight: 700; text-transform: uppercase;">
-            <i class="fa-solid fa-circle" style="font-size: 0.45rem; vertical-align: middle;"></i> Nodo ROSER.AI Activo
-          </span>
-          <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; color: var(--text-charcoal);">
-            Panel de Operaciones: Dev & Closer
-          </h2>
-        </div>
-
-        <div style="display: flex; align-items: center; gap: 0.85rem;">
-          <span style="font-size: 0.84rem; color: var(--text-slate);" id="activeRoleLabel">
-            Rol: <strong style="color: var(--gold-deep);">Tú (Fundador / Dev)</strong>
-          </span>
-          <button id="btnSignOut" style="background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.3); color: #DC2626; padding: 0.35rem 0.85rem; border-radius: var(--radius-full); font-size: 0.78rem; font-weight: 600; cursor: pointer;">
-            Cerrar Sesión
-          </button>
-        </div>
-      </div>
-
-      <!-- Navigation Tabs -->
-      <div class="admin-tabs-nav">
-        <button class="tab-btn active" data-pane="paneCalendar">
-          <i class="fa-regular fa-calendar-check"></i> Calendario de Huecos & Citas
-        </button>
-        <button class="tab-btn" data-pane="paneChat">
-          <i class="fa-solid fa-comments"></i> Chat Privado Equipo
-        </button>
-        <button class="tab-btn" data-pane="paneLeads">
-          <i class="fa-solid fa-address-book"></i> Registro de Leads & Citas (<span id="leadsBadge">0</span>)
-        </button>
-      </div>
-
-      <!-- PANE 1: GOOGLE CALENDAR EMBEBIDO OFICIAL -->
-      <div class="admin-panel-view active" id="paneCalendar">
-        <div class="gcal-admin-wrapper">
-          <div class="gcal-controls-bar">
-            <div>
-              <div style="font-size: 0.95rem; font-weight: 700; color: var(--text-charcoal); display: flex; align-items: center; gap: 0.45rem;">
-                <i class="fa-solid fa-calendar-days" style="color: var(--gold-deep);"></i> Agenda Sincronizada en Directo
-              </div>
-              <div style="font-size: 0.78rem; color: var(--slate-gray); margin-top: 0.15rem;">
-                Conectado con tu Google Calendar oficial (Zona horaria: Europa / Madrid)
-              </div>
-            </div>
-            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-              <button type="button" class="btn-ghost" id="btnRefreshCalendar" style="padding: 0.4rem 0.85rem; font-size: 0.78rem;">
-                <i class="fa-solid fa-rotate-right"></i> Recargar Sincronización
-              </button>
-              <a href="https://calendar.google.com/calendar/u/0/r" target="_blank" rel="noopener noreferrer" class="btn-primary" style="padding: 0.4rem 0.95rem; font-size: 0.78rem;">
-                <i class="fa-solid fa-plus"></i> Abrir en Google Calendar
-              </a>
-            </div>
-          </div>
-
-          <div class="gcal-frame-container">
-            <iframe 
-              id="gcalAdminFrame"
-              src="https://calendar.google.com/calendar/embed?src=21ed3c441adc01b9a3d00379cf8c5eade68e47f172de1ae0b270c386f9b8a654%40group.calendar.google.com&ctz=Europe%2FMadrid" 
-              style="border: 0" 
-              frameborder="0" 
-              scrolling="no">
-            </iframe>
-          </div>
-
-          <div style="margin-top: 1.2rem; background: var(--bg-surface-soft); border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 1rem 1.2rem; display: flex; flex-wrap: wrap; gap: 0.8rem; align-items: center; justify-content: space-between;">
-            <div>
-              <div style="font-size: 0.85rem; font-weight: 600; color: var(--text-charcoal);">Enlace directo del calendario para compartir</div>
-              <div style="font-size: 0.76rem; color: var(--slate-gray);">Acceso público para agendamiento y visualización rápida</div>
-            </div>
-            <div style="display: flex; gap: 0.5rem; width: 100%; max-width: 420px;">
-              <input type="text" id="bookingDirectUrl" class="field-input" value="https://calendar.google.com/calendar/embed?src=21ed3c441adc01b9a3d00379cf8c5eade68e47f172de1ae0b270c386f9b8a654%40group.calendar.google.com&ctz=Europe%2FMadrid" readonly style="font-size: 0.75rem; padding: 0.5rem 0.8rem;" />
-              <button class="btn-ghost" id="btnCopyBookingUrl" style="padding: 0.45rem 0.95rem;" title="Copiar enlace">
-                <i class="fa-regular fa-copy"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- PANE 2: CHAT PRIVADO DEV <-> CLOSER -->
-      <div class="admin-panel-view" id="paneChat">
-        <div class="admin-chat-container">
-          <div class="chat-header">
-            <div style="display: flex; align-items: center; gap: 0.55rem;">
-              <span style="width: 9px; height: 9px; border-radius: 50%; background: #10B981;"></span>
-              <span style="font-size: 0.88rem; font-weight: 700; color: var(--text-charcoal);">Canal Interno Dev ↔ Closer</span>
-            </div>
-
-            <div style="display: flex; align-items: center; gap: 0.5rem;">
-              <span style="font-size: 0.78rem; color: var(--slate-gray);">Hablar como:</span>
-              <select id="chatSenderRole" class="field-input" style="padding: 0.25rem 0.6rem; font-size: 0.78rem; width: auto;">
-                <option value="dev">Tú (Dev / Fundador)</option>
-                <option value="closer">Closer de Ventas</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="chat-messages" id="chatMessageFlow">
-            <!-- Messages rendered via JS -->
-          </div>
-
-          <form class="chat-input-row" id="chatMessageForm">
-            <input type="text" id="chatInputField" class="field-input" placeholder="Escribe un mensaje de coordinación..." required autocomplete="off" />
-            <button type="submit" class="btn-primary" style="padding: 0.65rem 1.25rem;">
-              <i class="fa-solid fa-paper-plane"></i>
-            </button>
-          </form>
-        </div>
-      </div>
-
-      <!-- PANE 3: LEADS & CITAS CAPTURADAS -->
-      <div class="admin-panel-view" id="paneLeads">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.1rem;">
-          <h4 style="color: var(--text-charcoal); font-size: 0.98rem; font-weight: 700;">Empresas y Citas registradas en ROSER.AI</h4>
-          <button class="btn-ghost" id="btnClearLeads" style="font-size: 0.78rem; padding: 0.4rem 0.85rem;">
-            Vaciar Registro
-          </button>
-        </div>
-
-        <div style="overflow-x: auto; background: #FFFFFF; border: 1px solid var(--border-light); border-radius: var(--radius-md);">
-          <table style="width: 100%; border-collapse: collapse; font-size: 0.86rem; text-align: left;">
-            <thead>
-              <tr style="border-bottom: 1px solid var(--border-light); color: var(--slate-gray); background: var(--bg-surface-soft);">
-                <th style="padding: 0.95rem;">Momento</th>
-                <th style="padding: 0.95rem;">Contacto</th>
-                <th style="padding: 0.95rem;">WhatsApp / Tel</th>
-                <th style="padding: 0.95rem;">Servicio / Cita</th>
-                <th style="padding: 0.95rem;">Detalles</th>
-                <th style="padding: 0.95rem;">Acción</th>
-              </tr>
-            </thead>
-            <tbody id="leadsListingBody">
-              <!-- Rendered via JS -->
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <script>
-    // Hidden destination email and official phone number
-    const HIDDEN_EMAIL_DEST = 'daanni26serrano@gmail.com';
+    /* =========================================================================
+       CONFIGURACIÓN DE ENLACES Y ENDPOINTS
+       ========================================================================= */
     const ROSER_PHONE_WA = '34603782884';
 
-    // The single private admin security key
-    const ADMIN_SECRET_KEY = 'alepelae';
+    /*
+     * RECOMENDACIÓN DE SEGURIDAD / ARQUITECTURA:
+     * Para evitar exponer tu correo en texto plano en el frontend, puedes reemplazar 
+     * esta URL por tu Webhook privado (por ejemplo un webhook de n8n, Make o un 
+     * Cloudflare Worker sin costes):
+     * const FORM_SUBMIT_ENDPOINT = 'https://tu-servidor-n8n.com/webhook/roser-lead';
+     */
+    const FORM_SUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/daanni26serrano@gmail.com';
 
-    // Local storage persistence keys
-    const KEY_SESSION = 'roser_session_auth_v5';
-    const KEY_CHAT_STORE = 'roser_team_chat_store_v5';
-    const KEY_LEADS_STORE = 'roser_lead_submissions_v5';
-
-    function readStorage(key, fallback) {
-      try {
-        const item = localStorage.getItem(key);
-        return item ? JSON.parse(item) : fallback;
-      } catch (err) {
-        return fallback;
-      }
-    }
-
-    function writeStorage(key, value) {
-      try {
-        localStorage.setItem(key, JSON.stringify(value));
-      } catch (err) {
-        console.error('Storage error:', err);
-      }
-    }
-
-    // Application state
-    let chatHistory = readStorage(KEY_CHAT_STORE, []);
-    let capturedLeads = readStorage(KEY_LEADS_STORE, []);
     let currentSelectedPack = { name: 'Pack Plata', price: '700€' };
 
     // DOM selectors
     const mobileToggle = document.getElementById('mobileToggle');
     const mobileDrawer = document.getElementById('mobileDrawer');
 
-    // Modals
     const callScheduleModal = document.getElementById('callScheduleModal');
     const closeCallModalBtn = document.getElementById('closeCallModalBtn');
     const callScheduleForm = document.getElementById('callScheduleForm');
@@ -2370,18 +2332,7 @@
     const packChoiceWaBtn = document.getElementById('packChoiceWaBtn');
     const packChoiceEmailBtn = document.getElementById('packChoiceEmailBtn');
 
-    const adminPassModal = document.getElementById('adminPassModal');
-    const closePassModalBtn = document.getElementById('closePassModalBtn');
-    const adminAuthForm = document.getElementById('adminAuthForm');
-    const adminPassKey = document.getElementById('adminPassKey');
-    const authAlert = document.getElementById('authAlert');
-
-    const adminWorkspaceModal = document.getElementById('adminWorkspaceModal');
-    const closeWorkspaceBtn = document.getElementById('closeWorkspaceBtn');
-    const btnSignOut = document.getElementById('btnSignOut');
-    const activeRoleLabel = document.getElementById('activeRoleLabel');
-
-    // Mobile menu toggling
+    // Menú móvil
     mobileToggle.addEventListener('click', () => {
       mobileDrawer.style.display = mobileDrawer.style.display === 'none' ? 'block' : 'none';
     });
@@ -2392,7 +2343,7 @@
       });
     });
 
-    // SET MINIMUM DATE TO TODAY FOR CALL SCHEDULER
+    // Fijar fecha mínima en hoy
     document.addEventListener('DOMContentLoaded', () => {
       const today = new Date().toISOString().split('T')[0];
       if (callDateInput) {
@@ -2400,11 +2351,11 @@
       }
     });
 
-    // BLOCK WEEKENDS (LUNES A VIERNES ONLY)
+    // Bloqueo de fines de semana
     callDateInput.addEventListener('change', () => {
       if (!callDateInput.value) return;
       const selected = new Date(callDateInput.value + 'T00:00:00');
-      const day = selected.getDay(); // 0 is Sunday, 6 is Saturday
+      const day = selected.getDay(); // 0 Domingo, 6 Sábado
 
       if (day === 0 || day === 6) {
         weekendErrorMsg.style.display = 'block';
@@ -2414,7 +2365,7 @@
       }
     });
 
-    // OPEN CALL BOOKING MODAL
+    // Abrir modal de agendamiento
     function openCallModal(optionalNote = '') {
       if (mobileDrawer) mobileDrawer.style.display = 'none';
       callScheduleForm.style.display = 'block';
@@ -2441,7 +2392,7 @@
       callScheduleModal.classList.remove('active');
     });
 
-    // SUBMIT CALL BOOKING -> SILENT EMAIL TO daanni26serrano@gmail.com
+    // Enviar solicitud de llamada con notificación
     callScheduleForm.addEventListener('submit', async (e) => {
       e.preventDefault();
 
@@ -2466,7 +2417,7 @@
       };
 
       try {
-        await fetch(`https://formsubmit.co/ajax/${HIDDEN_EMAIL_DEST}`, {
+        await fetch(FORM_SUBMIT_ENDPOINT, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -2474,32 +2425,16 @@
           },
           body: JSON.stringify(payload)
         });
-      } catch (networkError) {
-        console.warn('Silent local fallback triggered:', networkError);
+      } catch (err) {
+        console.warn('Envío de formulario completado localmente:', err);
       }
 
-      // Format WhatsApp direct confirmation button
       const waText = encodeURIComponent(
         `Hola ROSER.AI, he agendado una llamada para el día ${date} a las ${time}h.\n• Nombre: ${name}\n• Teléfono: ${phone}`
       );
       waConfirmLinkBtn.href = `https://wa.me/${ROSER_PHONE_WA}?text=${waText}`;
 
       callSummaryText.innerHTML = `Tu llamada ha quedado registrada para el <strong>${date}</strong> a las <strong>${time}</strong>. Se ha notificado inmediatamente al equipo de ROSER.AI.`;
-
-      // Save into Admin Suite leads table
-      const dateNow = new Date();
-      const timeFormatted = 'Hoy ' + dateNow.getHours().toString().padStart(2, '0') + ':' + dateNow.getMinutes().toString().padStart(2, '0');
-
-      capturedLeads.unshift({
-        id: Date.now(),
-        time: timeFormatted,
-        name: name,
-        phone: phone,
-        service: `🗓️ Cita: ${date} (${time}h)`,
-        notes: notes
-      });
-      writeStorage(KEY_LEADS_STORE, capturedLeads);
-      updateLeadsTable();
 
       btnSubmitCallBooking.innerHTML = originalBtnContent;
       btnSubmitCallBooking.disabled = false;
@@ -2508,14 +2443,13 @@
       callSuccessBox.style.display = 'block';
     });
 
-    // PACK SELECTOR INTERACTION
+    // Selector de Pack
     window.openPackSelector = function(packName, packPrice) {
       currentSelectedPack = { name: packName, price: packPrice };
 
       packChoiceBadge.textContent = `${packName} — ${packPrice}`;
       packChoiceTitle.textContent = `Contratar ${packName}`;
 
-      // Build personalized WhatsApp link
       const waText = encodeURIComponent(
         `Hola ROSER.AI, quiero contratar el ${packName} (${packPrice}) para mi empresa y coordinar los detalles con vosotros.`
       );
@@ -2528,213 +2462,12 @@
       packSelectorModal.classList.remove('active');
     });
 
-    // When client chooses Email/Llamada path from pack selector
     packChoiceEmailBtn.addEventListener('click', () => {
       packSelectorModal.classList.remove('active');
       openCallModal(`Interesado en contratar: ${currentSelectedPack.name} (${currentSelectedPack.price})`);
     });
 
-    // ADMIN AUTHENTICATION
-    function isAuthenticated() {
-      return localStorage.getItem(KEY_SESSION) === 'true';
-    }
-
-    function requestAdminAccess() {
-      if (mobileDrawer) mobileDrawer.style.display = 'none';
-      if (isAuthenticated()) {
-        showAdminWorkspace();
-      } else {
-        authAlert.style.display = 'none';
-        adminPassKey.value = '';
-        adminPassModal.classList.add('active');
-      }
-    }
-
-    [
-      document.getElementById('openAdminTrigger'),
-      document.getElementById('footerAdminTrigger')
-    ].forEach(trigger => {
-      if (trigger) trigger.addEventListener('click', requestAdminAccess);
-    });
-
-    closePassModalBtn.addEventListener('click', () => adminPassModal.classList.remove('active'));
-
-    adminAuthForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const entered = adminPassKey.value.trim();
-
-      // Protected gate password verified with alepelae
-      if (entered === ADMIN_SECRET_KEY) {
-        localStorage.setItem(KEY_SESSION, 'true');
-        adminPassModal.classList.remove('active');
-        showAdminWorkspace();
-      } else {
-        authAlert.style.display = 'block';
-      }
-    });
-
-    function showAdminWorkspace() {
-      renderChatMessages();
-      updateLeadsTable();
-      adminWorkspaceModal.classList.add('active');
-    }
-
-    closeWorkspaceBtn.addEventListener('click', () => adminWorkspaceModal.classList.remove('active'));
-
-    btnSignOut.addEventListener('click', () => {
-      localStorage.removeItem(KEY_SESSION);
-      adminWorkspaceModal.classList.remove('active');
-    });
-
-    // Admin Tabs switcher
-    const tabButtons = document.querySelectorAll('.tab-btn');
-    const panelViews = document.querySelectorAll('.admin-panel-view');
-
-    tabButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        tabButtons.forEach(b => b.classList.remove('active'));
-        panelViews.forEach(p => p.classList.remove('active'));
-        button.classList.add('active');
-        document.getElementById(button.getAttribute('data-pane')).classList.add('active');
-      });
-    });
-
-    // Google Calendar live refresh & direct link copy
-    const btnRefreshCalendar = document.getElementById('btnRefreshCalendar');
-    const gcalAdminFrame = document.getElementById('gcalAdminFrame');
-    const btnCopyBookingUrl = document.getElementById('btnCopyBookingUrl');
-
-    if (btnRefreshCalendar && gcalAdminFrame) {
-      btnRefreshCalendar.addEventListener('click', () => {
-        const currentSrc = gcalAdminFrame.src;
-        gcalAdminFrame.src = '';
-        setTimeout(() => {
-          gcalAdminFrame.src = currentSrc;
-        }, 100);
-      });
-    }
-
-    if (btnCopyBookingUrl) {
-      btnCopyBookingUrl.addEventListener('click', () => {
-        const input = document.getElementById('bookingDirectUrl');
-        input.select();
-        document.execCommand('copy');
-        const original = btnCopyBookingUrl.innerHTML;
-        btnCopyBookingUrl.innerHTML = '<i class="fa-solid fa-check" style="color: var(--gold-deep);"></i>';
-        setTimeout(() => btnCopyBookingUrl.innerHTML = original, 1600);
-      });
-    }
-
-    // INTERNAL CHAT DEV <-> CLOSER
-    const chatMessageFlow = document.getElementById('chatMessageFlow');
-    const chatMessageForm = document.getElementById('chatMessageForm');
-    const chatInputField = document.getElementById('chatInputField');
-    const chatSenderRole = document.getElementById('chatSenderRole');
-
-    chatSenderRole.addEventListener('change', () => {
-      const isDev = chatSenderRole.value === 'dev';
-      activeRoleLabel.innerHTML = `Rol: <strong style="color: ${isDev ? 'var(--gold-deep)' : 'var(--slate-gray)'}">${isDev ? 'Tú (Fundador / Dev)' : 'Closer de Ventas'}</strong>`;
-    });
-
-    function renderChatMessages() {
-      chatMessageFlow.innerHTML = '';
-      if (chatHistory.length === 0) {
-        chatMessageFlow.innerHTML = `
-          <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: var(--slate-gray); text-align: center; font-size: 0.86rem; gap: 0.5rem;">
-            <i class="fa-regular fa-comments" style="font-size: 2rem; color: rgba(212, 175, 55, 0.4);"></i>
-            <div style="font-weight: 600; color: var(--text-charcoal);">Canal limpio y preparado.</div>
-            <div style="font-size: 0.78rem;">Escribe cualquier nota, aviso de cliente o actualización a tu closer.</div>
-          </div>
-        `;
-        return;
-      }
-
-      chatHistory.forEach(msg => {
-        const bubble = document.createElement('div');
-        bubble.className = `chat-bubble ${msg.role === 'dev' ? 'dev' : 'closer'}`;
-        bubble.innerHTML = `
-          <div class="bubble-author">${msg.sender}</div>
-          <div>${msg.text}</div>
-          <div class="bubble-time"><i class="fa-regular fa-clock"></i> ${msg.time}</div>
-        `;
-        chatMessageFlow.appendChild(bubble);
-      });
-      chatMessageFlow.scrollTop = chatMessageFlow.scrollHeight;
-    }
-
-    chatMessageForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const content = chatInputField.value.trim();
-      if (!content) return;
-
-      const role = chatSenderRole.value;
-      const now = new Date();
-      const timeStr = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
-
-      chatHistory.push({
-        id: Date.now(),
-        role: role,
-        sender: role === 'dev' ? 'Tú (Dev)' : 'Closer de Ventas',
-        text: content,
-        time: timeStr
-      });
-
-      writeStorage(KEY_CHAT_STORE, chatHistory);
-      renderChatMessages();
-      chatInputField.value = '';
-    });
-
-    // LEADS DIRECTORY
-    const leadsListingBody = document.getElementById('leadsListingBody');
-    const leadsBadge = document.getElementById('leadsBadge');
-    const btnClearLeads = document.getElementById('btnClearLeads');
-
-    function updateLeadsTable() {
-      leadsBadge.textContent = capturedLeads.length;
-      leadsListingBody.innerHTML = '';
-
-      if (capturedLeads.length === 0) {
-        leadsListingBody.innerHTML = `
-          <tr>
-            <td colspan="6" style="text-align: center; color: var(--slate-gray); padding: 2.2rem;">
-              No hay solicitudes registradas todavía.
-            </td>
-          </tr>
-        `;
-        return;
-      }
-
-      capturedLeads.forEach(lead => {
-        const cleanPhone = lead.phone.replace(/[^0-9]/g, '');
-        const row = document.createElement('tr');
-        row.style.borderBottom = '1px solid var(--border-light)';
-        row.innerHTML = `
-          <td style="padding: 0.9rem; font-size: 0.8rem; color: var(--slate-gray);">${lead.time}</td>
-          <td style="padding: 0.9rem; font-weight: 600; color: var(--text-charcoal);">${lead.name}</td>
-          <td style="padding: 0.9rem;">
-            <a href="https://wa.me/${cleanPhone}?text=Hola%20${encodeURIComponent(lead.name)},%20te%20escribo%20del%20equipo%20de%20ROSER.AI" target="_blank" style="color: #25D366; text-decoration: none; font-weight: 600;">
-              <i class="fa-brands fa-whatsapp"></i> ${lead.phone}
-            </a>
-          </td>
-          <td style="padding: 0.9rem;"><span class="tag-chip" style="color: var(--gold-deep); border-color: rgba(212, 175, 55, 0.4);">${lead.service}</span></td>
-          <td style="padding: 0.9rem; max-width: 220px; color: var(--text-slate); font-size: 0.82rem;">${lead.notes}</td>
-          <td style="padding: 0.9rem;">
-            <a href="tel:${cleanPhone}" class="btn-ghost" style="padding: 0.28rem 0.75rem; font-size: 0.76rem;">
-              Llamar
-            </a>
-          </td>
-        `;
-        leadsListingBody.appendChild(row);
-      });
-    }
-
-    btnClearLeads.addEventListener('click', () => {
-      capturedLeads = [];
-      writeStorage(KEY_LEADS_STORE, capturedLeads);
-      updateLeadsTable();
-    });
-
-    // ROI CALCULATOR SLIDER LOGIC
+    // ROI Calculator
     const hoursSlider = document.getElementById('hoursSlider');
     const rateSlider = document.getElementById('rateSlider');
     const hoursDisplay = document.getElementById('hoursDisplay');
@@ -2759,16 +2492,29 @@
     hoursSlider.addEventListener('input', refreshCalculations);
     rateSlider.addEventListener('input', refreshCalculations);
 
-    // Close modals on clicking background overlay
-    [callScheduleModal, packSelectorModal, adminPassModal, adminWorkspaceModal].forEach(backdrop => {
+    // FAQ Acordeón interactivo
+    document.querySelectorAll('.faq-question').forEach(button => {
+      button.addEventListener('click', () => {
+        const item = button.parentElement;
+        const isActive = item.classList.contains('active');
+        
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+        if (!isActive) {
+          item.classList.add('active');
+        }
+      });
+    });
+
+    // Cerrar modal al pulsar en el fondo
+    [callScheduleModal, packSelectorModal].forEach(backdrop => {
       backdrop.addEventListener('click', (e) => {
         if (e.target === backdrop) backdrop.classList.remove('active');
       });
     });
 
-    // ==============================================================
-    // CHATBOT ROSER.AI LOGIC & INTELLECTUAL MEMORY BASE
-    // ==============================================================
+    /* =========================================================================
+       ASISTENTE VIRTUAL IA CON BASE DE CONOCIMIENTO Y DERIVACIÓN A WHATSAPP
+       ========================================================================= */
     const botLauncherBtn = document.getElementById('botLauncherBtn');
     const botWidgetContainer = document.getElementById('botWidgetContainer');
     const botCloseBtn = document.getElementById('botCloseBtn');
@@ -2796,15 +2542,13 @@
     }
 
     function createWhatsAppRedirectBtn(customPrompt) {
-      const text = encodeURIComponent(`Hola ROSER.AI, he consultado al asistente de la web sobre: "${customPrompt}" y me gustaría hablarlo directamente con vosotros.`);
+      const text = encodeURIComponent(`Hola ROSER.AI, he consultado al asistente web sobre: "${customPrompt}" y me gustaría hablarlo con vosotros.`);
       return `<br/><a href="https://wa.me/${ROSER_PHONE_WA}?text=${text}" target="_blank" rel="noopener noreferrer" class="bot-cta-wa"><i class="fa-brands fa-whatsapp"></i> Hablar por WhatsApp Directo</a>`;
     }
 
-    // ROSER.AI KNOWLEDGE BASE ENGINE
     function evaluateBotKnowledge(query) {
       const q = query.toLowerCase().trim();
 
-      // Pack Básico
       if (q.includes('basico') || q.includes('básico') || q.includes('300')) {
         return `El <strong>Pack Básico (300€, pago único)</strong> incluye:<br/>
         • Web moderna One-Page ultrarrápida.<br/>
@@ -2815,7 +2559,6 @@
         • Optimización básica para Google Maps.`;
       }
 
-      // Pack Plata
       if (q.includes('plata') || q.includes('700') || q.includes('recomendado')) {
         return `El <strong>Pack Plata (700€, pago único)</strong> es nuestro plan estrella:<br/>
         • Todo lo del Pack Básico.<br/>
@@ -2826,7 +2569,6 @@
         • SEO Local avanzado para Badajoz y Mérida.`;
       }
 
-      // Pack Oro
       if (q.includes('oro') || q.includes('1200') || q.includes('1.200') || q.includes('premium')) {
         return `El <strong>Pack Oro (1.200€, pago único)</strong> es el ecosistema integral completo:<br/>
         • Todo lo de los packs anteriores.<br/>
@@ -2838,43 +2580,33 @@
         • Reactivación desatendida de clientes y reseñas.`;
       }
 
-      // Precios generales
       if (q.includes('precio') || q.includes('precios') || q.includes('cuanto cuesta') || q.includes('tarifa') || q.includes('coste') || q.includes('planes') || q.includes('pack')) {
-        return `En <strong>ROSER.AI</strong> trabajamos con 3 niveles de digitalización con precios cerrados (pago único, sin ataduras):<br/><br/>
+        return `En <strong>ROSER.AI</strong> trabajamos con 3 niveles de digitalización con precios cerrados (pago único):<br/><br/>
         1. <strong>Pack Básico:</strong> 300€<br/>
         2. <strong>Pack Plata (Recomendado):</strong> 700€<br/>
         3. <strong>Pack Oro:</strong> 1.200€<br/><br/>
         ¿Te gustaría que te recomiende el mejor para tu negocio?`;
       }
 
-      // WhatsApp Chatbots / Agentes
       if (q.includes('whatsapp') || q.includes('chatbot') || q.includes('agente') || q.includes('atencion')) {
-        return `Nuestros <strong>Agentes de WhatsApp</strong> responden al segundo (24/7), cualifican a los clientes interesados, resuelven dudas frecuentes sobre tus tarifas y pueden agendar citas directamente en tu Google Calendar sin que toques el móvil.`;
+        return `Nuestros <strong>Agentes de WhatsApp</strong> responden al segundo (24/7), cualifican a los clientes interesados, resuelven dudas frecuentes y agendan citas directamente en tu Google Calendar sin que toques el móvil.`;
       }
 
-      // Automatizaciones / Make / n8n
       if (q.includes('automatiz') || q.includes('n8n') || q.includes('make') || q.includes('factura') || q.includes('crm')) {
-        return `Desarrollamos pipelines con <strong>n8n y Make</strong> para eliminar tareas repetitivas: cada vez que entra un contacto o cliente, se genera su presupuesto/factura en PDF, se guarda en tu CRM/Google Sheets y se le notifica por WhatsApp sin intervención humana.`;
+        return `Desarrollamos pipelines con <strong>n8n y Make</strong> para eliminar tareas repetitivas: cada vez que entra un contacto, se genera su presupuesto/factura en PDF, se guarda en tu CRM/Google Sheets y se notifica al cliente sin intervención humana.`;
       }
 
-      // Agendar llamada / Contacto
       if (q.includes('agenda') || q.includes('cita') || q.includes('llamar') || q.includes('llamada') || q.includes('reunion') || q.includes('contacto')) {
         return `¡Puedes agendar una llamada de diagnóstico gratuita ahora mismo! Atendemos de <strong>Lunes a Viernes de 09:00 a 19:00</strong>.<br/><br/>
         Haz clic en el botón superior <strong>"Agendar Llamada"</strong> o contáctanos de inmediato por WhatsApp:${createWhatsAppRedirectBtn('Quiero agendar una llamada')}`;
       }
 
-      // Ubicación / Dónde estáis
-      if (q.includes('donde') || q.includes('badajoz') || q.includes('merida') || q.includes('mÃ©rida') || q.includes('ubicacion')) {
-        return `Nuestra base principal de operaciones de ingeniería está en <strong>Badajoz y Mérida</strong>, pero implementamos ecosistemas de IA y desarrollo web para empresas en <strong>toda España</strong> en remoto.`;
+      if (q.includes('donde') || q.includes('badajoz') || q.includes('merida') || q.includes('mérida') || q.includes('ubicacion')) {
+        return `Nuestra sede técnica está en <strong>Badajoz y Mérida</strong>, pero implementamos ecosistemas de IA y desarrollo web para empresas en <strong>toda España</strong> en remoto.`;
       }
 
-      // Quiénes somos / ROSER
-      if (q.includes('quienes') || q.includes('roser') || q.includes('empresa') || q.includes('haceis')) {
-        return `En <strong>ROSER.AI</strong> nos especializamos en ingeniería de software, arquitectura web de alta velocidad y agentes de inteligencia artificial y automatizaciones que sustituyen el trabajo repetitivo de tu negocio por sistemas autónomos.`;
-      }
-
-      // Fallback: Si no lo sabe, derivar a WhatsApp con enlace directo
-      return `Ese detalle específico o desarrollo a medida prefiero que lo comentes directamente con nuestro equipo técnico para darte una respuesta 100% exacta y personalizada:${createWhatsAppRedirectBtn(query)}`;
+      // Si no hay respuesta exacta, derivación automática a WhatsApp
+      return `Ese requerimiento específico o desarrollo a medida prefiero que lo comentes directamente con nuestro equipo para ofrecerte una respuesta exacta:${createWhatsAppRedirectBtn(query)}`;
     }
 
     botForm.addEventListener('submit', (e) => {
@@ -2882,15 +2614,13 @@
       const userText = botInputText.value.trim();
       if (!userText) return;
 
-      // Render user prompt
       botAppendMessage('user', userText);
       botInputText.value = '';
 
-      // Simulated realistic typing delay
       setTimeout(() => {
         const botResponse = evaluateBotKnowledge(userText);
         botAppendMessage('bot', botResponse);
-      }, 450);
+      }, 400);
     });
 
     window.botAskQuick = function(questionText) {
@@ -2901,10 +2631,9 @@
       setTimeout(() => {
         const botResponse = evaluateBotKnowledge(questionText);
         botAppendMessage('bot', botResponse);
-      }, 400);
+      }, 350);
     };
 
-    // Initial triggers
     refreshCalculations();
   </script>
 </body>
