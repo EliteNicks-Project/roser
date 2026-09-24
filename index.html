@@ -9,7 +9,235 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css" />
+
+  <style>
+    :root {
+      --white-pure: #FFFFFF;
+      --slate-gray: #6B7280;
+      --slate-dark: #374151;
+      --slate-light: #9CA3AF;
+      --gold-metallic: #D4AF37;
+      --gold-deep: #B89025;
+      --gold-accessible: #997519;
+      --gold-light: #F7E7A9;
+      --gold-subtle: rgba(212, 175, 55, 0.12);
+      --gold-glow: rgba(212, 175, 55, 0.28);
+      --text-charcoal: #111827;
+      --text-slate: #374151;
+      --text-muted: #4B5563;
+      --bg-canvas: #FFFFFF;
+      --bg-surface-soft: #F9FAFB;
+      --border-light: #E5E7EB;
+      --border-medium: #D1D5DB;
+      --border-gold: rgba(212, 175, 55, 0.45);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 22px;
+      --radius-full: 9999px;
+      --shadow-luxury-sm: 0 4px 14px rgba(17, 24, 39, 0.04);
+      --shadow-luxury-md: 0 12px 30px rgba(17, 24, 39, 0.08);
+      --shadow-luxury-lg: 0 20px 45px rgba(17, 24, 39, 0.12);
+      --shadow-gold: 0 8px 24px rgba(212, 175, 55, 0.28);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+    body {
+      background-color: var(--bg-canvas);
+      color: var(--text-charcoal);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(212, 175, 55, 0.07) 0px, transparent 50%),
+        radial-gradient(at 100% 20%, rgba(107, 114, 128, 0.05) 0px, transparent 40%),
+        radial-gradient(at 50% 100%, rgba(212, 175, 55, 0.05) 0px, transparent 60%);
+    }
+    .container { max-width: 1220px; margin: 0 auto; padding: 0 1.5rem; position: relative; z-index: 1; }
+    .svg-stroke { fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2; }
+    
+    /* HEADER */
+    header {
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border-light);
+      box-shadow: 0 2px 12px rgba(17, 24, 39, 0.03);
+    }
+    .nav-wrapper { display: flex; align-items: center; justify-content: space-between; height: 78px; }
+    .brand-container { display: flex; align-items: center; gap: 0.85rem; text-decoration: none; }
+    .brand-icon-svg { width: 38px; height: 38px; flex-shrink: 0; filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.35)); }
+    .brand-title-wrap { display: flex; flex-direction: column; }
+    .brand-name {
+      font-family: 'Space Grotesk', sans-serif; font-size: 1.35rem; font-weight: 700;
+      letter-spacing: -0.04em; color: var(--text-charcoal); display: flex; align-items: center; gap: 0.2rem;
+    }
+    .brand-name .ai-accent {
+      background: linear-gradient(135deg, var(--gold-metallic), var(--gold-deep));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 800;
+    }
+    .brand-sub { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--text-slate); font-weight: 600; }
+    .nav-links { display: none; align-items: center; gap: 1.8rem; list-style: none; }
+    @media (min-width: 960px) { .nav-links { display: flex; } }
+    .nav-links a { color: var(--text-slate); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s ease; }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold-accessible); font-weight: 600; }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #D4AF37 0%, #B89025 100%);
+      color: #FFFFFF; padding: 0.7rem 1.45rem; border-radius: var(--radius-full);
+      font-size: 0.88rem; font-weight: 600; text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, 0.4); box-shadow: var(--shadow-gold);
+      cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(212, 175, 55, 0.4); background: linear-gradient(135deg, #DFBE52 0%, #A8811C 100%); }
+
+    .btn-ghost {
+      background: #FFFFFF; color: var(--text-charcoal); padding: 0.7rem 1.45rem;
+      border-radius: var(--radius-full); font-size: 0.88rem; font-weight: 600;
+      text-decoration: none; border: 1px solid var(--border-medium); cursor: pointer;
+      display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: var(--shadow-luxury-sm); transition: all 0.2s ease;
+    }
+    .btn-ghost:hover { background: var(--bg-surface-soft); border-color: var(--gold-metallic); color: var(--gold-accessible); transform: translateY(-2px); box-shadow: 0 6px 18px rgba(17, 24, 39, 0.06); }
+
+    .mobile-menu-btn { display: block; background: none; border: none; color: var(--text-charcoal); cursor: pointer; padding: 0.4rem; }
+    @media (min-width: 960px) { .mobile-menu-btn { display: none; } }
+
+    /* HERO */
+    .hero-section { padding: 5rem 0 4.2rem; position: relative; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.55rem; background: #FFFFFF;
+      border: 1px solid var(--border-gold); padding: 0.4rem 1.15rem; border-radius: var(--radius-full);
+      font-size: 0.8rem; color: var(--gold-accessible); font-weight: 600; margin-bottom: 1.6rem; box-shadow: var(--shadow-luxury-sm);
+    }
+    .hero-headline {
+      font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.3rem, 5vw, 4.1rem); line-height: 1.1;
+      font-weight: 700; letter-spacing: -0.035em; color: var(--text-charcoal); margin-bottom: 1.5rem; max-width: 980px;
+    }
+    .hero-headline .text-gradient {
+      background: linear-gradient(135deg, var(--gold-accessible) 0%, var(--gold-metallic) 50%, var(--text-charcoal) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: inline-block;
+    }
+    .hero-lead { font-size: 1.15rem; color: var(--text-slate); max-width: 720px; line-height: 1.75; margin-bottom: 2.4rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 3.8rem; }
+    
+    .proof-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; padding: 2.2rem 0; border-top: 1px solid var(--border-light);
+    }
+    @media (min-width: 768px) { .proof-grid { grid-template-columns: repeat(4, 1fr); } }
+    .proof-metric {
+      font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem; font-weight: 700; line-height: 1;
+      color: var(--text-charcoal); margin-bottom: 0.4rem; display: flex; align-items: baseline; gap: 0.2rem;
+    }
+    .proof-metric span { color: var(--gold-deep); font-size: 1.7rem; }
+    .proof-desc { font-size: 0.85rem; color: var(--text-slate); line-height: 1.45; }
+
+    /* SECCIONES */
+    .section-wrap { padding: 5.5rem 0; position: relative; }
+    .eyebrow { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-accessible); margin-bottom: 0.6rem; display: block; }
+    .section-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2rem, 3.8vw, 3rem); font-weight: 700; letter-spacing: -0.03em; color: var(--text-charcoal); line-height: 1.15; }
+    .section-subtitle { color: var(--text-slate); font-size: 1rem; max-width: 680px; margin-top: 0.75rem; }
+
+    /* TRUST STRIP */
+    .trust-guarantee-strip { padding: 3rem 0; background: #FFFFFF; border-bottom: 1px solid var(--border-light); }
+    .trust-guarantee-grid { display: grid; grid-template-columns: 1fr; gap: 1.6rem; }
+    @media (min-width: 768px) { .trust-guarantee-grid { grid-template-columns: 1fr 1.35fr; } }
+    .trust-card { background: var(--bg-surface-soft); border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 1.6rem 1.8rem; display: flex; align-items: flex-start; gap: 1.1rem; }
+    .trust-card.highlight { border-left: 4px solid var(--gold-metallic); background: #FFFFFF; box-shadow: var(--shadow-luxury-sm); }
+    .trust-icon-box { width: 44px; height: 44px; border-radius: 50%; background: var(--gold-subtle); border: 1px solid rgba(212, 175, 55, 0.3); display: flex; align-items: center; justify-content: center; color: var(--gold-accessible); flex-shrink: 0; }
+    .trust-content h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--text-charcoal); margin-bottom: 0.35rem; }
+    .trust-content p { font-size: 0.85rem; color: var(--text-slate); line-height: 1.5; }
+
+    /* SERVICIOS / SOLUCIONES */
+    .services-matrix { display: grid; grid-template-columns: 1fr; gap: 1.75rem; }
+    @media (min-width: 768px) { .services-matrix { grid-template-columns: repeat(2, 1fr); } }
+    .service-card {
+      background: #FFFFFF; border: 1px solid var(--border-light); border-radius: var(--radius-lg);
+      padding: 2.5rem 2.2rem; position: relative; overflow: hidden; display: flex; flex-direction: column;
+      justify-content: space-between; box-shadow: var(--shadow-luxury-sm); transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-luxury-lg), 0 0 24px rgba(212, 175, 55, 0.12); border-color: var(--border-gold); }
+    .service-icon-box { width: 54px; height: 54px; border-radius: var(--radius-md); background: var(--gold-subtle); border: 1px solid rgba(212, 175, 55, 0.3); display: flex; align-items: center; justify-content: center; color: var(--gold-accessible); margin-bottom: 1.6rem; }
+    .service-name { font-family: 'Space Grotesk', sans-serif; font-size: 1.35rem; font-weight: 700; color: var(--text-charcoal); margin-bottom: 0.85rem; }
+    .service-pitch { font-size: 0.95rem; color: var(--text-slate); line-height: 1.7; margin-bottom: 2rem; }
+    .feature-tags { display: flex; flex-wrap: wrap; gap: 0.55rem; margin-top: auto; }
+    .tag-chip { font-size: 0.76rem; font-weight: 600; color: var(--text-slate); background: var(--bg-surface-soft); border: 1px solid var(--border-light); padding: 0.3rem 0.85rem; border-radius: var(--radius-full); }
+    .service-card:hover .tag-chip { border-color: rgba(212, 175, 55, 0.3); color: var(--gold-accessible); }
+
+    /* BANNER VISUAL IA NEURAL */
+    .ai-visual-fusion-section { position: relative; width: 100%; height: 480px; overflow: hidden; background: #0D121F; display: flex; align-items: center; justify-content: center; }
+    .fusion-fade-top { position: absolute; top: 0; left: 0; right: 0; height: 140px; background: linear-gradient(180deg, var(--bg-surface-soft) 0%, rgba(249, 250, 251, 0) 100%); z-index: 10; pointer-events: none; }
+    .fusion-fade-bottom { position: absolute; bottom: 0; left: 0; right: 0; height: 140px; background: linear-gradient(0deg, #FAFAFA 0%, rgba(250, 250, 250, 0) 100%); z-index: 10; pointer-events: none; }
+    .neural-canvas-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; opacity: 0.75; }
+    .neural-static-fallback { position: absolute; inset: 0; background: radial-gradient(circle at center, rgba(212, 175, 55, 0.18) 0%, rgba(13, 18, 31, 0.98) 75%); display: none; z-index: 1; }
+    .neural-core-wrapper { position: relative; z-index: 5; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; pointer-events: none; }
+    .core-halo { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; }
+    .glow-large { width: 380px; height: 380px; background: radial-gradient(circle, rgba(212, 175, 55, 0.25) 0%, transparent 70%); }
+    .glow-small { width: 180px; height: 180px; background: radial-gradient(circle, rgba(247, 231, 169, 0.4) 0%, transparent 60%); }
+    .quantum-orb-svg { width: 250px; height: 250px; filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.4)); }
+    .neural-caption { margin-top: 1rem; }
+    .neural-caption-title { font-family: 'Space Grotesk', sans-serif; font-size: 1.35rem; font-weight: 700; color: #FFFFFF; letter-spacing: -0.02em; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6); }
+    .spin-slow { transform-origin: center; animation: orbSpin 28s linear infinite; }
+    .spin-reverse { transform-origin: center; animation: orbSpinReverse 20s linear infinite; }
+    .pulse-subtle { transform-origin: center; animation: orbPulse 4s ease-in-out infinite; }
+    @keyframes orbSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes orbSpinReverse { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
+    @keyframes orbPulse { 0%, 100% { transform: scale(1); opacity: 0.85; } 50% { transform: scale(1.04); opacity: 1; } }
+
+    /* FORMULARIO "TE LLAMAMOS HOY" */
+    .lead-capture-strip { padding: 4.5rem 0; background: linear-gradient(135deg, #111827 0%, #1F2937 100%); color: #FFFFFF; border-top: 2px solid var(--gold-metallic); position: relative; overflow: hidden; }
+    .lead-strip-grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; align-items: center; }
+    @media (min-width: 900px) { .lead-strip-grid { grid-template-columns: 1.15fr 1.35fr; } }
+    .lead-form-wrap { background: #FFFFFF; padding: 2rem; border-radius: var(--radius-lg); border: 1px solid var(--border-gold); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25); color: var(--text-charcoal); }
+    .lead-input-row { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-bottom: 1rem; }
+    @media (min-width: 600px) { .lead-input-row { grid-template-columns: 1fr 1fr; } }
+    .lead-field-group label { display: block; font-size: 0.78rem; font-weight: 600; color: var(--text-slate); margin-bottom: 0.35rem; }
+    .lead-input-field { width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border-medium); border-radius: var(--radius-sm); font-size: 0.88rem; outline: none; font-family: inherit; }
+    .lead-input-field:focus { border-color: var(--gold-metallic); box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2); }
+    .lead-gdpr-row { display: flex; align-items: flex-start; gap: 0.6rem; margin-bottom: 1.2rem; font-size: 0.76rem; color: var(--text-slate); line-height: 1.4; }
+    .lead-gdpr-row input[type="checkbox"] { margin-top: 0.15rem; accent-color: var(--gold-deep); cursor: pointer; }
+    .lead-status-msg { margin-top: 0.8rem; font-size: 0.82rem; font-weight: 600; display: none; }
+    .lead-status-msg.success { display: block; color: #059669; }
+
+    /* TECH STACK */
+    .tech-stack-strip { padding: 3rem 0; background: #FFFFFF; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); }
+    .tech-chips-wrapper { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.85rem; align-items: center; margin-top: 1.2rem; }
+    .tech-chip { background: var(--bg-surface-soft); border: 1px solid var(--border-medium); color: var(--text-charcoal); padding: 0.45rem 1.1rem; border-radius: var(--radius-full); font-size: 0.82rem; font-weight: 600; display: inline-flex; align-items: center; gap: 0.45rem; }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--border-light); padding: 4.5rem 0 2.8rem; background: #FAFAFA; font-size: 0.9rem; }
+    .footer-grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; margin-bottom: 3.5rem; }
+    @media (min-width: 768px) { .footer-grid { grid-template-columns: 2fr 1fr 1fr; } }
+
+    /* BOTONES FLOTANTES */
+    .floating-support-cluster { position: fixed; bottom: 24px; right: 24px; display: flex; align-items: center; gap: 0.85rem; z-index: 150; }
+    .action-fab { width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border-light); box-shadow: 0 10px 25px rgba(17, 24, 39, 0.12); cursor: pointer; text-decoration: none; transition: transform 0.2s; }
+    .action-fab:hover { transform: scale(1.1); }
+    .fab-wa { background: #25D366; color: #FFFFFF; }
+    .fab-quote { background: linear-gradient(135deg, var(--gold-metallic) 0%, var(--gold-deep) 100%); color: #FFFFFF; }
+    .bot-launcher-fab { position: fixed; bottom: 24px; left: 24px; z-index: 160; background: linear-gradient(135deg, #111827 0%, #1F2937 100%); color: #FFFFFF; border: 2px solid var(--gold-metallic); padding: 0.75rem 1.25rem; border-radius: var(--radius-full); box-shadow: 0 10px 30px rgba(17, 24, 39, 0.25); cursor: pointer; display: flex; align-items: center; gap: 0.7rem; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.9rem; }
+    .bot-status-pulse { width: 10px; height: 10px; background-color: #10B981; border-radius: 50%; }
+
+    /* BOT WIDGET */
+    .bot-widget-container { position: fixed; bottom: 90px; left: 24px; width: 375px; max-width: calc(100vw - 48px); height: 530px; background: #FFFFFF; border: 1px solid var(--border-gold); border-radius: var(--radius-lg); box-shadow: 0 20px 50px rgba(17, 24, 39, 0.2); z-index: 170; display: flex; flex-direction: column; overflow: hidden; opacity: 0; pointer-events: none; transform: translateY(20px) scale(0.96); transition: all 0.3s ease; }
+    .bot-widget-container.active { opacity: 1; pointer-events: auto; transform: translateY(0) scale(1); }
+    .bot-header { background: linear-gradient(135deg, #111827 0%, #1F2937 100%); color: #FFFFFF; padding: 1rem 1.2rem; display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid var(--gold-metallic); }
+    .bot-messages-area { flex: 1; overflow-y: auto; padding: 1.1rem; display: flex; flex-direction: column; gap: 0.85rem; background: #FDFDFD; }
+    .bot-msg { max-width: 84%; padding: 0.8rem 1rem; border-radius: var(--radius-md); font-size: 0.86rem; line-height: 1.5; }
+    .bot-msg.bot { align-self: flex-start; background: #FFFFFF; border: 1px solid var(--border-light); color: var(--text-charcoal); }
+    .bot-msg.user { align-self: flex-end; background: linear-gradient(135deg, #D4AF37 0%, #B89025 100%); color: #FFFFFF; }
+    .bot-quick-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; padding: 0.5rem 1rem; background: #FAFAFA; border-top: 1px solid var(--border-light); }
+    .bot-chip { background: #FFFFFF; border: 1px solid var(--border-gold); color: var(--gold-accessible); font-size: 0.72rem; font-weight: 600; padding: 0.3rem 0.65rem; border-radius: var(--radius-full); cursor: pointer; }
+    .bot-input-container { padding: 0.75rem 1rem; background: #FFFFFF; border-top: 1px solid var(--border-light); display: flex; gap: 0.5rem; align-items: center; }
+    .bot-input-container input { flex: 1; padding: 0.65rem 0.9rem; border-radius: var(--radius-full); border: 1px solid var(--border-medium); font-size: 0.85rem; outline: none; }
+    .bot-send-btn { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, var(--gold-metallic), var(--gold-deep)); color: #FFFFFF; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+
+    /* MODAL CAL.COM */
+    .modal-backdrop { position: fixed; inset: 0; background: rgba(17, 24, 39, 0.65); backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center; padding: 1.2rem; z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.25s ease; }
+    .modal-backdrop.active { opacity: 1; pointer-events: auto; }
+    .modal-sheet { background: #FFFFFF; border-radius: var(--radius-lg); width: 100%; max-width: 640px; padding: 2.2rem; position: relative; }
+    .close-modal-x { position: absolute; top: 1.2rem; right: 1.2rem; background: var(--bg-surface-soft); border: 1px solid var(--border-light); width: 34px; height: 34px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+    .cal-iframe-container { width: 100%; height: 520px; border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border-light); }
+    .cal-iframe-container iframe { width: 100%; height: 100%; border: none; }
+  </style>
 </head>
 
 <body>
@@ -47,7 +275,7 @@
 
         <div class="nav-actions">
           <button class="btn-primary" onclick="openCallModal()">
-            <svg class="svg-stroke" width="16" height="16" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line><path d="m9 16 2 2 4-4"></path></svg>
+            <svg class="svg-stroke" width="16" height="16" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
             <span>Agendar 30 min</span>
           </button>
           <button class="mobile-menu-btn" id="mobileToggle" aria-label="Abrir Menú">
@@ -72,31 +300,31 @@
   </div>
 
   <main>
-    <!-- HERO SECTION -->
-    <section class="section-wrap" style="padding: 5rem 0 3.5rem;">
+    <!-- HERO SECTION COMPLETO -->
+    <section class="hero-section">
       <div class="container">
-        <div style="display: inline-flex; align-items: center; gap: 0.55rem; background: #FFFFFF; border: 1px solid var(--border-gold); padding: 0.4rem 1.15rem; border-radius: var(--radius-full); font-size: 0.8rem; color: var(--gold-accessible); font-weight: 600; margin-bottom: 1.6rem; box-shadow: var(--shadow-luxury-sm);">
+        <div class="hero-badge">
           <svg class="svg-stroke" width="14" height="14" viewBox="0 0 24 24"><polygon points="6 2 18 2 22 8 12 22 2 8 6 2"></polygon></svg>
-          Ingeniería de Software & Agentes Autónomos · Badajoz, Mérida y toda España
+          Ingeniería de Software & Agentes Autónomos en Badajoz, Mérida y toda España
         </div>
 
-        <h1 style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.3rem, 5vw, 4.1rem); line-height: 1.1; font-weight: 700; letter-spacing: -0.035em; color: var(--text-charcoal); margin-bottom: 1.5rem; max-width: 980px;">
+        <h1 class="hero-headline">
           Ingeniería de software y sistemas autónomos que <br />
-          <span style="background: linear-gradient(135deg, var(--gold-accessible) 0%, var(--gold-metallic) 50%, var(--text-charcoal) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">multiplican la facturación</span> de tu empresa.
+          <span class="text-gradient">multiplican la facturación</span> de tu empresa.
         </h1>
 
-        <p style="font-size: 1.15rem; color: var(--text-slate); max-width: 720px; line-height: 1.75; margin-bottom: 2.4rem;">
-          Desarrollamos interfaces de alto rendimiento comercial, agentes inteligentes en WhatsApp que atienden y agendan 24/7 y pipelines de automatización con n8n/Make que erradican las tareas manuales de tu operativa diaria.
+        <p class="hero-lead">
+          Desarrollamos ecosistemas digitales a medida: interfaces de alto rendimiento para conversión comercial B2B, agentes inteligentes en WhatsApp que atienden y cualifican sin descanso, y flujos automáticos con n8n/Make que eliminan las tareas manuales de tu día a día.
         </p>
 
-        <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 3.5rem;">
+        <div class="hero-actions">
           <button class="btn-primary" onclick="openCallModal()" style="padding: 0.85rem 1.8rem; font-size: 0.95rem;">
             <svg class="svg-stroke" width="16" height="16" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
             <span>Agenda tu llamada (30 min)</span>
           </button>
 
           <a href="soluciones.html" class="btn-ghost">
-            <span>Ver Soluciones & Demo</span>
+            <span>Ver Soluciones & Demo WhatsApp</span>
             <svg class="svg-stroke" width="14" height="14" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
           </a>
 
@@ -105,10 +333,29 @@
             <svg class="svg-stroke" width="14" height="14" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
           </a>
 
-          <a href="https://api.whatsapp.com/send?phone=34603782884&text=Hola%20ROSER.AI,%20quiero%20conocer%20c%C3%B3mo%20pod%C3%A9is%20automatizar%20mi%20empresa" target="_blank" rel="noopener noreferrer" class="btn-ghost">
+          <a href="https://wa.me/34603782884?text=Hola%20ROSER.AI,%20quiero%20conocer%20c%C3%B3mo%20pod%C3%A9is%20automatizar%20mi%20empresa" target="_blank" rel="noopener noreferrer" class="btn-ghost">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="#25D366"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
             <span>WhatsApp Directo</span>
           </a>
+        </div>
+
+        <div class="proof-grid">
+          <div class="proof-item">
+            <div class="proof-metric">&lt; 60<span>s</span></div>
+            <div class="proof-desc">100% de consultas comerciales atendidas en WhatsApp</div>
+          </div>
+          <div class="proof-item">
+            <div class="proof-metric">-85<span>%</span></div>
+            <div class="proof-desc">Reducción drástica en tiempos de respuesta comercial</div>
+          </div>
+          <div class="proof-item">
+            <div class="proof-metric">100<span>%</span></div>
+            <div class="proof-desc">Arquitectura modular sin plantillas pesadas ni cuellos de botella</div>
+          </div>
+          <div class="proof-item">
+            <div class="proof-metric">0<span>h</span></div>
+            <div class="proof-desc">Fricción en agendamiento y tareas administrativas repetitivas</div>
+          </div>
         </div>
       </div>
     </section>
@@ -122,8 +369,8 @@
               <svg class="svg-stroke" width="22" height="22" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
             </div>
             <div class="trust-content">
-              <h4>Desarrollo Local y Soporte Senior</h4>
-              <p>Operado desde <strong>Badajoz y Mérida (Extremadura)</strong> para empresas de toda España. Trato directo con ingenieros de software, sin intermediarios ni plantillas lentas.</p>
+              <h4>Desarrollo Local y Soporte Cercano</h4>
+              <p>Desarrollado y operado desde <strong>Extremadura (Badajoz y Mérida)</strong> para empresas de toda España. Trato directo con los ingenieros que crean tus sistemas.</p>
             </div>
           </div>
 
@@ -133,124 +380,90 @@
             </div>
             <div class="trust-content">
               <h4>Garantía Operativa de Despliegue de 14 Días</h4>
-              <p>Ajustamos los prompts, modelos e integraciones sin coste adicional hasta que el sistema cumpla con la precisión técnica acordada en tu negocio.</p>
+              <p>Si el agente o flujo no responde con la precisión acordada, <strong>reajustamos modelos y escenarios sin coste adicional</strong> hasta su validación técnica final en tu operativa real.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- PACKS RESUMEN -->
-    <section class="section-wrap" style="background: linear-gradient(180deg, #FFFFFF 0%, #FAF9F6 100%);">
+    <!-- RESUMEN DE SOLUCIONES -->
+    <section class="section-wrap" style="background: var(--bg-surface-soft);">
       <div class="container">
         <div class="section-header" style="text-align: center; max-width: 780px; margin: 0 auto 3rem;">
-          <span class="eyebrow">Planes de Implementación</span>
-          <h2 class="section-title">Estructura clara de inversión y retorno</h2>
+          <span class="eyebrow">Capacidades de Ingeniería</span>
+          <h2 class="section-title">Estructura tecnológica orientada a resultados</h2>
           <p class="section-subtitle" style="margin: 0.8rem auto 0;">
-            Sin letras pequeñas: propiedad 100% en tus manos, código limpio y transferencia total de credenciales tras la entrega.
+            Soluciones modulares desarrolladas desde cero para eliminar tareas manuales y multiplicar clientes cualificados.
           </p>
         </div>
 
-        <div class="pricing-grid">
-          <!-- BÁSICO -->
-          <div class="pack-card">
+        <div class="services-matrix">
+          <div class="service-card">
             <div>
-              <div class="pack-badge-icon">
-                <svg class="svg-stroke" width="22" height="22" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-              </div>
-              <h3 class="pack-title">Pack Básico</h3>
-              <p class="pack-tagline">Presencia web moderna y canal directo para captación comercial inmediata.</p>
-              <div class="pack-price-box">
-                <div class="pack-price-number">300€</div>
-                <div class="pack-price-period">implementación</div>
-              </div>
-              <div class="retainer-sub-box">
-                <strong>Retainer Opcional:</strong> desde <strong>49 €/mes</strong> (mantenimiento y monitorización preventiva).
-              </div>
-              <ul class="pack-features-list">
-                <li><svg class="check-icon svg-stroke" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Web One-Page responsive ultrarrápida.</span></li>
-                <li><svg class="check-icon svg-stroke" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Canal directo a WhatsApp y webhook de alerta.</span></li>
-                <li><svg class="check-icon svg-stroke" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Optimización técnica básica en Google Maps.</span></li>
-              </ul>
+              <div class="service-icon-box"><svg class="svg-stroke" width="24" height="24" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div>
+              <h3 class="service-name">Arquitectura Web & Motores de Conversión</h3>
+              <p class="service-pitch">Desarrollo web exclusivo desde cero. Carga ultrarrápida, diseño limpio que transmite autoridad inmediata y embudos orientados a llamada o presupuesto.</p>
             </div>
-            <div>
-              <a href="https://api.whatsapp.com/send?phone=34603782884&text=Hola%20ROSER.AI,%20quiero%20informaci%C3%B3n%20sobre%20el%20Pack%20B%C3%A1sico%20(300%E2%82%AC)" target="_blank" rel="noopener noreferrer" class="btn-ghost btn-pack-action">
-                Contratar vía WhatsApp
-              </a>
-            </div>
+            <div class="feature-tags"><span class="tag-chip">Core Web Vitals 99+</span><span class="tag-chip">Embudos de Cierre</span><span class="tag-chip">SEO Local</span></div>
           </div>
 
-          <!-- PLATA (MÁS RECOMENDADO) -->
-          <div class="pack-card popular">
-            <span class="popular-pill">Más Recomendado</span>
+          <div class="service-card">
             <div>
-              <div class="pack-badge-icon" style="background: rgba(212, 175, 55, 0.18); border-color: var(--gold-metallic);">
-                <svg class="svg-stroke" width="22" height="22" viewBox="0 0 24 24"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3z"></path></svg>
-              </div>
-              <h3 class="pack-title">Pack Plata</h3>
-              <p class="pack-tagline">Estructura comercial B2B con agente conversacional que atiende y agenda 24/7.</p>
-              <div class="pack-price-box">
-                <div class="pack-price-number">700€</div>
-                <div class="pack-price-period">implementación</div>
-              </div>
-              <div class="retainer-sub-box">
-                <strong>Retainer Opcional:</strong> desde <strong>89 €/mes</strong> (reentrenamiento de prompts y supervisión de APIs).
-              </div>
-              <ul class="pack-features-list">
-                <li><svg class="check-icon svg-stroke" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Web multi-sección con arquitectura de persuasión.</span></li>
-                <li><svg class="check-icon svg-stroke" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Agente IA conversacional</strong> en Web o WhatsApp.</span></li>
-                <li><svg class="check-icon svg-stroke" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Agendamiento en tiempo real</strong> vía Cal.com sin solapes.</span></li>
-                <li><svg class="check-icon svg-stroke" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Cualificación de prospectos antes de llegar al equipo.</span></li>
-              </ul>
+              <div class="service-icon-box"><svg class="svg-stroke" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2a4 4 0 0 1 4 4c0 1.95-1.4 3.58-3.25 3.93l-.75 2.07h4a3 3 0 0 1 3 3v5a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-5a3 3 0 0 1 3-3h4l-.75-2.07C9.4 9.58 8 7.95 8 6a4 4 0 0 1 4-4z"></path></svg></div>
+              <h3 class="service-name">Agentes Cognitivos Autónomos</h3>
+              <p class="service-pitch">Chatbots multicanal en WhatsApp y Web conectados a Meta Cloud API. Resuelven dudas, cualifican prospectos y agendan llamadas directamente.</p>
             </div>
-            <div>
-              <button type="button" class="btn-primary btn-pack-action" onclick="openCallModal()">
-                Agendar Despliegue en Cal.com
-              </button>
-            </div>
-          </div>
-
-          <!-- ORO -->
-          <div class="pack-card">
-            <div>
-              <div class="pack-badge-icon">
-                <svg class="svg-stroke" width="22" height="22" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"></rect><rect x="9" y="9" width="6" height="6"></rect></svg>
-              </div>
-              <h3 class="pack-title">Pack Oro</h3>
-              <p class="pack-tagline">Ecosistema integral corporativo para delegar la operativa técnica y administrativa.</p>
-              <div class="pack-price-box">
-                <div class="pack-price-number">1.200€</div>
-                <div class="pack-price-period">implementación</div>
-              </div>
-              <div class="retainer-sub-box">
-                <strong>Retainer Opcional:</strong> desde <strong>149 €/mes</strong> (supervisión de webhooks críticos y SLAs).
-              </div>
-              <ul class="pack-features-list">
-                <li><svg class="check-icon svg-stroke" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Web corporativa reactiva con diseño premium.</span></li>
-                <li><svg class="check-icon svg-stroke" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Meta Cloud API oficial + Web con RAG</strong>.</span></li>
-                <li><svg class="check-icon svg-stroke" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Pipelines en n8n/Make y facturas/presupuestos en PDF al vuelo.</span></li>
-                <li><svg class="check-icon svg-stroke" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Sincronización con CRM y reactivación de clientes.</span></li>
-              </ul>
-            </div>
-            <div>
-              <a href="https://api.whatsapp.com/send?phone=34603782884&text=Hola%20ROSER.AI,%20quiero%20tratar%20el%20Pack%20Oro%20(1.200%E2%82%AC)" target="_blank" rel="noopener noreferrer" class="btn-ghost btn-pack-action">
-                Consultar Alcance en WhatsApp
-              </a>
-            </div>
+            <div class="feature-tags"><span class="tag-chip">Meta Cloud API</span><span class="tag-chip">Memoria Contextual</span><span class="tag-chip">Agendamiento Activo</span></div>
           </div>
         </div>
 
-        <div style="text-align: center; margin-top: 2.8rem; display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
-          <a href="soluciones.html" style="font-weight: 600; color: var(--gold-accessible); text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem;">
-            <span>Probar Simulador de Agente WhatsApp</span>
-            <svg class="svg-stroke" width="16" height="16" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
-          </a>
-          <a href="precios.html" style="font-weight: 600; color: var(--gold-accessible); text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem;">
-            <span>Ver tabla comparativa completa y Calculadora de ROI</span>
-            <svg class="svg-stroke" width="16" height="16" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
-          </a>
+        <div style="text-align: center; margin-top: 2.8rem; display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
+          <a href="soluciones.html" class="btn-primary">Ver todas las Soluciones & Probar Demo WhatsApp</a>
+          <a href="precios.html" class="btn-ghost">Ver Planes de Inversión & ROI</a>
         </div>
       </div>
+    </section>
+
+    <!-- BANNER VISUAL IA NEURAL CON CANVAS Y QUANTUM ORB -->
+    <section class="ai-visual-fusion-section">
+      <div class="fusion-fade-top"></div>
+      <canvas id="neuralCanvas" class="neural-canvas-bg"></canvas>
+      <div class="neural-static-fallback" id="neuralStaticFallback"></div>
+
+      <div class="neural-core-wrapper">
+        <div class="core-halo glow-large"></div>
+        <div class="core-halo glow-small"></div>
+
+        <svg class="quantum-orb-svg" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="orbGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#F7E7A9" />
+              <stop offset="50%" stop-color="#D4AF37" />
+              <stop offset="100%" stop-color="#B89025" />
+            </linearGradient>
+            <radialGradient id="neuralGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="rgba(212, 175, 55, 0.45)" />
+              <stop offset="50%" stop-color="rgba(212, 175, 55, 0.1)" />
+              <stop offset="100%" stop-color="transparent" />
+            </radialGradient>
+          </defs>
+          <circle cx="200" cy="200" r="180" fill="url(#neuralGlow)" />
+          <circle cx="200" cy="200" r="150" stroke="url(#orbGoldGrad)" stroke-width="1.2" stroke-dasharray="6 8" class="spin-slow" opacity="0.6" />
+          <circle cx="200" cy="200" r="115" stroke="url(#orbGoldGrad)" stroke-width="1.8" stroke-dasharray="14 10" class="spin-reverse" opacity="0.8" />
+          <circle cx="200" cy="200" r="75" stroke="url(#orbGoldGrad)" stroke-width="2.2" opacity="0.9" />
+          <polygon points="200,140 252,170 252,230 200,260 148,230 148,170" stroke="url(#orbGoldGrad)" stroke-width="2" fill="rgba(17, 24, 39, 0.6)" class="pulse-subtle" />
+          <circle cx="200" cy="200" r="22" fill="url(#orbGoldGrad)" />
+          <circle cx="200" cy="200" r="10" fill="#FFFFFF" />
+        </svg>
+
+        <div class="neural-caption">
+          <span class="eyebrow" style="margin-bottom: 0.3rem; color: var(--gold-light);">Arquitectura Autónoma</span>
+          <h3 class="neural-caption-title">Sistemas que aprenden, ejecutan y escalan</h3>
+        </div>
+      </div>
+
+      <div class="fusion-fade-bottom"></div>
     </section>
 
     <!-- FORMULARIO "TE LLAMAMOS HOY" -->
@@ -258,12 +471,12 @@
       <div class="container">
         <div class="lead-strip-grid">
           <div>
-            <span class="eyebrow" style="color: var(--gold-light);">Contacto Inmediato</span>
+            <span class="eyebrow" style="color: var(--gold-light);">Contacto de Baja Fricción</span>
             <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 700; line-height: 1.2; margin-bottom: 1rem;">
-              ¿Prefieres que te llamemos hoy?
+              ¿Prefieres que te llamemos nosotros hoy?
             </h2>
             <p style="color: #D1D5DB; font-size: 0.95rem; line-height: 1.7;">
-              Sin cuestionarios eternos. Déjanos tu nombre y teléfono y un consultor senior de ROSER.AI se pondrá en contacto contigo durante la jornada para evaluar la viabilidad de tu sistema.
+              Sin videollamadas largas ni cuestionarios complejos. Déjanos tu teléfono y un consultor técnico senior de ROSER.AI te llamará durante la jornada para analizar la viabilidad de tu proyecto.
             </p>
           </div>
 
@@ -296,6 +509,20 @@
         </div>
       </div>
     </section>
+
+    <!-- STACK TECNOLÓGICO -->
+    <section class="tech-stack-strip">
+      <div class="container" style="text-align: center;">
+        <span class="eyebrow" style="font-size: 0.72rem; margin-bottom: 0.3rem;">Ecosistema Tecnológico de Producción</span>
+        <div class="tech-chips-wrapper">
+          <span class="tech-chip"><svg class="svg-stroke" width="14" height="14" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg> Vanilla JS Moderno</span>
+          <span class="tech-chip"><svg class="svg-stroke" width="14" height="14" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"></rect><line x1="9" y1="9" x2="15" y2="15"></line></svg> Python / Node.js</span>
+          <span class="tech-chip"><svg class="svg-stroke" width="14" height="14" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle></svg> n8n Orchestration</span>
+          <span class="tech-chip"><svg class="svg-stroke" width="14" height="14" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg> Make</span>
+          <span class="tech-chip"><svg class="svg-stroke" width="14" height="14" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg> Meta Cloud API</span>
+        </div>
+      </div>
+    </section>
   </main>
 
   <!-- FOOTER -->
@@ -319,7 +546,7 @@
         </div>
         <div>
           <h5 style="color: var(--text-charcoal); font-weight: 700; margin-bottom: 0.8rem;">Contacto Directo</h5>
-          <p style="font-size: 0.88rem; color: var(--text-slate); margin-bottom: 0.5rem;">WhatsApp: <a href="https://api.whatsapp.com/send?phone=34603782884&text=Hola%20ROSER.AI,%20quiero%20informaci%C3%B3n" style="color: var(--gold-accessible); font-weight: 600; text-decoration: none;">+34 603 78 28 84</a></p>
+          <p style="font-size: 0.88rem; color: var(--text-slate); margin-bottom: 0.5rem;">WhatsApp: <a href="https://wa.me/34603782884" style="color: var(--gold-accessible); font-weight: 600; text-decoration: none;">+34 603 78 28 84</a></p>
           <p style="font-size: 0.88rem; color: var(--text-slate);">Agenda: <a href="https://cal.com/dani-serrano-mc095n/30min" target="_blank" style="color: var(--gold-accessible); text-decoration: none;">cal.com/dani-serrano-mc095n/30min</a></p>
         </div>
       </div>
@@ -334,7 +561,7 @@
     <button class="action-fab fab-quote" onclick="openCallModal()" title="Agendar llamada de 30 min">
       <svg class="svg-stroke" width="20" height="20" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
     </button>
-    <a href="https://api.whatsapp.com/send?phone=34603782884&text=Hola%20ROSER.AI,%20me%20gustar%C3%ADa%20agendar%20un%20diagn%C3%B3stico%20estrat%C3%A9gico%20para%20mi%20negocio" target="_blank" rel="noopener noreferrer" class="action-fab fab-wa" title="WhatsApp Directo (+34 603 78 28 84)">
+    <a href="https://wa.me/34603782884?text=Hola%20ROSER.AI,%20me%20gustar%C3%ADa%20agendar%20un%20diagn%C3%B3stico%20estrat%C3%A9gico%20para%20mi%20negocio" target="_blank" rel="noopener noreferrer" class="action-fab fab-wa" title="WhatsApp (+34 603 78 28 84)">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
     </a>
   </div>
@@ -357,7 +584,7 @@
 
     <div class="bot-messages-area" id="botMessagesArea">
       <div class="bot-msg bot">
-        ¡Hola! 👋 Conozco los detalles del <strong>Pack Básico (300€)</strong>, <strong>Pack Plata (700€)</strong> y <strong>Pack Oro (1.200€)</strong>, además del funcionamiento de los agentes de WhatsApp. ¿Qué duda técnica puedo resolverte?
+        ¡Hola! 👋 Conozco los detalles del <strong>Pack Básico (300€)</strong>, <strong>Pack Plata (700€)</strong> y <strong>Pack Oro (1.200€)</strong>, además de la automatización en WhatsApp y n8n. ¿Qué duda técnica puedo resolverte?
       </div>
     </div>
 
@@ -444,7 +671,7 @@
       if (query.includes('agenda') || query.includes('cita') || query.includes('llamada')) {
         return `Puedes reservar tus 30 minutos directamente en <a href="https://cal.com/dani-serrano-mc095n/30min" target="_blank" style="color:var(--gold-accessible); font-weight:700;">cal.com/dani-serrano-mc095n/30min</a> o escribirnos por WhatsApp (+34 603 78 28 84).`;
       }
-      return `Para cualquier duda técnica sobre tu operativa, escríbenos directamente por <a href="https://api.whatsapp.com/send?phone=34603782884&text=Hola%20ROSER.AI,%20tengo%20una%20consulta" target="_blank" style="color:var(--gold-accessible); font-weight:700;">WhatsApp (+34 603 78 28 84)</a> o agenda tu videollamada diagnóstica.`;
+      return `Para cualquier duda técnica sobre tu operativa, escríbenos directamente por <a href="https://wa.me/34603782884" target="_blank" style="color:var(--gold-accessible); font-weight:700;">WhatsApp (+34 603 78 28 84)</a> o agenda tu videollamada diagnóstica.`;
     }
 
     botForm.onsubmit = (e) => {
@@ -460,6 +687,48 @@
       botAppendMessage('user', txt);
       setTimeout(() => botAppendMessage('bot', evalQuery(txt)), 350);
     };
+
+    // CANVAS NEURAL
+    const neuralCanvas = document.getElementById('neuralCanvas');
+    const staticFallback = document.getElementById('neuralStaticFallback');
+    if (neuralCanvas) {
+      if (window.innerWidth < 768 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        neuralCanvas.style.display = 'none';
+        if (staticFallback) staticFallback.style.display = 'block';
+      } else {
+        const ctx = neuralCanvas.getContext('2d');
+        let nodes = [];
+        let width = 0, height = 0;
+        function resize() {
+          width = neuralCanvas.offsetWidth; height = neuralCanvas.offsetHeight;
+          neuralCanvas.width = width; neuralCanvas.height = height;
+          nodes = [];
+          for (let i = 0; i < 35; i++) {
+            nodes.push({ x: Math.random() * width, y: Math.random() * height, vx: (Math.random() - 0.5) * 0.5, vy: (Math.random() - 0.5) * 0.5, radius: Math.random() * 2 + 1, alpha: Math.random() * 0.5 + 0.3 });
+          }
+        }
+        function draw() {
+          ctx.clearRect(0, 0, width, height);
+          for (let i = 0; i < nodes.length; i++) {
+            for (let j = i + 1; j < nodes.length; j++) {
+              const dx = nodes[i].x - nodes[j].x, dy = nodes[i].y - nodes[j].y, dist = Math.sqrt(dx * dx + dy * dy);
+              if (dist < 105) {
+                ctx.strokeStyle = `rgba(212, 175, 55, ${(1 - dist / 105) * 0.22})`;
+                ctx.lineWidth = 0.8; ctx.beginPath(); ctx.moveTo(nodes[i].x, nodes[i].y); ctx.lineTo(nodes[j].x, nodes[j].y); ctx.stroke();
+              }
+            }
+          }
+          for (let i = 0; i < nodes.length; i++) {
+            const n = nodes[i]; n.x += n.vx; n.y += n.vy;
+            if (n.x < 0 || n.x > width) n.vx *= -1; if (n.y < 0 || n.y > height) n.vy *= -1;
+            ctx.fillStyle = `rgba(247, 231, 169, ${n.alpha})`; ctx.beginPath(); ctx.arc(n.x, n.y, n.radius, 0, Math.PI * 2); ctx.fill();
+          }
+          requestAnimationFrame(draw);
+        }
+        window.addEventListener('resize', resize);
+        resize(); draw();
+      }
+    }
   </script>
 </body>
 </html>
