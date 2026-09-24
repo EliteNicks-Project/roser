@@ -9,18 +9,171 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css" />
+
+  <style>
+    :root {
+      --white-pure: #FFFFFF;
+      --slate-gray: #6B7280;
+      --slate-dark: #374151;
+      --slate-light: #9CA3AF;
+      --gold-metallic: #D4AF37;
+      --gold-deep: #B89025;
+      --gold-accessible: #997519;
+      --gold-light: #F7E7A9;
+      --gold-subtle: rgba(212, 175, 55, 0.12);
+      --text-charcoal: #111827;
+      --text-slate: #374151;
+      --bg-canvas: #FFFFFF;
+      --bg-surface-soft: #F9FAFB;
+      --border-light: #E5E7EB;
+      --border-medium: #D1D5DB;
+      --border-gold: rgba(212, 175, 55, 0.45);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 22px;
+      --radius-full: 9999px;
+      --shadow-luxury-sm: 0 4px 14px rgba(17, 24, 39, 0.04);
+      --shadow-luxury-md: 0 12px 30px rgba(17, 24, 39, 0.08);
+      --shadow-luxury-lg: 0 20px 45px rgba(17, 24, 39, 0.12);
+      --shadow-gold: 0 8px 24px rgba(212, 175, 55, 0.28);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+    body {
+      background-color: var(--bg-canvas);
+      color: var(--text-charcoal);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(212, 175, 55, 0.07) 0px, transparent 50%),
+        radial-gradient(at 100% 20%, rgba(107, 114, 128, 0.05) 0px, transparent 40%);
+    }
+    .container { max-width: 1220px; margin: 0 auto; padding: 0 1.5rem; position: relative; z-index: 1; }
+    .svg-stroke { fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2; }
+
+    header {
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border-light);
+      box-shadow: 0 2px 12px rgba(17, 24, 39, 0.03);
+    }
+    .nav-wrapper { display: flex; align-items: center; justify-content: space-between; height: 78px; }
+    .brand-container { display: flex; align-items: center; gap: 0.85rem; text-decoration: none; }
+    .brand-icon-svg { width: 38px; height: 38px; flex-shrink: 0; filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.35)); }
+    .brand-name {
+      font-family: 'Space Grotesk', sans-serif; font-size: 1.35rem; font-weight: 700;
+      letter-spacing: -0.04em; color: var(--text-charcoal); display: flex; align-items: center; gap: 0.2rem;
+    }
+    .brand-name .ai-accent {
+      background: linear-gradient(135deg, var(--gold-metallic), var(--gold-deep));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 800;
+    }
+    .brand-sub { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--text-slate); font-weight: 600; }
+    .nav-links { display: none; align-items: center; gap: 1.8rem; list-style: none; }
+    @media (min-width: 960px) { .nav-links { display: flex; } }
+    .nav-links a { color: var(--text-slate); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s ease; }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold-accessible); font-weight: 600; }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #D4AF37 0%, #B89025 100%);
+      color: #FFFFFF; padding: 0.7rem 1.45rem; border-radius: var(--radius-full);
+      font-size: 0.88rem; font-weight: 600; text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, 0.4); box-shadow: var(--shadow-gold);
+      cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(212, 175, 55, 0.4); background: linear-gradient(135deg, #DFBE52 0%, #A8811C 100%); }
+
+    .section-wrap { padding: 4.8rem 0; }
+    .eyebrow { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-accessible); margin-bottom: 0.6rem; display: block; }
+    .section-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2rem, 3.8vw, 2.9rem); font-weight: 700; letter-spacing: -0.03em; color: var(--text-charcoal); line-height: 1.15; }
+    .section-subtitle { color: var(--text-slate); font-size: 1rem; max-width: 680px; margin-top: 0.75rem; }
+
+    /* SIMULADOR WHATSAPP EXACTO AL ORIGINAL */
+    .chat-demo-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center; margin-bottom: 5rem; }
+    @media (min-width: 980px) { .chat-demo-grid { grid-template-columns: 1fr 1.15fr; } }
+    .chat-phone-frame {
+      max-width: 390px; margin: 0 auto; background: #FFFFFF; border-radius: 36px;
+      border: 10px solid #1F2937; box-shadow: 0 25px 60px rgba(17, 24, 39, 0.16), 0 0 35px rgba(212, 175, 55, 0.15);
+      overflow: hidden; display: flex; flex-direction: column; height: 570px; position: relative;
+    }
+    .chat-phone-header { background: #075E54; color: #FFFFFF; padding: 0.85rem 1rem; display: flex; align-items: center; gap: 0.75rem; }
+    .chat-phone-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--gold-subtle); border: 2px solid #D4AF37; display: flex; align-items: center; justify-content: center; color: #D4AF37; font-weight: 700; font-size: 0.85rem; flex-shrink: 0; }
+    .chat-phone-info h4 { font-size: 0.95rem; font-weight: 600; line-height: 1.2; display: flex; align-items: center; gap: 0.35rem; }
+    .chat-phone-info p { font-size: 0.72rem; color: rgba(255, 255, 255, 0.85); display: flex; align-items: center; gap: 0.3rem; }
+    .chat-phone-online-dot { width: 7px; height: 7px; background-color: #25D366; border-radius: 50%; display: inline-block; }
+    .chat-phone-body { flex: 1; background-color: #EFEAE2; background-image: radial-gradient(#d3c9bf 1px, transparent 1px); background-size: 16px 16px; padding: 1rem; overflow-y: auto; display: flex; flex-direction: column; gap: 0.75rem; scroll-behavior: smooth; }
+    .wa-bubble { max-width: 82%; padding: 0.65rem 0.85rem; border-radius: 12px; font-size: 0.84rem; line-height: 1.4; position: relative; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); }
+    .wa-bubble.bot { align-self: flex-start; background: #FFFFFF; color: var(--text-charcoal); border-top-left-radius: 2px; }
+    .wa-bubble.user { align-self: flex-end; background: #DCF8C6; color: #0F381E; border-top-right-radius: 2px; }
+    .wa-time { font-size: 0.66rem; color: #8C8C8C; float: right; margin-left: 0.5rem; margin-top: 0.2rem; }
+    .typing-indicator { display: none; align-self: flex-start; background: #FFFFFF; padding: 0.6rem 0.9rem; border-radius: 14px; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); border-top-left-radius: 2px; }
+    .typing-indicator.active { display: inline-flex; align-items: center; gap: 4px; }
+    .typing-indicator span { width: 6px; height: 6px; background-color: #888888; border-radius: 50%; animation: typingBlink 1.4s infinite both; }
+    .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+    .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes typingBlink { 0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; } 40% { transform: scale(1); opacity: 1; } }
+    .chat-quick-triggers { padding: 0.85rem; background: #FFFFFF; border-top: 1px solid var(--border-light); display: flex; flex-direction: column; gap: 0.5rem; }
+    .trigger-btn { background: #F9FAFB; border: 1px solid var(--border-medium); color: var(--text-charcoal); padding: 0.5rem 0.85rem; border-radius: var(--radius-full); font-size: 0.78rem; font-weight: 500; cursor: pointer; text-align: left; transition: all 0.2s ease; display: flex; align-items: center; justify-content: space-between; }
+    .trigger-btn:hover { background: var(--gold-subtle); border-color: var(--gold-metallic); color: var(--gold-accessible); }
+    .trigger-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    /* CASOS DE USO REALES */
+    .use-cases-grid { display: grid; grid-template-columns: 1fr; gap: 1.75rem; margin-top: 2rem; }
+    @media (min-width: 860px) { .use-cases-grid { grid-template-columns: repeat(3, 1fr); } }
+    .use-case-card { background: #FFFFFF; border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 2.2rem 1.8rem; box-shadow: var(--shadow-luxury-sm); display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s ease; }
+    .use-case-card:hover { border-color: var(--border-gold); transform: translateY(-4px); box-shadow: var(--shadow-luxury-md); }
+    .use-case-industry { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold-accessible); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.4rem; }
+    .use-case-title { font-family: 'Space Grotesk', sans-serif; font-size: 1.25rem; font-weight: 700; color: var(--text-charcoal); margin-bottom: 0.75rem; line-height: 1.3; }
+    .use-case-desc { font-size: 0.9rem; color: var(--text-slate); line-height: 1.6; margin-bottom: 1.5rem; }
+    .use-case-benefit { background: var(--bg-surface-soft); border-left: 3px solid var(--gold-metallic); padding: 0.75rem 1rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; font-size: 0.82rem; color: var(--text-charcoal); font-weight: 600; }
+
+    /* MATRIZ DE SERVICIOS */
+    .services-matrix { display: grid; grid-template-columns: 1fr; gap: 1.75rem; margin-top: 2rem; }
+    @media (min-width: 768px) { .services-matrix { grid-template-columns: repeat(2, 1fr); } }
+    .service-card { background: #FFFFFF; border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 2.5rem 2.2rem; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; box-shadow: var(--shadow-luxury-sm); transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1); }
+    .service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-luxury-lg), 0 0 24px rgba(212, 175, 55, 0.12); border-color: var(--border-gold); }
+    .service-icon-box { width: 54px; height: 54px; border-radius: var(--radius-md); background: var(--gold-subtle); border: 1px solid rgba(212, 175, 55, 0.3); display: flex; align-items: center; justify-content: center; color: var(--gold-accessible); margin-bottom: 1.6rem; }
+    .service-name { font-family: 'Space Grotesk', sans-serif; font-size: 1.35rem; font-weight: 700; color: var(--text-charcoal); margin-bottom: 0.85rem; }
+    .service-pitch { font-size: 0.95rem; color: var(--text-slate); line-height: 1.7; margin-bottom: 2rem; }
+    .feature-tags { display: flex; flex-wrap: wrap; gap: 0.55rem; margin-top: auto; }
+    .tag-chip { font-size: 0.76rem; font-weight: 600; color: var(--text-slate); background: var(--bg-surface-soft); border: 1px solid var(--border-light); padding: 0.3rem 0.85rem; border-radius: var(--radius-full); }
+    .service-card:hover .tag-chip { border-color: rgba(212, 175, 55, 0.3); color: var(--gold-accessible); }
+
+    /* ELEMENTOS FLOTANTES & MODALES */
+    .floating-support-cluster { position: fixed; bottom: 24px; right: 24px; display: flex; align-items: center; gap: 0.85rem; z-index: 150; }
+    .action-fab { width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border-light); box-shadow: 0 10px 25px rgba(17, 24, 39, 0.12); cursor: pointer; text-decoration: none; transition: transform 0.2s; }
+    .action-fab:hover { transform: scale(1.1); }
+    .fab-wa { background: #25D366; color: #FFFFFF; }
+    .fab-quote { background: linear-gradient(135deg, var(--gold-metallic) 0%, var(--gold-deep) 100%); color: #FFFFFF; }
+    .modal-backdrop { position: fixed; inset: 0; background: rgba(17, 24, 39, 0.65); backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center; padding: 1.2rem; z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.25s ease; }
+    .modal-backdrop.active { opacity: 1; pointer-events: auto; }
+    .modal-sheet { background: #FFFFFF; border-radius: var(--radius-lg); width: 100%; max-width: 640px; padding: 2.2rem; position: relative; }
+    .close-modal-x { position: absolute; top: 1.2rem; right: 1.2rem; background: var(--bg-surface-soft); border: 1px solid var(--border-light); width: 34px; height: 34px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+    .cal-iframe-container { width: 100%; height: 520px; border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border-light); }
+    .cal-iframe-container iframe { width: 100%; height: 100%; border: none; }
+    footer { border-top: 1px solid var(--border-light); padding: 4.5rem 0 2.8rem; background: #FAFAFA; font-size: 0.9rem; margin-top: 4rem; }
+    .footer-grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; margin-bottom: 3.5rem; }
+    @media (min-width: 768px) { .footer-grid { grid-template-columns: 2fr 1fr 1fr; } }
+  </style>
 </head>
 
 <body>
-  <!-- HEADER -->
   <header>
     <div class="container">
       <div class="nav-wrapper">
         <a href="index.html" class="brand-container">
           <svg class="brand-icon-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <polygon points="50,6 90,28 90,72 50,94 10,72 10,28" stroke="#D4AF37" stroke-width="4.5" fill="rgba(212, 175, 55, 0.08)" />
-            <circle cx="50" cy="50" r="14" fill="#D4AF37" />
+            <defs>
+              <linearGradient id="goldBrandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#F7E7A9" /><stop offset="50%" stop-color="#D4AF37" /><stop offset="100%" stop-color="#B89025" />
+              </linearGradient>
+            </defs>
+            <polygon points="50,6 90,28 90,72 50,94 10,72 10,28" stroke="url(#goldBrandGrad)" stroke-width="4.5" fill="rgba(212, 175, 55, 0.08)" />
+            <circle cx="50" cy="50" r="14" fill="url(#goldBrandGrad)" />
+            <line x1="50" y1="6" x2="50" y2="36" stroke="url(#goldBrandGrad)" stroke-width="3" />
+            <line x1="90" y1="72" x2="62" y2="58" stroke="url(#goldBrandGrad)" stroke-width="3" />
+            <line x1="10" y1="72" x2="38" y2="58" stroke="url(#goldBrandGrad)" stroke-width="3" />
           </svg>
           <div class="brand-title-wrap">
             <span class="brand-name">ROSER<span class="ai-accent">.AI</span></span>
@@ -37,7 +190,7 @@
 
         <div class="nav-actions">
           <button class="btn-primary" onclick="openCallModal()">
-            <svg class="svg-stroke" width="16" height="16" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line><path d="m9 16 2 2 4-4"></path></svg>
+            <svg class="svg-stroke" width="16" height="16" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
             <span>Agendar 30 min</span>
           </button>
         </div>
@@ -46,55 +199,61 @@
   </header>
 
   <main class="container section-wrap">
-    <!-- DEMO AGENTE WHATSAPP -->
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 3rem; align-items: center; margin-bottom: 5rem;">
+    <!-- DEMO EN VIVO: SIMULADOR INTERACTIVO WHATSAPP -->
+    <div class="chat-demo-grid">
       <div>
-        <span class="eyebrow">Demostración en Tiempo Real</span>
-        <h1 class="section-title">Comprueba la velocidad de tu Agente Autónomo en WhatsApp</h1>
+        <span class="eyebrow">Demostración Interactiva</span>
+        <h1 class="section-title">Comprueba la velocidad de tu futuro agente en WhatsApp</h1>
         <p class="section-subtitle" style="margin-bottom: 2rem;">
-          Simula cómo gestionaría tu negocio las consultas habituales de clientes: cualificación instantánea, derivación de citas y respuestas precisas en menos de 1 segundo sin intervención humana.
+          Simula cómo respondería el agente inteligente a los clientes reales de una clínica o taller mecánico en tiempo récord, cualificando y derivando citas automáticamente.
         </p>
 
         <div style="background: #FFFFFF; border-left: 3px solid var(--gold-metallic); padding: 1.2rem; border-radius: var(--radius-sm); box-shadow: var(--shadow-luxury-sm); margin-bottom: 2rem;">
-          <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text-charcoal); margin-bottom: 0.3rem;">⚡ Respuesta inmediata (&lt; 1 segundo)</h4>
+          <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text-charcoal); margin-bottom: 0.3rem;">⚡ Respuesta instantánea (&lt; 1 segundo)</h4>
           <p style="font-size: 0.85rem; color: var(--text-slate);">
-            Conexión oficial mediante Meta Cloud API. Las primeras 1.000 conversaciones mensuales son gratuitas y el código es 100% de tu propiedad.
+            Sin esperas ni formularios fríos. El cliente resuelve su duda y agenda en la misma conversación en cualquier momento del día. Conexión oficial vía Meta Cloud API.
           </p>
         </div>
 
         <button class="btn-primary" onclick="openCallModal()">
-          <span>Desplegar Agente con Pack Plata (700€)</span>
+          <span>Implementar Agente con Pack Plata (700€)</span>
           <svg class="svg-stroke" width="14" height="14" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </button>
       </div>
 
-      <!-- MÓVIL SIMULADOR -->
+      <!-- MOCKUP MÓVIL WHATSAPP CON TODAS SUS ANIMACIONES -->
       <div>
         <div class="chat-phone-frame">
           <div class="chat-phone-header">
             <div class="chat-phone-avatar">RA</div>
-            <div>
-              <h4 style="font-size: 0.92rem; font-weight: 700;">Clínica / Taller ROSER</h4>
-              <p style="font-size: 0.7rem; color: #DCF8C6;">● Agente Oficial 24/7</p>
+            <div class="chat-phone-info">
+              <h4>Clínica / Taller ROSER <svg width="12" height="12" viewBox="0 0 24 24" fill="#25D366"><circle cx="12" cy="12" r="10"/></svg></h4>
+              <p><span class="chat-phone-online-dot"></span> Agente Oficial 24/7</p>
             </div>
           </div>
 
           <div class="chat-phone-body" id="chatDemoBody">
             <div class="wa-bubble bot">
-              ¡Hola! 👋 Soy el asistente autónomo de ROSER.AI. ¿En qué te puedo ayudar hoy? Haz clic en una consulta de abajo para probarme:
+              ¡Hola! 👋 Soy el asistente autónomo de la clínica. ¿En qué puedo ayudarte hoy?<br />
+              <span style="font-size:0.75rem; color:#6B7280; display:block; margin-top:4px;">Haz clic en una de las consultas de abajo para probarme 👇</span>
+              <span class="wa-time">09:00</span>
+            </div>
+
+            <div class="typing-indicator" id="demoTypingIndicator">
+              <span></span><span></span><span></span>
             </div>
           </div>
 
-          <div style="padding: 0.85rem; background: #FFFFFF; border-top: 1px solid var(--border-light); display: flex; flex-direction: column; gap: 0.5rem;">
-            <button class="trigger-btn" onclick="runDemo('¿Tenéis hueco para mañana?', '¡Hola! Nos quedan dos citas disponibles mañana: a las 11:30h o a las 17:00h. ¿Cuál prefieres reservar?')">
+          <div class="chat-quick-triggers">
+            <button class="trigger-btn" id="demoBtn1" onclick="runDemoQuestion(1, '¿Tenéis cita disponible para mañana?')">
               <span>📅 ¿Tenéis cita para mañana?</span>
               <svg class="svg-stroke" width="12" height="12" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </button>
-            <button class="trigger-btn" onclick="runDemo('¿Cuánto cuesta una revisión?', 'La revisión diagnóstica completa son 49€ (incluye diagnosis electrónica). ¿Deseas que te reservemos turno?')">
+            <button class="trigger-btn" id="demoBtn2" onclick="runDemoQuestion(2, '¿Cuánto cuesta una revisión técnica?')">
               <span>💶 ¿Cuánto cuesta una revisión?</span>
               <svg class="svg-stroke" width="12" height="12" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </button>
-            <button class="trigger-btn" onclick="runDemo('¿Dónde estáis ubicados?', 'Estamos ubicados en Badajoz (C/ Mayor, 14) con parking propio para clientes. Abrimos de 08:30 a 20:00.')">
+            <button class="trigger-btn" id="demoBtn3" onclick="runDemoQuestion(3, '¿Dónde estáis ubicados exactamente?')">
               <span>📍 ¿Dónde estáis ubicados?</span>
               <svg class="svg-stroke" width="12" height="12" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </button>
@@ -103,43 +262,83 @@
       </div>
     </div>
 
-    <!-- MATRIZ DE SERVICIOS -->
+    <!-- CASOS DE USO REALES POR SECTOR -->
     <div class="section-header">
+      <span class="eyebrow">Casos de Uso Reales</span>
+      <h2 class="section-title">Ecosistemas en funcionamiento por sector</h2>
+      <p class="section-subtitle">Cómo transformamos los cuellos de botella operativos en sistemas que operan en piloto automático.</p>
+    </div>
+
+    <div class="use-cases-grid">
+      <div class="use-case-card">
+        <div>
+          <div class="use-case-industry"><svg class="svg-stroke" width="14" height="14" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg> Clínicas & Salud Privada</div>
+          <h3 class="use-case-title">Agendamiento autónomo y recordatorios por WhatsApp</h3>
+          <p class="use-case-desc">El agente atiende a los pacientes 24/7, responde sobre tratamientos, sincroniza citas con la agenda de la clínica y envía avisos automáticos 24h antes por WhatsApp, reduciendo un 75% las inasistencias.</p>
+        </div>
+        <div class="use-case-benefit">-75% Citas perdidas sin sobrecargar recepción</div>
+      </div>
+
+      <div class="use-case-card">
+        <div>
+          <div class="use-case-industry"><svg class="svg-stroke" width="14" height="14" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg> Talleres & Concesionarios</div>
+          <h3 class="use-case-title">Generación instantánea de presupuestos en PDF</h3>
+          <p class="use-case-desc">Generación y remisión desatendida de hojas de presupuesto en PDF validadas mediante formularios web o WhatsApp. Flujo post-servicio que solicita revisiones periódicas e ITV de forma programada.</p>
+        </div>
+        <div class="use-case-benefit">Presupuestos emitidos y validados en &lt; 2 minutos</div>
+      </div>
+
+      <div class="use-case-card">
+        <div>
+          <div class="use-case-industry"><svg class="svg-stroke" width="14" height="14" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg> Servicios B2B & Consultoría</div>
+          <h3 class="use-case-title">Cualificación desatendida de leads hacia CRM</h3>
+          <p class="use-case-desc">Filtra prospectos según presupuesto, volumen y urgencia antes de llegar al equipo comercial. Conexión directa con HubSpot, Notion o Sheets, derivando solo reuniones de alto ticket a los closers.</p>
+        </div>
+        <div class="use-case-benefit">100% Leads filtrados con enriquecimiento de datos</div>
+      </div>
+    </div>
+
+    <!-- MATRIZ DE SERVICIOS -->
+    <div class="section-header" style="margin-top: 4.5rem;">
       <span class="eyebrow">Arquitectura Aplicada</span>
-      <h2 class="section-title">Soluciones de ingeniería en producción</h2>
+      <h2 class="section-title">Estructura tecnológica orientada a resultados</h2>
     </div>
 
     <div class="services-matrix">
       <div class="service-card">
-        <span class="eyebrow" style="margin-bottom: 0.4rem;">Clínicas & Salud Privada</span>
-        <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.25rem; margin-bottom: 0.6rem;">Recordatorios y citas desatendidas</h3>
-        <p style="font-size: 0.9rem; color: var(--text-slate); line-height: 1.6;">
-          Atención y resolución de dudas 24/7 sobre tratamientos, agendamiento sincronizado y aviso automático 24 horas antes por WhatsApp que reduce el absentismo un 75%.
-        </p>
+        <div>
+          <div class="service-icon-box"><svg class="svg-stroke" width="24" height="24" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div>
+          <h3 class="service-name">Arquitectura Web & Motores de Conversión</h3>
+          <p class="service-pitch">Desarrollo web exclusivo desde cero. Carga ultrarrápida, diseño limpio que transmite autoridad inmediata y embudos orientados a llamada o presupuesto.</p>
+        </div>
+        <div class="feature-tags"><span class="tag-chip">Core Web Vitals 99+</span><span class="tag-chip">Embudos de Cierre</span><span class="tag-chip">SEO Local</span></div>
       </div>
 
       <div class="service-card">
-        <span class="eyebrow" style="margin-bottom: 0.4rem;">Talleres & Concesionarios</span>
-        <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.25rem; margin-bottom: 0.6rem;">Presupuestos en PDF al instante</h3>
-        <p style="font-size: 0.9rem; color: var(--text-slate); line-height: 1.6;">
-          Recepción de datos del vehículo vía WhatsApp o formulario, generación automática de la hoja de presupuesto en PDF y remisión al cliente sin intervención del recepcionista.
-        </p>
+        <div>
+          <div class="service-icon-box"><svg class="svg-stroke" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2a4 4 0 0 1 4 4c0 1.95-1.4 3.58-3.25 3.93l-.75 2.07h4a3 3 0 0 1 3 3v5a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-5a3 3 0 0 1 3-3h4l-.75-2.07C9.4 9.58 8 7.95 8 6a4 4 0 0 1 4-4z"></path></svg></div>
+          <h3 class="service-name">Agentes Cognitivos Autónomos</h3>
+          <p class="service-pitch">Chatbots multicanal en WhatsApp y Web conectados a Meta Cloud API. Resuelven dudas, cualifican prospectos y agendan llamadas directamente.</p>
+        </div>
+        <div class="feature-tags"><span class="tag-chip">Meta Cloud API</span><span class="tag-chip">Memoria Contextual</span><span class="tag-chip">Agendamiento Activo</span></div>
       </div>
 
       <div class="service-card">
-        <span class="eyebrow" style="margin-bottom: 0.4rem;">Servicios B2B & Consultoría</span>
-        <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.25rem; margin-bottom: 0.6rem;">Cualificación hacia CRM y Cal.com</h3>
-        <p style="font-size: 0.9rem; color: var(--text-slate); line-height: 1.6;">
-          El agente recopila presupuesto, urgencia y tipo de cliente; si cumple el perfil ideal, le facilita el enlace a la agenda y guarda los datos en HubSpot o Sheets.
-        </p>
+        <div>
+          <div class="service-icon-box"><svg class="svg-stroke" width="24" height="24" viewBox="0 0 24 24"><rect x="16" y="16" width="6" height="6" rx="1"></rect><rect x="2" y="16" width="6" height="6" rx="1"></rect><rect x="9" y="2" width="6" height="6" rx="1"></rect><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"></path><line x1="12" y1="12" x2="12" y2="8"></line></svg></div>
+          <h3 class="service-name">Pipelines de Integración n8n & Make</h3>
+          <p class="service-pitch">Interconectamos tus formularios, CRM, pasarelas de facturación y bases de datos. Cada vez que entra un cliente potencial, se dispara una cadena de acciones sin fallo humano.</p>
+        </div>
+        <div class="feature-tags"><span class="tag-chip">Orquestación n8n</span><span class="tag-chip">Facturación Auto</span><span class="tag-chip">Cero Duplicidades</span></div>
       </div>
 
       <div class="service-card">
-        <span class="eyebrow" style="margin-bottom: 0.4rem;">Orquestación n8n & Make</span>
-        <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.25rem; margin-bottom: 0.6rem;">Pipelines sin fallo humano</h3>
-        <p style="font-size: 0.9rem; color: var(--text-slate); line-height: 1.6;">
-          Interconexión de bases de datos, facturación automática y sincronización bidireccional entre canales web, CRM y WhatsApp para erradicar tareas repetitivas.
-        </p>
+        <div>
+          <div class="service-icon-box"><svg class="svg-stroke" width="24" height="24" viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg></div>
+          <h3 class="service-name">Motor de Crecimiento & Reputación Local</h3>
+          <p class="service-pitch">Sistemas automatizados post-servicio que contactan a clientes reales para solicitar reseñas de 5 estrellas en Google Business Profile y reactivan antiguos clientes.</p>
+        </div>
+        <div class="feature-tags"><span class="tag-chip">Google Maps Rank</span><span class="tag-chip">Reactivación WhatsApp</span><span class="tag-chip">Filtro de Satisfacción</span></div>
       </div>
     </div>
   </main>
@@ -150,9 +349,7 @@
       <div class="footer-grid">
         <div>
           <span class="brand-name" style="font-size: 1.25rem; margin-bottom: 0.8rem; display: block;">ROSER<span class="ai-accent">.AI</span></span>
-          <p style="color: var(--text-slate); font-size: 0.88rem; max-width: 380px;">
-            Ingeniería de software, automatización B2B y agentes de inteligencia artificial operados desde Badajoz y Mérida para empresas de toda España.
-          </p>
+          <p style="color: var(--text-slate); font-size: 0.88rem; max-width: 380px;">Ingeniería de software, automatización B2B y agentes de inteligencia artificial operados desde Badajoz y Mérida para empresas de toda España.</p>
         </div>
         <div>
           <h5 style="color: var(--text-charcoal); font-weight: 700; margin-bottom: 0.8rem;">Páginas</h5>
@@ -165,13 +362,11 @@
         </div>
         <div>
           <h5 style="color: var(--text-charcoal); font-weight: 700; margin-bottom: 0.8rem;">Contacto Directo</h5>
-          <p style="font-size: 0.88rem; color: var(--text-slate); margin-bottom: 0.5rem;">WhatsApp: <a href="https://api.whatsapp.com/send?phone=34603782884&text=Hola%20ROSER.AI,%20quiero%20informaci%C3%B3n" style="color: var(--gold-accessible); font-weight: 600; text-decoration: none;">+34 603 78 28 84</a></p>
+          <p style="font-size: 0.88rem; color: var(--text-slate); margin-bottom: 0.5rem;">WhatsApp: <a href="https://wa.me/34603782884" style="color: var(--gold-accessible); font-weight: 600; text-decoration: none;">+34 603 78 28 84</a></p>
           <p style="font-size: 0.88rem; color: var(--text-slate);">Agenda: <a href="https://cal.com/dani-serrano-mc095n/30min" target="_blank" style="color: var(--gold-accessible); text-decoration: none;">cal.com/dani-serrano-mc095n/30min</a></p>
         </div>
       </div>
-      <div style="border-top: 1px solid var(--border-light); padding-top: 1.4rem; text-align: center; color: var(--text-slate); font-size: 0.82rem;">
-        © 2026 ROSER.AI — Todos los derechos reservados.
-      </div>
+      <div style="border-top: 1px solid var(--border-light); padding-top: 1.4rem; text-align: center; color: var(--text-slate); font-size: 0.82rem;">© 2026 ROSER.AI — Todos los derechos reservados.</div>
     </div>
   </footer>
 
@@ -180,7 +375,7 @@
     <button class="action-fab fab-quote" onclick="openCallModal()" title="Agendar llamada de 30 min">
       <svg class="svg-stroke" width="20" height="20" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
     </button>
-    <a href="https://api.whatsapp.com/send?phone=34603782884&text=Hola%20ROSER.AI,%20quiero%20conocer%20c%C3%B3mo%20pod%C3%A9is%20automatizar%20mi%20empresa" target="_blank" rel="noopener noreferrer" class="action-fab fab-wa" title="WhatsApp (+34 603 78 28 84)">
+    <a href="https://wa.me/34603782884?text=Hola%20ROSER.AI,%20quiero%20conocer%20c%C3%B3mo%20pod%C3%A9is%20automatizar%20mi%20empresa" target="_blank" rel="noopener noreferrer" class="action-fab fab-wa" title="WhatsApp (+34 603 78 28 84)">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
     </a>
   </div>
@@ -205,22 +400,54 @@
     if (closeBtn) closeBtn.onclick = () => modal.classList.remove('active');
     modal.onclick = (e) => { if (e.target === modal) modal.classList.remove('active'); };
 
-    function runDemo(userMsg, botMsg) {
-      const body = document.getElementById('chatDemoBody');
-      const u = document.createElement('div');
-      u.className = 'wa-bubble user';
-      u.textContent = userMsg;
-      body.appendChild(u);
-      body.scrollTop = body.scrollHeight;
+    // Chat Demo WhatsApp interactivo
+    const chatDemoBody = document.getElementById('chatDemoBody');
+    const demoTypingIndicator = document.getElementById('demoTypingIndicator');
+    const demoButtons = [
+      document.getElementById('demoBtn1'),
+      document.getElementById('demoBtn2'),
+      document.getElementById('demoBtn3')
+    ];
+
+    function getCurrentTime() {
+      const now = new Date();
+      return `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+    }
+
+    window.runDemoQuestion = function(index, userText) {
+      demoButtons.forEach(b => { if (b) b.disabled = true; });
+
+      const userBubble = document.createElement('div');
+      userBubble.className = 'wa-bubble user';
+      userBubble.innerHTML = `${userText} <span class="wa-time">${getCurrentTime()}</span>`;
+      chatDemoBody.insertBefore(userBubble, demoTypingIndicator);
+      chatDemoBody.scrollTop = chatDemoBody.scrollHeight;
+
+      demoTypingIndicator.classList.add('active');
+      chatDemoBody.scrollTop = chatDemoBody.scrollHeight;
+
+      let replyHtml = '';
+      if (index === 1) {
+        replyHtml = `¡Sí! Nos quedan 2 huecos para mañana: a las <strong>11:30h</strong> y a las <strong>17:00h</strong>. ¿Cuál te viene mejor?<br/><br/>
+        <button class="btn-primary" onclick="openCallModal()" style="font-size:0.75rem; padding:0.4rem 0.8rem; width:100%; justify-content:center;">Reservar hueco online</button>`;
+      } else if (index === 2) {
+        replyHtml = `La revisión integral diagnóstica tiene una tarifa cerrada de <strong>49€</strong> (incluye chequeo de 35 puntos críticos y diagnosis electrónica). ¿Quieres que te reservemos cita?<br/><br/>
+        <a href="https://wa.me/34603782884?text=Hola,%20quiero%20pedir%20cita%20para%20la%20revisi%C3%B3n%20diagn%C3%B3stica" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="font-size:0.75rem; padding:0.4rem 0.8rem; width:100%; justify-content:center;">Confirmar por WhatsApp</a>`;
+      } else {
+        replyHtml = `Estamos ubicados en Badajoz (C/ Mayor, 14), con aparcamiento gratuito para clientes. Abrimos de 08:30 a 20:00 ininterrumpido. ¿Deseas que te envíe la ubicación GPS en Google Maps?<br/><br/>
+        <a href="https://wa.me/34603782884?text=Hola,%20pod%C3%A9is%20enviarme%20la%20ubicaci%C3%B3n" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="font-size:0.75rem; padding:0.4rem 0.8rem; width:100%; justify-content:center;">📍 Solicitar GPS</a>`;
+      }
 
       setTimeout(() => {
-        const b = document.createElement('div');
-        b.className = 'wa-bubble bot';
-        b.textContent = botMsg;
-        body.appendChild(b);
-        body.scrollTop = body.scrollHeight;
-      }, 550);
-    }
+        demoTypingIndicator.classList.remove('active');
+        const botBubble = document.createElement('div');
+        botBubble.className = 'wa-bubble bot';
+        botBubble.innerHTML = `${replyHtml} <span class="wa-time">${getCurrentTime()}</span>`;
+        chatDemoBody.insertBefore(botBubble, demoTypingIndicator);
+        chatDemoBody.scrollTop = chatDemoBody.scrollHeight;
+        demoButtons.forEach(b => { if (b) b.disabled = false; });
+      }, 750);
+    };
   </script>
 </body>
 </html>
