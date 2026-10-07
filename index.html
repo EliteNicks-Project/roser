@@ -9,235 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
-
-  <style>
-    :root {
-      --white-pure: #FFFFFF;
-      --slate-gray: #6B7280;
-      --slate-dark: #374151;
-      --slate-light: #9CA3AF;
-      --gold-metallic: #D4AF37;
-      --gold-deep: #B89025;
-      --gold-accessible: #997519;
-      --gold-light: #F7E7A9;
-      --gold-subtle: rgba(212, 175, 55, 0.12);
-      --gold-glow: rgba(212, 175, 55, 0.28);
-      --text-charcoal: #111827;
-      --text-slate: #374151;
-      --text-muted: #4B5563;
-      --bg-canvas: #FFFFFF;
-      --bg-surface-soft: #F9FAFB;
-      --border-light: #E5E7EB;
-      --border-medium: #D1D5DB;
-      --border-gold: rgba(212, 175, 55, 0.45);
-      --radius-sm: 8px;
-      --radius-md: 14px;
-      --radius-lg: 22px;
-      --radius-full: 9999px;
-      --shadow-luxury-sm: 0 4px 14px rgba(17, 24, 39, 0.04);
-      --shadow-luxury-md: 0 12px 30px rgba(17, 24, 39, 0.08);
-      --shadow-luxury-lg: 0 20px 45px rgba(17, 24, 39, 0.12);
-      --shadow-gold: 0 8px 24px rgba(212, 175, 55, 0.28);
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
-    body {
-      background-color: var(--bg-canvas);
-      color: var(--text-charcoal);
-      font-family: 'Inter', sans-serif;
-      line-height: 1.6;
-      overflow-x: hidden;
-      background-image: 
-        radial-gradient(at 0% 0%, rgba(212, 175, 55, 0.07) 0px, transparent 50%),
-        radial-gradient(at 100% 20%, rgba(107, 114, 128, 0.05) 0px, transparent 40%),
-        radial-gradient(at 50% 100%, rgba(212, 175, 55, 0.05) 0px, transparent 60%);
-    }
-    .container { max-width: 1220px; margin: 0 auto; padding: 0 1.5rem; position: relative; z-index: 1; }
-    .svg-stroke { fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2; }
-    
-    /* HEADER */
-    header {
-      position: sticky; top: 0; z-index: 200;
-      background: rgba(255, 255, 255, 0.94);
-      backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
-      border-bottom: 1px solid var(--border-light);
-      box-shadow: 0 2px 12px rgba(17, 24, 39, 0.03);
-    }
-    .nav-wrapper { display: flex; align-items: center; justify-content: space-between; height: 78px; }
-    .brand-container { display: flex; align-items: center; gap: 0.85rem; text-decoration: none; }
-    .brand-icon-svg { width: 38px; height: 38px; flex-shrink: 0; filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.35)); }
-    .brand-title-wrap { display: flex; flex-direction: column; }
-    .brand-name {
-      font-family: 'Space Grotesk', sans-serif; font-size: 1.35rem; font-weight: 700;
-      letter-spacing: -0.04em; color: var(--text-charcoal); display: flex; align-items: center; gap: 0.2rem;
-    }
-    .brand-name .ai-accent {
-      background: linear-gradient(135deg, var(--gold-metallic), var(--gold-deep));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 800;
-    }
-    .brand-sub { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--text-slate); font-weight: 600; }
-    .nav-links { display: none; align-items: center; gap: 1.8rem; list-style: none; }
-    @media (min-width: 960px) { .nav-links { display: flex; } }
-    .nav-links a { color: var(--text-slate); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s ease; }
-    .nav-links a:hover, .nav-links a.active { color: var(--gold-accessible); font-weight: 600; }
-
-    .btn-primary {
-      background: linear-gradient(135deg, #D4AF37 0%, #B89025 100%);
-      color: #FFFFFF; padding: 0.7rem 1.45rem; border-radius: var(--radius-full);
-      font-size: 0.88rem; font-weight: 600; text-decoration: none;
-      border: 1px solid rgba(255, 255, 255, 0.4); box-shadow: var(--shadow-gold);
-      cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem;
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(212, 175, 55, 0.4); background: linear-gradient(135deg, #DFBE52 0%, #A8811C 100%); }
-
-    .btn-ghost {
-      background: #FFFFFF; color: var(--text-charcoal); padding: 0.7rem 1.45rem;
-      border-radius: var(--radius-full); font-size: 0.88rem; font-weight: 600;
-      text-decoration: none; border: 1px solid var(--border-medium); cursor: pointer;
-      display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: var(--shadow-luxury-sm); transition: all 0.2s ease;
-    }
-    .btn-ghost:hover { background: var(--bg-surface-soft); border-color: var(--gold-metallic); color: var(--gold-accessible); transform: translateY(-2px); box-shadow: 0 6px 18px rgba(17, 24, 39, 0.06); }
-
-    .mobile-menu-btn { display: block; background: none; border: none; color: var(--text-charcoal); cursor: pointer; padding: 0.4rem; }
-    @media (min-width: 960px) { .mobile-menu-btn { display: none; } }
-
-    /* HERO */
-    .hero-section { padding: 5rem 0 4.2rem; position: relative; }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 0.55rem; background: #FFFFFF;
-      border: 1px solid var(--border-gold); padding: 0.4rem 1.15rem; border-radius: var(--radius-full);
-      font-size: 0.8rem; color: var(--gold-accessible); font-weight: 600; margin-bottom: 1.6rem; box-shadow: var(--shadow-luxury-sm);
-    }
-    .hero-headline {
-      font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.3rem, 5vw, 4.1rem); line-height: 1.1;
-      font-weight: 700; letter-spacing: -0.035em; color: var(--text-charcoal); margin-bottom: 1.5rem; max-width: 980px;
-    }
-    .hero-headline .text-gradient {
-      background: linear-gradient(135deg, var(--gold-accessible) 0%, var(--gold-metallic) 50%, var(--text-charcoal) 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: inline-block;
-    }
-    .hero-lead { font-size: 1.15rem; color: var(--text-slate); max-width: 720px; line-height: 1.75; margin-bottom: 2.4rem; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 3.8rem; }
-    
-    .proof-grid {
-      display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; padding: 2.2rem 0; border-top: 1px solid var(--border-light);
-    }
-    @media (min-width: 768px) { .proof-grid { grid-template-columns: repeat(4, 1fr); } }
-    .proof-metric {
-      font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem; font-weight: 700; line-height: 1;
-      color: var(--text-charcoal); margin-bottom: 0.4rem; display: flex; align-items: baseline; gap: 0.2rem;
-    }
-    .proof-metric span { color: var(--gold-deep); font-size: 1.7rem; }
-    .proof-desc { font-size: 0.85rem; color: var(--text-slate); line-height: 1.45; }
-
-    /* SECCIONES */
-    .section-wrap { padding: 5.5rem 0; position: relative; }
-    .eyebrow { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-accessible); margin-bottom: 0.6rem; display: block; }
-    .section-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2rem, 3.8vw, 3rem); font-weight: 700; letter-spacing: -0.03em; color: var(--text-charcoal); line-height: 1.15; }
-    .section-subtitle { color: var(--text-slate); font-size: 1rem; max-width: 680px; margin-top: 0.75rem; }
-
-    /* TRUST STRIP */
-    .trust-guarantee-strip { padding: 3rem 0; background: #FFFFFF; border-bottom: 1px solid var(--border-light); }
-    .trust-guarantee-grid { display: grid; grid-template-columns: 1fr; gap: 1.6rem; }
-    @media (min-width: 768px) { .trust-guarantee-grid { grid-template-columns: 1fr 1.35fr; } }
-    .trust-card { background: var(--bg-surface-soft); border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 1.6rem 1.8rem; display: flex; align-items: flex-start; gap: 1.1rem; }
-    .trust-card.highlight { border-left: 4px solid var(--gold-metallic); background: #FFFFFF; box-shadow: var(--shadow-luxury-sm); }
-    .trust-icon-box { width: 44px; height: 44px; border-radius: 50%; background: var(--gold-subtle); border: 1px solid rgba(212, 175, 55, 0.3); display: flex; align-items: center; justify-content: center; color: var(--gold-accessible); flex-shrink: 0; }
-    .trust-content h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--text-charcoal); margin-bottom: 0.35rem; }
-    .trust-content p { font-size: 0.85rem; color: var(--text-slate); line-height: 1.5; }
-
-    /* SERVICIOS / SOLUCIONES */
-    .services-matrix { display: grid; grid-template-columns: 1fr; gap: 1.75rem; }
-    @media (min-width: 768px) { .services-matrix { grid-template-columns: repeat(2, 1fr); } }
-    .service-card {
-      background: #FFFFFF; border: 1px solid var(--border-light); border-radius: var(--radius-lg);
-      padding: 2.5rem 2.2rem; position: relative; overflow: hidden; display: flex; flex-direction: column;
-      justify-content: space-between; box-shadow: var(--shadow-luxury-sm); transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-luxury-lg), 0 0 24px rgba(212, 175, 55, 0.12); border-color: var(--border-gold); }
-    .service-icon-box { width: 54px; height: 54px; border-radius: var(--radius-md); background: var(--gold-subtle); border: 1px solid rgba(212, 175, 55, 0.3); display: flex; align-items: center; justify-content: center; color: var(--gold-accessible); margin-bottom: 1.6rem; }
-    .service-name { font-family: 'Space Grotesk', sans-serif; font-size: 1.35rem; font-weight: 700; color: var(--text-charcoal); margin-bottom: 0.85rem; }
-    .service-pitch { font-size: 0.95rem; color: var(--text-slate); line-height: 1.7; margin-bottom: 2rem; }
-    .feature-tags { display: flex; flex-wrap: wrap; gap: 0.55rem; margin-top: auto; }
-    .tag-chip { font-size: 0.76rem; font-weight: 600; color: var(--text-slate); background: var(--bg-surface-soft); border: 1px solid var(--border-light); padding: 0.3rem 0.85rem; border-radius: var(--radius-full); }
-    .service-card:hover .tag-chip { border-color: rgba(212, 175, 55, 0.3); color: var(--gold-accessible); }
-
-    /* BANNER VISUAL IA NEURAL */
-    .ai-visual-fusion-section { position: relative; width: 100%; height: 480px; overflow: hidden; background: #0D121F; display: flex; align-items: center; justify-content: center; }
-    .fusion-fade-top { position: absolute; top: 0; left: 0; right: 0; height: 140px; background: linear-gradient(180deg, var(--bg-surface-soft) 0%, rgba(249, 250, 251, 0) 100%); z-index: 10; pointer-events: none; }
-    .fusion-fade-bottom { position: absolute; bottom: 0; left: 0; right: 0; height: 140px; background: linear-gradient(0deg, #FAFAFA 0%, rgba(250, 250, 250, 0) 100%); z-index: 10; pointer-events: none; }
-    .neural-canvas-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; opacity: 0.75; }
-    .neural-static-fallback { position: absolute; inset: 0; background: radial-gradient(circle at center, rgba(212, 175, 55, 0.18) 0%, rgba(13, 18, 31, 0.98) 75%); display: none; z-index: 1; }
-    .neural-core-wrapper { position: relative; z-index: 5; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; pointer-events: none; }
-    .core-halo { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; }
-    .glow-large { width: 380px; height: 380px; background: radial-gradient(circle, rgba(212, 175, 55, 0.25) 0%, transparent 70%); }
-    .glow-small { width: 180px; height: 180px; background: radial-gradient(circle, rgba(247, 231, 169, 0.4) 0%, transparent 60%); }
-    .quantum-orb-svg { width: 250px; height: 250px; filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.4)); }
-    .neural-caption { margin-top: 1rem; }
-    .neural-caption-title { font-family: 'Space Grotesk', sans-serif; font-size: 1.35rem; font-weight: 700; color: #FFFFFF; letter-spacing: -0.02em; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6); }
-    .spin-slow { transform-origin: center; animation: orbSpin 28s linear infinite; }
-    .spin-reverse { transform-origin: center; animation: orbSpinReverse 20s linear infinite; }
-    .pulse-subtle { transform-origin: center; animation: orbPulse 4s ease-in-out infinite; }
-    @keyframes orbSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-    @keyframes orbSpinReverse { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
-    @keyframes orbPulse { 0%, 100% { transform: scale(1); opacity: 0.85; } 50% { transform: scale(1.04); opacity: 1; } }
-
-    /* FORMULARIO "TE LLAMAMOS HOY" */
-    .lead-capture-strip { padding: 4.5rem 0; background: linear-gradient(135deg, #111827 0%, #1F2937 100%); color: #FFFFFF; border-top: 2px solid var(--gold-metallic); position: relative; overflow: hidden; }
-    .lead-strip-grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; align-items: center; }
-    @media (min-width: 900px) { .lead-strip-grid { grid-template-columns: 1.15fr 1.35fr; } }
-    .lead-form-wrap { background: #FFFFFF; padding: 2rem; border-radius: var(--radius-lg); border: 1px solid var(--border-gold); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25); color: var(--text-charcoal); }
-    .lead-input-row { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-bottom: 1rem; }
-    @media (min-width: 600px) { .lead-input-row { grid-template-columns: 1fr 1fr; } }
-    .lead-field-group label { display: block; font-size: 0.78rem; font-weight: 600; color: var(--text-slate); margin-bottom: 0.35rem; }
-    .lead-input-field { width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border-medium); border-radius: var(--radius-sm); font-size: 0.88rem; outline: none; font-family: inherit; }
-    .lead-input-field:focus { border-color: var(--gold-metallic); box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2); }
-    .lead-gdpr-row { display: flex; align-items: flex-start; gap: 0.6rem; margin-bottom: 1.2rem; font-size: 0.76rem; color: var(--text-slate); line-height: 1.4; }
-    .lead-gdpr-row input[type="checkbox"] { margin-top: 0.15rem; accent-color: var(--gold-deep); cursor: pointer; }
-    .lead-status-msg { margin-top: 0.8rem; font-size: 0.82rem; font-weight: 600; display: none; }
-    .lead-status-msg.success { display: block; color: #059669; }
-
-    /* TECH STACK */
-    .tech-stack-strip { padding: 3rem 0; background: #FFFFFF; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); }
-    .tech-chips-wrapper { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.85rem; align-items: center; margin-top: 1.2rem; }
-    .tech-chip { background: var(--bg-surface-soft); border: 1px solid var(--border-medium); color: var(--text-charcoal); padding: 0.45rem 1.1rem; border-radius: var(--radius-full); font-size: 0.82rem; font-weight: 600; display: inline-flex; align-items: center; gap: 0.45rem; }
-
-    /* FOOTER */
-    footer { border-top: 1px solid var(--border-light); padding: 4.5rem 0 2.8rem; background: #FAFAFA; font-size: 0.9rem; }
-    .footer-grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; margin-bottom: 3.5rem; }
-    @media (min-width: 768px) { .footer-grid { grid-template-columns: 2fr 1fr 1fr; } }
-
-    /* BOTONES FLOTANTES */
-    .floating-support-cluster { position: fixed; bottom: 24px; right: 24px; display: flex; align-items: center; gap: 0.85rem; z-index: 150; }
-    .action-fab { width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border-light); box-shadow: 0 10px 25px rgba(17, 24, 39, 0.12); cursor: pointer; text-decoration: none; transition: transform 0.2s; }
-    .action-fab:hover { transform: scale(1.1); }
-    .fab-wa { background: #25D366; color: #FFFFFF; }
-    .fab-quote { background: linear-gradient(135deg, var(--gold-metallic) 0%, var(--gold-deep) 100%); color: #FFFFFF; }
-    .bot-launcher-fab { position: fixed; bottom: 24px; left: 24px; z-index: 160; background: linear-gradient(135deg, #111827 0%, #1F2937 100%); color: #FFFFFF; border: 2px solid var(--gold-metallic); padding: 0.75rem 1.25rem; border-radius: var(--radius-full); box-shadow: 0 10px 30px rgba(17, 24, 39, 0.25); cursor: pointer; display: flex; align-items: center; gap: 0.7rem; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.9rem; }
-    .bot-status-pulse { width: 10px; height: 10px; background-color: #10B981; border-radius: 50%; }
-
-    /* BOT WIDGET */
-    .bot-widget-container { position: fixed; bottom: 90px; left: 24px; width: 375px; max-width: calc(100vw - 48px); height: 530px; background: #FFFFFF; border: 1px solid var(--border-gold); border-radius: var(--radius-lg); box-shadow: 0 20px 50px rgba(17, 24, 39, 0.2); z-index: 170; display: flex; flex-direction: column; overflow: hidden; opacity: 0; pointer-events: none; transform: translateY(20px) scale(0.96); transition: all 0.3s ease; }
-    .bot-widget-container.active { opacity: 1; pointer-events: auto; transform: translateY(0) scale(1); }
-    .bot-header { background: linear-gradient(135deg, #111827 0%, #1F2937 100%); color: #FFFFFF; padding: 1rem 1.2rem; display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid var(--gold-metallic); }
-    .bot-messages-area { flex: 1; overflow-y: auto; padding: 1.1rem; display: flex; flex-direction: column; gap: 0.85rem; background: #FDFDFD; }
-    .bot-msg { max-width: 84%; padding: 0.8rem 1rem; border-radius: var(--radius-md); font-size: 0.86rem; line-height: 1.5; }
-    .bot-msg.bot { align-self: flex-start; background: #FFFFFF; border: 1px solid var(--border-light); color: var(--text-charcoal); }
-    .bot-msg.user { align-self: flex-end; background: linear-gradient(135deg, #D4AF37 0%, #B89025 100%); color: #FFFFFF; }
-    .bot-quick-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; padding: 0.5rem 1rem; background: #FAFAFA; border-top: 1px solid var(--border-light); }
-    .bot-chip { background: #FFFFFF; border: 1px solid var(--border-gold); color: var(--gold-accessible); font-size: 0.72rem; font-weight: 600; padding: 0.3rem 0.65rem; border-radius: var(--radius-full); cursor: pointer; }
-    .bot-input-container { padding: 0.75rem 1rem; background: #FFFFFF; border-top: 1px solid var(--border-light); display: flex; gap: 0.5rem; align-items: center; }
-    .bot-input-container input { flex: 1; padding: 0.65rem 0.9rem; border-radius: var(--radius-full); border: 1px solid var(--border-medium); font-size: 0.85rem; outline: none; }
-    .bot-send-btn { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, var(--gold-metallic), var(--gold-deep)); color: #FFFFFF; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; }
-
-    /* MODAL CAL.COM */
-    .modal-backdrop { position: fixed; inset: 0; background: rgba(17, 24, 39, 0.65); backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center; padding: 1.2rem; z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.25s ease; }
-    .modal-backdrop.active { opacity: 1; pointer-events: auto; }
-    .modal-sheet { background: #FFFFFF; border-radius: var(--radius-lg); width: 100%; max-width: 640px; padding: 2.2rem; position: relative; }
-    .close-modal-x { position: absolute; top: 1.2rem; right: 1.2rem; background: var(--bg-surface-soft); border: 1px solid var(--border-light); width: 34px; height: 34px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
-    .cal-iframe-container { width: 100%; height: 520px; border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border-light); }
-    .cal-iframe-container iframe { width: 100%; height: 100%; border: none; }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
@@ -300,24 +72,24 @@
   </div>
 
   <main>
-    <!-- HERO SECTION COMPLETO -->
-    <section class="hero-section">
+    <!-- HERO SECTION -->
+    <section class="section-wrap" style="padding-top: 3.5rem;">
       <div class="container">
-        <div class="hero-badge">
-          <svg class="svg-stroke" width="14" height="14" viewBox="0 0 24 24"><polygon points="6 2 18 2 22 8 12 22 2 8 6 2"></polygon></svg>
-          Ingeniería de Software & Agentes Autónomos en Badajoz, Mérida y toda España
+        <div class="live-status-pill" style="margin-bottom: 1.5rem;">
+          <span class="pulse-dot"></span>
+          Ingeniería de Software & Agentes Autónomos B2B en Badajoz, Mérida y toda España
         </div>
 
-        <h1 class="hero-headline">
+        <h1 class="section-title" style="font-size: clamp(2.2rem, 5vw, 4.1rem); margin-bottom: 1.5rem; max-width: 980px;">
           Ingeniería de software y sistemas autónomos que <br />
-          <span class="text-gradient">multiplican la facturación</span> de tu empresa.
+          <span class="text-gradient-animated">multiplican la facturación</span> de tu empresa.
         </h1>
 
-        <p class="hero-lead">
+        <p class="section-subtitle" style="font-size: 1.12rem; max-width: 740px; margin-bottom: 2.5rem; line-height: 1.75;">
           Desarrollamos ecosistemas digitales a medida: interfaces de alto rendimiento para conversión comercial B2B, agentes inteligentes en WhatsApp que atienden y cualifican sin descanso, y flujos automáticos con n8n/Make que eliminan las tareas manuales de tu día a día.
         </p>
 
-        <div class="hero-actions">
+        <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 3.5rem;">
           <button class="btn-primary" onclick="openCallModal()" style="padding: 0.85rem 1.8rem; font-size: 0.95rem;">
             <svg class="svg-stroke" width="16" height="16" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
             <span>Agenda tu llamada (30 min)</span>
@@ -339,22 +111,14 @@
           </a>
         </div>
 
-        <div class="proof-grid">
-          <div class="proof-item">
-            <div class="proof-metric">&lt; 60<span>s</span></div>
-            <div class="proof-desc">100% de consultas comerciales atendidas en WhatsApp</div>
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; padding-top: 2rem; border-top: 1px solid var(--border-light);">
+          <div>
+            <div style="font-family:'Space Grotesk',sans-serif; font-size:2.2rem; font-weight:700; color:var(--text-charcoal);">&lt; 60<span style="color:var(--gold-deep); font-size:1.5rem;">s</span></div>
+            <div style="font-size:0.85rem; color:var(--text-slate);">100% de consultas comerciales atendidas en WhatsApp</div>
           </div>
-          <div class="proof-item">
-            <div class="proof-metric">-85<span>%</span></div>
-            <div class="proof-desc">Reducción drástica en tiempos de respuesta comercial</div>
-          </div>
-          <div class="proof-item">
-            <div class="proof-metric">100<span>%</span></div>
-            <div class="proof-desc">Arquitectura modular sin plantillas pesadas ni cuellos de botella</div>
-          </div>
-          <div class="proof-item">
-            <div class="proof-metric">0<span>h</span></div>
-            <div class="proof-desc">Fricción en agendamiento y tareas administrativas repetitivas</div>
+          <div>
+            <div style="font-family:'Space Grotesk',sans-serif; font-size:2.2rem; font-weight:700; color:var(--text-charcoal);">-85<span style="color:var(--gold-deep); font-size:1.5rem;">%</span></div>
+            <div style="font-size:0.85rem; color:var(--text-slate);">Reducción drástica en tiempos de respuesta comercial</div>
           </div>
         </div>
       </div>
@@ -387,7 +151,7 @@
       </div>
     </section>
 
-    <!-- RESUMEN DE SOLUCIONES -->
+    <!-- RESUMEN DE SOLUCIONES BENTO GRID -->
     <section class="section-wrap" style="background: var(--bg-surface-soft);">
       <div class="container">
         <div class="section-header" style="text-align: center; max-width: 780px; margin: 0 auto 3rem;">
@@ -398,72 +162,49 @@
           </p>
         </div>
 
-        <div class="services-matrix">
-          <div class="service-card">
-            <div>
-              <div class="service-icon-box"><svg class="svg-stroke" width="24" height="24" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div>
-              <h3 class="service-name">Arquitectura Web & Motores de Conversión</h3>
-              <p class="service-pitch">Desarrollo web exclusivo desde cero. Carga ultrarrápida, diseño limpio que transmite autoridad inmediata y embudos orientados a llamada o presupuesto.</p>
+        <div class="bento-grid-container">
+          <div class="bento-card-luxury bento-span-2">
+            <div class="trust-icon-box" style="margin-bottom: 1.2rem;"><svg class="svg-stroke" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2a4 4 0 0 1 4 4c0 1.95-1.4 3.58-3.25 3.93l-.75 2.07h4a3 3 0 0 1 3 3v5a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-5a3 3 0 0 1 3-3h4l-.75-2.07C9.4 9.58 8 7.95 8 6a4 4 0 0 1 4-4z"></path></svg></div>
+            <h3 class="sol-title">Agentes Cognitivos Autónomos</h3>
+            <p class="sol-desc">Chatbots multicanal en WhatsApp y Web conectados a Meta Cloud API. Resuelven dudas, cualifican prospectos y agendan llamadas directamente.</p>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem;">
+              <span class="tag-chip">Meta Cloud API</span><span class="tag-chip">Memoria Contextual</span><span class="tag-chip">Agendamiento Activo</span>
             </div>
-            <div class="feature-tags"><span class="tag-chip">Core Web Vitals 99+</span><span class="tag-chip">Embudos de Cierre</span><span class="tag-chip">SEO Local</span></div>
           </div>
 
-          <div class="service-card">
-            <div>
-              <div class="service-icon-box"><svg class="svg-stroke" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2a4 4 0 0 1 4 4c0 1.95-1.4 3.58-3.25 3.93l-.75 2.07h4a3 3 0 0 1 3 3v5a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-5a3 3 0 0 1 3-3h4l-.75-2.07C9.4 9.58 8 7.95 8 6a4 4 0 0 1 4-4z"></path></svg></div>
-              <h3 class="service-name">Agentes Cognitivos Autónomos</h3>
-              <p class="service-pitch">Chatbots multicanal en WhatsApp y Web conectados a Meta Cloud API. Resuelven dudas, cualifican prospectos y agendan llamadas directamente.</p>
-            </div>
-            <div class="feature-tags"><span class="tag-chip">Meta Cloud API</span><span class="tag-chip">Memoria Contextual</span><span class="tag-chip">Agendamiento Activo</span></div>
+          <div class="bento-card-luxury">
+            <div class="trust-icon-box" style="margin-bottom: 1.2rem;"><svg class="svg-stroke" width="24" height="24" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div>
+            <h3 class="sol-title">Arquitectura Web & Motores</h3>
+            <p class="sol-desc">Desarrollo web exclusivo desde cero. Carga ultrarrápida y embudos orientados a conversión.</p>
+            <span class="tag-chip" style="margin-top: 1rem; display: inline-block;">Core Web Vitals 99+</span>
           </div>
         </div>
 
-        <div style="text-align: center; margin-top: 2.8rem; display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
+        <div style="text-align: center; margin-top: 2.8rem; display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap;">
           <a href="soluciones.html" class="btn-primary">Ver todas las Soluciones & Probar Demo WhatsApp</a>
           <a href="precios.html" class="btn-ghost">Ver Planes de Inversión & ROI</a>
         </div>
       </div>
     </section>
 
-    <!-- BANNER VISUAL IA NEURAL CON CANVAS Y QUANTUM ORB -->
-    <section class="ai-visual-fusion-section">
-      <div class="fusion-fade-top"></div>
-      <canvas id="neuralCanvas" class="neural-canvas-bg"></canvas>
-      <div class="neural-static-fallback" id="neuralStaticFallback"></div>
+    <!-- BANNER VISUAL IA NEURAL CON CANVAS INTERACTIVO Y QUANTUM ORB -->
+    <section style="position: relative; width: 100%; height: 480px; overflow: hidden; background: #0D121F; display: flex; align-items: center; justify-content: center;">
+      <canvas id="neuralCanvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; opacity: 0.75;"></canvas>
 
-      <div class="neural-core-wrapper">
-        <div class="core-halo glow-large"></div>
-        <div class="core-halo glow-small"></div>
-
-        <svg class="quantum-orb-svg" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="orbGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#F7E7A9" />
-              <stop offset="50%" stop-color="#D4AF37" />
-              <stop offset="100%" stop-color="#B89025" />
-            </linearGradient>
-            <radialGradient id="neuralGlow" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="rgba(212, 175, 55, 0.45)" />
-              <stop offset="50%" stop-color="rgba(212, 175, 55, 0.1)" />
-              <stop offset="100%" stop-color="transparent" />
-            </radialGradient>
-          </defs>
-          <circle cx="200" cy="200" r="180" fill="url(#neuralGlow)" />
-          <circle cx="200" cy="200" r="150" stroke="url(#orbGoldGrad)" stroke-width="1.2" stroke-dasharray="6 8" class="spin-slow" opacity="0.6" />
-          <circle cx="200" cy="200" r="115" stroke="url(#orbGoldGrad)" stroke-width="1.8" stroke-dasharray="14 10" class="spin-reverse" opacity="0.8" />
-          <circle cx="200" cy="200" r="75" stroke="url(#orbGoldGrad)" stroke-width="2.2" opacity="0.9" />
-          <polygon points="200,140 252,170 252,230 200,260 148,230 148,170" stroke="url(#orbGoldGrad)" stroke-width="2" fill="rgba(17, 24, 39, 0.6)" class="pulse-subtle" />
-          <circle cx="200" cy="200" r="22" fill="url(#orbGoldGrad)" />
-          <circle cx="200" cy="200" r="10" fill="#FFFFFF" />
+      <div style="position: relative; z-index: 5; text-align: center; pointer-events: none;">
+        <svg width="220" height="220" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.4));">
+          <circle cx="200" cy="200" r="150" stroke="#D4AF37" stroke-width="1.5" stroke-dasharray="6 8" opacity="0.6" />
+          <circle cx="200" cy="200" r="115" stroke="#F7E7A9" stroke-width="2" stroke-dasharray="14 10" opacity="0.8" />
+          <circle cx="200" cy="200" r="75" stroke="#B89025" stroke-width="2.5" opacity="0.9" />
+          <circle cx="200" cy="200" r="20" fill="#D4AF37" />
+          <circle cx="200" cy="200" r="8" fill="#FFFFFF" />
         </svg>
 
-        <div class="neural-caption">
-          <span class="eyebrow" style="margin-bottom: 0.3rem; color: var(--gold-light);">Arquitectura Autónoma</span>
-          <h3 class="neural-caption-title">Sistemas que aprenden, ejecutan y escalan</h3>
+        <div style="margin-top: 1rem;">
+          <span class="eyebrow" style="color: var(--gold-light);">Arquitectura Autónoma</span>
+          <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.35rem; font-weight: 700; color: #FFFFFF;">Sistemas que aprenden, ejecutan y escalan</h3>
         </div>
       </div>
-
-      <div class="fusion-fade-bottom"></div>
     </section>
 
     <!-- FORMULARIO "TE LLAMAMOS HOY" -->
@@ -506,20 +247,6 @@
               <div class="lead-status-msg" id="leadStatusMsg"></div>
             </form>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- STACK TECNOLÓGICO -->
-    <section class="tech-stack-strip">
-      <div class="container" style="text-align: center;">
-        <span class="eyebrow" style="font-size: 0.72rem; margin-bottom: 0.3rem;">Ecosistema Tecnológico de Producción</span>
-        <div class="tech-chips-wrapper">
-          <span class="tech-chip"><svg class="svg-stroke" width="14" height="14" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg> Vanilla JS Moderno</span>
-          <span class="tech-chip"><svg class="svg-stroke" width="14" height="14" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"></rect><line x1="9" y1="9" x2="15" y2="15"></line></svg> Python / Node.js</span>
-          <span class="tech-chip"><svg class="svg-stroke" width="14" height="14" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle></svg> n8n Orchestration</span>
-          <span class="tech-chip"><svg class="svg-stroke" width="14" height="14" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg> Make</span>
-          <span class="tech-chip"><svg class="svg-stroke" width="14" height="14" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg> Meta Cloud API</span>
         </div>
       </div>
     </section>
@@ -606,7 +333,7 @@
       <button class="close-modal-x" id="closeCallModalBtn" aria-label="Cerrar modal">
         <svg class="svg-stroke" width="16" height="16" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
       </button>
-      <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; margin-bottom: 0.5rem;">Reserva de Sesión Estratégica (30 min)</h3>
+      <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.4rem; margin-bottom: 0.5rem;">Reserva de Sesión Estratégica (30 min)</h3>
       <div class="cal-iframe-container">
         <iframe src="https://cal.com/dani-serrano-mc095n/30min" title="Reserva Cal.com ROSER.AI" loading="lazy"></iframe>
       </div>
@@ -688,46 +415,78 @@
       setTimeout(() => botAppendMessage('bot', evalQuery(txt)), 350);
     };
 
-    // CANVAS NEURAL
-    const neuralCanvas = document.getElementById('neuralCanvas');
-    const staticFallback = document.getElementById('neuralStaticFallback');
-    if (neuralCanvas) {
-      if (window.innerWidth < 768 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        neuralCanvas.style.display = 'none';
-        if (staticFallback) staticFallback.style.display = 'block';
-      } else {
-        const ctx = neuralCanvas.getContext('2d');
-        let nodes = [];
-        let width = 0, height = 0;
-        function resize() {
-          width = neuralCanvas.offsetWidth; height = neuralCanvas.offsetHeight;
-          neuralCanvas.width = width; neuralCanvas.height = height;
-          nodes = [];
-          for (let i = 0; i < 35; i++) {
-            nodes.push({ x: Math.random() * width, y: Math.random() * height, vx: (Math.random() - 0.5) * 0.5, vy: (Math.random() - 0.5) * 0.5, radius: Math.random() * 2 + 1, alpha: Math.random() * 0.5 + 0.3 });
-          }
-        }
-        function draw() {
-          ctx.clearRect(0, 0, width, height);
-          for (let i = 0; i < nodes.length; i++) {
-            for (let j = i + 1; j < nodes.length; j++) {
-              const dx = nodes[i].x - nodes[j].x, dy = nodes[i].y - nodes[j].y, dist = Math.sqrt(dx * dx + dy * dy);
-              if (dist < 105) {
-                ctx.strokeStyle = `rgba(212, 175, 55, ${(1 - dist / 105) * 0.22})`;
-                ctx.lineWidth = 0.8; ctx.beginPath(); ctx.moveTo(nodes[i].x, nodes[i].y); ctx.lineTo(nodes[j].x, nodes[j].y); ctx.stroke();
-              }
+    // CANVAS NEURAL INTERACTIVO CON RATÓN
+    const canvas = document.getElementById('neuralCanvas');
+    if (canvas && window.innerWidth >= 768) {
+      const ctx = canvas.getContext('2d');
+      let width, height, nodes = [];
+      let mouse = { x: null, y: null, radius: 150 };
+
+      window.addEventListener('mousemove', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
+      });
+
+      function resize() {
+        width = canvas.offsetWidth;
+        height = canvas.offsetHeight;
+        canvas.width = width;
+        canvas.height = height;
+        nodes = Array.from({ length: 45 }, () => ({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.6,
+          vy: (Math.random() - 0.5) * 0.6,
+          radius: Math.random() * 2 + 1
+        }));
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, width, height);
+        for (let i = 0; i < nodes.length; i++) {
+          let n = nodes[i];
+          n.x += n.vx; n.y += n.vy;
+          if (n.x < 0 || n.x > width) n.vx *= -1;
+          if (n.y < 0 || n.y > height) n.vy *= -1;
+
+          if (mouse.x && mouse.y) {
+            let dx = mouse.x - n.x, dy = mouse.y - n.y;
+            let dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < mouse.radius) {
+              ctx.strokeStyle = `rgba(212, 175, 55, ${1 - dist / mouse.radius})`;
+              ctx.beginPath();
+              ctx.moveTo(n.x, n.y);
+              ctx.lineTo(mouse.x, mouse.y);
+              ctx.stroke();
             }
           }
-          for (let i = 0; i < nodes.length; i++) {
-            const n = nodes[i]; n.x += n.vx; n.y += n.vy;
-            if (n.x < 0 || n.x > width) n.vx *= -1; if (n.y < 0 || n.y > height) n.vy *= -1;
-            ctx.fillStyle = `rgba(247, 231, 169, ${n.alpha})`; ctx.beginPath(); ctx.arc(n.x, n.y, n.radius, 0, Math.PI * 2); ctx.fill();
+
+          for (let j = i + 1; j < nodes.length; j++) {
+            let n2 = nodes[j];
+            let dx = n.x - n2.x, dy = n.y - n2.y;
+            let dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 110) {
+              ctx.strokeStyle = `rgba(212, 175, 55, ${(1 - dist / 110) * 0.25})`;
+              ctx.lineWidth = 0.8;
+              ctx.beginPath();
+              ctx.moveTo(n.x, n.y);
+              ctx.lineTo(n2.x, n2.y);
+              ctx.stroke();
+            }
           }
-          requestAnimationFrame(draw);
+
+          ctx.fillStyle = '#D4AF37';
+          ctx.beginPath();
+          ctx.arc(n.x, n.y, n.radius, 0, Math.PI * 2);
+          ctx.fill();
         }
-        window.addEventListener('resize', resize);
-        resize(); draw();
+        requestAnimationFrame(animate);
       }
+
+      window.addEventListener('resize', resize);
+      resize();
+      animate();
     }
   </script>
 </body>
