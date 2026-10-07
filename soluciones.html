@@ -4,12 +4,63 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Soluciones Técnicas & Demo Agente WhatsApp — ROSER.AI</title>
-  <meta name="description" content="Simulador interactivo del Agente de WhatsApp y soluciones de ingeniería de software con Meta Cloud API oficial y pipelines con n8n/Make por ROSER.AI." />
+  <meta name="description" content="Simulador interactivo del Agente de WhatsApp y soluciones de ingeniería de software con Meta Cloud API oficial." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --gold-metallic: #D4AF37; --gold-deep: #B89025; --gold-accessible: #997519; --gold-light: #F7E7A9;
+      --gold-subtle: rgba(212, 175, 55, 0.12); --text-charcoal: #111827; --text-slate: #374151;
+      --bg-canvas: #FFFFFF; --bg-surface-soft: #F9FAFB; --border-light: #E5E7EB; --border-medium: #D1D5DB;
+      --border-gold: rgba(212, 175, 55, 0.45); --radius-sm: 8px; --radius-md: 14px; --radius-lg: 22px; --radius-full: 9999px;
+      --shadow-luxury-sm: 0 4px 14px rgba(17, 24, 39, 0.04); --shadow-gold: 0 8px 24px rgba(212, 175, 55, 0.28);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+    html, body { width: 100%; overflow-x: hidden; }
+    body { background-color: var(--bg-canvas); color: var(--text-charcoal); font-family: 'Inter', sans-serif; line-height: 1.6; }
+    .container { max-width: 1220px; margin: 0 auto; padding: 0 1.25rem; }
+    .svg-stroke { fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2; }
+
+    header { position: sticky; top: 0; z-index: 200; background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(18px); border-bottom: 1px solid var(--border-light); }
+    .nav-wrapper { display: flex; align-items: center; justify-content: space-between; height: 74px; }
+    .brand-container { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .brand-icon-svg { width: 36px; height: 36px; }
+    .brand-name { font-family: 'Space Grotesk', sans-serif; font-size: 1.25rem; font-weight: 700; color: var(--text-charcoal); }
+    .brand-name .ai-accent { background: linear-gradient(135deg, var(--gold-metallic), var(--gold-deep)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .brand-sub { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--text-slate); font-weight: 600; }
+
+    .nav-links { display: none; align-items: center; gap: 1.8rem; list-style: none; }
+    @media (min-width: 960px) { .nav-links { display: flex; } }
+    .nav-links a { color: var(--text-slate); text-decoration: none; font-size: 0.9rem; font-weight: 500; }
+    .nav-links a.active { color: var(--gold-accessible); font-weight: 600; }
+
+    .btn-primary { background: linear-gradient(135deg, #D4AF37 0%, #B89025 100%); color: #FFFFFF; padding: 0.65rem 1.3rem; border-radius: var(--radius-full); font-size: 0.86rem; font-weight: 600; text-decoration: none; border: 1px solid rgba(255, 255, 255, 0.4); box-shadow: var(--shadow-gold); cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem; justify-content: center; }
+    .btn-ghost { background: #FFFFFF; color: var(--text-charcoal); padding: 0.65rem 1.3rem; border-radius: var(--radius-full); font-size: 0.86rem; font-weight: 600; text-decoration: none; border: 1px solid var(--border-medium); cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem; justify-content: center; }
+
+    .section-wrap { padding: 3.5rem 0; }
+    .eyebrow { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-accessible); margin-bottom: 0.5rem; display: block; }
+    .section-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.75rem, 4vw, 3rem); font-weight: 700; color: var(--text-charcoal); line-height: 1.18; }
+    .section-subtitle { color: var(--text-slate); font-size: 0.95rem; max-width: 680px; }
+
+    .bento-grid-container { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+    @media (min-width: 860px) {
+      .bento-grid-container { grid-template-columns: repeat(3, 1fr); }
+      .bento-span-2 { grid-column: span 2; }
+    }
+    .bento-card-luxury { background: rgba(255, 255, 255, 0.88); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 1.8rem; box-shadow: var(--shadow-luxury-sm); }
+
+    .chat-phone-frame { width: 100%; max-width: 360px; margin: 0 auto; background: #FFFFFF; border-radius: 28px; border: 6px solid #1F2937; box-shadow: 0 20px 45px rgba(17, 24, 39, 0.16); overflow: hidden; display: flex; flex-direction: column; height: 500px; }
+
+    .modal-backdrop { position: fixed; inset: 0; background: rgba(17, 24, 39, 0.65); backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center; padding: 0.85rem; z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.25s ease; }
+    .modal-backdrop.active { opacity: 1; pointer-events: auto; }
+    .modal-sheet { background: #FFFFFF; border-radius: var(--radius-lg); width: 100%; max-width: 640px; padding: 1.5rem; position: relative; }
+    .close-modal-x { position: absolute; top: 1rem; right: 1rem; background: var(--bg-surface-soft); border: 1px solid var(--border-light); width: 32px; height: 32px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+    .cal-iframe-container { width: 100%; min-height: 460px; border-radius: var(--radius-md); border: 1px solid var(--border-light); overflow: hidden; }
+    .cal-iframe-container iframe { width: 100%; height: 460px; border: none; }
+  </style>
 </head>
 
 <body>
@@ -62,16 +113,8 @@
           Simula cómo respondería el agente inteligente a los clientes reales de una clínica o taller mecánico en tiempo récord, cualificando y derivando citas automáticamente.
         </p>
 
-        <div style="background: #FFFFFF; border-left: 3px solid var(--gold-metallic); padding: 1.2rem; border-radius: var(--radius-sm); box-shadow: var(--shadow-luxury-sm); margin-bottom: 2rem;">
-          <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text-charcoal); margin-bottom: 0.3rem;">⚡ Respuesta instantánea (&lt; 1 segundo)</h4>
-          <p style="font-size: 0.85rem; color: var(--text-slate);">
-            Sin esperas ni formularios fríos. El cliente resuelve su duda y agenda en la misma conversación en cualquier momento del día. Conexión oficial vía Meta Cloud API.
-          </p>
-        </div>
-
         <button class="btn-primary" onclick="openCallModal()">
           <span>Implementar Agente con Pack Plata (700€)</span>
-          <svg class="svg-stroke" width="14" height="14" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </button>
       </div>
 
@@ -82,12 +125,12 @@
             <div style="width: 36px; height: 36px; border-radius: 50%; background: var(--gold-subtle); border: 2px solid #D4AF37; display: flex; align-items: center; justify-content: center; color: #D4AF37; font-weight: 700; font-size: 0.85rem;">RA</div>
             <div>
               <h4 style="font-size: 0.9rem; font-weight: 600; margin:0;">Clínica / Taller ROSER</h4>
-              <p style="font-size: 0.7rem; opacity: 0.85; margin:0;"><span class="pulse-dot"></span> Agente Oficial 24/7</p>
+              <p style="font-size: 0.7rem; opacity: 0.85; margin:0;">En línea 24/7</p>
             </div>
           </div>
 
           <div style="flex: 1; background-color: #EFEAE2; padding: 1rem; overflow-y: auto; display: flex; flex-direction: column; gap: 0.75rem;" id="chatDemoBody">
-            <div style="max-width: 82%; padding: 0.65rem 0.85rem; border-radius: 12px; font-size: 0.84rem; background: #FFFFFF; align-self: flex-start; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+            <div style="max-width: 82%; padding: 0.65rem 0.85rem; border-radius: 12px; font-size: 0.84rem; background: #FFFFFF; align-self: flex-start;">
               ¡Hola! 👋 Soy el asistente autónomo. ¿En qué puedo ayudarte hoy?<br />
               <span style="font-size:0.72rem; color:#6B7280; display:block; margin-top:4px;">Haz clic en una opción de abajo 👇</span>
             </div>
@@ -100,9 +143,6 @@
             <button class="btn-ghost" style="font-size:0.75rem; padding:0.4rem 0.75rem; justify-content:space-between;" onclick="runDemoQuestion(2, '¿Cuánto cuesta una revisión técnica?')">
               <span>💶 ¿Cuánto cuesta una revisión?</span> ➔
             </button>
-            <button class="btn-ghost" style="font-size:0.75rem; padding:0.4rem 0.75rem; justify-content:space-between;" onclick="runDemoQuestion(3, '¿Dónde estáis ubicados exactamente?')">
-              <span>📍 ¿Dónde estáis ubicados?</span> ➔
-            </button>
           </div>
         </div>
       </div>
@@ -110,88 +150,35 @@
 
     <!-- BENTO GRID SYSTEM PARA SOLUCIONES -->
     <div class="section-header" style="text-align: center; max-width: 800px; margin: 0 auto 3rem;">
-      <span class="live-status-pill mb-2">
-        <span class="pulse-dot"></span> Sistemas Operativos B2B en Producción
-      </span>
-      <h2 class="section-title">
-        Ecosistema Tecnológico <span class="text-gradient-animated">ROSER.AI</span>
-      </h2>
-      <p class="section-subtitle" style="margin: 0.8rem auto 0;">
-        Arquitectura modular de software e inteligencia artificial orientada a la maximización del ROI comercial.
-      </p>
+      <span class="eyebrow">Sistemas Operativos B2B</span>
+      <h2 class="section-title">Ecosistema Tecnológico ROSER.AI</h2>
     </div>
 
     <div class="bento-grid-container">
       <div class="bento-card-luxury bento-span-2">
-        <div class="trust-icon-box" style="margin-bottom: 1rem;"><svg class="svg-stroke" width="24" height="24" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div>
-        <h3 class="sol-title" style="font-size: 1.5rem;">Agentes Cognitivos Autónomos en WhatsApp</h3>
-        <p class="sol-desc" style="font-size: 0.95rem;">
-          Resuelven consultas complejas, cualifican prospectos filtrando por presupuesto y agendan citas directamente en tu calendario comercial de forma ininterrumpida.
-        </p>
-        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem;">
-          <span class="tag-chip">Respuesta &lt; 60s</span>
-          <span class="tag-chip">Sincronización Cal.com</span>
-          <span class="tag-chip">Meta Cloud API</span>
-        </div>
+        <h3 style="font-family:'Space Grotesk',sans-serif; font-size: 1.4rem; font-weight:700; margin-bottom:0.5rem;">Agentes Cognitivos Autónomos en WhatsApp</h3>
+        <p style="font-size: 0.9rem; color: var(--text-slate);">Resuelven consultas complejas, cualifican prospectos filtrando por presupuesto y agendan citas directamente en tu calendario comercial.</p>
       </div>
 
       <div class="bento-card-luxury">
-        <div class="trust-icon-box" style="margin-bottom: 1rem;"><svg class="svg-stroke" width="24" height="24" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div>
-        <h3 class="sol-title">Motores Web B2B</h3>
-        <p class="sol-desc">Desarrollo a medida sin CMS pesados. Velocidad de carga pensada para convertir visitas en leads directos.</p>
-        <span class="tag-chip" style="margin-top: 1rem; display: inline-block;">Core Web Vitals 99+</span>
-      </div>
-
-      <div class="bento-card-luxury">
-        <div class="trust-icon-box" style="margin-bottom: 1rem;"><svg class="svg-stroke" width="24" height="24" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle></svg></div>
-        <h3 class="sol-title">Pipelines n8n & Make</h3>
-        <p class="sol-desc">Sistemas que conectan tu CRM, facturación en PDF al vuelo y correo sin intervención humana.</p>
-      </div>
-
-      <div class="bento-card-luxury bento-span-2">
-        <div class="trust-icon-box" style="margin-bottom: 1rem;"><svg class="svg-stroke" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg></div>
-        <h3 class="sol-title">Motor de Reputación & Reactivación Local</h3>
-        <p class="sol-desc">Automatizaciones post-servicio que envían solicitudes de valoraciones de 5 estrellas en Google Business Profile y reactivan clientes antiguos por WhatsApp.</p>
+        <h3 style="font-family:'Space Grotesk',sans-serif; font-size: 1.4rem; font-weight:700; margin-bottom:0.5rem;">Motores Web B2B</h3>
+        <p style="font-size: 0.9rem; color: var(--text-slate);">Desarrollo a medida sin CMS pesados. Velocidad de carga ultrarrápida.</p>
       </div>
     </div>
   </main>
 
-  <!-- FOOTER -->
   <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <span class="brand-name" style="font-size: 1.25rem; margin-bottom: 0.8rem; display: block;">ROSER<span class="ai-accent">.AI</span></span>
-          <p style="color: var(--text-slate); font-size: 0.88rem; max-width: 380px;">Ingeniería de software, automatización B2B y agentes de inteligencia artificial operados desde Badajoz y Mérida para empresas de toda España.</p>
-        </div>
-        <div>
-          <h5 style="color: var(--text-charcoal); font-weight: 700; margin-bottom: 0.8rem;">Páginas</h5>
-          <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.88rem;">
-            <li><a href="index.html" style="color: var(--text-slate); text-decoration: none;">Inicio</a></li>
-            <li><a href="soluciones.html" style="color: var(--text-slate); text-decoration: none;">Soluciones & Demo WhatsApp</a></li>
-            <li><a href="precios.html" style="color: var(--text-slate); text-decoration: none;">Precios, Retainers & Calculadora ROI</a></li>
-            <li><a href="index.html#contacto-rapido" style="color: var(--text-slate); text-decoration: none;">Contacto Rápido</a></li>
-          </ul>
-        </div>
-        <div>
-          <h5 style="color: var(--text-charcoal); font-weight: 700; margin-bottom: 0.8rem;">Contacto Directo</h5>
-          <p style="font-size: 0.88rem; color: var(--text-slate); margin-bottom: 0.5rem;">WhatsApp: <a href="https://wa.me/34603782884" style="color: var(--gold-accessible); font-weight: 600; text-decoration: none;">+34 603 78 28 84</a></p>
-          <p style="font-size: 0.88rem; color: var(--text-slate);">Agenda: <a href="https://cal.com/dani-serrano-mc095n/30min" target="_blank" style="color: var(--gold-accessible); text-decoration: none;">cal.com/dani-serrano-mc095n/30min</a></p>
-        </div>
-      </div>
-      <div style="border-top: 1px solid var(--border-light); padding-top: 1.4rem; text-align: center; color: var(--text-slate); font-size: 0.82rem;">© 2026 ROSER.AI — Todos los derechos reservados.</div>
+    <div class="container" style="text-align:center; padding: 2rem 0; color: var(--text-slate); font-size: 0.85rem;">
+      © 2026 ROSER.AI — Ingeniería de Software & Agentes IA
     </div>
   </footer>
 
-  <!-- MODAL CAL.COM -->
   <div class="modal-backdrop" id="callScheduleModal">
     <div class="modal-sheet">
-      <button class="close-modal-x" id="closeCallModalBtn" aria-label="Cerrar modal">
-        <svg class="svg-stroke" width="16" height="16" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-      </button>
+      <button class="close-modal-x" id="closeCallModalBtn">✕</button>
       <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.4rem; margin-bottom: 0.5rem;">Reserva de Sesión Estratégica (30 min)</h3>
       <div class="cal-iframe-container">
-        <iframe src="https://cal.com/dani-serrano-mc095n/30min" title="Reserva Cal.com ROSER.AI" loading="lazy"></iframe>
+        <iframe src="https://cal.com/dani-serrano-mc095n/30min" title="Reserva Cal.com ROSER.AI"></iframe>
       </div>
     </div>
   </div>
@@ -201,32 +188,25 @@
     const closeBtn = document.getElementById('closeCallModalBtn');
     function openCallModal() { modal.classList.add('active'); }
     if (closeBtn) closeBtn.onclick = () => modal.classList.remove('active');
-    modal.onclick = (e) => { if (e.target === modal) modal.classList.remove('active'); };
 
     const chatDemoBody = document.getElementById('chatDemoBody');
     window.runDemoQuestion = function(index, userText) {
       const userBubble = document.createElement('div');
-      userBubble.style.cssText = 'max-width:82%; padding:0.65rem 0.85rem; border-radius:12px; font-size:0.84rem; background:#DCF8C6; color:#0F381E; align-self:flex-end; box-shadow:0 1px 3px rgba(0,0,0,0.1);';
+      userBubble.style.cssText = 'max-width:82%; padding:0.65rem 0.85rem; border-radius:12px; font-size:0.84rem; background:#DCF8C6; color:#0F381E; align-self:flex-end;';
       userBubble.textContent = userText;
       chatDemoBody.appendChild(userBubble);
-      chatDemoBody.scrollTop = chatDemoBody.scrollHeight;
 
-      let replyHtml = '';
-      if (index === 1) {
-        replyHtml = `¡Sí! Nos quedan 2 huecos para mañana: a las <strong>11:30h</strong> y a las <strong>17:00h</strong>. ¿Cuál prefieres?<br/><br/><button class="btn-primary" onclick="openCallModal()" style="font-size:0.75rem; padding:0.4rem 0.8rem; width:100%; justify-content:center;">Reservar hueco online</button>`;
-      } else if (index === 2) {
-        replyHtml = `La revisión integral diagnóstica tiene una tarifa de <strong>49€</strong>. ¿Te reservamos cita?<br/><br/><a href="https://wa.me/34603782884?text=Hola,%20quiero%20cita%20para%20la%20revisi%C3%B3n" target="_blank" class="btn-ghost" style="font-size:0.75rem; padding:0.4rem 0.8rem; width:100%; justify-content:center;">Confirmar por WhatsApp</a>`;
-      } else {
-        replyHtml = `Estamos ubicados en Badajoz (C/ Mayor, 14), con aparcamiento gratuito para clientes.<br/><br/><a href="https://wa.me/34603782884?text=Hola,%20pod%C3%A9is%20enviarme%20la%20ubicaci%C3%B3n" target="_blank" class="btn-ghost" style="font-size:0.75rem; padding:0.4rem 0.8rem; width:100%; justify-content:center;">📍 Solicitar GPS en WhatsApp</a>`;
-      }
+      let replyHtml = index === 1 
+        ? '¡Sí! Nos quedan 2 huecos para mañana: a las <strong>11:30h</strong> y a las <strong>17:00h</strong>. ¿Cuál prefieres?' 
+        : 'La revisión integral diagnóstica tiene una tarifa de <strong>49€</strong>.';
 
       setTimeout(() => {
         const botBubble = document.createElement('div');
-        botBubble.style.cssText = 'max-width:82%; padding:0.65rem 0.85rem; border-radius:12px; font-size:0.84rem; background:#FFFFFF; color:var(--text-charcoal); align-self:flex-start; box-shadow:0 1px 3px rgba(0,0,0,0.1);';
+        botBubble.style.cssText = 'max-width:82%; padding:0.65rem 0.85rem; border-radius:12px; font-size:0.84rem; background:#FFFFFF; align-self:flex-start;';
         botBubble.innerHTML = replyHtml;
         chatDemoBody.appendChild(botBubble);
         chatDemoBody.scrollTop = chatDemoBody.scrollHeight;
-      }, 500);
+      }, 400);
     };
   </script>
 </body>
